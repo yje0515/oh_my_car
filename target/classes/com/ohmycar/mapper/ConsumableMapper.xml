@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohmycar.mapper.ConsumableMapper">
+	<insert id="insert">
+        INSERT INTO user_consumable_tbl(
+            carId,
+            engineOil,
+            breakOil,
+            breakPad,
+            wiper,
+            tire,
+            airConFilter,
+            sparkPlug,
+            battery,
+            coolingWater,
+            transmissionOil,
+            powerSteeringOil,
+            fluidClutch
+        )
+        VALUES (
+            #{carId},
+            #{engineOil},
+            #{breakOil},
+            #{breakPad},
+            #{wiper},
+            #{tire},
+            #{airConFilter},
+            #{sparkPlug},
+            #{battery},
+            #{coolingWater},
+            #{transmissionOil},
+            #{powerSteeringOil},
+            #{fluidClutch}
+        )
+    </insert>
+	<update id="update">
+        UPDATE user_consumable_tbl SET
+        engineOil = #{engineOil},
+        breakOil = #{breakOil},
+        breakPad = #{breakPad},
+        wiper = #{wiper},
+        tire = #{tire},
+        airConFilter = #{airConFilter},
+        sparkPlug = #{sparkPlug},
+        battery = #{battery},
+        coolingWater = #{coolingWater},
+        transmissionOil = #{transmissionOil},
+        powerSteeringOil = #{powerSteeringOil},
+        fluidClutch = #{fluidClutch}
+        WHERE carId = #{carId}
+    </update>
+	<delete id="delete">
+        DELETE FROM user_consumable_tbl WHERE carId = #{carId}
+    </delete>
+	<select id="select" resultType="com.ohmycar.domain.ConsumableVO">
+        SELECT * FROM user_consumable_tbl WHERE carId = #{carId}
+    </select>
+    <select id="selectAll">
+        SELECT * FROM user_consumable_tbl
+    </select>
+</mapper>
