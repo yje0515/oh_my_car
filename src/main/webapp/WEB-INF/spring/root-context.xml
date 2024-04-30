@@ -26,5 +26,5 @@
 	<!-- com.ohmycar.mapper 패키지 내의 MyBatis 매퍼 인터페이스를 자동으로 스캔하는 설정 -->
 	<mybatis-spring:scan base-package="com.ohmycar.mapper" />
 	<!-- Component scan 설정 추가 -->
-	<context:component-scan base-package="com.ohmycar.sample" />
+	<context:component-scan base-package="com.ohmycar.service" />
 </beans>
