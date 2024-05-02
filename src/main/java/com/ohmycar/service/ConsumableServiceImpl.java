@@ -1,15 +1,22 @@
 package com.ohmycar.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
 import com.ohmycar.domain.ConsumableVO;
 import com.ohmycar.mapper.ConsumableMapper;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Service
 public class ConsumableServiceImpl implements ConsumableService {
+
 
     private final ConsumableMapper consumableMapper;
 
@@ -24,56 +31,21 @@ public class ConsumableServiceImpl implements ConsumableService {
 
     @Override
     public void create(ConsumableVO vo) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String nowDate = sdf.format(new Date());
-        String accDist = "29546.7";
         if (vo.getAirConFilter() == null) {
-            vo.setAirConFilter(accDist);
+        vo.setAirConFilter("");
         }
-        if (vo.getBattery() == null) {
-            vo.setBattery(nowDate);
-        }
-        if (vo.getBreakOil() == null) {
-            vo.setBreakOil(accDist);
-        }
-        if (vo.getBreakPad() == null) {
-            vo.setBreakPad(accDist);
-        }
-        if (vo.getCoolingWater() == null) {
-            vo.setCoolingWater(accDist);
-        }
-        if (vo.getEngineOil() == null) {
-            vo.setEngineOil(accDist);
-        }
-        if (vo.getFluidClutch() == null) {
-            vo.setFluidClutch(nowDate);
-        }
-        if (vo.getPowerSteeringOil() == null) {
-            vo.setPowerSteeringOil(nowDate);
-        }
-        if (vo.getSparkPlug() == null) {
-            vo.setSparkPlug(accDist);
-        }
-        if (vo.getTire() == null) {
-            vo.setTire(accDist);
-        }
-        if (vo.getTransmissionOil() == null) {
-            vo.setTransmissionOil(accDist);
-        }
-        if (vo.getWiper() == null) {
-            vo.setWiper(nowDate);
-        }
-        consumableMapper.insert(vo);
     }
 
     @Override
     public void modify(ConsumableVO vo) {
-        consumableMapper.update(vo);
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'modify'");
     }
 
     @Override
     public void delete(String carId) {
-        consumableMapper.delete(carId);
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 
 }
