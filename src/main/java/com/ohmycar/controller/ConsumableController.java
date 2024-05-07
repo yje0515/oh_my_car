@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Log4j
 @RequestMapping("/consumable")
@@ -30,7 +31,7 @@ public class ConsumableController {
 
     private String calcChangeDay(String before, String cycle, char op) {
         if (op == 'y') {
-            int next = (int) Double.parseDouble(cycle) * 12;
+            int next = (int) (Double.parseDouble(cycle) * 12);
             LocalDate date = LocalDate.parse(before, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             date = date.plusMonths(next);
             return date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -50,6 +51,7 @@ public class ConsumableController {
         ConsumableVO vo = consumableService.read(carId);
         log.info(vo);
         model.addAttribute("consumable", vo);
+        model.addAttribute("carId", carId);
 
         InputStream input = new FileInputStream(
                 "c:/SpringWorkSpace/oh_my_car/src/main/webapp/resources/json/consumableCycle.json");
@@ -98,4 +100,25 @@ public class ConsumableController {
         model.addAttribute("changed", next);
     }
 
+    @GetMapping("/modify")
+    public void modify(@RequestParam("carId") String carId, Model model) {
+        log.info("Modifying......................................................");
+        ConsumableVO vo = consumableService.read(carId);
+        log.info(vo);
+        model.addAttribute("consumable", vo);
+        model.addAttribute("carId", carId);
+    }
+
+    @PostMapping("/modify")
+    public String modifyPost(ConsumableVO vo) {
+        consumableService.modify(vo);
+        return "redirect:/consumable/read?carId=" + vo.getCarId();
+    }
+
+    @GetMapping("/remove")
+    public String remove(@RequestParam("carId") String carId) {
+        consumableService.delete(carId);
+        return "redirect:/consumable/read?carId=" + carId;
+    }
+    // TODO insert 구문을 만들어야 하는데 이때 현대 API 에서 누적 주행거리를 받아와야 한다. 자바 에서 GET 쏘는 법 찾아보자
 }

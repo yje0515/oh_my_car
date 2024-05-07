@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/css/consumable.css" type="text/css">
+    <title>차 부붐 정보 수정하기</title>
+</head>
+<body>
+    <H1>수정하기</H1>
+    <form action="/consumable/modify" method="post">
+        <input type="hidden" name="carId" th:value="${carId}">
+        <table class="tg" style="table-layout: fixed;">
+            <colgroup>
+                <col style="width: 165px">
+                <col style="width: 183px">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th class="tg-0pky">부품 명</th>
+                    <th class="tg-baqh">교체한 날짜/주행거리</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tg-0lax">엔진 오일</td>
+                    <td class="tg-baqh"><input name="engineOil" th:value="${consumable.engineOil}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">브레이크 오일</td>
+                    <td class="tg-baqh"><input name="breakOil" th:value="${consumable.breakOil}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">브레이크 패드</td>
+                    <td class="tg-baqh"><input name="breakPad" th:value="${consumable.breakPad}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">와이퍼</td>
+                    <td class="tg-baqh"><input name="wiper" th:value="${consumable.wiper}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">타이어</td>
+                    <td class="tg-baqh"><input name="tire" th:value="${consumable.tire}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">에어컨 필터</td>
+                    <td class="tg-baqh"><input name="airConFilter" th:value="${consumable.airConFilter}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">스파크 플러그</td>
+                    <td class="tg-baqh"><input name="sparkPlug" th:value="${consumable.sparkPlug}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">배터리</td>
+                    <td class="tg-baqh"><input name="battery" th:value="${consumable.battery}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">냉각수</td>
+                    <td class="tg-baqh"><input name="coolingWater" th:value="${consumable.coolingWater}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">트랜스미션 오일</td>
+                    <td class="tg-baqh"><input name="transmissionOil" th:value="${consumable.transmissionOil}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">파워 스티어링 오일</td>
+                    <td class="tg-baqh"><input name="powerSteeringOil" th:value="${consumable.powerSteeringOil}"></input></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">유체 클러치</td>
+                    <td class="tg-baqh"><input name="fluidClutch" th:value="${consumable.fluidClutch}"></input></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="수정하기">
+        <input type="button" value="돌아가기" onclick="location.href='/consumable/read?carId=${carId}'" />
+    </form>
+</body>
+</html>
