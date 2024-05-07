@@ -23,10 +23,9 @@ public class ConsumableServiceImpl implements ConsumableService {
     }
 
     @Override
-    public void create(ConsumableVO vo) {
+    public void create(ConsumableVO vo, String accDist) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String nowDate = sdf.format(new Date());
-        String accDist = "29546.7";
         if (vo.getAirConFilter() == null) {
             vo.setAirConFilter(accDist);
         }

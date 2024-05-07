@@ -1,5 +1,5 @@
 
-package com.ohmycar.service;
+package com.ohmycar.domain;
 
 import lombok.Data;
 

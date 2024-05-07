@@ -76,7 +76,7 @@ public class ConsumableServiceTest {
         // }
 
         log.info(vo);
-        service.create(vo);
+        service.create(vo, null);
     }
 
     @Test

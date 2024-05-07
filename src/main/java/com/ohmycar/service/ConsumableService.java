@@ -5,7 +5,7 @@ import com.ohmycar.domain.ConsumableVO;
 public interface ConsumableService {
     public ConsumableVO read(String carId);
 
-    public void create(ConsumableVO vo);
+    public void create(ConsumableVO vo, String accDist);
 
     public void modify(ConsumableVO vo);
 
