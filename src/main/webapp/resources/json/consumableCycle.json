@@ -1,16 +1,14 @@
 {
-    "consumableCycle": {
-        "engineOil": "7500k",
-        "breakOil": "45000k",
-        "breakPad": "45000k",
-        "wiper": "0.75y",
-        "tire": "45000k",
-        "airConFilter": "22500k",
-        "sparkPlug": "45000k",
-        "battery": "4y",
-        "coolingWater": "X",
-        "transmissionOil": "75000k",
-        "powerSteeringOil": "3y",
-        "fluidClutch": "2.5y"
-    }
+    "engineOil": "7500k",
+    "breakOil": "45000k",
+    "breakPad": "45000k",
+    "wiper": "0.75y",
+    "tire": "45000k",
+    "airConFilter": "22500k",
+    "sparkPlug": "45000k",
+    "battery": "4y",
+    "coolingWater": "X",
+    "transmissionOil": "75000k",
+    "powerSteeringOil": "3y",
+    "fluidClutch": "2.5y"
 }

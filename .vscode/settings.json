@@ -14,6 +14,7 @@
     "explorerExclude.backup": {},
     "java.configuration.updateBuildConfiguration": "automatic",
     "cSpell.words": [
+        "jsonschema",
         "ohmycar"
     ],
     "java.compile.nullAnalysis.mode": "automatic",

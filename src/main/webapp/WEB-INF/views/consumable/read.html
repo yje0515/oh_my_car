@@ -25,75 +25,67 @@
             <tr>
                 <td class="tg-0lax">엔진 오일</td>
                 <td class="tg-baqh"><span th:text="${consumable.engineOil}"></span></td>
-                <td class="tg-baqh engineOil"></td>
+                <td class="tg-baqh"><span th:text="${changed.engineOil}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">브레이크 오일</td>
                 <td class="tg-baqh"><span th:text="${consumable.breakOil}"></span></td>
-                <td class="tg-baqh breakOil"></td>
+                <td class="tg-baqh"><span th:text="${changed.breakOil}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">브레이크 패드</td>
                 <td class="tg-baqh"><span th:text="${consumable.breakPad}"></span></td>
-                <td class="tg-baqh breakPad"></td>
+                <td class="tg-baqh"><span th:text="${changed.breakPad}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">와이퍼</td>
                 <td class="tg-baqh"><span th:text="${consumable.wiper}"></span></td>
-                <td class="tg-baqh wiper"></td>
+                <td class="tg-baqh"><span th:text="${changed.wiper}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">타이어</td>
                 <td class="tg-baqh"><span th:text="${consumable.tire}"></span></td>
-                <td class="tg-baqh tire"></td>
+                <td class="tg-baqh"><span th:text="${changed.tire}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">에어컨 필터</td>
                 <td class="tg-baqh"><span th:text="${consumable.airConFilter}"></span></td>
-                <td class="tg-baqh airConFilter"></td>
+                <td class="tg-baqh"><span th:text="${changed.airConFilter}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">스파크 플러그</td>
                 <td class="tg-baqh"><span th:text="${consumable.sparkPlug}"></span></td>
-                <td class="tg-baqh sparkPlug"></td>
+                <td class="tg-baqh"><span th:text="${changed.sparkPlug}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">배터리</td>
                 <td class="tg-baqh"><span th:text="${consumable.battery}"></span></td>
-                <td class="tg-baqh battery"></td>
+                <td class="tg-baqh"><span th:text="${changed.battery}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">냉각수</td>
                 <td class="tg-baqh"><span th:text="${consumable.coolingWater}"></span></td>
-                <td class="tg-baqh coolingWater"></td>
+                <td class="tg-baqh"><span th:text="${changed.coolingWater}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">트랜스미션 오일</td>
                 <td class="tg-baqh"><span th:text="${consumable.transmissionOil}"></span></td>
-                <td class="tg-baqh transmissionOil"></td>
+                <td class="tg-baqh"><span th:text="${changed.transmissionOil}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">파워 스티어링 오일</td>
                 <td class="tg-baqh"><span th:text="${consumable.powerSteeringOil}"></span></td>
-                <td class="tg-baqh powerSteeringOil"></td>
+                <td class="tg-baqh"><span th:text="${changed.powerSteeringOil}"></span></td>
             </tr>
             <tr>
                 <td class="tg-0lax">유체 클러치</td>
                 <td class="tg-baqh"><span th:text="${consumable.fluidClutch}"></span></td>
-                <td class="tg-baqh fluidClutch"></td>
+                <td class="tg-baqh"><span th:text="${changed.fluidClutch}"></span></td>
             </tr>
         </tbody>
     </table>
 
 
 <!-- Script -->
-<script type="json" src="/src/main/webapp/resources/json/consumableCycle.json"></script>
-<script type="text/javascript" src="/src/main/webapp/resources/js/consumableCalc.js"></script>
-<script>
-        let consumableCycle = JSON.parse(JSON.stringify(consumableCycle));
-        console.log(consumableCycle);
-        console.log("....................................");
-        //TODO 교체 시기 구하는 로직 만들어야 하고 그러기 위해선 교체주기를 json 파일로 받아와야한다.
-</script>
 </body>
 </html>
