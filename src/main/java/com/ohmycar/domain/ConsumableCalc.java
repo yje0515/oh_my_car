@@ -10,12 +10,14 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import lombok.extern.log4j.Log4j;
-
-@Log4j
 public class ConsumableCalc {
+
+    public ConsumableCalc() {
+        super();
+    }
 
     private String calcChangeDay(String before, String cycle, char op) {
         if (op == 'y') {
@@ -81,11 +83,11 @@ public class ConsumableCalc {
     }
 
     public String getAccDist() {
-        StringBuilder sb;
+        StringBuilder sb = new StringBuilder();
         String responseData = "";
 
         String token = "Bearer "
-                + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiI2NjRkYWZjZC05NmVhLTRhZjctOGI0MC1iYTYyNzgwNzI4ODciLCJpc3MiOiJibHVlbGluayIsInBpZCI6IjYyYTk3NmZhYmI4YjVkZTg5YzYzYjhmYiIsImV4cCI6NDEwMjMyNjAwMCwibGF0IjoxNzE1MDU5NzA2LCJzaWQiOiI0MDBiMzIzMS0zMGRiLTQyZjUtYWI1Mi05ZDY5YjM1YTE4NGQifQ.CXjiYH0jV53XBYQM33NQvRw27LZaWwKAor1hreOzlsffBzvgFXKWFC_Gz2fcdGnbunJnndxf5hnyLHnsaROsk9bBx800NuRYoR9vlZ92z8e1XrROLXwY8NhO9xIR_bbjK-i1AuxEpP-FqedwkxVvcqpRNfauvog1Bf4d4pjwGnKCybCoUj5GqfDvNbxcIT6G1Ri3tuhN7iAb0h-Zpab_e5vKSVH9eVEp5uNqH2za5qVmxx5jw13GHZNqAAPRKLqIcDv110Pn8xKs1SXYBnLVAdNCBAgWwjUnqn_O8W6ukCpHYQ3BJE2u7O7r8P93tES4sLdhramiWjnDWDxCzAxZJw";
+                + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiI2NjRkYWZjZC05NmVhLTRhZjctOGI0MC1iYTYyNzgwNzI4ODciLCJpc3MiOiJibHVlbGluayIsInBpZCI6IjYyYTk3NmZhYmI4YjVkZTg5YzYzYjhmYiIsImV4cCI6NDEwMjMyNjAwMCwibGF0IjoxNzE1MTI4NDkzLCJzaWQiOiI0MDBiMzIzMS0zMGRiLTQyZjUtYWI1Mi05ZDY5YjM1YTE4NGQifQ.pZuBsie3in_l-TqVBtFPlXWgvQHbbF62yVPRfZvaJ0CCthBAlgp0Au4yxIt9ETE1S5O86EVi2y7VnkWstig-zo3pNW4BT22snQ-GshmSJ_NfOf_s5ollcqjNdqKNVmF588xP9pdWKnBB3hb_YLZLFGhUDjGaOI684mq4CCZ7V_vggTlaaXZZ6ycNvk58WhT5cpKccfHa6KkTFJhFwOJiKaG-z6snhPO33RIuNxwtrC7AikVu4B71guIJmBHcZ31HPjqVcAZwU2AR3eLNCk7XHdFFZR2gQUpGvaw81ECd1F48LSnvAY60MrsyH-nnO_sxNI8sakqGuMoSv8_Le_J5Qw";
         String carID = "6d97337b-eb53-467b-baf4-7faec6d7065e";
         String contentType = "application/json";
         try {
@@ -101,7 +103,6 @@ public class ConsumableCalc {
 
             int responseCode = con.getResponseCode();
             BufferedReader br;
-            log.info("----------------------------------------------------------------------" + responseCode);
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 br = new BufferedReader(new InputStreamReader(con.getInputStream())); // 정상호출
             } else {
@@ -117,7 +118,15 @@ public class ConsumableCalc {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        ObjectMapper mapper = new ObjectMapper();
+        ConsumableOdometer conOdo = new ConsumableOdometer();
+        try {
+            conOdo = mapper.readValue(sb.toString(), ConsumableOdometer.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        double accDist = conOdo.getOdometers().get(0).getValue();
 
-        return "";
+        return Double.toString(accDist);
     }
 }

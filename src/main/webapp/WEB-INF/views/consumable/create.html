@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/css/consumable.css" type="text/css">
+    <title>차 부붐 정보 생성하기</title>
+</head>
+<body>
+    <H1>생성하기</H1>
+    <form action="/consumable/create" method="post">
+        <input type="hidden" name="carId" th:value="${carId}">
+        <table class="tg" style="table-layout: fixed; width: 536px;">
+            <colgroup>
+                <col style="width: 165px">
+                <col style="width: 183px">
+                <col style="width: 188px">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th class="tg-0pky">부품 명</th>
+                    <th class="tg-baqh">교체한 날짜/주행거리</th>
+                    <th class="tg-baqh">기입 방식</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="tg-0lax">엔진 오일</td>
+                    <td class="tg-baqh"><input name="engineOil" ></input></td>
+                    <td class="tg-baqh"><span>주행거리</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">브레이크 오일</td>
+                    <td class="tg-baqh"><input name="breakOil" ></input></td>
+                    <td class="tg-baqh"><span>주행거리</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">브레이크 패드</td>
+                    <td class="tg-baqh"><input name="breakPad" ></input></td>
+                    <td class="tg-baqh"><span>주행거리</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">와이퍼</td>
+                    <td class="tg-baqh"><input name="wiper" ></input></td>
+                    <td class="tg-baqh"><span>교체한 날짜</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">타이어</td>
+                    <td class="tg-baqh"><input name="tire" ></input></td>
+                    <td class="tg-baqh"><span>주행거리</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">에어컨 필터</td>
+                    <td class="tg-baqh"><input name="airConFilter" ></input></td>
+                    <td class="tg-baqh"><span>주행거리</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">스파크 플러그</td>
+                    <td class="tg-baqh"><input name="sparkPlug" ></input></td>
+                    <td class="tg-baqh"><span>주행거리</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">배터리</td>
+                    <td class="tg-baqh"><input name="battery" ></input></td>
+                    <td class="tg-baqh"><span>교체한 날짜</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">냉각수</td>
+                    <td class="tg-baqh"><input name="coolingWater" ></input></td>
+                    <td class="tg-baqh"><span>상관 없음</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">트랜스미션 오일</td>
+                    <td class="tg-baqh"><input name="transmissionOil" ></input></td>
+                    <td class="tg-baqh"><span>주행거리</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">파워 스티어링 오일</td>
+                    <td class="tg-baqh"><input name="powerSteeringOil" ></input></td>
+                    <td class="tg-baqh"><span>교체한 날짜</span></td>
+                </tr>
+                <tr>
+                    <td class="tg-0lax">유체 클러치</td>
+                    <td class="tg-baqh"><input name="fluidClutch" ></input></td>
+                    <td class="tg-baqh"><span>교체한 날짜</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="생성하기">
+        <input type="button" value="돌아가기" onclick="location.href='/consumable/main'" /><!-- TODO 돌아가기 주소 마이페이지로 바꿀 것 -->
+    </form>
+</body>
+</html>

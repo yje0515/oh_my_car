@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ohmycar.domain.ConsumableOdometer;
 
 import lombok.extern.log4j.Log4j;
@@ -48,11 +49,11 @@ public class ConsumableControllerTest {
 
     @Test
     public void testInsert() throws Exception {
-        StringBuffer sb;
+        StringBuilder sb = new StringBuilder();
         String responseData = "";
 
         String token = "Bearer "
-                + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiI2NjRkYWZjZC05NmVhLTRhZjctOGI0MC1iYTYyNzgwNzI4ODciLCJpc3MiOiJibHVlbGluayIsInBpZCI6IjYyYTk3NmZhYmI4YjVkZTg5YzYzYjhmYiIsImV4cCI6NDEwMjMyNjAwMCwibGF0IjoxNzE1MDU5NzA2LCJzaWQiOiI0MDBiMzIzMS0zMGRiLTQyZjUtYWI1Mi05ZDY5YjM1YTE4NGQifQ.CXjiYH0jV53XBYQM33NQvRw27LZaWwKAor1hreOzlsffBzvgFXKWFC_Gz2fcdGnbunJnndxf5hnyLHnsaROsk9bBx800NuRYoR9vlZ92z8e1XrROLXwY8NhO9xIR_bbjK-i1AuxEpP-FqedwkxVvcqpRNfauvog1Bf4d4pjwGnKCybCoUj5GqfDvNbxcIT6G1Ri3tuhN7iAb0h-Zpab_e5vKSVH9eVEp5uNqH2za5qVmxx5jw13GHZNqAAPRKLqIcDv110Pn8xKs1SXYBnLVAdNCBAgWwjUnqn_O8W6ukCpHYQ3BJE2u7O7r8P93tES4sLdhramiWjnDWDxCzAxZJw";
+                + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiI2NjRkYWZjZC05NmVhLTRhZjctOGI0MC1iYTYyNzgwNzI4ODciLCJpc3MiOiJibHVlbGluayIsInBpZCI6IjYyYTk3NmZhYmI4YjVkZTg5YzYzYjhmYiIsImV4cCI6NDEwMjMyNjAwMCwibGF0IjoxNzE1MTI4NDkzLCJzaWQiOiI0MDBiMzIzMS0zMGRiLTQyZjUtYWI1Mi05ZDY5YjM1YTE4NGQifQ.pZuBsie3in_l-TqVBtFPlXWgvQHbbF62yVPRfZvaJ0CCthBAlgp0Au4yxIt9ETE1S5O86EVi2y7VnkWstig-zo3pNW4BT22snQ-GshmSJ_NfOf_s5ollcqjNdqKNVmF588xP9pdWKnBB3hb_YLZLFGhUDjGaOI684mq4CCZ7V_vggTlaaXZZ6ycNvk58WhT5cpKccfHa6KkTFJhFwOJiKaG-z6snhPO33RIuNxwtrC7AikVu4B71guIJmBHcZ31HPjqVcAZwU2AR3eLNCk7XHdFFZR2gQUpGvaw81ECd1F48LSnvAY60MrsyH-nnO_sxNI8sakqGuMoSv8_Le_J5Qw";
         String carID = "6d97337b-eb53-467b-baf4-7faec6d7065e";
         String contentType = "application/json";
         try {
@@ -74,16 +75,18 @@ public class ConsumableControllerTest {
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream())); // 에러발생
             }
 
-            sb = new StringBuffer();
+            sb = new StringBuilder();
             while ((responseData = br.readLine()) != null) {
                 sb.append(responseData);
             }
             br.close();
 
-            // ConsumableOdometer odometer =
-            // TODO API 에서 받아온 JSON 데이터 중 value 만 빼서 쓰는걸로 로직 구현 해라
         } catch (Exception e) {
             e.printStackTrace();
         }
+        ObjectMapper mapper = new ObjectMapper();
+        ConsumableOdometer conOdo = mapper.readValue(sb.toString(), ConsumableOdometer.class);
+        double accDist = conOdo.getOdometers().get(0).getValue();
+        log.info("......................................................................" + accDist);
     }
 }

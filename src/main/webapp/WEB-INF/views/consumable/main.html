@@ -4,6 +4,7 @@
 	<title>Home</title>
 </head>
 <body>
-<a href="https://prd.kr-ccapi.hyundai.com/api/v1/user/oauth2/authorize?client_id=400b3231-30db-42f5-ab52-9d69b35a184d&redirect_uri=http://localhost:8282/consumable/main&response_type=code&state=test">로그인</a>
+	<a th:href="@{/consumable/create?carId=10cc6538-82b5-48aa-9d85-16416b8e07fb}">부품 정보 생성</a>
+	<a th:href="@{/consumable/read?carId=10cc6538-82b5-48aa-9d85-16416b8e07fb}">부품 정보 보기</a>
 </body>
 </html>

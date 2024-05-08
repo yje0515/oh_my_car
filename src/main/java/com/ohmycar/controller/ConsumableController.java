@@ -19,10 +19,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ConsumableController {
     private final ConsumableService consumableService;
     private final ConsumableCalc calc;
+    private static final String CAR_ID = "carId";
 
-    public ConsumableController(ConsumableService consumableService, ConsumableCalc calc) {
+    public ConsumableController(ConsumableService consumableService) {
         this.consumableService = consumableService;
-        this.calc = calc;
+        this.calc = new ConsumableCalc();
     }
 
     @GetMapping("/read")
@@ -31,7 +32,7 @@ public class ConsumableController {
         ConsumableVO vo = consumableService.read(carId);
         log.info(vo);
         model.addAttribute("consumable", vo);
-        model.addAttribute("carId", carId);
+        model.addAttribute(CAR_ID, carId);
 
         ConsumableVO next = calc.getNextConsumableVO(consumableService.read(carId));
 
@@ -44,7 +45,7 @@ public class ConsumableController {
         ConsumableVO vo = consumableService.read(carId);
         log.info(vo);
         model.addAttribute("consumable", vo);
-        model.addAttribute("carId", carId);
+        model.addAttribute(CAR_ID, carId);
     }
 
     @PostMapping("/modify")
@@ -60,14 +61,17 @@ public class ConsumableController {
     }
 
     @GetMapping("/create")
-    public void getCreate(@RequestParam("carId") String carId) {
+    public void getCreate(@RequestParam("carId") String carId, Model model) {
         log.info(carId);
+        model.addAttribute(CAR_ID, carId);
     }
 
     @PostMapping("/create")
-    public String create(ConsumableVO vo) {
-
-        return "redirect:/main";
+    public String create(@RequestParam("carId") String carId, ConsumableVO vo) {
+        String accDist = calc.getAccDist();
+        vo.setCarId(carId);
+        consumableService.create(vo, accDist);
+        return "redirect:/consumable/main";// TODO 주소 마이페이지로 바꿀 것
     }
 
 }
