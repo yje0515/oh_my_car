@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohmycar.mapper.UserMapper">
+
+	<resultMap type="com.ohmycar.domain.UserVO" id="userMap">
+		<id property="userid" column="userid" />
+		<result property="userid" column="userid" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="nickname" column="nickname" />
+		<collection property="authList" resultMap="authMap" />
+	</resultMap>
+
+	<resultMap type="com.ohmycar.domain.AuthVO" id="authMap">
+		<result property="userid" column="userid" />
+		<result property="auth" column="auth" />
+	</resultMap>
+
+
+	<select id="getUserList">
+		SELECT * FROM user_tbl us LEFT OUTER JOIN user_auth_tbl auth 
+		ON us.userid=auth.userid
+
+	</select>
+
+	<!-- 회원가입 -->
+	<insert id="joinUser" parameterType="com.ohmycar.domain.UserVO">
+		INSERT INTO user_tbl
+		(userid,username,password,email,nickname)
+		VALUES(#{userid},#{username},#{password},#{email},#{nickname})
+	</insert>
+	
+	<!-- 회원가입 회원등급 -->
+	<insert id="joinUserAuth"
+		parameterType="com.ohmycar.domain.AuthVO">
+		INSERT INTO user_auth_tbl (userid,auth)
+		VALUES(#{userid},#{auth})
+	</insert>
+	
+	<!-- 회원가입시 아이디 중복확인 -->
+	
+	<!-- 로그인시 패스워드확인 -->
+	<select id="userPasswordCheckByUserid">
+		SELECT password FROM user_tbl WHERE userid=#{userid}
+	</select>
+
+	<select id="getUserByUserid" resultMap="userMap">
+		SELECT
+		us.userid,username,password,email,nickname,enabled,auth.auth
+		FROM
+		user_tbl us LEFT OUTER JOIN user_auth_tbl auth ON us.userid = auth.userid
+		WHERE us.userid = #{userid}
+	</select>
+
+
+
+
+
+	<!-- 회원정보 수정 아이디,이름,이메일은 수정할 수 없다. 비밀번호,닉네임 수정가능 -->
+	<update id="updateUser">
+		UPDATE user_tbl SET
+		password=#{password},nickname=#{nickname} WHERE
+		email=#{email}
+	</update>
+
+	<delete id="deleteUser">
+		DELETE FROM user_tbl WHERE email=#{email}
+	</delete>
+</mapper>
