@@ -74,4 +74,10 @@ public class ConsumableController {
         return "redirect:/consumable/main";// TODO 주소 마이페이지로 바꿀 것
     }
 
+    @GetMapping("/map")
+    public void showMap(String carId, Model model) {
+        log.info("showMap");
+        model.addAttribute(CAR_ID, carId);
+    }
+
 }

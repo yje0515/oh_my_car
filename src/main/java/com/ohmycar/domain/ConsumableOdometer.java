@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class ConsumableOdometer {
-
     private String msgId;
     private List<Odometer> odometers;
 }
