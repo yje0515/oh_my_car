@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyPage</title>
+</head>
+<body>
+    <h1>Welcome to MyPage</h1>
+    <form id="profileForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br>
+        <label for="bio">Bio:</label>
+        <textarea id="bio"></textarea><br>
+        <button type="submit">Save</button>
+    </form>
+
+    <div id="profileInfo"></div>
+
+    <script>
+        // 프로필 정보를 로드
+        document.addEventListener("DOMContentLoaded", function () {
+            loadProfile();
+        });
+
+        // 프로필 정보 저장
+        document.getElementById("profileForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // 폼 제출 방지
+
+            // 입력된 정보 가져오기
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var bio = document.getElementById("bio").value;
+
+            // 프로필 정보 객체 생성
+            var profile = {
+                name: name,
+                email: email,
+                bio: bio
+            };
+
+            // 로컬 스토리지에 저장
+            localStorage.setItem("profile", JSON.stringify(profile));
+
+            // 프로필 정보 표시
+            displayProfile(profile);
+        });
+
+        // 프로필 정보 로드
+        function loadProfile() {
+            var profile = JSON.parse(localStorage.getItem("profile"));
+            if (profile) {
+                displayProfile(profile);
+            }
+        }
+
+        // 프로필 정보 화면에 표시
+        function displayProfile(profile) {
+            var profileInfo = document.getElementById("profileInfo");
+            profileInfo.innerHTML = "<h2>Profile Information</h2>" +
+                "<p><strong>Name:</strong> " + profile.name + "</p>" +
+                "<p><strong>Email:</strong> " + profile.email + "</p>" +
+                "<p><strong>Bio:</strong> " + profile.bio + "</p>";
+        }
+    </script>
+</body>
+</html>
