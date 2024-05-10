@@ -6,6 +6,9 @@ import org.apache.ibatis.annotations.Select;
 
 import com.ohmycar.domain.ConsumableVO;
 
+/**
+ * 부품 교체 시기를 DB 와 상호작용 하는 클래스
+ */
 public interface ConsumableMapper {
     public void insert(ConsumableVO vo);
 

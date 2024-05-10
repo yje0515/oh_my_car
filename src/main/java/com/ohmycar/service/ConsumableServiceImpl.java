@@ -8,20 +8,35 @@ import org.springframework.stereotype.Service;
 import com.ohmycar.domain.ConsumableVO;
 import com.ohmycar.mapper.ConsumableMapper;
 
+/**
+ * consumable service interface 를 상속 받아 구현하는 구현체
+ */
 @Service
 public class ConsumableServiceImpl implements ConsumableService {
 
     private final ConsumableMapper consumableMapper;
 
+    /**
+     * 생성자
+     * @param consumableMapper
+     */
     public ConsumableServiceImpl(ConsumableMapper consumableMapper) {
         this.consumableMapper = consumableMapper;
     }
 
+    /**
+     * 읽기
+     */
     @Override
     public ConsumableVO read(String carId) {
         return consumableMapper.select(carId);
     }
 
+    /**
+     * DB 에 없는 consumableVO 를 넣는 생성 함수
+     * 하지만 사용자가 기억에 없어 아무런 입력을 하지 않을 경우도 존재 함으로
+     * null check 를 해줘 null 이면 현재 날짜 혹은 현재 주행거리를 넣는다.
+     */
     @Override
     public void create(ConsumableVO vo, String accDist) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -65,11 +80,17 @@ public class ConsumableServiceImpl implements ConsumableService {
         consumableMapper.insert(vo);
     }
 
+    /**
+     * 업데이트 함수
+     */
     @Override
     public void modify(ConsumableVO vo) {
         consumableMapper.update(vo);
     }
 
+    /**
+     * 삭제 함수
+     */
     @Override
     public void delete(String carId) {
         consumableMapper.delete(carId);
