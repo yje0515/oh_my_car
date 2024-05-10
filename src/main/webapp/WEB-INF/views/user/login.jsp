@@ -5,7 +5,6 @@
 <html>
 <head>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
-<script src="/resources/js/user/userCheck.js" type="text/javascript"></script>
 <meta charset="UTF-8">
 <title>로그인</title>
 </head>
@@ -31,18 +30,29 @@
 		</p> --%>
 
 		<form role="form" method='post' action="/login" id="loginForm">
-			<ul>
-				<li><input id="userid" class="loginInput" placeholder="아이디"
-					name="username" type="text" autofocus></li>
-
-				<li><input id="password" class="loginInput" placeholder="비밀번호"
-					name="password" type="password"></li>
-				<li><label> <input name="rememberBox" type="checkbox">아이디저장
-				</label></li>
-				<li><button type="submit" class="loginBtn">로그인</button></li>
-			</ul>
-
-			<!-- 누르면 /login으로 submit -->
+			<table>
+				<tr>
+					<td><input id="userid" class="loginInput" placeholder="아이디"
+					name="username" type="text" autofocus></td>
+				</tr>
+				<tr>
+					<td><input id="password" class="loginInput" placeholder="비밀번호"
+					name="password" type="password"></td>
+				</tr>
+				<tr>
+					<td><input name="remember-me" type="checkbox">로그인 유지하기</td>
+				</tr>
+				<tr>
+					<td><input name="rememberId" type="checkbox">아이디 저장</td>
+				</tr>
+				<tr>
+					<td><button type="submit" class="loginBtn">로그인</button></td>
+				</tr>
+				<tr>
+					<td><a href="/user/join"><button>회원가입</button></a></td>
+				</tr>
+			</table>
+		
 
 
 			<input type="hidden" name="${_csrf.parameterName}"

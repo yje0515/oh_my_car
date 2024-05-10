@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<td>비밀번호확인</td>
-					<td><input type="password" id="password" name="passwordCheck"
+					<td><input type="password" id="passwordCheck" name="passwordCheck"
 						placeholder="비밀번호확인"></td>
 				</tr>
 				<tr>
@@ -52,7 +52,7 @@
 				</tr>
 				<tr>
 					<td>
-					<button type="submit" id="joinBtn">회원가입</button>
+						<button type="submit" id="joinBtn">회원가입</button>
 					</td>
 				</tr>
 
@@ -62,14 +62,39 @@
 
 	</div>
 	<script>
-	$(document).ready(function(){
-		$().on('click',)//빈칸 확인하는 메서드
-		
-		
-		
-		
-		function 
-	});
+		$(document).ready(function() {
+
+			$('#joinBtn').on('click', function joinCheck() {
+				if ($('#userid').val() == "") {
+					alert("아이디를 입력 해 주세요.");
+					$('#userid').focus();
+					return false;
+				}
+				if ($('#username').val() == "") {
+					alert("이름을 입력 해 주세요.");
+					$('#username').focus();
+					return false;
+				}
+				if ($('#password').val() == "") {
+					alert("비밀번호를 입력 해 주세요.");
+					$('#password').focus();
+					return false;
+				}
+				if ($('#passwordCheck').val() == "") {
+					alert("비밀번호를 확인 해 주세요.");
+					$('#passwordCheck').focus();
+					return false;
+				}
+				if ($('#email').val() == "") {
+					alert("이메일을 입력 해 주세요.");
+					$('#email').focus();
+					return false;
+				}
+
+				return true;
+			});//빈칸 확인하는 메서드
+
+		});
 	</script>
 </body>
 </html>
