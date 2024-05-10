@@ -28,6 +28,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- Spring Web MVC 의존성 / 이코드를 복사해서 아래 2단의 코드를 수정, 30라인-->
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf</artifactId>
@@ -121,16 +122,14 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 oracle 연결을 위한 JDBC
-		드라이버를 제공-->
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 oracle 연결을 위한 JDBC 드라이버를 제공-->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>21.9.0.0</version>
 			<!-- 현재 최신 버전 -->
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok getter, setter, 생성자 등의 코드를
-		간소화-->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok getter, setter, 생성자 등의 코드를 간소화-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -143,22 +142,19 @@
 			<artifactId>HikariCP</artifactId>
 			<version>5.1.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis , MyBatis는 데이터베이스와 자바 객체 간의 매핑을
-		처리하는 SQL 매퍼 프레임워크-->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis , MyBatis는 데이터베이스와 자바 객체 간의 매핑을 처리하는 SQL 매퍼 프레임워크-->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.5.14</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring , MyBatis와 스프링 프레임워크를
-		통합-->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring , MyBatis와 스프링 프레임워크를 통합-->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1,
-		애플리케이션이 실행하는 SQL 쿼리를 실제로 확인 -->
+		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1, 애플리케이션이 실행하는 SQL 쿼리를 실제로 확인 -->
 		<dependency>
 			<groupId>org.bgee.log4jdbc-log4j2</groupId>
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>

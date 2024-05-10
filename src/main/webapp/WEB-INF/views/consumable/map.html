@@ -207,7 +207,7 @@
                 <div>
                     <form onsubmit="searchPlaces(); return false;">
                         키워드 :
-                        <input type="text" value="" id="keyword" size="15" />
+                        <input type="text" th:value="${keyWord}" id="keyword" size="15" />
                         <button type="submit">검색하기</button>
                     </form>
                 </div>
@@ -241,17 +241,18 @@
 
                 lat = position.coords.latitude; // 위도
                 lng = position.coords.longitude; // 경도
-                coordsHere = new kakao.maps.LatLng(lat, lng);
+                coordsHere = new kakao.maps.LatLng(lat, lng);// 카카오 내장 메소드를 이용하기 위해 위도 경도가 담긴 카카오 내장 객체로 변환
                 var address;
-                searchAddrFromCoords(coordsHere, function (result, status) {
+                searchAddrFromCoords(coordsHere, function (result, status) { // 현재 위치를 찾는 함수
                     console.log(result, status);
-                    if (status === kakao.maps.services.Status.OK) {
-                        address = result[0].address_name + " ";
+                    if (status === kakao.maps.services.Status.OK) { // 현재 위치를 찾으면
+                        address = result[0].address_name + " "; // 주소 변수에 담고
                         console.log(address);
-                    } else {
+                    } else {//현재 위치를 못 찾으면 주소 변수는 초기화
                         address = "";
                     }
-                    document.getElementById("keyword").value = address + "카센터";
+                    // 검색 키워드를 주소 + (카센터/주유소) 로 바꾼다.
+                    document.getElementById("keyword").value = address + document.getElementById("keyword").value;
                     // 키워드로 장소를 검색합니다
                     searchPlaces();
                 });
