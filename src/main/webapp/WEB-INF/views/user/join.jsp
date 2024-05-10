@@ -17,7 +17,8 @@
 				<tr>
 					<td>아이디</td>
 					<td><input type="text" id="userid" name="userid"
-						placeholder="아이디" autofocus></td>
+						placeholder="아이디" maxlength="20" autofocus></td>
+						<td><button>아이디중복확인</button></td>
 				</tr>
 				<tr>
 					<td>이름</td>
@@ -31,13 +32,15 @@
 				</tr>
 				<tr>
 					<td>비밀번호확인</td>
-					<td><input type="password" id="passwordCheck" name="passwordCheck"
-						placeholder="비밀번호확인"></td>
+					<td><input type="password" id="passwordCheck"
+						name="passwordCheck" placeholder="비밀번호확인"></td>
+					<td><p id="checkMsg">비밀번호가 일치하지 않습니다.</p></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
 					<td><input type="text" id="email" name="email"
 						placeholder="이메일"></td>
+						<td><button>이메일중복확인</button></td>
 				</tr>
 				<tr>
 					<td>닉네임</td>
@@ -64,7 +67,22 @@
 	<script>
 		$(document).ready(function() {
 
-			$('#joinBtn').on('click', function joinCheck() {
+			$('#joinBtn').on('click', joinCheck);//빈칸 확인하는 메서드
+
+			
+			
+			//비밀번호 일치 여부확인
+			$('#checkMsg').hide();
+			$('input').keyup(function() {
+				if ($('#password').val() !== $('#passwordCheck').val()) {
+					$('#checkMsg').show();
+				}else{
+					$('#checkMsg').hide();
+				}
+			});
+
+			//빈칸 확인하는 메서드
+			function joinCheck() {
 				if ($('#userid').val() == "") {
 					alert("아이디를 입력 해 주세요.");
 					$('#userid').focus();
@@ -92,8 +110,7 @@
 				}
 
 				return true;
-			});//빈칸 확인하는 메서드
-
+			}
 		});
 	</script>
 </body>

@@ -22,9 +22,9 @@ import lombok.extern.log4j.Log4j;
 public class UserController {
 	// 회원가입 로그인 sns간편로그인 간편회원가입 현대api 스프링이메일인증번호 api Spring Security csrf토큰
 	// 비밀번호찾기
-	
+
 	private final UserMapper mapper;
-	
+
 	private final PasswordEncoder passwordEncoder;
 
 	@GetMapping("/test")
@@ -36,22 +36,31 @@ public class UserController {
 	@GetMapping("/join")
 	public void joinGet() {
 		log.info("join.......");
-		
+
 	}
 
 	@PostMapping("/join")
-	public String joinPost(UserVO uservo,AuthVO authvo,RedirectAttributes rttr) {
+	public String joinPost(UserVO uservo, AuthVO authvo, RedirectAttributes rttr) {
 		// DB에 UserVO(회원정보객체) 넣기 service메소드 사용으로 수정해야함~
 		uservo.setPassword(passwordEncoder.encode(uservo.getPassword()));
 		mapper.joinUser(uservo);
+		AuthVO authAdmin = new AuthVO();
 		mapper.joinUserAuth(authvo);
+
+		//Admin의 경우 Member의 권한가진다.
+		if (authvo.getAuth().equals("ROLE_ADMIN") ) {
+			authAdmin.setUserid(authvo.getUserid());
+			authAdmin.setAuth("ROLE_MEMBER");
+			mapper.joinUserAuth(authAdmin);
+		}
+		
 		log.info("success join.....");
 		return "redirect:/user/login";
 	}
 
-	// 회원 접근 가능
+	// 회원,관리자 접근 가능
 	@GetMapping("/mypage")
-	public void mypageGet(UserVO uservo,AuthVO authvo,Model model) {
+	public void mypageGet(UserVO uservo, AuthVO authvo, Model model) {
 		log.info("mypage....");
 
 	}

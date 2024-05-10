@@ -16,7 +16,7 @@
 	
 	<!-- 관리자(ROLE_ADMIN) 권한이 있는 경우에만 -->
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
-	<a href="/user/admin">관리자페이지</a>
+	<a href="/user/admin">관리자페이지</a>  
 	</sec:authorize>
 
 	<!-- 인증된사용자(로그인 한 상태에서만) -->

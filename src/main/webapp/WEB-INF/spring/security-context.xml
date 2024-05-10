@@ -57,10 +57,11 @@
 			invalidate-session="true" delete-cookies="remember-me,JSESSION_ID" />
 
 		<!-- Csrf 토큰 비활성화 true -->
-		<!-- <security:csrf disabled="true" /> -->
+		<security:csrf disabled="true" />
 
 		<security:remember-me
 			data-source-ref="dataSource" token-validity-seconds="604800" />
+			
 	</security:http>
 
 	<!-- Spring Security 인증 관리자 설정 -->
