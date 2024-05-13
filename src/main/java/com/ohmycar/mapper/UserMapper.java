@@ -9,12 +9,12 @@ public interface UserMapper {
 	// 회원목록 -관리자
 	public List<UserVO> getUserList();
 
-	// 회원가입 
+	// 회원가입 insert
 	public int joinUser(UserVO uservo);
 
-	// 회원가입 회원등급
+	// 회원가입 회원등급 insert
 	public int joinUserAuth(AuthVO authvo);
-	
+
 	//회원가입시 아이디중복확인
 	public int joinIdCheck(String userid);
 

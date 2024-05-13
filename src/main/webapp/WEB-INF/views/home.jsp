@@ -10,9 +10,9 @@
 	<h1>Hello world!</h1>
 
 	<P>The time on the server is ${serverTime}.</P>
-
+	<p> <%-- <sec:authentication property="principal.username"/> --%>님, 안녕하세요!</p>
 	<!-- 로그인된 상태->마이페이지 로그인되지않은 상태->로그인페이지 -->
-	<a href="/user/mypage">마이페이지</a>
+	<a href="/user/mypage?userid=<sec:authentication property="principal.username"/>">마이페이지</a>
 	
 	<!-- 관리자(ROLE_ADMIN) 권한이 있는 경우에만 -->
 	<sec:authorize access="hasRole('ROLE_ADMIN')">

@@ -1,8 +1,8 @@
 package com.ohmycar.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +47,7 @@ public class UserController {
 		AuthVO authAdmin = new AuthVO();
 		mapper.joinUserAuth(authvo);
 
-		//Admin의 경우 Member의 권한가진다.
+		//Admin의 경우 Member의 권한도 가질 수 있게
 		if (authvo.getAuth().equals("ROLE_ADMIN") ) {
 			authAdmin.setUserid(authvo.getUserid());
 			authAdmin.setAuth("ROLE_MEMBER");
@@ -58,18 +58,21 @@ public class UserController {
 		return "redirect:/user/login";
 	}
 
-	// 회원,관리자 접근 가능
+	
+	// 인증한 사용자만 접근 가능
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/mypage")
-	public void mypageGet(UserVO uservo, AuthVO authvo, Model model) {
+	public void mypageGet() {
 		log.info("mypage....");
 
 	}
 
-	// 관리자 접근 가능
+	// 관리자권한 가진 사용자만 접근 가능
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/admin")
 	public void adminGet() {
 		log.info("admin....");
 
 	}
-
+	
 }

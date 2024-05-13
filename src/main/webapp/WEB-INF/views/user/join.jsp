@@ -12,13 +12,13 @@
 	<div class="join">
 		<h1>회원가입</h1>
 
-		<form role="form" method="post" action="/user/join" id="joinForm">
+		<form role="form" method="post" action="/user/join" id="joinForm" name="frm">
 			<table>
 				<tr>
 					<td>아이디</td>
 					<td><input type="text" id="userid" name="userid"
 						placeholder="아이디" maxlength="20" autofocus></td>
-						<td><button>아이디중복확인</button></td>
+						<td><input type="button" onclick="idCheck()" value="중복확인"></td>
 				</tr>
 				<tr>
 					<td>이름</td>
@@ -81,7 +81,7 @@
 				}
 			});
 
-			//빈칸 확인하는 메서드
+			//빈칸 확인
 			function joinCheck() {
 				if ($('#userid').val() == "") {
 					alert("아이디를 입력 해 주세요.");
@@ -111,6 +111,18 @@
 
 				return true;
 			}
+			
+			//아이디 중복 확인
+			function idCheck(){
+				if($("#userid").val() == ""){
+					alert("아이디를 입력 해 주세요.");
+					$('#userid').focus();
+					return false
+				}
+				
+				//
+			}
+
 		});
 	</script>
 </body>
