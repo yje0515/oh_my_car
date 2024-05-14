@@ -50,8 +50,8 @@ public class ConsumableCalc {
      * consumableVO 에 담긴 교체한 시기 혹은 거리에 json 데이터를 읽어와
      * calcChangeDay 함수로 교체 시기 혹은 거리 를 담아 반환 하는 함수
      * 
-     * @param next 교체한 시기가 담긴 consumbaleVO
-     * @return 교체 시기가 담긴 consumbaleVO
+     * @param next 교체한 시기가 담긴 consumableVO
+     * @return 교체 시기가 담긴 consumableVO
      * @throws IOException json 데이터를 읽어올 때 발생하는 예외 json 데이터의 형식이 다르면 뜬다.
      */
     public ConsumableVO getNextConsumableVO(ConsumableVO next) throws IOException {
