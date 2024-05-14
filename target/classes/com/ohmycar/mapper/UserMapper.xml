@@ -54,6 +54,14 @@
 		user_tbl us LEFT OUTER JOIN user_auth_tbl auth ON us.userid = auth.userid
 		WHERE us.userid = #{userid}
 	</select>
+	
+	<select id="getUserByEmail" resultMap="userMap">
+		SELECT
+		us.userid,username,password,email,nickname,enabled,auth.auth
+		FROM
+		user_tbl us LEFT OUTER JOIN user_auth_tbl auth ON us.userid = auth.userid
+		WHERE us.email = #{email}
+	</select>
 
 
 

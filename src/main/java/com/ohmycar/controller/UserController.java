@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ohmycar.domain.AuthVO;
 import com.ohmycar.domain.UserVO;
@@ -98,9 +100,36 @@ public class UserController {
 	// 관리자권한 가진 사용자만 접근 가능
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/admin")
-	public void adminGet() {
+	public void adminGet(Model model) {
 		log.info("admin....");
 
+	}
+	
+	//회원가입시 아이디 중복확인
+	@RequestMapping("/idDupCheck")
+	@ResponseBody
+	public String idCheckGet(@RequestParam("user_id")String user_id) {
+		String result = "";
+		if(mapper.getUserByUserid(user_id)!=null) {
+			result = "fail";
+		}else {
+			result = "success";
+		}
+		return result;
+		
+	}
+	//회원가입시 이메일 중복확인
+	@RequestMapping("/emailDupCheck")
+	@ResponseBody
+	public String emailCheckGet(@RequestParam("email")String email) {
+		String result = "";
+		if(mapper.getUserByEmail(email)!=null) {
+			result = "fail";
+		}else {
+			result = "success";
+		}
+		return result;
+		
 	}
 
 }

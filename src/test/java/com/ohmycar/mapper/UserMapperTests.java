@@ -93,4 +93,12 @@ public class UserMapperTests {
 		log.info(passwordEncoder.encode("1234"));
 	}
 
+	@Test
+	public void testIdDup() {
+		if(mapper.getUserByUserid("user1")!=null) {
+			log.info("이미 있는 아이디입니다.");
+		}else {
+			log.info("사용 가능한 아이디입니다.");
+		}
+	}
 }
