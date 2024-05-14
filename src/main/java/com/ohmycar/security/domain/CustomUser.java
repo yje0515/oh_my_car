@@ -14,7 +14,6 @@ import lombok.Getter;
 @Getter
 public class CustomUser extends User {
 
-	private static final long seriaMersionUID = 1L;
 
 	private UserVO uservo;
 
@@ -30,4 +29,5 @@ public class CustomUser extends User {
 		this.uservo = vo;
 	}
 
+	
 }
