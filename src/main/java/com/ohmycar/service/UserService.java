@@ -16,8 +16,10 @@ public interface UserService {
 	public int joinUserAuth(AuthVO authvo);
 
 	// 로그인시 아이디로 비밀번호 확인
-	public int userCheckByUserId(String userid, String password);
+	public int userCheckByuserid(String userid,String password);
 
+	
+	
 	// userid로 회원정보 불러오기
 	public UserVO getUserByUserid(String userid);
 
