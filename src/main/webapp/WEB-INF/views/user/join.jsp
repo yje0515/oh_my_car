@@ -18,13 +18,13 @@
 			<table>
 				<tr>
 					<td>아이디*</td>
-					<td><input type="text" id="userid" name="userid"
+					<td><input type="text" id="userId" name="userId"
 						placeholder="아이디" maxlength="20" autofocus></td>
 					<td><input type="button" id="idDupBtn" value="중복확인"></td>
 				</tr>
 				<tr>
 					<td>이름*</td>
-					<td><input type="text" id="username" name="username"
+					<td><input type="text" id="userName" name="userName"
 						placeholder="이름"></td>
 				</tr>
 				<tr>
@@ -46,7 +46,7 @@
 				</tr>
 				<tr>
 					<td>닉네임</td>
-					<td><input type="text" id="nickname" name="nickname"
+					<td><input type="text" id="nickName" name="nickName"
 						placeholder="닉네임"></td>
 				</tr>
 				<tr>
@@ -76,10 +76,10 @@
 			$('#emailDupBtn').on('click', emailDupCheck)
 			
 			//중복확인 초기화
-			$('#userid').on('change', function() {
+			$('#userId').on('change', function() {
 				$('input[name=idChecked]').val("notYet");
-				$('#userid').css('background-color', 'white');
-				$('#userid').css('border', 'solid 1px red');
+				$('#userId').css('background-color', 'white');
+				$('#userId').css('border', 'solid 1px red');
 			});
 			$('#email').on('change', function() {
 				$('input[name=emailChecked]').val("notYet");
@@ -116,11 +116,11 @@
 				var token = $("meta[name='_csrf']").attr("content");
 				var header = $("meta[name='_csrf_header']").attr("content");
 
-				if ($("#userid").val() == "") {
+				if ($("#userId").val() == "") {
 					alert("아이디를 입력해주세요.");
-					$("#userid").css('background-color', 'white');
+					$("#userId").css('background-color', 'white');
 					;
-					$('#userid').focus();
+					$('#userId').focus();
 					return false;
 				}
 
@@ -129,7 +129,7 @@
 					type : "post",
 					datatype : "text",
 					data : {
-						"user_id" : joinForm.userid.value
+						"userId" : joinForm.userId.value
 					},
 					beformSend : function(xhr) {
 						xhr.setRequestHeader(header, token);
@@ -137,14 +137,14 @@
 					success : function(data) {
 						if (data === 'success') {//사용가능
 							$('#idChecked').val("ok");
-							$('#userid').css('border', 'solid 1px black');
-							$('#userid').css('background-color', 'lightgreen');
+							$('#userId').css('border', 'solid 1px black');
+							$('#userId').css('background-color', 'lightgreen');
 							return true;
 						} else {//중복
 							alert("이미 사용중인 아이디입니다.");
 							$('#idChecked').val("notYet");
-							$('#userid').css('background-color', 'red');
-							$('#userid').focus();
+							$('#userId').css('background-color', 'red');
+							$('#userId').focus();
 							return false;
 						}
 					},
@@ -198,19 +198,19 @@
 
 			//빈칸/중복/비밀번호일치 확인 후 submit
 			function joinCheck() {
-				if ($('#userid').val() == "") {
+				if ($('#userId').val() == "") {
 					alert("아이디를 입력 해 주세요.");
-					$('#userid').focus();
+					$('#userId').focus();
 					return false;
 				}
 				if ($('#idChecked').val() == "notYet") {
 					alert("아이디 중복확인이 필요합니다.");
-					$('#userid').focus();
+					$('#userId').focus();
 					return false;
 				}
-				if ($('#username').val() == "") {
+				if ($('#userName').val() == "") {
 					alert("이름을 입력 해 주세요.");
-					$('#username').focus();
+					$('#userName').focus();
 					return false;
 				}
 				if ($('#password').val() == "") {

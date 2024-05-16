@@ -6,6 +6,7 @@ import com.ohmycar.domain.AuthVO;
 import com.ohmycar.domain.UserVO;
 
 public interface UserMapper {
+	
 	// 회원목록 -관리자
 	public List<UserVO> getUserList();
 
@@ -16,15 +17,15 @@ public interface UserMapper {
 	public int joinUserAuth(AuthVO authvo);
 
 	//회원가입시 아이디중복확인
-	public int joinIdCheck(String userid);
+	public int joinIdCheck(String userId);
 
-	//로그인시 아이디로 비밀번호 확인
-	public String userPasswordCheckByUserid(String userid);
+	//아이디로 비밀번호 확인
+	public String userPasswordCheckByUserId(String userId);
 	
 	
 	
-	// userid로 회원정보 불러오기
-	public UserVO getUserByUserid(String userid);
+	// userId로 회원정보 불러오기
+	public UserVO getUserByUserId(String userId);
 
 	// email로 회원정보 불러오기
 	public UserVO getUserByEmail(String email);
@@ -32,6 +33,6 @@ public interface UserMapper {
 	// 회원정보 수정
 	public int updateUser(UserVO uservo);
 
-	// userid로 회원탈퇴
-	public int deleteUser(String userid);
+	// userId로 회원탈퇴
+	public int deleteUser(String userId);
 }

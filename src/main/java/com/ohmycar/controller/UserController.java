@@ -1,6 +1,5 @@
 package com.ohmycar.controller;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ohmycar.domain.AuthVO;
 import com.ohmycar.domain.UserVO;
@@ -28,7 +28,7 @@ public class UserController {
 	// 회원가입 로그인 sns간편로그인 간편회원가입 현대api 스프링이메일인증번호 api Spring Security csrf토큰
 	// 비밀번호찾기
 
-	private final UserMapper mapper;
+	private final UserMapper userMapper;
 
 	private final PasswordEncoder passwordEncoder;
 
@@ -37,9 +37,9 @@ public class UserController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication.getPrincipal() instanceof UserDetails) {
 			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-			UserVO uservo = mapper.getUserByUserid(userDetails.getUsername());
-			model.addAttribute("user",uservo);
-			log.info(uservo);
+			UserVO userVO = userMapper.getUserByUserId(userDetails.getUsername());
+			model.addAttribute("user", userVO);
+			log.info(userVO);
 		}
 
 		log.info("test......");
@@ -54,82 +54,98 @@ public class UserController {
 	}
 
 	@PostMapping("/join")
-	public String joinPost(UserVO uservo, AuthVO authvo) {
-		// DB에 UserVO(회원정보객체) 넣기 service메소드 사용으로 수정해야함~
-		uservo.setPassword(passwordEncoder.encode(uservo.getPassword()));
-		mapper.joinUser(uservo);
+	public String joinPost(UserVO userVO, AuthVO authVO) {
+		// DB에 userVO(회원정보객체) 넣기 service메소드 사용으로 수정해야함~
+		userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
+		userMapper.joinUser(userVO);
 		AuthVO authAdmin = new AuthVO();
-		mapper.joinUserAuth(authvo);
+		userMapper.joinUserAuth(authVO);
 
 		// Admin의 경우 Member의 권한도 가질 수 있게
-		if (authvo.getAuth().equals("ROLE_ADMIN")) {
-			authAdmin.setUserid(authvo.getUserid());
+		if (authVO.getAuth().equals("ROLE_ADMIN")) {
+			authAdmin.setUserId(authVO.getUserId());
 			authAdmin.setAuth("ROLE_MEMBER");
-			mapper.joinUserAuth(authAdmin);
+			userMapper.joinUserAuth(authAdmin);
 		}
 
 		log.info("success join.....");
 		return "redirect:/user/login";
 	}
 
-	// 인증한 사용자만 접근 가능
-	@PreAuthorize("isAuthenticated()")
-	@GetMapping("/mypage")
-	public void mypageGet(Model model) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if(authentication.getPrincipal() instanceof UserDetails) {
-			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-			UserVO uservo = mapper.getUserByUserid(userDetails.getUsername());
-			model.addAttribute("user",uservo);
-					
-		}
-		log.info("mypage....");
-
-	}
-	
-	@PreAuthorize("isAuthenticated()")
-	@PostMapping("/update")
-	public String mypagePost(UserVO uservo) {
-		uservo.setPassword(passwordEncoder.encode(uservo.getPassword()));
-		mapper.updateUser(uservo);
-		log.info("updated User : "+uservo);
-		
-		return "redirect:../";
-	}
-
 	// 관리자권한 가진 사용자만 접근 가능
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/admin")
 	public void adminGet(Model model) {
 		log.info("admin....");
 
 	}
-	
-	//회원가입시 아이디 중복확인
+
+	// 회원가입시 아이디 중복확인
 	@RequestMapping("/idDupCheck")
 	@ResponseBody
-	public String idCheckGet(@RequestParam("user_id")String user_id) {
+	public String idCheckGet(@RequestParam("user_id") String userId) {
 		String result = "";
-		if(mapper.getUserByUserid(user_id)!=null) {
+		if (userMapper.getUserByUserId(userId) != null) {
 			result = "fail";
-		}else {
+		} else {
 			result = "success";
 		}
 		return result;
-		
+
 	}
-	//회원가입시 이메일 중복확인
+
+	// 회원가입시 이메일 중복확인
 	@RequestMapping("/emailDupCheck")
 	@ResponseBody
-	public String emailCheckGet(@RequestParam("email")String email) {
+	public String emailCheckGet(@RequestParam("email") String email) {
 		String result = "";
-		if(mapper.getUserByEmail(email)!=null) {
+		if (userMapper.getUserByEmail(email) != null) {
 			result = "fail";
-		}else {
+		} else {
 			result = "success";
 		}
 		return result;
+
+	}
+
+	// 인증된 사용자만 접근 가능
+	@GetMapping("/mypage")
+	public void mypageGet(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication.getPrincipal() instanceof UserDetails) {
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			UserVO userVO = userMapper.getUserByUserId(userDetails.getUsername());
+			model.addAttribute("userVO", userVO);
+
+		}
+
+		log.info("mypage....");
+
+	}
+
+	// 인증된 사용자만 접근 가능
+	@GetMapping("/userUpdate")
+	public void userUpdateGet(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication.getPrincipal() instanceof UserDetails) {
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			UserVO userVO = userMapper.getUserByUserId(userDetails.getUsername());
+			model.addAttribute("userVO", userVO);
+
+		}
+		log.info("update...");
+	}
+
+	// 인증된 사용자만 접근 가능
+	@PostMapping("/userUpdate")
+	public String userUpdatePost(UserVO userVO, RedirectAttributes rttr) {
+		userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
+		userMapper.updateUser(userVO);
+		log.info("updated User : " + userVO);
 		
+		//회원정보 수정시 알림창뜨게
+		rttr.addFlashAttribute("result", "success");
+
+		return "redirect:/user/mypage";
 	}
 
 }

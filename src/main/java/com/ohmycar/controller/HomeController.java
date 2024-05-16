@@ -38,8 +38,8 @@ public class HomeController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication.getPrincipal() instanceof UserDetails) {
 			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-			UserVO uservo = mapper.getUserByUserid(userDetails.getUsername());
-			model.addAttribute("user", uservo);
+			UserVO userVO = mapper.getUserByUserId(userDetails.getUsername());
+			model.addAttribute("userVO", userVO);
 		}
 
 		logger.info("Welcome home! The client locale is {}.", locale);

@@ -17,9 +17,7 @@ import lombok.extern.log4j.Log4j;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 	private final UserMapper mapper;
-	
-	/* private final PasswordEncoder passwordEncoder; */
-	
+
 	private final PasswordEncoder passwordEncoder;
 
 	@Override
@@ -28,8 +26,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int joinUser(UserVO uservo) {
-		return mapper.joinUser(uservo);
+	public int joinUser(UserVO userVO) {
+		return mapper.joinUser(userVO);
 	}
 
 	@Override
@@ -38,23 +36,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int userCheckByuserid(String userid,String password) {
+	public int userCheckByUserId(String userId, String password) {
 		int result = 0;
-		String pwd = mapper.userPasswordCheckByUserid(userid);//아이디로 비밀번호 받아옴
+		String pwd = mapper.userPasswordCheckByUserId(userId);// 아이디로 비밀번호 받아옴
 		boolean passwordCheck = passwordEncoder.matches(password, pwd);
-		if(passwordCheck) {
-			result=1;
-		}else {
-			result=0;
+		if (passwordCheck) {
+			result = 1;
+		} else {
+			result = 0;
 		}
-		log.info("result <<<<<<<<<<<<<<"+result);
-		return result; 
+		log.info("result <<<<<<<<<<<<<<" + result);
+		return result;
 	}
-	
 
 	@Override
-	public UserVO getUserByUserid(String userid) {
-		return mapper.getUserByUserid(userid);
+	public UserVO getUserByUserId(String userId) {
+		return mapper.getUserByUserId(userId);
 	}
 
 	@Override
@@ -63,13 +60,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int updateUser(UserVO uservo) {
-		return mapper.updateUser(uservo);
+	public int updateUser(UserVO userVO) {
+		return mapper.updateUser(userVO);
 	}
 
 	@Override
-	public int deleteUser(String userid) {
-		return mapper.deleteUser(userid);
+	public int deleteUser(String userId) {
+		return mapper.deleteUser(userId);
 	}
 
 }

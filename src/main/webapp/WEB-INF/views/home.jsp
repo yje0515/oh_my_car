@@ -21,7 +21,7 @@
 
 	<!-- 인증된사용자(로그인 한 상태에서만) -->
 	<sec:authorize access="isAuthenticated()">
-	<p>${user.username }님, 안녕하세요!</p>
+	<p>${userVO.userName }님, 안녕하세요!</p>
 	<!-- Post형식으로 처리되는 로그아웃 Spring Security내부에서 동작 -->
 	<form action="/logout" method='post'>
 		<input type="hidden" name="${_csrf.parameterName}"

@@ -20,18 +20,18 @@ public class CustomUser extends User {
 	private static final long serialVersionUID = 1L;
 
 
-	private UserVO uservo;
+	private UserVO userVO;
 
 	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
 	}
 
-	public CustomUser(UserVO vo) {
+	public CustomUser(UserVO VO) {
 
-		super(vo.getUserid(), vo.getPassword(), vo.getAuthList().stream()
+		super(VO.getUserId(), VO.getPassword(), VO.getAuthList().stream()
 				.map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
 
-		this.uservo = vo;
+		this.userVO = VO;
 	}
 
 }

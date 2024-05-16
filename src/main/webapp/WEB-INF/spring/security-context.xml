@@ -31,6 +31,10 @@
 		<!-- 인증된 사용자 모두 접근 가능한 URL -->
 		<security:intercept-url pattern="/user/mypage"
 			access="isAuthenticated()" />
+			
+		<!-- 인증된 사용자 모두 접근 가능한 URL -->
+		<security:intercept-url pattern="/user/userUpdate"
+			access="isAuthenticated()" />
 
 		<!-- 관리자권한을 사진 사용자만 접근 가능한 URL -->
 		<security:intercept-url pattern="/user/admin"
