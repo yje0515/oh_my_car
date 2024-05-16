@@ -47,7 +47,12 @@
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
 		</form>
-		<a href="/user/join"><button>회원가입</button></a>
+		
+		<p id="wrongAccess" style="color:red">아이디 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.</p>
+		<a href="/user/join">회원가입</a>	
+		<a href="#">아이디찾기</a>	
+		<a href="#">비밀번호찾기</a>	
+
 	</div>
 
 
@@ -56,14 +61,20 @@
 	<script>
 		$(document).ready(function() {
 			$('#loginBtn').on('click',loginCheck);
-
+			$("#wrongAccess").hide();
+			
+			if(${error!=null}){
+				$("#userId").focus();
+				$("#wrongAccess").show();
+				return false;
+			}
 			
 			function loginCheck() {
 				var form = document.loginForm;
 				var token = $("meta[name='_csrf']").attr("content");
 				var header = $("meta[name='_csrf_header']").attr("content");
 
-				if ($('#username').val() == "") {
+				if ($('#userId').val() == "") {
 					alert("아이디를 입력 해 주세요.");
 					$('#userId').focus();
 					return false;
@@ -73,56 +84,15 @@
 					$('#password').focus();
 					return false;
 				}
-
-				$.ajax({
-					url : "/user/loginCheck",
-					type : "post",
-					dataType : "text",
-					data : {
-						"userId" : loginForm.username.value,
-						"password" : loginForm.password.value
-					},
-					beforeSend : function(xhr) {
-						xhr.setRequestHeader(header, token);
-					},
-					success : function(data) {
-						if (data === 'success') {
-							form.submit();
-						}else{
-							alert(" 아이디 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.");
-							return false;
-						}
-					},
-					error : function() {
-						alert("로그인 과정에서 문제발생");
-					}
-
-				});
+				
 			}
+			
 
 		});
 
 		
 	</script>
-	<!-- <script>
-		var result = "${result}";
 
-		if (result == "joinSuccess") {
-			alert("성공적으로 회원가입이 완료되었습니다.")
-		} else if (result == "successUpdate") {
-			alert("회원정보가 수정되었습니다.");//다시 로그인 하게
-		} else if (result == "failNoUser") {
-			alert("회원정보가 일치하지 않습니다.");
-		}
-	</script> -->
-	<%-- 	
-	 <c:if test="${param.logout != null}">
-		<script>
-			$(document).ready(function() {
-				alert("로그아웃되었습니다.");
-			});
-		</script>
-	</c:if> --%>
 
 </body>
 </html>

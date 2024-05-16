@@ -25,16 +25,16 @@ public class CommonController {
 	
 	//로그인
 	@GetMapping("/user/login")
-	public void loginGet(String error,String logout,Model model,RedirectAttributes rttr) {
+	public void loginGet(String error,String logout,Model model) {
 		log.info("error>>>>>>>>>>>>"+error);
 		log.info("logout>>>>>>>>>>>>"+logout);
 		
 		if(error !=null) {
-			rttr.addFlashAttribute("error","error");
+			model.addAttribute("error","error");
 		}
 		
 		if(logout !=null) {
-			rttr.addFlashAttribute("logout","logout");
+			model.addAttribute("logout","logout");
 		}
 		
 	}

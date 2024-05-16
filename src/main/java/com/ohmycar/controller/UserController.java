@@ -107,22 +107,6 @@ public class UserController {
 
 	}
 
-	// 로그인시 아이디/패스워드 확인
-	@PostMapping("/loginCheck")
-	public String loginCheck(@RequestParam("userId")String userId,@RequestParam("password")String password) {
-		String result = "";
-		UserVO userVO = userMapper.getUserByUserId(userId);
-		if (userVO == null) {
-			log.info("아이디 또는 비밀번호를 잘못 입력했습니다.");
-			result = "fail";
-		}else if(userVO.getUserId().equals(userId) && passwordEncoder.matches(password, userVO.getPassword())) {
-			result = "success";
-		} else {
-			result = "wrongAccess";
-		}
-
-		return result;
-	}
 
 	@GetMapping("/mypage")
 	public void mypageGet(Model model) {

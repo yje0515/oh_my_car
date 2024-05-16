@@ -71,9 +71,10 @@
 	</div>
 	<div>
 		<ul>
-			<li>아이디 </li>
-			<li></li>
-			<li></li>
+			<li>아이디 4-20자</li>
+			<li>이름 -32자</li>
+			<li>비밀번호 -20자</li>
+			<li>닉네임 -16자</li>
 		</ul>
 	</div>
 	<script>
