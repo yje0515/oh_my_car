@@ -69,16 +69,23 @@
 		</form>
 
 	</div>
-	<div>
+	<div id="message">
 		<ul>
-			<li>아이디 4-20자</li>
-			<li>이름 -32자</li>
-			<li>비밀번호 -20자</li>
-			<li>닉네임 -16자</li>
+			<li id="userIdRule"class="invalid">아이디: 5~20자의 영문 소문자, 숫자, 특수기호(_)만 사용 가능합니다.</li>
+			<li id="userNameRule"class="invalid">이름:한글만 입력 가능합니다.</li>
+			<li id="passwordRule" class="invalid">비밀번호: 8~20자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요</li>
+			<li id="emailRule"class="invalid">이메일: 이메일 주소가 정확한지 확인해 주세요.</li>
 		</ul>
 	</div>
 	<script>
 		$(document).ready(function() {
+			//입력양식확인
+			$("input").on('change',ruleCheck);
+			$("#userIdRule").hide()
+			$("#userNameRule").hide();
+			$("#passwordRule").hide();
+			$("#emailRule").hide();
+			
 			//중복확인
 			$('#idDupBtn').on('click', idDupCheck)
 			$('#emailDupBtn').on('click', emailDupCheck)
@@ -94,8 +101,9 @@
 				$('#email').css('background-color', 'white');
 				$('#email').css('border', 'solid 1px red');
 			});
-
-			$('#joinBtn').on('click', joinCheck);//빈칸 확인후 submit
+			
+			//joinCheck함수 실행 후 submit
+			$('#joinBtn').on('click', joinCheck);
 
 			//비밀번호 일치 여부확인
 			$('#password').focusout(pwdCheck);
@@ -115,6 +123,44 @@
 					$('#passwordCheck').css('background-color', 'lightgreen');
 					return true;
 				}
+			}
+			
+			function ruleCheck(){
+				//영문소문자,숫자,언더바 5~20자
+				var userIdRule = RegExp(/^[a-z0-9_]{5,20}$/) ;
+				//한글만 가능(자음 불가능)
+				var userNameRule =RegExp(/^[가-힣]+$/);
+				//이메일형식
+				var emailRule = RegExp(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/);
+				//8~24자 영문대문자,소문자,숫자,특수문자 혼합사용
+				var passwordRule = RegExp(/^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]|.*[0-9]).{8,20}$/);
+				
+				if(!userIdRule.test($("#userId").val())){
+					$("#userIdRule").show();
+					return false;
+				}else{
+					$("#userIdRule").hide();
+				}
+				if(!userNameRule.test($("#userName").val())){
+					$("#userNameRule").show();
+					return false;
+				}else{
+					$("#userNameRule").hide();
+				}
+				if(!emailRule.test($("#email").val())){
+					$("#emailRule").show();
+					return false;
+				}else{
+					$("#passwordRule").hide();
+				}
+				if(!passwordRule.test($("#password").val())){
+					$("#passwordRule").show();
+					return false;
+				}else{
+					$("#emailRule").hide();
+				}
+				
+				
 			}
 
 			//아이디 중복 확인
