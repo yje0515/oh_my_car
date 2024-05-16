@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohmycar.mapper.CarFactsMapper">
+    <insert id="insert">
+        INSERT INTO car_facts (factId, factText) VALUES (fact_id_seq.nextval, #{factText})
+    </insert>
+    <update id="update">
+        UPDATE car_facts SET factText = #{factText}
+        WHERE factId = #{factId}
+    </update>
+    <select id="selectOne">
+        SELECT * FROM car_facts WHERE factId = #{factId}
+    </select>
+    <delete id="delete">
+        DELETE FROM car_facts WHERE factId = #{factId}
+    </delete>
+    <select id="selectAll">
+        SELECT * FROM car_facts
+    </select>
+    <select id="getCount">
+        SELECT COUNT(*) FROM car_facts
+    </select>
+</mapper>
