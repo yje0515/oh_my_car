@@ -47,7 +47,7 @@
 				<tr>
 					<td>닉네임</td>
 					<td><input type="text" id="nickName" name="nickName"
-						placeholder="닉네임"></td>
+						placeholder="[선택]닉네임"></td>
 				</tr>
 				<tr>
 					<td>회원등급*</td>
@@ -57,7 +57,7 @@
 				</tr>
 				<tr>
 					<td>
-						<button type="submit" id="joinBtn">회원가입</button>
+						<input type="submit" id="joinBtn" value="회원가입">
 					</td>
 				</tr>
 
@@ -68,6 +68,13 @@
 				id="emailChecked" name="emailChecked" value="notYet">
 		</form>
 
+	</div>
+	<div>
+		<ul>
+			<li>아이디 </li>
+			<li></li>
+			<li></li>
+		</ul>
 	</div>
 	<script>
 		$(document).ready(function() {
@@ -100,7 +107,6 @@
 					return false;
 				}
 				if ($('#password').val() !== $('#passwordCheck').val()) {
-					$('#passwordCheck').css('border', '1px solid red');
 					$('#passwordCheck').css('background-color', 'red');
 					return false;
 				} else {
@@ -184,6 +190,7 @@
 							return true;
 						} else {
 							alert("이미 사용중인 이메일입니다.");
+							$('#emailChecked').val("notYet");
 							$('#email').css('background-color', 'red');
 							$('#email').focus();
 							return false;

@@ -9,7 +9,7 @@
 <title>로그인</title>
 </head>
 <body>
-	
+
 
 	<jsp:include page="../includes/header.jsp"></jsp:include>
 	<div class="login">
@@ -19,15 +19,16 @@
 			<c:out value="${logout}" />
 		</p> --%>
 
-		<form role="form" method='post' action="/login" id="loginForm">
+		<form role="form" method='post' action="/login" id="loginForm"
+			name="loginForm">
 			<table>
 				<tr>
-					<td><input id="userid" class="loginInput" placeholder="아이디"
-						name="username" type="text" autofocus></td>
+					<td><input type="text" id="userId"  placeholder="아이디"
+						name="username" autofocus></td>
 				</tr>
 				<tr>
-					<td><input id="password" class="loginInput" placeholder="비밀번호"
-						name="password" type="password"></td>
+					<td><input  type="password"id="password" class="loginInput" placeholder="비밀번호"
+						name="password"></td>
 				</tr>
 				<tr>
 					<td><input name="remember-me" type="checkbox">로그인 유지하기</td>
@@ -36,7 +37,7 @@
 					<td><input name="rememberId" type="checkbox">아이디 저장</td>
 				</tr>
 				<tr>
-					<td><button type="submit" class="loginBtn">로그인</button></td>
+					<td><button id="loginBtn">로그인</button></td>
 				</tr>
 
 			</table>
@@ -54,29 +55,54 @@
 
 	<script>
 		$(document).ready(function() {
-			$('.loginBtn').click(function(e) {
-				e.preventDefault();
+			$('#loginBtn').on('click',loginCheck);
 
-				if (loginCheck()) {
-					$("#loginForm").submit();
+			
+			function loginCheck() {
+				var form = document.loginForm;
+				var token = $("meta[name='_csrf']").attr("content");
+				var header = $("meta[name='_csrf_header']").attr("content");
+
+				if ($('#username').val() == "") {
+					alert("아이디를 입력 해 주세요.");
+					$('#userId').focus();
+					return false;
 				}
-			});
+				if ($('#password').val() == "") {
+					alert("비밀번호를 입력 해 주세요.");
+					$('#password').focus();
+					return false;
+				}
+
+				$.ajax({
+					url : "/user/loginCheck",
+					type : "post",
+					dataType : "text",
+					data : {
+						"userId" : loginForm.username.value,
+						"password" : loginForm.password.value
+					},
+					beforeSend : function(xhr) {
+						xhr.setRequestHeader(header, token);
+					},
+					success : function(data) {
+						if (data === 'success') {
+							form.submit();
+						}else{
+							alert(" 아이디 또는 비밀번호를 잘못 입력했습니다.입력하신 내용을 다시 확인해주세요.");
+							return false;
+						}
+					},
+					error : function() {
+						alert("로그인 과정에서 문제발생");
+					}
+
+				});
+			}
 
 		});
 
-		function loginCheck() {
-			if ($('#userid').val() == "") {
-				alert("아이디를 입력 해 주세요.");
-				$('#userid').focus();
-				return false;
-			}
-			if ($('#password').val() == "") {
-				alert("비밀번호를 입력 해 주세요.");
-				$('#password').focus();
-				return false;
-			}
-			return true;
-		}
+		
 	</script>
 	<!-- <script>
 		var result = "${result}";

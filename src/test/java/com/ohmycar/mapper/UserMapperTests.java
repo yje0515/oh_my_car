@@ -21,14 +21,14 @@ import lombok.extern.log4j.Log4j;
 public class UserMapperTests {
 
 	@Autowired
-	private UserMapper mapper;
+	private UserMapper userMapper;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@Test
 	public void testGetUserList() {
-		List<UserVO> list = mapper.getUserList();
+		List<UserVO> list = userMapper.getUserList();
 
 		list.forEach(user -> log.info(user));
 	}
@@ -48,13 +48,13 @@ public class UserMapperTests {
 		authvo.setUserId("user01");
 		authvo.setAuth("ROLE_MEMBER");
 
-		int result = mapper.joinUser(vo) + mapper.joinUserAuth(authvo);
+		int result = userMapper.joinUser(vo) + userMapper.joinUserAuth(authvo);
 		log.info(result);
 	}
 
 	@Test
 	public void testGetUserByUserid() {
-		UserVO vo = mapper.getUserByUserId("user01");
+		UserVO vo = userMapper.getUserByUserId("user01");
 		log.info(vo);
 		log.info(vo.getAuthList());
 	}
@@ -62,30 +62,30 @@ public class UserMapperTests {
 	@Test
 	public void testGetUserByEmail() {
 		String email = "useruser@gmail.com";
-		log.info(mapper.getUserByEmail(email));
+		log.info(userMapper.getUserByEmail(email));
 	}
 
 	@Test
 	public void testUpdateUser() {
-		UserVO vo = mapper.getUserByEmail("useruser@gmail.com");
+		UserVO vo = userMapper.getUserByEmail("useruser@gmail.com");
 		vo.setPassword("1234");
 		vo.setNickName("수정수정");
 
-		int result = mapper.updateUser(vo);
+		int result = userMapper.updateUser(vo);
 		log.info(result);
 
 	}
 
 	@Test
 	public void testDeleteUser() {
-		int result = mapper.deleteUser("user6");
+		int result = userMapper.deleteUser("user6");
 		log.info(result);
 	}
 
 	@Test
 	public void testGetPassword() {
 		String userid = "user1";
-		String pwd = mapper.userPasswordCheckByUserId(userid);
+		String pwd = userMapper.userPasswordCheckByUserId(userid);
 		log.info(pwd);
 	}
 
@@ -96,10 +96,21 @@ public class UserMapperTests {
 
 	@Test
 	public void testIdDup() {
-		if (mapper.getUserByUserId("user1") != null) {
+		if (userMapper.getUserByUserId("user1") != null) {
 			log.info("이미 있는 아이디입니다.");
 		} else {
 			log.info("사용 가능한 아이디입니다.");
+		}
+	}
+	
+	@Test
+	public void testLogin() {
+		String userId = "admin82";
+		String password = "pw82";
+		if(passwordEncoder.matches(password,userMapper.userPasswordCheckByUserId(userId))) {
+			log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@로그인 성공");
+		}else {
+			log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@로그인 실패!");
 		}
 	}
 }

@@ -82,7 +82,7 @@ public class UserController {
 	// 회원가입시 아이디 중복확인
 	@RequestMapping("/idDupCheck")
 	@ResponseBody
-	public String idCheckGet(@RequestParam("user_id") String userId) {
+	public String idCheckPost(@RequestParam("userId") String userId) {
 		String result = "";
 		if (userMapper.getUserByUserId(userId) != null) {
 			result = "fail";
@@ -96,7 +96,7 @@ public class UserController {
 	// 회원가입시 이메일 중복확인
 	@RequestMapping("/emailDupCheck")
 	@ResponseBody
-	public String emailCheckGet(@RequestParam("email") String email) {
+	public String emailCheckPost(@RequestParam("email") String email) {
 		String result = "";
 		if (userMapper.getUserByEmail(email) != null) {
 			result = "fail";
@@ -107,7 +107,23 @@ public class UserController {
 
 	}
 
-	// 인증된 사용자만 접근 가능
+	// 로그인시 아이디/패스워드 확인
+	@PostMapping("/loginCheck")
+	public String loginCheck(@RequestParam("userId")String userId,@RequestParam("password")String password) {
+		String result = "";
+		UserVO userVO = userMapper.getUserByUserId(userId);
+		if (userVO == null) {
+			log.info("아이디 또는 비밀번호를 잘못 입력했습니다.");
+			result = "fail";
+		}else if(userVO.getUserId().equals(userId) && passwordEncoder.matches(password, userVO.getPassword())) {
+			result = "success";
+		} else {
+			result = "wrongAccess";
+		}
+
+		return result;
+	}
+
 	@GetMapping("/mypage")
 	public void mypageGet(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -122,7 +138,6 @@ public class UserController {
 
 	}
 
-	// 인증된 사용자만 접근 가능
 	@GetMapping("/userUpdate")
 	public void userUpdateGet(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -135,17 +150,35 @@ public class UserController {
 		log.info("update...");
 	}
 
-	// 인증된 사용자만 접근 가능
 	@PostMapping("/userUpdate")
 	public String userUpdatePost(UserVO userVO, RedirectAttributes rttr) {
 		userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
 		userMapper.updateUser(userVO);
 		log.info("updated User : " + userVO);
-		
-		//회원정보 수정시 알림창뜨게
+
+		// 회원정보 수정시 알림창뜨게
 		rttr.addFlashAttribute("result", "success");
 
 		return "redirect:/user/mypage";
+	}
+	
+	@GetMapping("/userDelete")
+	public void userDeleteGet(Model model) {
+		
+	}
+	
+	@PostMapping("/userDelete")
+	public String userDeleteGet(RedirectAttributes rttr) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if(authentication.getPrincipal() instanceof UserDetails) {
+			UserDetails userDetails = (UserDetails)authentication.getPrincipal();
+			String userId = userDetails.getUsername();
+			userMapper.deleteUser(userId);
+			log.info(userId+"님의 정보가 삭제되었습니다.");
+		}
+		
+		rttr.addFlashAttribute("result","deleteSuccess");
+		return "redirect:/";
 	}
 
 }

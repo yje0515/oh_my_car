@@ -16,7 +16,7 @@ import lombok.extern.log4j.Log4j;
 public class CustomUserDetailsService implements UserDetailsService{
 	
 	@Autowired
-	private UserMapper usermapper;
+	private UserMapper userMapper;
 
 	//loadUserByUsername 메서드를 통해 사용자 이름을 입력, 입력받은 이름으로 DB에서 사용자 정보를 조회
 	//조회된 사용자 정보를 Spring Security의 UserDetails 객체로 변환하여 반환한다.
@@ -24,9 +24,9 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		log.warn("Load User By UserName : "+username);
-
+		
 		//username => userid
-		UserVO vo = usermapper.getUserByUserId(username);
+		UserVO vo = userMapper.getUserByUserId(username);
 		log.warn("queried by user mapper : "+vo);
 		return vo == null ? null : new CustomUser(vo);
 	}
