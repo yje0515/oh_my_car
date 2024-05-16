@@ -90,11 +90,13 @@ public class ConsumableController {
      * 
      * @param carId 차 고유 번호
      * @param model 모델 객체
+     * @param token 현대차 api 에서 가져온 token
      */
     @GetMapping("/create")
-    public void getCreate(@RequestParam("carId") String carId, Model model) {
+    public void getCreate(@RequestParam("carId") String carId, Model model, String token) {
         log.info(carId);
         model.addAttribute(CAR_ID, carId);
+        model.addAttribute("token", token);
     }
 
     /**
@@ -102,13 +104,16 @@ public class ConsumableController {
      * 
      * @param carId 차 고유 번호
      * @param vo    consumableVO 부품 교체시기를 담았다
+     * @param token 현대차 api 에서 가져온 token
      * @return 마이페이지로 돌아간다.
      */
     @PostMapping("/create")
-    public String create(@RequestParam("carId") String carId, ConsumableVO vo) {
-        String accDist = calc.getAccDist();
+    public String create(@RequestParam("carId") String carId, ConsumableVO vo, String token, String accDist) {
+        String tokenTemp = "Bearer "
+                + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiI2NjRkYWZjZC05NmVhLTRhZjctOGI0MC1iYTYyNzgwNzI4ODciLCJpc3MiOiJibHVlbGluayIsInBpZCI6IjYyYTk3NmZhYmI4YjVkZTg5YzYzYjhmYiIsImV4cCI6NDEwMjMyNjAwMCwibGF0IjoxNzE1MTI4NDkzLCJzaWQiOiI0MDBiMzIzMS0zMGRiLTQyZjUtYWI1Mi05ZDY5YjM1YTE4NGQifQ.pZuBsie3in_l-TqVBtFPlXWgvQHbbF62yVPRfZvaJ0CCthBAlgp0Au4yxIt9ETE1S5O86EVi2y7VnkWstig-zo3pNW4BT22snQ-GshmSJ_NfOf_s5ollcqjNdqKNVmF588xP9pdWKnBB3hb_YLZLFGhUDjGaOI684mq4CCZ7V_vggTlaaXZZ6ycNvk58WhT5cpKccfHa6KkTFJhFwOJiKaG-z6snhPO33RIuNxwtrC7AikVu4B71guIJmBHcZ31HPjqVcAZwU2AR3eLNCk7XHdFFZR2gQUpGvaw81ECd1F48LSnvAY60MrsyH-nnO_sxNI8sakqGuMoSv8_Le_J5Qw";
+        String accDistTemp = token != null ? calc.getAccDist(tokenTemp, carId) : accDist;
         vo.setCarId(carId);
-        consumableService.create(vo, accDist);
+        consumableService.create(vo, accDistTemp);
         return "redirect:/consumable/main";// TODO 주소 마이페이지로 바꿀 것
     }
 

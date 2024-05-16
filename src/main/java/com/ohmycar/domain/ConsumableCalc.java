@@ -103,20 +103,16 @@ public class ConsumableCalc {
 
     /**
      * 현재 주행거리를 반환 하는 함수
-     * TODO : token 과 carID 는 파라미터로 받아야 한다. 나중에 로그인 과 마이페이지가 완성 되면 연동한다.
      * 
      * @return 현재 누적 주행 거리
      */
-    public String getAccDist() {
+    public String getAccDist(String token, String carID) {
         StringBuilder sb = new StringBuilder();
         String responseData = "";
 
-        String token = "Bearer "
-                + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiI2NjRkYWZjZC05NmVhLTRhZjctOGI0MC1iYTYyNzgwNzI4ODciLCJpc3MiOiJibHVlbGluayIsInBpZCI6IjYyYTk3NmZhYmI4YjVkZTg5YzYzYjhmYiIsImV4cCI6NDEwMjMyNjAwMCwibGF0IjoxNzE1MTI4NDkzLCJzaWQiOiI0MDBiMzIzMS0zMGRiLTQyZjUtYWI1Mi05ZDY5YjM1YTE4NGQifQ.pZuBsie3in_l-TqVBtFPlXWgvQHbbF62yVPRfZvaJ0CCthBAlgp0Au4yxIt9ETE1S5O86EVi2y7VnkWstig-zo3pNW4BT22snQ-GshmSJ_NfOf_s5ollcqjNdqKNVmF588xP9pdWKnBB3hb_YLZLFGhUDjGaOI684mq4CCZ7V_vggTlaaXZZ6ycNvk58WhT5cpKccfHa6KkTFJhFwOJiKaG-z6snhPO33RIuNxwtrC7AikVu4B71guIJmBHcZ31HPjqVcAZwU2AR3eLNCk7XHdFFZR2gQUpGvaw81ECd1F48LSnvAY60MrsyH-nnO_sxNI8sakqGuMoSv8_Le_J5Qw";
-        String carID = "6d97337b-eb53-467b-baf4-7faec6d7065e";
         String contentType = "application/json";
         try {
-            String apiURL = "https://dev.kr-ccapi.hyundai.com/api_sample/v1/car/status/" + carID + "/odometer";
+            String apiURL = "https://dev.kr-ccapi.hyundai.com/api/v1/car/status/" + carID + "/odometer";
             URL url = new URL(apiURL);
 
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
