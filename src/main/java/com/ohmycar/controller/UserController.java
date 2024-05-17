@@ -104,9 +104,25 @@ public class UserController {
 			result = "success";
 		}
 		return result;
-
 	}
 
+	// 로그인  ajax로 회원존재여부 확인...
+	@RequestMapping("/loginCheck")
+	@ResponseBody
+	public String loginCheckPost(@RequestParam("userId") String userId, @RequestParam("password") String password) {
+		String result = "";
+		UserVO userVO = userMapper.getUserByUserId(userId);
+		boolean pwdCheck = passwordEncoder.matches(password, userVO.getPassword());
+		if (pwdCheck) {
+			result = "success";
+			
+		} else {
+			result = "fail";
+		}
+		log.info(result);
+
+		return result;
+	}
 
 	@GetMapping("/mypage")
 	public void mypageGet(Model model) {
@@ -145,23 +161,23 @@ public class UserController {
 
 		return "redirect:/user/mypage";
 	}
-	
+
 	@GetMapping("/userDelete")
 	public void userDeleteGet(Model model) {
-		
+
 	}
-	
+
 	@PostMapping("/userDelete")
 	public String userDeleteGet(RedirectAttributes rttr) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if(authentication.getPrincipal() instanceof UserDetails) {
-			UserDetails userDetails = (UserDetails)authentication.getPrincipal();
+		if (authentication.getPrincipal() instanceof UserDetails) {
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 			String userId = userDetails.getUsername();
 			userMapper.deleteUser(userId);
-			log.info(userId+"님의 정보가 삭제되었습니다.");
+			log.info(userId + "님의 정보가 삭제되었습니다.");
 		}
-		
-		rttr.addFlashAttribute("result","deleteSuccess");
+
+		rttr.addFlashAttribute("result", "deleteSuccess");
 		return "redirect:/";
 	}
 

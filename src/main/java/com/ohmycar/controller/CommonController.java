@@ -26,6 +26,8 @@ public class CommonController {
 	//로그인
 	@GetMapping("/user/login")
 	public void loginGet(String error,String logout,Model model) {
+		
+		
 		log.info("error>>>>>>>>>>>>"+error);
 		log.info("logout>>>>>>>>>>>>"+logout);
 		

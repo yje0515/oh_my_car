@@ -12,6 +12,7 @@
 	<bean id="customLoginSuccess"
 		class="com.ohmycar.security.CustomLoginSuccessHandler"></bean>
 
+
 	<!-- BCruptPasswordEncoder를 사용하여 비밀번호를 안전하게 해싱하는데 사용 -->
 	<bean id="bcryptPasswordEncoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
@@ -40,20 +41,14 @@
 		<security:intercept-url pattern="/user/admin"
 			access="hasRole('ROLE_ADMIN')" />
 
-		<!-- 접근 거부 핸들러 설정 -->
-		<!-- <security:access-denied-handler error-page="/accessError"/> -->
-		<!-- => 직접 구현한 접근제한인터페이스 설정 response.sendRedirect("/accessError") 하는 클래스 -->
+		<!-- 직접 구현한 접근제한인터페이스 설정 response.sendRedirect("/accessError") 하는 클래스 -->
 		<security:access-denied-handler
 			ref="customAccessDenied" />
 
-		<!-- 폼 기반 로그인 설정 -->
-		<!-- <security:form-login /> -->
-		<!-- => 직접 구현한 로그인페이지를 사용하여 폼 기반 인증 설정 -->
-		<!-- <security:form-login login-page="/user/login/" /> -->
-		<!-- => 로그인 페이지에서 인증에 성공하면 Spring Security는 customLoginSuccess 빈에 정의된 커스텀 
-			로그인 성공 핸들러를 사용하려 처리한다 -->
+		
+		<!-- 로그인 페이지에서 인증에 성공하면 Spring Security는 customLoginSuccess 빈에 정의된 커스텀 로그인 성공 핸들러를 사용하여 처리한다 -->
 		<security:form-login login-page="/user/login"
-			authentication-success-handler-ref="customLoginSuccess" />
+			authentication-success-handler-ref="customLoginSuccess"/>
 
 		<!-- 로그아웃 관련 설정 사용자가 로그아웃을 요청할 때 호출되는 URL을 지정 세션의 무효화 -->
 		<!-- 로그아웃시 자동로그인 체크하고 저장되는 쿠키 삭제 -->
@@ -70,25 +65,11 @@
 
 	<!-- Spring Security 인증 관리자 설정 -->
 	<security:authentication-manager>
+	
 		<!-- Spring Security 인증 제공자 설정 = -->
-		<!-- <security:authentication-provider> -->
-		<!-- => -->
 		<security:authentication-provider
 			user-service-ref="customUserDetailsService">
-			<!-- 사용자 서비스 설정 -->
-			<!-- <security:user-service> 사용자 설정: 이름, 비밀번호, 권한 <security:user name="member" 
-				password="{noop}1234" authorities="ROLE_MEMBER" /> admin 사용자는 ROLE_MEMBER와 
-				ROLE_ADMIN 역할을 가지고 있다. <security:user name="admin" password="{noop}1234" 
-				authorities="ROLE_MEMBER, ROLE_ADMIN" /> </security:user-service> -->
-			<!-- => Spring Security에서 JDBC를 사용하여 사용자 인증 정보를 제공하는 설정 -->
-			<!-- <security:jdbc-user-service data-source-ref="dataSource" /> -->
-			<!-- => JDBC를 사용하여 사용자정보를 가져오고, BCryptPasswordEncoder를 사용하여 비밀번호를 안전하게 
-				인코딩 -->
-			<!-- 스프링 시큐리티에서 JDBC를 사용하여 사용자 정보와 권한을 데이터베이스에서 가져오는데 사용된다. -->
-			<!-- <security:jdbc-user-service data-source-ref="dataSource" users-by-username-query="select 
-				userid username,password,enabled from user_tbl where userid =? " authorities-by-username-query="select 
-				userid username, auth from user_auth_tbl where userid =? "/> DB:userid Spring 
-				Security:username => userid username -->
+
 
 			<!-- BCryptPasswordEncoder를 참조하여 비밀번호를 안전하게 인코딩 하는데 사용한다 -->
 			<security:password-encoder
