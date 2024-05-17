@@ -18,7 +18,7 @@ public class CarFactsRestController {
 
     @GetMapping("/read")
     public String read() {
-        return service.read();
+        return service.read();// TODO 자동차 토막 상식을 넣고 싶은 페이지 에서 /carFacts/read 를 ajax 로 부르든 해서 반환 받은 String 을 쏴 주기.
     }
 
 }
