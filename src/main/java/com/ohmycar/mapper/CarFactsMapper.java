@@ -9,7 +9,7 @@ public interface CarFactsMapper {
 
     public void update(CarFactsVO vo);
 
-    public CarFactsVO selectOne(int factId);
+    public String selectOne(int rn);
 
     public void delete(int factId);
 

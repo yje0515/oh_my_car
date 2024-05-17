@@ -9,7 +9,11 @@
         WHERE factId = #{factId}
     </update>
     <select id="selectOne">
-        SELECT * FROM car_facts WHERE factId = #{factId}
+        SELECT factText FROM (
+            SELECT ROW_NUMBER() OVER (ORDER BY factId) AS rn, factId, factText
+            FROM CAR_FACTS
+        )
+        WHERE rn = #{rn}
     </select>
     <delete id="delete">
         DELETE FROM car_facts WHERE factId = #{factId}

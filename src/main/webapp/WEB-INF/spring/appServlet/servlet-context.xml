@@ -29,6 +29,11 @@
 		<beans:property name="characterEncoding" value="UTF-8" />
 		<beans:property name="viewNames" value="consumable/*" />
 	</beans:bean>
+	<beans:bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+		<beans:property name="templateEngine" ref="templateEngine" />
+		<beans:property name="characterEncoding" value="UTF-8" />
+		<beans:property name="viewNames" value="carFacts/*" />
+	</beans:bean>
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		<beans:property name="prefix" value="/WEB-INF/views/" />

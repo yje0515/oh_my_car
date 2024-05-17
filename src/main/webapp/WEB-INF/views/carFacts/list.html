@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/css/carFacts.css" type="text/css">
+    <title>자동차 토막 상식 관리자 페이지</title>
+</head>
+
+<body>
+    <table class="tg" style="undefined;table-layout: fixed; width: 1112px">
+        <colgroup>
+            <col style="width: 53px">
+            <col style="width: 899px">
+            <col style="width: 80px">
+            <col style="width: 80px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="tg-c3ow">번호</th>
+                <th class="tg-0pky">토막 상식 내용</th>
+                <th class="tg-baqh">수정하기</th>
+                <th class="tg-c3ow">삭제하기</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="fact : ${list}">
+                <form action="carFacts/delete" method="get">
+                    <input type="hidden" name="factId" th:value="${fact.factId}">
+                    <td class="tg-c3ow" th:text="${fact.factId}"></td>
+                    <td class="tg-0pky" th:text="${fact.factText}"></td>
+                    <td class="tg-baqh"><input type="button" value="수정하기"></input></td>
+                    <td class="tg-c3ow"><input type="submit" value="삭제하기"></input></td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
