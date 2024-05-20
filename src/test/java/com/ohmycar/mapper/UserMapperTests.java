@@ -113,4 +113,13 @@ public class UserMapperTests {
 			log.info("@@@@@@@@@@@@@@@@@@@@@@@@@@로그인 실패!");
 		}
 	}
+	
+	@Test
+	public void testDelete() {
+		String userId = "admin";
+		userMapper.deleteUserAuth(userId);
+		userMapper.deleteUser(userId);
+		log.info(userId+"님 탈퇴완료.");
+		
+	}
 }

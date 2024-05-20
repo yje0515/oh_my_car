@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ohmycar.domain.AuthVO;
 import com.ohmycar.domain.UserVO;
-import com.ohmycar.mapper.UserMapper;
+import com.ohmycar.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -25,49 +25,22 @@ import lombok.extern.log4j.Log4j;
 @RequiredArgsConstructor
 @Log4j
 public class UserController {
-	// 회원가입 로그인 sns간편로그인 간편회원가입 현대api 스프링이메일인증번호 api Spring Security csrf토큰
-	// 비밀번호찾기
 
-	private final UserMapper userMapper;
+	private final UserService userService;
 
 	private final PasswordEncoder passwordEncoder;
 
-	@GetMapping("/test")
-	public void doTest(Model model) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication.getPrincipal() instanceof UserDetails) {
-			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-			UserVO userVO = userMapper.getUserByUserId(userDetails.getUsername());
-			model.addAttribute("user", userVO);
-			log.info(userVO);
-		}
-
-		log.info("test......");
+	// 회원가입페이지로 이동
+	@GetMapping("/join")
+	public void joinGet() {
+		log.info("join.....");
 
 	}
 
 	// 회원가입
-	@GetMapping("/join")
-	public void joinGet() {
-		log.info("join.......");
-
-	}
-
 	@PostMapping("/join")
 	public String joinPost(UserVO userVO, AuthVO authVO) {
-		// DB에 userVO(회원정보객체) 넣기 service메소드 사용으로 수정해야함~
-		userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
-		userMapper.joinUser(userVO);
-		AuthVO authAdmin = new AuthVO();
-		userMapper.joinUserAuth(authVO);
-
-		// Admin의 경우 Member의 권한도 가질 수 있게
-		if (authVO.getAuth().equals("ROLE_ADMIN")) {
-			authAdmin.setUserId(authVO.getUserId());
-			authAdmin.setAuth("ROLE_MEMBER");
-			userMapper.joinUserAuth(authAdmin);
-		}
-
+		userService.joinUser(userVO, authVO);
 		log.info("success join.....");
 		return "redirect:/user/login";
 	}
@@ -75,7 +48,7 @@ public class UserController {
 	// 관리자권한 가진 사용자만 접근 가능
 	@GetMapping("/admin")
 	public void adminGet(Model model) {
-		log.info("admin....");
+		log.info("admin.....");
 
 	}
 
@@ -84,7 +57,7 @@ public class UserController {
 	@ResponseBody
 	public String idCheckPost(@RequestParam("userId") String userId) {
 		String result = "";
-		if (userMapper.getUserByUserId(userId) != null) {
+		if (userService.getUserByUserId(userId) != null) {
 			result = "fail";
 		} else {
 			result = "success";
@@ -98,7 +71,7 @@ public class UserController {
 	@ResponseBody
 	public String emailCheckPost(@RequestParam("email") String email) {
 		String result = "";
-		if (userMapper.getUserByEmail(email) != null) {
+		if (userService.getUserByEmail(email) != null) {
 			result = "fail";
 		} else {
 			result = "success";
@@ -106,30 +79,37 @@ public class UserController {
 		return result;
 	}
 
-	// 로그인  ajax로 회원존재여부 확인...
+	// 로그인 ajax로 회원존재여부 확인...
 	@RequestMapping("/loginCheck")
 	@ResponseBody
 	public String loginCheckPost(@RequestParam("userId") String userId, @RequestParam("password") String password) {
 		String result = "";
-		UserVO userVO = userMapper.getUserByUserId(userId);
+
+		UserVO userVO = userService.getUserByUserId(userId);
+		if (userVO == null) {
+			log.info("User not found");
+			return "fail";
+		}
+
+		// userVO가 null이 아닌 경우(id가 존재하는 경우)
 		boolean pwdCheck = passwordEncoder.matches(password, userVO.getPassword());
 		if (pwdCheck) {
 			result = "success";
-			
 		} else {
 			result = "fail";
 		}
-		log.info(result);
+		log.info("Login " + result + ".....");
 
 		return result;
 	}
 
+	// 마이페이지로 이동
 	@GetMapping("/mypage")
 	public void mypageGet(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication.getPrincipal() instanceof UserDetails) {
 			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-			UserVO userVO = userMapper.getUserByUserId(userDetails.getUsername());
+			UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 			model.addAttribute("userVO", userVO);
 
 		}
@@ -138,45 +118,86 @@ public class UserController {
 
 	}
 
+	// 비밀번호 확인 페이지로 이동
+	@GetMapping("/passwordCheck")
+	public void passwordCheckGet() {
+
+	}
+
+	// 비밀번호 확인 후 각각 페이지에 이동
+	@PostMapping("/passwordCheck")
+	public String passwordCheckPost(String password, String action, RedirectAttributes rttr) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		/* if (authentication.getPrincipal() instanceof UserDetails) { */
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		// 비밀번호 확인
+		String realPwd = userService.userPasswordCheckByUserId(userVO.getUserId());
+		boolean pwdChecked = passwordEncoder.matches(password, realPwd);
+
+		// 비밀번호가 맞으면
+		if (pwdChecked) {
+			log.info("correctPassword.....");
+			if ("edit".equals(action)) {
+				return "redirect:/user/userUpdate";
+			} else {
+				return "redirect:/user/userDelete";
+			}
+		}
+
+		// 비밀번호가 틀리면
+		log.info("wrongPassword.....");
+		rttr.addFlashAttribute("result", "wrongPassword");
+		if ("edit".equals(action)) {
+			return "redirect:/user/passwordCheck?action=edit";
+		} else {
+			return "redirect:/user/passwordCheck?action=remove";
+		}
+
+	}
+
+	// 회원정보수정페이지로 이동
 	@GetMapping("/userUpdate")
 	public void userUpdateGet(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication.getPrincipal() instanceof UserDetails) {
 			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-			UserVO userVO = userMapper.getUserByUserId(userDetails.getUsername());
+			UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 			model.addAttribute("userVO", userVO);
 
 		}
 		log.info("update...");
 	}
 
+	// 회원정보 수정
 	@PostMapping("/userUpdate")
 	public String userUpdatePost(UserVO userVO, RedirectAttributes rttr) {
-		userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
-		userMapper.updateUser(userVO);
-		log.info("updated User : " + userVO);
+		userService.updateUser(userVO);
 
-		// 회원정보 수정시 알림창뜨게
+		// 회원정보 수정시 alert
 		rttr.addFlashAttribute("result", "success");
 
 		return "redirect:/user/mypage";
 	}
 
+	// 회원탈퇴페이지로 이동
 	@GetMapping("/userDelete")
 	public void userDeleteGet(Model model) {
-
+		log.info("delete.....");
 	}
 
+	// 회원탈퇴
 	@PostMapping("/userDelete")
 	public String userDeleteGet(RedirectAttributes rttr) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication.getPrincipal() instanceof UserDetails) {
 			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 			String userId = userDetails.getUsername();
-			userMapper.deleteUser(userId);
+			userService.deleteUser(userId);
 			log.info(userId + "님의 정보가 삭제되었습니다.");
 		}
 
+		// 회원정보 삭제시 alert
 		rttr.addFlashAttribute("result", "deleteSuccess");
 		return "redirect:/";
 	}

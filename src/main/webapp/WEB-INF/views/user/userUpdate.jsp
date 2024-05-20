@@ -29,6 +29,10 @@
 					placeholder="비밀번호"></td>
 			</tr>
 			<tr>
+				<td colspan="3" class="updateRules" id="passwordRule">8~20자의 영문
+					대/소문자, 숫자, 특수문자를 모두 사용해 주세요</td>
+			</tr>
+			<tr>
 				<td>비밀번호확인</td>
 				<td><input type="password" id="passwordCheck"
 					name="passwordCheck" placeholder="비밀번호확인"></td>
@@ -47,12 +51,14 @@
 				<td>회원등급</td>
 				<td><c:forEach var="auth" items="${userVO.authList }">
 						<c:if test="${auth.auth eq 'ROLE_ADMIN' }">
-		관리자
-		</c:if>
-						<c:if test="${auth.auth eq 'ROLE_MEMBER' }">
-		일반회원
-		</c:if>
-					</c:forEach>
+							<c:set var="isAdmin" value="true" />
+						</c:if>
+
+					</c:forEach> <c:if test="${isAdmin }">
+							관리자
+						</c:if> <c:if test="${not isAdmin }">
+							일반회원
+						</c:if>
 			</tr>
 			<tr>
 				<td><input type="submit" id="updateBtn" value="수정"></td>
@@ -61,48 +67,85 @@
 		</table>
 
 	</form>
+	<div class="checked">
+		<input type="hidden" class="ruleChecked" id="passwordRuleChecked"
+			name="passwordRuleChecked" value="notYet">
+	</div>
 	<script>
-		$(document).ready(function() {
-			$('#updateBtn').on('click', updateCheck);//확인후 submit
+		$(document)
+				.ready(
+						function() {
+							//입력양식 초기화
+							$(".updateRules").hide();
+							$(".updateRules").css({
+								'color' : 'red',
+								'font-size' : '12px'
+							});
+							$('#updateBtn').on('click', updateCheck);//확인후 submit
 
-			//비밀번호 일치 여부확인
-			$('#password').focusout(pwdCheck);
-			$('#passwordCheck').focusout(pwdCheck);
-			$('#passwordCheck').css('border', '1px solid black');
-			$('#passwordCheck').css('background-color', 'white');
-			function pwdCheck() {
-				if ($('#passwordCheck').val() == "") {
-					$('#checkMsg2').show();
-					return false;
-				}
-				if ($('#password').val() !== $('#passwordCheck').val()) {
-					$('#passwordCheck').css('border', '1px solid red');
-					$('#passwordCheck').css('background-color', 'red');
-					return false;
-				} else {
-					$('#passwordCheck').css('border', '1px solid black');
-					$('#passwordCheck').css('background-color', 'lightgreen');
-					return true;
-				}
-			}
+							$('#password')
+									.focusout(
+											function() {
+												//8~24자 영문대문자,소문자,숫자,특수문자 혼합사용
+												var passwordRule = RegExp(/^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]|.*[0-9]).{8,20}$/);
+												if (!passwordRule.test($(
+														"#password").val())) {
+													$("#passwordRule").show();
+													$("#passwordRuleChecked")
+															.val("notYet");
+													return false;
+												} else {
+													$("#passwordRule").hide();
+													$("#passwordRuleChecked")
+															.val("ok");
+												}
+											})
 
-			//빈칸/중복/비밀번호일치 확인 후 submit
-			function updateCheck() {
+							//비밀번호 일치 여부확인
+							$('#password').focusout(pwdCheck);
+							$('#passwordCheck').focusout(pwdCheck);
+							$('#passwordCheck')
+									.css('border', '1px solid black');
+							$('#passwordCheck')
+									.css('background-color', 'white');
+							function pwdCheck() {
+								if ($('#passwordCheck').val() == "") {
+									$('#checkMsg2').show();
+									return false;
+								}
+								if ($('#password').val() !== $('#passwordCheck')
+										.val()) {
+									$('#passwordCheck').css('border',
+											'1px solid red');
+									$('#passwordCheck').css('background-color',
+											'red');
+									return false;
+								} else {
+									$('#passwordCheck').css('border',
+											'1px solid black');
+									$('#passwordCheck').css('background-color',
+											'lightgreen');
+									return true;
+								}
+							}
 
-				if ($('#password').val() == "") {
-					alert("비밀번호를 입력 해 주세요.");
-					$('#password').focus();
-					return false;
-				}
-				if ($('#password').val() !== $('#passwordCheck').val()) {
-					alert("비밀번호가 일치하지 않습니다.");
-					return false;
-				}
+							//빈칸/중복/비밀번호일치 확인 후 submit
+							function updateCheck() {
+								if ($('#password').val() == "") {
+									alert("비밀번호를 입력 해 주세요.");
+									$('#password').focus();
+									return false;
+								}
+								if ($('#password').val() !== $('#passwordCheck')
+										.val()) {
+									alert("비밀번호가 일치하지 않습니다.");
+									return false;
+								}
 
-				return true;
-			}
+								return true;
+							}
 
-		});
+						});
 	</script>
 </body>
 </html>

@@ -21,7 +21,7 @@
 
 
 	<select id="getUserList">
-		SELECT * FROM user_tbl us LEFT OUTER JOIN user_auth_tbl auth 
+		SELECT us.userid,us.username,us.email,us.nickname,auth.auth FROM user_tbl us LEFT OUTER JOIN user_auth_tbl auth 
 		ON us.userid=auth.userid
 
 	</select>
@@ -69,10 +69,13 @@
 	<update id="updateUser">
 		UPDATE user_tbl SET
 		password=#{password},nickname=#{nickName} WHERE
-		email=#{email}
+		userId=#{userId}
 	</update>
 
 	<delete id="deleteUser">
-		DELETE FROM user_tbl WHERE email=#{email}
+		DELETE FROM user_tbl WHERE userid=#{userId}
+	</delete>
+	<delete id="deleteUserAuth">
+		DELETE FROM user_auth_tbl WHERE userid=#{userId}
 	</delete>
 </mapper>

@@ -11,7 +11,7 @@ import com.ohmycar.security.domain.CustomUser;
 
 import lombok.extern.log4j.Log4j;
 
-//Spring SEcurity에서 사용자 인증 및 권한 부여를 위한 사용자 정의 서비스 구형
+//Spring Security에서 사용자 인증 및 권한 부여를 위한 사용자 정의 서비스 구형
 @Log4j
 public class CustomUserDetailsService implements UserDetailsService{
 	
@@ -23,12 +23,16 @@ public class CustomUserDetailsService implements UserDetailsService{
 	//여기서 username은 우리가 아는 userid
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		log.warn("Load User By UserName : "+username);
 		
 		//username => userid
 		UserVO vo = userMapper.getUserByUserId(username);
-		log.warn("queried by user mapper : "+vo);
-		return vo == null ? null : new CustomUser(vo);
+		log.warn("Load User By UserName : "+username);
+		
+		if(vo == null) {
+			log.warn("User not found");
+			throw new UsernameNotFoundException("User not found with username : "+username);
+		}
+		return new CustomUser(vo);
 	}
 	
 	

@@ -125,7 +125,7 @@
 			
 			function pwdCheck() {
 				if ($('#passwordCheck').val() == "") {
-					$('#checkMsg2').show();
+					/* $('#checkMsg2').show(); */
 					return false;
 				}
 				if ($('#password').val() !== $('#passwordCheck').val()) {
@@ -199,7 +199,6 @@
 				if ($("#userId").val() == "") {
 					alert("아이디를 입력해주세요.");
 					$("#userId").css('background-color', 'white');
-					;
 					$('#userId').focus();
 					return false;
 				}
@@ -229,7 +228,7 @@
 						}
 					},
 					error : function() {
-						alert("Error");
+						alert("서버요청실패");
 					}
 				});
 
@@ -268,7 +267,7 @@
 						}
 					},
 					error : function() {
-						alert("error");
+						alert("서버요청실패");
 					}
 				});
 
@@ -319,11 +318,11 @@
 					return false;
 				}
 				if ($("#passwordRuleChecked").val() != "ok"){
-					alert("회원가입 양식에 맞춰 기입해 주세요.");
+					alert("양식에 맞춰 기입해 주세요.");
 					return false;
 				}
 				if ($("#emailRuleChecked").val() != "ok"){
-					alert("회원가입 양식에 맞춰 기입해 주세요.");
+					alert("양식에 맞춰 기입해 주세요.");
 					return false;
 				}
 

@@ -86,16 +86,14 @@
 						"password" : loginForm.password.value
 					},
 					success : function(data) {
-						if (data.trim() === 'success') {//사용가능
-							alert("로그인 성공!");
+						if (data.trim() === 'success') {//로그인 성공
 							form.submit();
-						} else {//중복
-							alert("WRONG ACCESS");
+						} else {//아이디가 없거나,비밀번호가 틀림
 							return false;
 						}
 					},
 					error : function() {
-						alert("Error");
+						alert("서버요청실패");
 					}
 				});
 			}

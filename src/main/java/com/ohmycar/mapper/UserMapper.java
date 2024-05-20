@@ -11,10 +11,10 @@ public interface UserMapper {
 	public List<UserVO> getUserList();
 
 	// 회원가입 insert
-	public int joinUser(UserVO uservo);
+	public int joinUser(UserVO userVO);
 
 	// 회원가입 회원등급 insert
-	public int joinUserAuth(AuthVO authvo);
+	public int joinUserAuth(AuthVO authVO);
 
 	//회원가입시 아이디중복확인
 	public int joinIdCheck(String userId);
@@ -31,8 +31,9 @@ public interface UserMapper {
 	public UserVO getUserByEmail(String email);
 
 	// 회원정보 수정
-	public int updateUser(UserVO uservo);
+	public int updateUser(UserVO userVO);
 
 	// userId로 회원탈퇴
 	public int deleteUser(String userId);
+	public int deleteUserAuth(String userId);
 }

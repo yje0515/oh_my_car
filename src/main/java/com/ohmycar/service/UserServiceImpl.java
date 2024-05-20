@@ -10,63 +10,67 @@ import com.ohmycar.domain.UserVO;
 import com.ohmycar.mapper.UserMapper;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j;
 
 @Service
-@Log4j
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-	private final UserMapper mapper;
+
+	private final UserMapper userMapper;
 
 	private final PasswordEncoder passwordEncoder;
 
 	@Override
 	public List<UserVO> getUserList() {
-		return mapper.getUserList();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public int joinUser(UserVO userVO) {
-		return mapper.joinUser(userVO);
-	}
+	public void joinUser(UserVO userVO,AuthVO authVO) {
+		userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
+		userMapper.joinUser(userVO);
+		userMapper.joinUserAuth(authVO);
 
-	@Override
-	public int joinUserAuth(AuthVO authvo) {
-		return mapper.joinUserAuth(authvo);
-	}
-
-	@Override
-	public int userCheckByUserId(String userId, String password) {
-		int result = 0;
-		String pwd = mapper.userPasswordCheckByUserId(userId);// 아이디로 비밀번호 받아옴
-		boolean passwordCheck = passwordEncoder.matches(password, pwd);
-		if (passwordCheck) {
-			result = 1;
-		} else {
-			result = 0;
+		// 이용자의 권한이 Admin인 경우 Member의 권한도 가질 수 있음
+		if (authVO.getAuth().equals("ROLE_ADMIN")) {
+			AuthVO authAdmin = new AuthVO();
+			authAdmin.setUserId(authVO.getUserId());
+			authAdmin.setAuth("ROLE_MEMBER");
+			userMapper.joinUserAuth(authAdmin);
 		}
-		log.info("result <<<<<<<<<<<<<<" + result);
-		return result;
+	}
+
+
+	@Override
+	public int joinIdCheck(String userId) {
+		return userMapper.joinIdCheck(userId);
+	}
+
+	@Override
+	public String userPasswordCheckByUserId(String userId) {
+		return userMapper.userPasswordCheckByUserId(userId);
 	}
 
 	@Override
 	public UserVO getUserByUserId(String userId) {
-		return mapper.getUserByUserId(userId);
+		return userMapper.getUserByUserId(userId);
 	}
 
 	@Override
 	public UserVO getUserByEmail(String email) {
-		return mapper.getUserByEmail(email);
+		return userMapper.getUserByEmail(email);
 	}
 
 	@Override
 	public int updateUser(UserVO userVO) {
-		return mapper.updateUser(userVO);
+		userVO.setPassword(passwordEncoder.encode(userVO.getPassword()));
+		return userMapper.updateUser(userVO);
 	}
 
 	@Override
 	public int deleteUser(String userId) {
-		return mapper.deleteUser(userId);
+		userMapper.deleteUserAuth(userId);
+		return userMapper.deleteUser(userId);
 	}
 
 }

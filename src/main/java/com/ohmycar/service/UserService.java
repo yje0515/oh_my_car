@@ -6,21 +6,19 @@ import com.ohmycar.domain.AuthVO;
 import com.ohmycar.domain.UserVO;
 
 public interface UserService {
-	
+
 	// 회원목록 -관리자
 	public List<UserVO> getUserList();
 
-	// 회원가입 
-	public int joinUser(UserVO userVO);
+	// 회원가입 insert
+	public void joinUser(UserVO userVO,AuthVO authVO);
 
-	// 회원가입 
-	public int joinUserAuth(AuthVO authVO);
+	// 회원가입시 아이디중복확인
+	public int joinIdCheck(String userId);
 
 	// 아이디로 비밀번호 확인
-	public int userCheckByUserId(String userId,String password);
+	public String userPasswordCheckByUserId(String userId);
 
-	
-	
 	// userId로 회원정보 불러오기
 	public UserVO getUserByUserId(String userId);
 
