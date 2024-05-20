@@ -111,11 +111,8 @@ public class UserController {
 			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 			UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 			model.addAttribute("userVO", userVO);
-
 		}
-
 		log.info("mypage....");
-
 	}
 
 	// 비밀번호 확인 페이지로 이동
@@ -124,7 +121,7 @@ public class UserController {
 
 	}
 
-	// 비밀번호 확인 후 각각 페이지에 이동
+	//비밀번호 확인 후 각각 페이지로 Redirect
 	@PostMapping("/passwordCheck")
 	public String passwordCheckPost(String password, String action, RedirectAttributes rttr) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -139,8 +136,10 @@ public class UserController {
 		if (pwdChecked) {
 			log.info("correctPassword.....");
 			if ("edit".equals(action)) {
+				//회원정보수정
 				return "redirect:/user/userUpdate";
 			} else {
+				//회원탈퇴
 				return "redirect:/user/userDelete";
 			}
 		}
@@ -149,6 +148,7 @@ public class UserController {
 		log.info("wrongPassword.....");
 		rttr.addFlashAttribute("result", "wrongPassword");
 		if ("edit".equals(action)) {
+			//action값 가지고 비밀번호 재확인
 			return "redirect:/user/passwordCheck?action=edit";
 		} else {
 			return "redirect:/user/passwordCheck?action=remove";
@@ -177,7 +177,7 @@ public class UserController {
 		// 회원정보 수정시 alert
 		rttr.addFlashAttribute("result", "success");
 
-		return "redirect:/user/mypage";
+		return "redirect:/";
 	}
 
 	// 회원탈퇴페이지로 이동

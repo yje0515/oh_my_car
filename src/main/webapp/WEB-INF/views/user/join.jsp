@@ -9,6 +9,7 @@
 <!-- <script src="/resources/js/user/userCheck.js" type="text/javascript"></script> -->
 </head>
 <body>
+<jsp:include page="../includes/header.jsp"></jsp:include>
 	<div class="join">
 		<h1>회원가입</h1>
 		<p>*표시된 항목은 필수입력항목입니다.</p>

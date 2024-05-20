@@ -7,9 +7,7 @@
 <title>앗!차차로 간편한 자동차관리!</title>
 </head>
 <body>
-	<h1>Hello world!</h1>
-
-	<P>The time on the server is ${serverTime}.</P>
+	<h1>홈페이지</h1>
 	
 	<!-- 로그인된 상태->마이페이지 로그인되지않은 상태->로그인페이지 -->
 	<a href="/user/mypage">마이페이지</a>

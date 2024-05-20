@@ -10,6 +10,7 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 </head>
 <body>
+<jsp:include page="../includes/header.jsp"></jsp:include>
 	<h1>MYPAGE</h1>
 	<p>${userVO.userName }님</p>
 	<a href="/user/passwordCheck?action=edit">내 정보 수정</a>

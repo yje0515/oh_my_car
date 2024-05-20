@@ -9,6 +9,7 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 </head>
 <body>
+<jsp:include page="../includes/header.jsp"></jsp:include>
 	<h1>내 정보 수정</h1>
 	<form role="form" method="post" action="/user/userUpdate"
 		id="updateForm" name="frm">
@@ -26,7 +27,7 @@
 			<tr>
 				<td>비밀번호</td>
 				<td><input type="password" id="password" name="password"
-					placeholder="비밀번호"></td>
+					placeholder="비밀번호" autofocus></td>
 			</tr>
 			<tr>
 				<td colspan="3" class="updateRules" id="passwordRule">8~20자의 영문
@@ -65,7 +66,8 @@
 			</tr>
 
 		</table>
-
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 	</form>
 	<div class="checked">
 		<input type="hidden" class="ruleChecked" id="passwordRuleChecked"

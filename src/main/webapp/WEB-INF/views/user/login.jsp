@@ -28,9 +28,6 @@
 					<td><input name="remember-me" type="checkbox">로그인 유지하기</td>
 				</tr>
 				<tr>
-					<td><input name="rememberId" type="checkbox">아이디 저장</td>
-				</tr>
-				<tr>
 					<td><input type="submit" id="loginBtn" value="로그인"></td>
 				</tr>
 
@@ -44,8 +41,7 @@
 		
 		<p id="wrongAccess" style="color:red;font-size:12px">아이디 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.</p>
 		<a href="/user/join">회원가입</a>	
-		<a href="#">아이디찾기</a>	
-		<a href="#">비밀번호찾기</a>	
+
 
 	</div>
 

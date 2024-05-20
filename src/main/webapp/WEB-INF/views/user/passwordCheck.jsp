@@ -9,6 +9,7 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 </head>
 <body>
+<jsp:include page="../includes/header.jsp"></jsp:include>
 	<div class="passwordCheck">
 		<form action="/user/passwordCheck" method="post">
 			<table>
@@ -17,15 +18,18 @@
 				</tr>
 				<tr>
 					<td><input type="password" placeholder="비밀번호" id="password"
-						name="password"></td>
+						name="password" autofocus></td>
 				</tr>
 				<tr>
-					<td id="wrongPassword" style="font-size:12px;color: red; display: none;">회원정보와
+					<td id="wrongPassword"
+						style="font-size: 12px; color: red; display: none;">회원정보와
 						일치하지 않습니다.</td>
 				</tr>
 			</table>
 
-			<input type="hidden" name="action" value="${param.action }">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" /> <input type="hidden" name="action"
+				value="${param.action }">
 			<!-- <input type="hidden" name="passwordChecked" > -->
 			<button type="submit">확인</button>
 		</form>
