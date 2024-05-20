@@ -22,7 +22,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
 		// 사용자의 권한을 확인하고 이를 RoleNames 리스트에 추가
-		log.warn("Login Success");
+		log.warn("Login Success.....");
 		List<String> roleNames = new ArrayList<String>();
 
 		// authentication.getAuthorities() 메서드를 사용해서 사용자의 권한을 확인
@@ -44,8 +44,6 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		}
 		
 		response.sendRedirect("/");
-
-		/* response.sendRedirect("/user/main"); */
 
 	}
 

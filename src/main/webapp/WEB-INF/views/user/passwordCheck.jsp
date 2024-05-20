@@ -26,6 +26,7 @@
 			</table>
 
 			<input type="hidden" name="action" value="${param.action }">
+			<!-- <input type="hidden" name="passwordChecked" > -->
 			<button type="submit">확인</button>
 		</form>
 	</div>

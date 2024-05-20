@@ -189,16 +189,10 @@ public class UserController {
 	// 회원탈퇴
 	@PostMapping("/userDelete")
 	public String userDeleteGet(RedirectAttributes rttr) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication.getPrincipal() instanceof UserDetails) {
-			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-			String userId = userDetails.getUsername();
-			userService.deleteUser(userId);
-			log.info(userId + "님의 정보가 삭제되었습니다.");
-		}
-
-		// 회원정보 삭제시 alert
-		rttr.addFlashAttribute("result", "deleteSuccess");
+		
+		
+		//회원탈퇴 구현 SecurityContextHolder.clearContext();
+		
 		return "redirect:/";
 	}
 

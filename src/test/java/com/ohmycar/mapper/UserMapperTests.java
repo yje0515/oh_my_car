@@ -116,10 +116,13 @@ public class UserMapperTests {
 	
 	@Test
 	public void testDelete() {
-		String userId = "admin";
-		userMapper.deleteUserAuth(userId);
-		userMapper.deleteUser(userId);
+		String userId = "admin1";
+		log.info("삭제할 회원 아이디 : "+userId);
+		if(userMapper.deleteUserAuth(userId)==1) {
+			userMapper.deleteUser(userId);
 		log.info(userId+"님 탈퇴완료.");
+		}
+		log.info("탈퇴 실패");
 		
 	}
 }
