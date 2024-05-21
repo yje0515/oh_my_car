@@ -132,6 +132,8 @@ public class UserController {
 		// 비밀번호가 맞으면
 		if (pwdChecked) {
 			log.info("correctPassword.....");
+			//비밀번호 확인 후 접근 가능
+			rttr.addFlashAttribute("passwordChecked", "ok");
 			if ("edit".equals(action)) {
 				// 회원정보수정
 				return "redirect:/user/userUpdate";
@@ -142,6 +144,8 @@ public class UserController {
 		}
 
 		// 비밀번호가 틀리면
+		//비밀번호 확인 후 접근 가능
+		rttr.addFlashAttribute("passwordChecked", "notYet");
 		log.info("wrongPassword.....");
 		rttr.addFlashAttribute("result", "wrongPassword");
 		if ("edit".equals(action)) {

@@ -12,7 +12,7 @@
 <title>내 정보 수정</title>
 </head>
 <body>
-<jsp:include page="../includes/header.jsp"></jsp:include>
+	<jsp:include page="../includes/header.jsp"></jsp:include>
 	<h1>내 정보 수정</h1>
 	<form role="form" method="post" action="/user/userUpdate"
 		id="updateForm" name="frm">
@@ -146,7 +146,7 @@
 									alert("비밀번호가 일치하지 않습니다.");
 									return false;
 								}
-								if($("#passwordRuleChecked").val() !="ok"){
+								if ($("#passwordRuleChecked").val() != "ok") {
 									alert("양식에 맞춰 기입해 주세요.");
 									return false;
 								}
@@ -154,6 +154,11 @@
 								return true;
 							}
 
+							if(${passwordChecked != 'ok'}){
+								history.back();
+								alert("비밀번호 확인 후 접근가능합니다.");
+								
+							}
 						});
 	</script>
 </body>

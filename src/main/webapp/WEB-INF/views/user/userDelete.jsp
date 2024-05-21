@@ -27,6 +27,11 @@
 				}
 
 			})
+			if(${passwordChecked != 'ok'}){
+				history.back();
+				alert("비밀번호 확인 후 접근가능합니다.");
+				
+			}
 
 		});
 	</script>
