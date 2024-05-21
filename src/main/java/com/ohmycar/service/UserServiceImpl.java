@@ -42,8 +42,13 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public int joinIdCheck(String userId) {
+	public String joinIdCheck(String userId) {
 		return userMapper.joinIdCheck(userId);
+	}
+	
+	@Override
+	public String joinEmailCheck(String email) {
+		return userMapper.joinEmailCheck(email);
 	}
 
 	@Override
@@ -68,9 +73,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int deleteUser(String userId) {
-		userMapper.deleteUserAuth(userId);
-		return userMapper.deleteUser(userId);
+	public void deleteUser(String userId) {
+		userMapper.deletePersistentLogins(userId); //자동로그인정보삭제
+		userMapper.deleteUserAuth(userId);//자식테이블(fk) 먼저 삭제
+		userMapper.deleteUser(userId);//부모테이블(pk)나중에 삭제
 	}
 
 }

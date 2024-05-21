@@ -17,7 +17,9 @@ public interface UserMapper {
 	public int joinUserAuth(AuthVO authVO);
 
 	//회원가입시 아이디중복확인
-	public int joinIdCheck(String userId);
+	public String joinIdCheck(String userId);
+	//회원가입시 이메일중복확인
+	public String joinEmailCheck(String email);
 
 	//아이디로 비밀번호 확인
 	public String userPasswordCheckByUserId(String userId);
@@ -36,4 +38,7 @@ public interface UserMapper {
 	// userId로 회원탈퇴
 	public int deleteUser(String userId);
 	public int deleteUserAuth(String userId);
+	//로그인유지테이블 username=userid
+	public int deletePersistentLogins(String username);
+	
 }

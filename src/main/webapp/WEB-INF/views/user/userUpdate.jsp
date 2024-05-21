@@ -5,8 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>내 정보 수정</title>
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
+
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+<title>내 정보 수정</title>
 </head>
 <body>
 <jsp:include page="../includes/header.jsp"></jsp:include>
@@ -141,6 +144,10 @@
 								if ($('#password').val() !== $('#passwordCheck')
 										.val()) {
 									alert("비밀번호가 일치하지 않습니다.");
+									return false;
+								}
+								if($("#passwordRuleChecked").val() !="ok"){
+									alert("양식에 맞춰 기입해 주세요.");
 									return false;
 								}
 

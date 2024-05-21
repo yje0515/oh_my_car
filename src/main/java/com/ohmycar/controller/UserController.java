@@ -56,14 +56,11 @@ public class UserController {
 	@RequestMapping("/idDupCheck")
 	@ResponseBody
 	public String idCheckPost(@RequestParam("userId") String userId) {
-		String result = "";
-		if (userService.getUserByUserId(userId) != null) {
-			result = "fail";
+		if (userService.joinIdCheck(userId) != null) {
+			return "fail";
 		} else {
-			result = "success";
+			return "success";
 		}
-		return result;
-
 	}
 
 	// 회원가입시 이메일 중복확인
@@ -71,7 +68,7 @@ public class UserController {
 	@ResponseBody
 	public String emailCheckPost(@RequestParam("email") String email) {
 		String result = "";
-		if (userService.getUserByEmail(email) != null) {
+		if (userService.joinEmailCheck(email) != null) {
 			result = "fail";
 		} else {
 			result = "success";
@@ -121,7 +118,7 @@ public class UserController {
 
 	}
 
-	//비밀번호 확인 후 각각 페이지로 Redirect
+	// 비밀번호 확인 후 각각 페이지로 Redirect
 	@PostMapping("/passwordCheck")
 	public String passwordCheckPost(String password, String action, RedirectAttributes rttr) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -136,10 +133,10 @@ public class UserController {
 		if (pwdChecked) {
 			log.info("correctPassword.....");
 			if ("edit".equals(action)) {
-				//회원정보수정
+				// 회원정보수정
 				return "redirect:/user/userUpdate";
 			} else {
-				//회원탈퇴
+				// 회원탈퇴
 				return "redirect:/user/userDelete";
 			}
 		}
@@ -148,7 +145,7 @@ public class UserController {
 		log.info("wrongPassword.....");
 		rttr.addFlashAttribute("result", "wrongPassword");
 		if ("edit".equals(action)) {
-			//action값 가지고 비밀번호 재확인
+			// action값 가지고 비밀번호 재확인
 			return "redirect:/user/passwordCheck?action=edit";
 		} else {
 			return "redirect:/user/passwordCheck?action=remove";
@@ -189,10 +186,15 @@ public class UserController {
 	// 회원탈퇴
 	@PostMapping("/userDelete")
 	public String userDeleteGet(RedirectAttributes rttr) {
-		
-		
-		//회원탈퇴 구현 SecurityContextHolder.clearContext();
-		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userId = authentication.getName();
+		userService.deleteUser(userId);
+
+		// 로그아웃처리
+		SecurityContextHolder.clearContext();
+
+		rttr.addFlashAttribute("result", "deleteSuccess");
+
 		return "redirect:/";
 	}
 

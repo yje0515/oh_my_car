@@ -9,8 +9,9 @@
 </head>
 <body>
 
-<jsp:include page="../includes/header.jsp"></jsp:include>
-	<form name="deleteForm" action="/user/userDelete" method="post">
+	<jsp:include page="../includes/header.jsp"></jsp:include>
+	<form id="deleteForm" name="deleteForm" action="/user/userDelete"
+		method="post">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
 		<button type="button" id="deleteBtn">회원탈퇴</button>
@@ -20,12 +21,10 @@
 			$("#deleteBtn").on('click', function() {
 				var result = confirm("정말 탈퇴하시겠습니까?");
 				if (result) {
-					document.deleteForm.action = "/user/userDelete";
+					$("#deleteForm").submit();
 				} else {
-					document.deleteForm.action = "/user/mypage";
+					$("#deleteForm").attr("action", "/user/mypage").attr("method","get").submit();
 				}
-				f
-				document.deleteForm.submit();
 
 			})
 

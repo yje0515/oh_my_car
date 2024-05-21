@@ -5,6 +5,8 @@
 <head>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <meta charset="UTF-8">
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
 <title>로그인</title>
 </head>
 <body>
@@ -17,12 +19,12 @@
 			name="loginForm">
 			<table>
 				<tr>
-					<td><input type="text" id="userId"  placeholder="아이디"
+					<td><input type="text" id="userId" placeholder="아이디"
 						name="username" autofocus></td>
 				</tr>
 				<tr>
-					<td><input  type="password"id="password" class="loginInput" placeholder="비밀번호"
-						name="password"></td>
+					<td><input type="password" id="password" class="loginInput"
+						placeholder="비밀번호" name="password"></td>
 				</tr>
 				<tr>
 					<td><input name="remember-me" type="checkbox">로그인 유지하기</td>
@@ -38,9 +40,11 @@
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
 		</form>
-		
-		<p id="wrongAccess" style="color:red;font-size:12px">아이디 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.</p>
-		<a href="/user/join">회원가입</a>	
+
+		<p id="wrongAccess" style="color: red; font-size: 12px">
+			아이디 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.
+		</p>
+		<a href="/user/join">회원가입</a>
 
 
 	</div>
@@ -59,8 +63,12 @@
 				return false;
 			}
 			
-			function loginCheck() {
+			function loginCheck(token,header) {
 				var form = document.loginForm;
+				var token = $("meta[name='_csrf']").attr(
+				"content");
+				var header = $("meta[name='_csrf_header']")
+				.attr("content");
 
 				if ($('#userId').val() == "") {
 					alert("아이디를 입력 해 주세요.");
@@ -81,6 +89,9 @@
 						"userId" : loginForm.userId.value,
 						"password" : loginForm.password.value
 					},
+					beforeSend : function(xhr) {
+						xhr.setRequestHeader(header, token);
+					},
 					success : function(data) {
 						if (data.trim() === 'success') {//로그인 성공
 							form.submit();
@@ -88,7 +99,7 @@
 							return false;
 						}
 					},
-					error : function() {
+					error : function(xhr,status,error) {
 						alert("서버요청실패");
 					}
 				});

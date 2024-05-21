@@ -14,7 +14,10 @@ public interface UserService {
 	public void joinUser(UserVO userVO,AuthVO authVO);
 
 	// 회원가입시 아이디중복확인
-	public int joinIdCheck(String userId);
+	public String joinIdCheck(String userId);
+	
+	// 회원가입시 이메일중복확인
+	public String joinEmailCheck(String email);
 
 	// 아이디로 비밀번호 확인
 	public String userPasswordCheckByUserId(String userId);
@@ -29,5 +32,5 @@ public interface UserService {
 	public int updateUser(UserVO userVO);
 
 	// userId로 회원탈퇴
-	public int deleteUser(String userId);
+	public void deleteUser(String userId);
 }

@@ -37,5 +37,13 @@
 	<sec:authorize access="isAnonymous()"> 
 	<a href="/user/join">회원가입</a>
 	</sec:authorize>
+	<script>
+		(document).ready(function(){
+			if(${result eq "deleteSuccess"}){
+				alert("회원탈퇴가 성공적으로 처리되었습니다. 감사합니다.");
+			
+			}
+		});
+	</script>
 </body>
 </html>

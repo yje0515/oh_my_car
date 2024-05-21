@@ -25,6 +25,16 @@
 		ON us.userid=auth.userid
 
 	</select>
+	
+	<!-- 회원가입시 아이디 중복확인 -->
+	<select id="joinIdCheck">
+		SELECT userid FROM user_tbl WHERE userid = #{userId}
+	</select>
+	
+	<!-- 회원가입시 이메일 중복확인 -->
+	<select id="joinEmailCheck">
+		SELECT email FROM user_tbl WHERE email = #{email}
+	</select>
 
 	<!-- 회원가입 -->
 	<insert id="joinUser" parameterType="com.ohmycar.domain.UserVO">
@@ -54,6 +64,8 @@
 		WHERE us.userid = #{userId}
 	</select>
 	
+
+	
 	<select id="getUserByEmail" resultMap="userMap">
 		SELECT
 		us.userid,username,password,email,nickname,enabled,auth.auth
@@ -72,10 +84,14 @@
 		userId=#{userId}
 	</update>
 
+	<!-- pk키 deleteUser  fk키 deleteUserAuth deletePersistentLogins를 먼저 삭제해야함 -->
 	<delete id="deleteUser">
 		DELETE FROM user_tbl WHERE userid=#{userId}
 	</delete>
 	<delete id="deleteUserAuth">
 		DELETE FROM user_auth_tbl WHERE userid=#{userId}
+	</delete>
+	<delete id="deletePersistentLogins">
+		DELETE FROM persistent_logins WHERE username=#{userId}
 	</delete>
 </mapper>
