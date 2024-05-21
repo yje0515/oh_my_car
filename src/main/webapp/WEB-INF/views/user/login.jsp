@@ -5,8 +5,6 @@
 <head>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <meta charset="UTF-8">
-<meta name="_csrf" content="${_csrf.token}" />
-<meta name="_csrf_header" content="${_csrf.headerName}" />
 <title>로그인</title>
 </head>
 <body>
@@ -96,7 +94,7 @@
 						if (data.trim() === 'success') {//로그인 성공
 							form.submit();
 						} else {//아이디가 없거나,비밀번호가 틀림
-							return false;
+							 $("#wrongAccess").show();
 						}
 					},
 					error : function(xhr,status,error) {

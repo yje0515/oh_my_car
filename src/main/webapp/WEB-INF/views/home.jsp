@@ -4,6 +4,7 @@
 	prefix="sec"%>
 <html>
 <head>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <title>앗!차차로 간편한 자동차관리!</title>
 </head>
 <body>
@@ -38,8 +39,8 @@
 	<a href="/user/join">회원가입</a>
 	</sec:authorize>
 	<script>
-		(document).ready(function(){
-			if(${result eq "deleteSuccess"}){
+		$(document).ready(function(){
+			if(${result eq 'deleteSuccess'}){
 				alert("회원탈퇴가 성공적으로 처리되었습니다. 감사합니다.");
 			
 			}
