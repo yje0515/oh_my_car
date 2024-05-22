@@ -21,7 +21,7 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/user/*")
 @RequiredArgsConstructor
 @Log4j
-public class UserController {
+public class CarController {
 
 	private final CarService carService;
 
