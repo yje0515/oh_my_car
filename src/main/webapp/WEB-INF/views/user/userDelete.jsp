@@ -10,12 +10,17 @@
 <body>
 
 	<jsp:include page="../includes/header.jsp"></jsp:include>
-	<form id="deleteForm" name="deleteForm" action="/user/userDelete"
-		method="post">
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
-		<button type="button" id="deleteBtn">회원탈퇴</button>
-	</form>
+
+	<div id="userDeleteWrap">
+		<form id="deleteForm" name="deleteForm" action="/user/userDelete"
+			method="post">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+			<button type="button" id="deleteBtn">회원탈퇴</button>
+		</form>
+	</div>
+	
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
 	<script>
 		$(document).ready(function() {
 			$("#deleteBtn").on('click', function() {

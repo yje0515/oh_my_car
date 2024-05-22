@@ -9,8 +9,8 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-<jsp:include page="../includes/header.jsp"></jsp:include>
-	<div class="passwordCheck">
+	<jsp:include page="../includes/header.jsp"></jsp:include>
+	<div id="passwordCheckWrap">
 		<form action="/user/passwordCheck" method="post">
 			<table>
 				<tr>
@@ -34,6 +34,7 @@
 			<button type="submit">확인</button>
 		</form>
 	</div>
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
 	<script>
     $(document).ready(function(){
     	$("#wrongPassword").hide();

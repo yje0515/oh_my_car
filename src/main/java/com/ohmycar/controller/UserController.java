@@ -49,6 +49,10 @@ public class UserController {
 	@GetMapping("/admin")
 	public void adminGet(Model model) {
 		log.info("admin.....");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute("userVO",userVO);
 
 	}
 
