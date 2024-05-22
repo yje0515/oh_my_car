@@ -4,7 +4,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.ohmycar.domain.AuthVO;
+import com.ohmycar.domain.UserVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -21,19 +25,20 @@ public class CommonController {
 	
 	//로그인
 	@GetMapping("/user/login")
-	public void loginGet(String error,String logout,Model model,RedirectAttributes rttr) {
+	public void loginGet(String error,String logout,Model model) {
 		log.info("error>>>>>>>>>>>>"+error);
 		log.info("logout>>>>>>>>>>>>"+logout);
 		
 		if(error !=null) {
-			rttr.addFlashAttribute("error","error");
+			model.addAttribute("error","error");
 		}
 		
 		if(logout !=null) {
-			rttr.addFlashAttribute("logout","logout");
+			model.addAttribute("logout","logout");
 		}
 		
 	}
+	
 	
 	@GetMapping("/user/logout")
 	public void logoutGet() {

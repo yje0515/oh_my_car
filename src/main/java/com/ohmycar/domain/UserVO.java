@@ -6,11 +6,11 @@ import lombok.Data;
 
 @Data
 public class UserVO {
- private String userid;
- private String username;
+ private String userId;
+ private String userName;
  private String password;
  private String email;
- private String nickname;
+ private String nickName;
  private boolean enabled;
  private List<AuthVO> authList;
 }

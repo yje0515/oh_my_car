@@ -23,15 +23,20 @@
 
 	<!-- Spring Security HTTP 요청 설정 -->
 	<security:http>
+
 		<!-- 모든 사용자가 접근 가능한 URL -->
 		<security:intercept-url pattern="/"
 			access="permitAll()" />
 
-		<!-- 로그인된 회원만 접근 가능한 URL -->
+		<!-- 인증된 사용자 모두 접근 가능한 URL -->
 		<security:intercept-url pattern="/user/mypage"
-			access="hasRole('ROLE_MEMBER')" />
+			access="isAuthenticated()" />
+			
+		<!-- 인증된 사용자 모두 접근 가능한 URL -->
+		<security:intercept-url pattern="/user/userUpdate"
+			access="isAuthenticated()" />
 
-		<!-- 관리자만 접근 가능한 URL -->
+		<!-- 관리자권한을 사진 사용자만 접근 가능한 URL -->
 		<security:intercept-url pattern="/user/admin"
 			access="hasRole('ROLE_ADMIN')" />
 
@@ -51,12 +56,16 @@
 			authentication-success-handler-ref="customLoginSuccess" />
 
 		<!-- 로그아웃 관련 설정 사용자가 로그아웃을 요청할 때 호출되는 URL을 지정 세션의 무효화 -->
+		<!-- 로그아웃시 자동로그인 체크하고 저장되는 쿠키 삭제 -->
 		<security:logout logout-url="/logout"
-			invalidate-session="true" />
+			invalidate-session="true" delete-cookies="remember-me,JSESSION_ID" />
 
 		<!-- Csrf 토큰 비활성화 true -->
 		<security:csrf disabled="true" />
 
+		<security:remember-me
+			data-source-ref="dataSource" token-validity-seconds="604800" />
+			
 	</security:http>
 
 	<!-- Spring Security 인증 관리자 설정 -->
