@@ -23,17 +23,17 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			Authentication authentication) throws IOException, ServletException {
 		// 사용자의 권한을 확인하고 이를 RoleNames 리스트에 추가
 		log.warn("Login Success.....");
-		List<String> roleNames = new ArrayList<String>();
+		List<String> roleNames = new ArrayList<>();
 
 		// authentication.getAuthorities() 메서드를 사용해서 사용자의 권한을 확인
 		authentication.getAuthorities().forEach(authority -> roleNames.add(authority.getAuthority()));
-		
+
 		log.warn("ROLE NAMES : " + roleNames);
 
 		// ROLE_ADMIN과 ROLE_MEMBER권한을 가진 사용자를 구분
 		// 사용자 권한을 가져오는 메소드로 List roleNames에 해당 사용자 권한을 담고, 그에 따라 정해진 페이지로
 		// redirect한다.
-		
+
 		if (roleNames.contains("ROLE_ADMIN")) {
 			response.sendRedirect("/");
 			return;
@@ -42,7 +42,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 			response.sendRedirect("/");
 			return;
 		}
-		
+
 		response.sendRedirect("/");
 
 	}

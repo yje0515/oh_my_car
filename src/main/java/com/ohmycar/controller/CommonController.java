@@ -16,31 +16,26 @@ public class CommonController {
 		log.info("access Denied : " + auth);
 		model.addAttribute("msg", "Access Denied");
 	}
-	
-	
-	//로그인
+
+	// 로그인
 	@GetMapping("/user/login")
-	public void loginGet(String error,String logout,Model model) {
-		
-		
-		log.info("error>>>>>>>>>>>>"+error);
-		log.info("logout>>>>>>>>>>>>"+logout);
-		
-		if(error !=null) {
-			model.addAttribute("error","error");
+	public void loginGet(String error, String logout, Model model) {
+
+		log.info("error>>>>>>>>>>>>" + error);
+		log.info("logout>>>>>>>>>>>>" + logout);
+
+		if (error != null) {
+			model.addAttribute("error", "error");
 		}
-		
-		if(logout !=null) {
-			model.addAttribute("logout","logout");
+
+		if (logout != null) {
+			model.addAttribute("logout", "logout");
 		}
-		
+
 	}
-	
-	
+
 	@GetMapping("/user/logout")
 	public void logoutGet() {
 		log.info("logout....");
 	}
 }
-
-
