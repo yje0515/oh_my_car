@@ -9,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ohmycar.domain.AuthVO;
@@ -29,6 +27,8 @@ public class UserController {
 	private final UserService userService;
 
 	private final PasswordEncoder passwordEncoder;
+
+	private static String resultString = "result";
 
 	// 회원가입페이지로 이동
 	/**
@@ -59,54 +59,6 @@ public class UserController {
 	public void adminGet(Model model) {
 		log.info("admin.....");
 
-	}
-
-	// 회원가입시 아이디 중복확인
-	@RequestMapping("/idDupCheck")
-	@ResponseBody
-	public String idCheckPost(@RequestParam("userId") String userId) {
-		if (userService.joinIdCheck(userId) != null) {
-			return "fail";
-		} else {
-			return "success";
-		}
-	}
-
-	// 회원가입시 이메일 중복확인
-	@RequestMapping("/emailDupCheck")
-	@ResponseBody
-	public String emailCheckPost(@RequestParam("email") String email) {
-		String result = "";
-		if (userService.joinEmailCheck(email) != null) {
-			result = "fail";
-		} else {
-			result = "success";
-		}
-		return result;
-	}
-
-	// 로그인 ajax로 회원존재여부 확인...
-	@RequestMapping("/loginCheck")
-	@ResponseBody
-	public String loginCheckPost(@RequestParam("userId") String userId, @RequestParam("password") String password) {
-		String result = "";
-
-		UserVO userVO = userService.getUserByUserId(userId);
-		if (userVO == null) {
-			log.info("User not found");
-			return "fail";
-		}
-
-		// userVO가 null이 아닌 경우(id가 존재하는 경우)
-		boolean pwdCheck = passwordEncoder.matches(password, userVO.getPassword());
-		if (pwdCheck) {
-			result = "success";
-		} else {
-			result = "fail";
-		}
-		log.info("Login " + result + ".....");
-
-		return result;
 	}
 
 	// 마이페이지로 이동
@@ -155,7 +107,7 @@ public class UserController {
 		// 비밀번호 확인 후 접근 가능
 		rttr.addFlashAttribute("passwordChecked", "notYet");
 		log.info("wrongPassword.....");
-		rttr.addFlashAttribute("result", "wrongPassword");
+		rttr.addFlashAttribute(resultString, "wrongPassword");
 		if ("edit".equals(action)) {
 			// action값 가지고 비밀번호 재확인
 			return "redirect:/user/passwordCheck?action=edit";
@@ -184,7 +136,7 @@ public class UserController {
 		userService.updateUser(userVO);
 
 		// 회원정보 수정시 alert
-		rttr.addFlashAttribute("result", "success");
+		rttr.addFlashAttribute(resultString, "success");
 
 		return "redirect:/";
 	}
@@ -205,7 +157,7 @@ public class UserController {
 		// 로그아웃처리
 		SecurityContextHolder.clearContext();
 
-		rttr.addFlashAttribute("result", "deleteSuccess");
+		rttr.addFlashAttribute(resultString, "deleteSuccess");
 
 		return "redirect:/";
 	}
