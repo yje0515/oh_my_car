@@ -14,7 +14,11 @@
 	<h1>MYPAGE</h1>
 	<p>${userVO.userName }님</p>
 	<a href="/user/passwordCheck?action=edit">내 정보 수정</a>
-	
+	<a href="${pageContext.request.contextPath}/user/register">차량 등록</a>
+	<!-- 차량 등록 링크 추가 -->
+	<!-- 차량 정보 수정 페이지로 이동하는 링크 추가 -->
+	<a href="${pageContext.request.contextPath}/user/carUpdate">차량 정보
+		수정</a>
 	<!-- Post형식으로 처리되는 로그아웃 Spring Security내부에서 동작 -->
 	<form action="/logout" method='post'>
 		<input type="hidden" name="${_csrf.parameterName}"
@@ -29,5 +33,9 @@
 
 	차량등록
 	<a href="/user/passwordCheck?action=delete">회원 탈퇴</a>
+
+	<button
+		onclick="location.href='${pageContext.request.contextPath}/board'">게시글 작성하기
+		</button>
 </body>
 </html>
