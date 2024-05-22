@@ -60,8 +60,8 @@ public class UserController {
 	public void showRegisterPage(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) auth.getPrincipal();
-		UserVO userVO = userMapper.getUserByUserId(userDetails.getUsername());
-		model.addAttribute("userVO", userVO); // ${userVO.userId}
+		CarVO carVO = carService.getCarByUserId(userDetails.getUsername());
+		model.addAttribute("carVO", carVO); // ${userVO.userId}
 	}
 
 	@PostMapping("/register")
