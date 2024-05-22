@@ -40,7 +40,6 @@ public class UserController {
 	// 회원가입 로그인 sns간편로그인 간편회원가입 현대api 스프링이메일인증번호 api Spring Security csrf토큰
 	// 비밀번호찾기
 
-	private final UserMapper userMapper;
 	private final PasswordEncoder passwordEncoder;
 
 	@Autowired

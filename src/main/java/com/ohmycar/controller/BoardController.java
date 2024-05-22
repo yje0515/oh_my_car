@@ -31,15 +31,4 @@ public class BoardController {
 		return "redirect:/user/mypage";
 	}
 
-//	@GetMapping("/list")
-//	public String showBoardList(Model model) {
-//		// 게시글 목록을 서비스로부터 가져옴
-//		List<BoardVO> boardList = boardService.getAllPosts();
-//
-//		// 모델에 게시글 목록을 담아서 view에 전달
-//		model.addAttribute("boardList", boardList);
-//
-//		// list.jsp를 반환
-//		return "list";
-//	}
 }

@@ -21,11 +21,4 @@
 		VALUES (seq_board.nextval, #{title}, #{content}, #{writer})
 	</insert>
 
-	<!-- 기타 필요한 쿼리들 -->
-	<!-- BoardVO 클래스의 별칭 설정 -->
-	<!-- <typeAlias type="com.ohmycar.domain.BoardVO" alias="BoardVO" /> -->
-
-	<!-- <update id="updatePost" parameterType="BoardVO"> UPDATE tbl_board SET 
-		title = #{title}, content = #{content}, writer = #{writer}, updateDate = 
-		SYSDATE WHERE bno = #{bno} </update> -->
 </mapper>
