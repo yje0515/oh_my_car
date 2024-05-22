@@ -11,5 +11,5 @@ public interface CarMapper {
 
 	public void updateCar(CarVO carVO);
 	
-	public void registerCar(CarVO carVO);
+	public int registerCar(CarVO carVO);
 }

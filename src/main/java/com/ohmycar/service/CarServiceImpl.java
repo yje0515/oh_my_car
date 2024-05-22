@@ -22,7 +22,7 @@ public class CarServiceImpl implements CarService {
     }
     
     @Override
-    public void registerCar(CarVO carVO) {
-    	carMapper.registerCar(carVO);
+    public boolean registerCar(CarVO carVO) {
+    	return carMapper.registerCar(carVO) > 0;
     }
 }

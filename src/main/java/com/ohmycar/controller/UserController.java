@@ -62,33 +62,33 @@ public class UserController {
 	}
 
 	@PostMapping("/register")
-    public String handleCarRegistration(HttpServletRequest request, RedirectAttributes redirectAttributes) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) auth.getPrincipal();
-        String username = userDetails.getUsername();
+	public String handleCarRegistration(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) auth.getPrincipal();
+		String username = userDetails.getUsername();
 
-        String carId = request.getParameter("carId");
-        String carSellName = request.getParameter("carSellName");
-        String carName = request.getParameter("carName");
-        String carType = request.getParameter("carType");
+		String carId = request.getParameter("carId");
+		String carSellName = request.getParameter("carSellName");
+		String carName = request.getParameter("carName");
+		String carType = request.getParameter("carType");
 
-        CarVO carVO = new CarVO();
-        carVO.setUserId(username);
-        carVO.setCarId(carId);
-        carVO.setCarSellName(carSellName);
-        carVO.setCarName(carName);
-        carVO.setCarType(carType);
+		CarVO carVO = new CarVO();
+		carVO.setUserId(username);
+		carVO.setCarId(carId);
+		carVO.setCarSellName(carSellName);
+		carVO.setCarName(carName);
+		carVO.setCarType(carType);
 
-        try {
-            carService.registerCar(carVO);
-            redirectAttributes.addFlashAttribute("successMessage", "자동차가 성공적으로 등록되었습니다.");
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "자동차 등록 중 오류가 발생했습니다.");
-        }
+		boolean isSuccess = carService.registerCar(carVO);
+		if (isSuccess) {
+			redirectAttributes.addFlashAttribute("successMessage", "자동차가 성공적으로 등록되었습니다.");
+		} else {
+			redirectAttributes.addFlashAttribute("errorMessage", "자동차 등록 중 오류가 발생했습니다.");
+		}
 
-        return "redirect:/user/mypage";
-    }
-
+		return "redirect:/user/mypage";
+	}
+	
 	@GetMapping("/carUpdate") // 자동차 차종 변경기능
 	public String carUpdateGet(HttpServletRequest request, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

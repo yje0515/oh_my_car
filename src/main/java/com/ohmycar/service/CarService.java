@@ -8,5 +8,5 @@ public interface CarService {
 
 	CarVO getCarByUserId(String userId);
 
-	void registerCar(CarVO carVO);
+	boolean registerCar(CarVO carVO);
 }
