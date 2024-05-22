@@ -1,13 +1,5 @@
 package com.ohmycar.controller;
 
-import org.springframework.stereotype.Controller;
-
-import lombok.extern.log4j.Log4j;
-import org.springframework.web.bind.annotation.GetMapping;
-
-
-package com.ohmycar.controller;
-
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,7 +39,7 @@ public class UserController {
 	public void getMethodName() {
 		log.info("......................................");
 	}
-	
+
 	@GetMapping("/join")
 	public void joinGet() {
 		log.info("join.....");
@@ -132,14 +124,13 @@ public class UserController {
 	// 비밀번호 확인 페이지로 이동
 	@GetMapping("/passwordCheck")
 	public void passwordCheckGet() {
-
+		log.info("passwordCheckGet");
 	}
 
 	// 비밀번호 확인 후 각각 페이지로 Redirect
 	@PostMapping("/passwordCheck")
 	public String passwordCheckPost(String password, String action, RedirectAttributes rttr) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		/* if (authentication.getPrincipal() instanceof UserDetails) { */
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		// 비밀번호 확인
@@ -149,7 +140,7 @@ public class UserController {
 		// 비밀번호가 맞으면
 		if (pwdChecked) {
 			log.info("correctPassword.....");
-			//비밀번호 확인 후 접근 가능
+			// 비밀번호 확인 후 접근 가능
 			rttr.addFlashAttribute("passwordChecked", "ok");
 			if ("edit".equals(action)) {
 				// 회원정보수정
@@ -161,7 +152,7 @@ public class UserController {
 		}
 
 		// 비밀번호가 틀리면
-		//비밀번호 확인 후 접근 가능
+		// 비밀번호 확인 후 접근 가능
 		rttr.addFlashAttribute("passwordChecked", "notYet");
 		log.info("wrongPassword.....");
 		rttr.addFlashAttribute("result", "wrongPassword");
