@@ -10,4 +10,6 @@ public interface CarMapper {
 	public CarVO getCarByUserId(String userId);
 
 	public void updateCar(CarVO carVO);
+	
+	public void registerCar(CarVO carVO);
 }

@@ -7,4 +7,6 @@ public interface CarService {
 	void updateCar(CarVO carVO);
 
 	CarVO getCarByUserId(String userId);
+
+	void registerCar(CarVO carVO);
 }

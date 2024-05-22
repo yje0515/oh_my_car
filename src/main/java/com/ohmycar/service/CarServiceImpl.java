@@ -20,4 +20,9 @@ public class CarServiceImpl implements CarService {
     public void updateCar(CarVO carVO) {
         carMapper.updateCar(carVO);
     }
+    
+    @Override
+    public void registerCar(CarVO carVO) {
+    	carMapper.registerCar(carVO);
+    }
 }

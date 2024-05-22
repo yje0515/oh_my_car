@@ -9,16 +9,21 @@
 		SELECT * FROM car_tbl WHERE userid = #{userId}
 	</select>
 
-
-
+	<insert id="registerCar"
+		parameterType="com.ohmycar.domain.CarVO">
+		INSERT INTO car_tbl (userId, carId, carSellName, carName, carType)
+		VALUES (#{userId}, #{carId}, #{carSellName}, #{carName}, #{carType})
+	</insert>
 
 	<update id="updateCar" parameterType="com.ohmycar.domain.CarVO">
 		UPDATE car_tbl
 		SET
-		carid = #{carId},
+		carid =
+		#{carId},
 		carsellname = #{carSellName},
 		carname = #{carName},
-		cartype = #{carType}
+		cartype =
+		#{carType}
 		WHERE userid= #{userId}
 	</update>
 
