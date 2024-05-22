@@ -1,33 +1,19 @@
 package com.ohmycar.controller;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ohmycar.domain.AuthVO;
 import com.ohmycar.domain.CarVO;
-import com.ohmycar.domain.UserVO;
-import com.ohmycar.mapper.UserMapper;
 import com.ohmycar.service.CarService;
-import com.ohmycar.service.UserService;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -36,21 +22,8 @@ import lombok.extern.log4j.Log4j;
 @RequiredArgsConstructor
 @Log4j
 public class UserController {
-	// 회원가입 로그인 sns간편로그인 간편회원가입 현대api 스프링이메일인증번호 api Spring Security csrf토큰
-	// 비밀번호찾기
 
-	private final PasswordEncoder passwordEncoder;
-
-	@Autowired
-	private UserService userService;
-
-	@Autowired
-	private CarService carService;
-
-	// JDBC 연결을 위한 DB 정보
-	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
-	private static final String USER = "oh_my_car";
-	private static final String PASSWORD = "1234";
+	private final CarService carService;
 
 	// Register 페이지에 대한 GET 요청을 처리하는 메서드 추가 차량추가 기능
 	@GetMapping("/register")
@@ -58,7 +31,7 @@ public class UserController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) auth.getPrincipal();
 		CarVO carVO = carService.getCarByUserId(userDetails.getUsername());
-		model.addAttribute("carVO", carVO); // ${carVO.userId}
+		model.addAttribute("carVO", carVO);
 	}
 
 	@PostMapping("/register")
@@ -83,12 +56,13 @@ public class UserController {
 		if (isSuccess) {
 			redirectAttributes.addFlashAttribute("successMessage", "자동차가 성공적으로 등록되었습니다.");
 		} else {
+			log.info("failed to register car");
 			redirectAttributes.addFlashAttribute("errorMessage", "자동차 등록 중 오류가 발생했습니다.");
 		}
 
 		return "redirect:/user/mypage";
 	}
-	
+
 	@GetMapping("/carUpdate") // 자동차 차종 변경기능
 	public String carUpdateGet(HttpServletRequest request, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
