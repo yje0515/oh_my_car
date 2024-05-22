@@ -24,7 +24,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ohmycar.domain.AuthVO;
 import com.ohmycar.domain.CarVO;
 import com.ohmycar.domain.UserVO;
-//import com.ohmycar.mapper.CarMapper;
 import com.ohmycar.mapper.UserMapper;
 import com.ohmycar.service.CarService;
 import com.ohmycar.service.UserService;
@@ -52,8 +51,6 @@ public class UserController {
 	private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
 	private static final String USER = "oh_my_car";
 	private static final String PASSWORD = "1234";
-
-	
 
 	// Register 페이지에 대한 GET 요청을 처리하는 메서드 추가 차량추가 기능
 	@GetMapping("/register")
@@ -102,7 +99,6 @@ public class UserController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) auth.getPrincipal();
 		String userId = userDetails.getUsername();
-		String carId = request.getParameter("carId");
 
 		CarVO carVO = carService.getCarByUserId(userId);
 		model.addAttribute("carVO", carVO);

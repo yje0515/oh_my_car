@@ -6,7 +6,6 @@ import com.ohmycar.domain.CarVO;
 @Mapper
 public interface CarMapper {
 	// userId로 회원정보 불러오기
-//	public CarVO getCarByCarId(String carId);
 
 	public CarVO getCarByUserId(String userId);
 

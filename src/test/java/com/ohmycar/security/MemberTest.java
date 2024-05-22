@@ -8,8 +8,6 @@ import javax.sql.DataSource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -31,6 +29,7 @@ public class MemberTest {
 	@Test
 	public void testInsertMember() {
 		String sql = "INSERT INTO user_tbl(userid,username,password,email,nickname)VALUES(?,?,?,?,?)";
+		log.info("testing");
 		for (int i = 0; i < 100; i++) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -76,6 +75,8 @@ public class MemberTest {
 	@Test
 	public void testInsertAuth() {
 		String sql = "INSERT INTO user_auth_tbl (userid,auth) VALUES(?,?)";
+		log.info("testing");
+
 		for (int i = 0; i < 100; i++) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -113,46 +114,48 @@ public class MemberTest {
 
 	@Test
 	public void testInsertCar() {
-	    String sql = "INSERT INTO car_tbl(userid, carid, carsellname, carname, cartype) VALUES (?, ?, ?, ?, ?)";
-	    for (int i = 0; i < 100; i++) {
-	        Connection con = null;
-	        PreparedStatement pstmt = null;
-	        try {
-	            con = dataSource.getConnection();
-	            pstmt = con.prepareStatement(sql);
+		String sql = "INSERT INTO car_tbl(userid, carid, carsellname, carname, cartype) VALUES (?, ?, ?, ?, ?)";
+		log.info("testing");
 
-	            // 유저 ID 설정
-	            if (i < 80) {
-	                pstmt.setString(1, "user" + i);
-	            } else {
-	                pstmt.setString(1, "admin" + i);
-	            }
+		for (int i = 0; i < 100; i++) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			try {
+				con = dataSource.getConnection();
+				pstmt = con.prepareStatement(sql);
 
-	            // 다른 차량 정보 설정
-	            pstmt.setString(2, "carid" + i); // carid
-	            pstmt.setString(3, "carsellname" + i); // carsellname
-	            pstmt.setString(4, "carname" + i); // carname
-	            pstmt.setString(5, "SUV"); // cartype - 예시로 SUV를 사용
+				// 유저 ID 설정
+				if (i < 80) {
+					pstmt.setString(1, "user" + i);
+				} else {
+					pstmt.setString(1, "admin" + i);
+				}
 
-	            pstmt.executeUpdate();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        } finally {
-	            if (pstmt != null) {
-	                try {
-	                    pstmt.close();
-	                } catch (Exception e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	            if (con != null) {
-	                try {
-	                    con.close();
-	                } catch (Exception e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        }
-	    }
+				// 다른 차량 정보 설정
+				pstmt.setString(2, "carid" + i); // carid
+				pstmt.setString(3, "carsellname" + i); // carsellname
+				pstmt.setString(4, "carname" + i); // carname
+				pstmt.setString(5, "SUV"); // cartype - 예시로 SUV를 사용
+
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (pstmt != null) {
+					try {
+						pstmt.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+				if (con != null) {
+					try {
+						con.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
 	}
 }
