@@ -5,11 +5,13 @@ import com.ohmycar.domain.CarVO;
 
 @Mapper
 public interface CarMapper {
-	// userId로 회원정보 불러오기
+	// carId 로 차량 정보 CRUD
 
-	public CarVO getCarByUserId(String userId);
+	public CarVO getCarByCarId(String carId);
 
 	public void updateCar(CarVO carVO);
-	
+
 	public int registerCar(CarVO carVO);
+
+	public void deleteCar(String carId);
 }

@@ -8,21 +8,27 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class CarServiceImpl implements CarService {
-    
+
     private final CarMapper carMapper;
 
-	@Override
-    public CarVO getCarByUserId(String userId) {
-        return carMapper.getCarByUserId(userId);
+    @Override
+    public CarVO getCarByCarId(String carId) {
+        return carMapper.getCarByCarId(carId);
     }
 
     @Override
     public void updateCar(CarVO carVO) {
         carMapper.updateCar(carVO);
     }
-    
+
     @Override
     public boolean registerCar(CarVO carVO) {
-    	return carMapper.registerCar(carVO) > 0;
+        return carMapper.registerCar(carVO) > 0;
     }
+
+    @Override
+    public void deleteCar(String carId) {
+        carMapper.deleteCar(carId);
+    }
+
 }

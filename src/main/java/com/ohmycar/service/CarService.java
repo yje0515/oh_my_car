@@ -6,7 +6,9 @@ public interface CarService {
 
 	void updateCar(CarVO carVO);
 
-	CarVO getCarByUserId(String userId);
+	CarVO getCarByCarId(String carId);
 
 	boolean registerCar(CarVO carVO);
+
+	void deleteCar(String carId);
 }
