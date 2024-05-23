@@ -11,7 +11,8 @@ import com.ohmycar.domain.CarFactsVO;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml", "file:src/main/webapp/WEB-INF/spring/security-context.xml"})
+// !! 모든 테스트.java 에서 위의 ContextConfiguration 에 인자로 위의 두개 넣어야 함 안그러면 오류남 !!
 @Log4j
 public class CarFactsMapperTest {
     @Autowired
