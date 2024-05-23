@@ -10,8 +10,14 @@
 #mainWrap {
 	width: 1000px;
 	height: 1000px;
-	background-color:lightgray;
+	background-color: lightgray;
 	margin: 0 auto;
+}
+
+#someImg {
+	width: 100%;
+	height: 400px;
+	background-color:lightyellow;
 }
 </style>
 </head>
@@ -19,7 +25,8 @@
 	<jsp:include page="includes/header.jsp"></jsp:include>
 
 	<div id="mainWrap">
-		<h1>메인페이지</h1>
+		<div id="someImg">사이트 소개하는 이미지나 글</div>
+
 		<sec:authorize access="isAuthenticated()">
 			<p>${userVO.userName}님의차량정보</p>
 			<a href="/carInfo/read">보러가기</a>
