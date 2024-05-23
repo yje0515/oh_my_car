@@ -4,13 +4,11 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ohmycar.mapper.CarMapper">
 
-	<select id="getCarByUserId"
-		resultType="com.ohmycar.domain.CarVO">
-		SELECT * FROM car_tbl WHERE userid = #{userId}
+	<select id="getCarByCarId" resultType="com.ohmycar.domain.CarVO">
+		SELECT * FROM car_tbl WHERE carId = #{carId}
 	</select>
 
-	<insert id="registerCar"
-		parameterType="com.ohmycar.domain.CarVO">
+	<insert id="registerCar" parameterType="com.ohmycar.domain.CarVO">
 		INSERT INTO car_tbl (userId, carId, carSellName, carName, carType)
 		VALUES (#{userId}, #{carId}, #{carSellName}, #{carName}, #{carType})
 	</insert>
@@ -27,5 +25,8 @@
 		WHERE userid= #{userId}
 	</update>
 
+	<delete id="deleteCar">
+		DELETE FROM car_tbl WHERE carId = #{carId}
+	</delete>
 
 </mapper>

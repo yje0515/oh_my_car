@@ -31,14 +31,6 @@ public class UserController {
 	private static String resultString = "result";
 
 	// 회원가입페이지로 이동
-	/**
-	 * 마이페이지 대신 만든 main.html 임시이며 나중에 마이페이지로 바꿔야한다.
-	 * TODO 마이페이지로 바꾸기
-	 */
-	@GetMapping("/consumable/main")
-	public void getMethodName() {
-		log.info("......................................");
-	}
 
 	@GetMapping("/join")
 	public void joinGet() {

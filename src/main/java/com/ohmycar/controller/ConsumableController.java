@@ -20,6 +20,7 @@ public class ConsumableController {
     private final ConsumableService consumableService;
     private final ConsumableCalc calc;
     private static final String CAR_ID = "carId";
+    private static final String REDIRECT_MYPAGE = "redirect:/user/mypage";
 
     public ConsumableController(ConsumableService consumableService) {
         this.consumableService = consumableService;
@@ -82,7 +83,7 @@ public class ConsumableController {
     @GetMapping("/remove")
     public String remove(@RequestParam("carId") String carId) {
         consumableService.delete(carId);
-        return "redirect:/consumable/main";// TODO 마이페이지로 바꿔야함
+        return REDIRECT_MYPAGE;
     }
 
     /**
@@ -114,7 +115,7 @@ public class ConsumableController {
         String accDistTemp = token != null ? calc.getAccDist(tokenTemp, carId) : accDist;
         vo.setCarId(carId);
         consumableService.create(vo, accDistTemp);
-        return "redirect:/consumable/main";// TODO 주소 마이페이지로 바꿀 것
+        return REDIRECT_MYPAGE;
     }
 
     /**
