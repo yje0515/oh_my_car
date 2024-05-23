@@ -19,15 +19,15 @@ public class BoardController {
 		this.boardService = boardService;
 	}
 
-	@GetMapping("")
+	@GetMapping("/board")
 	public String showBoardPage(Model model) {
-		return "board";
+		return "/board/board";
 	}
 
 	@PostMapping("/write")
 	public String writePost(BoardVO boardVO) {
 		boardService.write(boardVO);
-		return "redirect:/user/mypage";
+		return "redirect:/board/list";
 	}
 
 }
