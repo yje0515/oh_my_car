@@ -11,11 +11,11 @@ public interface UserService {
 	public List<UserVO> getUserList();
 
 	// 회원가입 insert
-	public void joinUser(UserVO userVO,AuthVO authVO);
+	public void joinUser(UserVO userVO, AuthVO authVO);
 
 	// 회원가입시 아이디중복확인
 	public String joinIdCheck(String userId);
-	
+
 	// 회원가입시 이메일중복확인
 	public String joinEmailCheck(String email);
 

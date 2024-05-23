@@ -15,6 +15,7 @@
 	<div id="mypageWrap">
 		<h1>MYPAGE</h1>
 		<p>${userVO.userName }님</p>
+<<<<<<< Updated upstream
 		<a href="/user/passwordCheck?action=edit">내 정보 수정</a> 차량등록 <a
 			href="/user/passwordCheck?action=delete">회원 탈퇴</a>
 
@@ -23,6 +24,24 @@
 				alert("회원정보가 성공적으로 수정되었습니다.");
 			</script>
 		</c:if>
+=======
+		<table>
+			<tr>
+				<td><a href="/user/passwordCheck?action=edit">회원 정보 수정</a></td>
+			</tr>
+			<tr>
+				<td><a href="/carInfo/register">차량
+						등록</a></td>
+			</tr>
+			<tr>
+				<td><a href="/carInfo/carUpdate">차량 정보 수정</a></td>
+			</tr>
+			<tr>
+				<td><a href="/user/passwordCheck?action=delete">회원 탈퇴</a></td>
+			</tr>
+
+		</table>
+>>>>>>> Stashed changes
 	</div>
 	<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>

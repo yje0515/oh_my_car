@@ -7,6 +7,21 @@
 <meta charset="UTF-8">
 <title>비밀번호 확인</title>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+<<<<<<< Updated upstream
+=======
+<style>
+	#passwordCheckWrap{
+		width:300px;
+		height:400px;
+		background-color:skyblue;
+		padding:200px 0 0 0px;
+	}
+	
+	#passwordCheckBox{
+	
+	}
+</style>
+>>>>>>> Stashed changes
 </head>
 <body>
 	<jsp:include page="../includes/header.jsp"></jsp:include>
@@ -14,11 +29,19 @@
 		<form action="/user/passwordCheck" method="post">
 			<table>
 				<tr>
+<<<<<<< Updated upstream
 					<td>비밀번호를 입력 해 주세요.</td>
+=======
+					<td>비밀번호 확인</td>
+>>>>>>> Stashed changes
 				</tr>
 				<tr>
 					<td><input type="password" placeholder="비밀번호" id="password"
 						name="password" autofocus></td>
+<<<<<<< Updated upstream
+=======
+						<td><button type="submit">확인</button></td>
+>>>>>>> Stashed changes
 				</tr>
 				<tr>
 					<td id="wrongPassword"
@@ -31,7 +54,11 @@
 				value="${_csrf.token}" /> <input type="hidden" name="action"
 				value="${param.action }">
 			<!-- <input type="hidden" name="passwordChecked" > -->
+<<<<<<< Updated upstream
 			<button type="submit">확인</button>
+=======
+			
+>>>>>>> Stashed changes
 		</form>
 	</div>
 	<jsp:include page="../includes/footer.jsp"></jsp:include>

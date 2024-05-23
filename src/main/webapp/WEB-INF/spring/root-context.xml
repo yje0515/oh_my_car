@@ -8,7 +8,6 @@
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
-
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- 다른 웹 컴포넌트에서 사용가능한 공유 리소스 정의 -->
 	<!-- HikariCp 구성 -->
@@ -40,6 +39,11 @@
 	<mybatis-spring:scan
 		base-package="com.ohmycar.mapper" />
 
+<<<<<<< Updated upstream
 	<context:component-scan
 		base-package="com.ohmycar.service" />
 </beans>
+=======
+	<context:component-scan base-package="com.ohmycar" />
+</beans>
+>>>>>>> Stashed changes

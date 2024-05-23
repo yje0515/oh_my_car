@@ -9,15 +9,17 @@ import com.ohmycar.domain.AuthVO;
 import com.ohmycar.domain.UserVO;
 import com.ohmycar.mapper.UserMapper;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
-@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
 	private final UserMapper userMapper;
 
 	private final PasswordEncoder passwordEncoder;
+
+	public UserServiceImpl(UserMapper userMapper, PasswordEncoder passwordEncoder) {
+		this.userMapper = userMapper;
+		this.passwordEncoder = passwordEncoder;
+	}
 
 	@Override
 	public List<UserVO> getUserList() {
