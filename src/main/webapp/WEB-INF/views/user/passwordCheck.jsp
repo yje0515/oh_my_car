@@ -8,16 +8,51 @@
 <title>비밀번호 확인</title>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <style>
-	#passwordCheckWrap{
-		width:300px;
-		height:400px;
-		background-color:skyblue;
-		padding:200px 0 0 0px;
-	}
-	
-	#passwordCheckBox{
-	
-	}
+#passwordCheckWrap {
+	text-aligh: center;
+	width: 400px;
+	height: 450px;
+}
+
+#passwordCheckBox {
+	width: 400px;
+	height: 180px;
+	border: 1px solid #1A87C6;
+	border-radius: 5px;
+	margin: 200px 0 0 0px;
+}
+
+#passwordCheckBox tr {
+	text-align: center;
+}
+
+#passwordCheckBox tr th {
+	font-size: 20px;
+	padding: 20px 0 0px 0px;
+	color: #1A87C6;
+}
+
+#passwordCheckBox tr td input {
+	width: 200px;
+	height: 25px;
+	font-size: 12px;
+	margin: 0 0 20px 30px;
+	padding:0 0 0 5px;
+	border: 1px solid #1A87C6;
+}
+
+.submitBtn {
+	width: 70px;
+	height: 30px;
+	color: white;
+	background-color: #1A87C6;
+	border-radius: 5px;
+	border: 1px #1A87C6 solid;
+}
+
+#passwordCheckBox .submitBtn {
+	margin:0px 30px 16px 0px;
+}
 </style>
 </head>
 <body>

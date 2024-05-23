@@ -1,8 +1,8 @@
 package com.ohmycar.controller;
 
-import java.util.List;
-
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ohmycar.domain.AuthVO;
-import com.ohmycar.domain.CarVO;
-import com.ohmycar.domain.UserDAO;
 import com.ohmycar.domain.UserVO;
-import com.ohmycar.service.CarService;
 import com.ohmycar.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -28,11 +25,10 @@ import lombok.extern.log4j.Log4j;
 public class UserController {
 
 	private final UserService userService;
-	private final CarService carService;
-	private final UserDAO userDAO;
+
 	private final PasswordEncoder passwordEncoder;
 
-	private static final String RESULT_STRING = "result";
+	private static String resultString = "result";
 
 	// 회원가입페이지로 이동
 
@@ -57,32 +53,34 @@ public class UserController {
 
 	}
 
-	/**
-	 * 마이페이지로 이동하는 함수
-	 * 
-	 * @return userVO 에는 유저 정보가 나가고
-	 * @return carList 에는 자동차 정보들이 나간다.
-	 */
+	// 마이페이지로 이동
 	@GetMapping("/mypage")
 	public void mypageGet(Model model) {
-		UserVO userVO = userDAO.getUser();
-		model.addAttribute("userVO", userVO);
-		List<CarVO> carList = carService.getCarsByUserId(userVO.getUserId());
-		model.addAttribute("carList", carList);
-
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication.getPrincipal() instanceof UserDetails) {
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+			model.addAttribute("userVO", userVO);
+		}
 		log.info("mypage....");
 	}
 
 	// 비밀번호 확인 페이지로 이동
 	@GetMapping("/passwordCheck")
-	public void passwordCheckGet() {
+	public void passwordCheckGet(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute("userVO", userVO);
 		log.info("passwordCheckGet");
 	}
 
 	// 비밀번호 확인 후 각각 페이지로 Redirect
 	@PostMapping("/passwordCheck")
 	public String passwordCheckPost(String password, String action, RedirectAttributes rttr) {
-		UserVO userVO = userDAO.getUser();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		// 비밀번호 확인
 		String realPwd = userService.userPasswordCheckByUserId(userVO.getUserId());
 		boolean pwdChecked = passwordEncoder.matches(password, realPwd);
@@ -105,7 +103,7 @@ public class UserController {
 		// 비밀번호 확인 후 접근 가능
 		rttr.addFlashAttribute("passwordChecked", "notYet");
 		log.info("wrongPassword.....");
-		rttr.addFlashAttribute(RESULT_STRING, "wrongPassword");
+		rttr.addFlashAttribute(resultString, "wrongPassword");
 		if ("edit".equals(action)) {
 			// action값 가지고 비밀번호 재확인
 			return "redirect:/user/passwordCheck?action=edit";
@@ -118,9 +116,13 @@ public class UserController {
 	// 회원정보수정페이지로 이동
 	@GetMapping("/userUpdate")
 	public void userUpdateGet(Model model) {
-		UserVO userVO = userDAO.getUser();
-		model.addAttribute("userVO", userVO);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication.getPrincipal() instanceof UserDetails) {
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+			model.addAttribute("userVO", userVO);
 
+		}
 		log.info("update...");
 	}
 
@@ -130,7 +132,7 @@ public class UserController {
 		userService.updateUser(userVO);
 
 		// 회원정보 수정시 alert
-		rttr.addFlashAttribute(RESULT_STRING, "success");
+		rttr.addFlashAttribute(resultString, "success");
 
 		return "redirect:/";
 	}
@@ -144,13 +146,14 @@ public class UserController {
 	// 회원탈퇴
 	@PostMapping("/userDelete")
 	public String userDeleteGet(RedirectAttributes rttr) {
-		UserVO userVO = userDAO.getUser();
-		userService.deleteUser(userVO.getUserId());
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userId = authentication.getName();
+		userService.deleteUser(userId);
 
 		// 로그아웃처리
 		SecurityContextHolder.clearContext();
 
-		rttr.addFlashAttribute(RESULT_STRING, "deleteSuccess");
+		rttr.addFlashAttribute(resultString, "deleteSuccess");
 
 		return "redirect:/";
 	}

@@ -6,6 +6,15 @@
 <head>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <title>앗!차차로 간편한 자동차관리!</title>
+
+<style>
+#mainWrap {
+	width: 1000px;
+	height: 1000px;
+	background-color:lightgray;
+	margin: 0 auto;
+}
+</style>
 </head>
 <body>
 <jsp:include page="includes/header.jsp"></jsp:include>
@@ -29,6 +38,13 @@
 		<button>로그아웃</button>
 	</form>
 	</sec:authorize>
+	<div id="mainWrap">
+		<h1>메인페이지</h1>
+		<sec:authorize access="isAuthenticated()">
+			<p>${userVO.userName}님의차량정보</p>
+			<a href="/carInfo/read">보러가기</a>
+		</sec:authorize>
+	</div>
 
 	<!-- 로그인되지 않은 상태에서만 (익명의 사용자의 경우) -->
 	<sec:authorize access="isAnonymous()"> 

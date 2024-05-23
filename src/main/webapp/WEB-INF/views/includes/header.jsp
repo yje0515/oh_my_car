@@ -9,8 +9,9 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <title>OhMyCar!앗!차차로 간편한 자동차관리!</title>
 <style>
-* {
+body {
 	margin: 0 auto;
+	padding: 0 auto;
 }
 
 a {
@@ -26,17 +27,19 @@ a {
 
 #headerWrap  ul {
 	list-style-type: none;
-	margin: 0;
+	margin: 15px 15px 0 0px;
 	padding: 0;
 	float: right;
 }
 
 #headerWrap  li {
 	float: left;
+	margin: 0px 10px 0px 10px;
 }
 
-#headerWrap>#logoImg {
+#headerWrap #logoImg {
 	float: left;
+	margin:-12px  0 0 20px;
 }
 </style>
 </head>
