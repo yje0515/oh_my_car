@@ -71,12 +71,12 @@ width:100px;
 				</tr>
 				<tr>
 					<th>차종</th>
-					<th>누적주행거리</th>
+					<th>연료</th>
 				</tr>
 				<tr>
 				
 					<td>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ${carVO.carSellName }</td>
-					<td>ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ${Odometer.value }</td>
+					<td>ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ${carVO.carType }</td>
 				</tr>
 			</table>
 		</div>
