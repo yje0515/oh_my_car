@@ -17,15 +17,14 @@
 		<p>${userVO.userName }님</p>
 		<table>
 			<tr>
-				<td><a href="/user/passwordCheck?action=edit">내 정보 수정</a></td>
+				<td><a href="/user/passwordCheck?action=edit">회원 정보 수정</a></td>
 			</tr>
 			<tr>
-				<td><a href="${pageContext.request.contextPath}/user/register">차량
+				<td><a href="/carInfo/register">차량
 						등록</a></td>
 			</tr>
 			<tr>
-				<td><a href="${pageContext.request.contextPath}/user/carUpdate">차량
-						정보 수정</a></td>
+				<td><a href="/carInfo/carUpdate">차량 정보 수정</a></td>
 			</tr>
 			<tr>
 				<td><a href="/user/passwordCheck?action=delete">회원 탈퇴</a></td>
