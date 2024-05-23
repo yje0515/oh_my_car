@@ -49,7 +49,10 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/security/spring-security-taglibs/5.2.7.RELEASE/spring-security-taglibs-5.2.7.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/security/spring-security-acl/5.2.7.RELEASE/spring-security-acl-5.2.7.RELEASE.jar" enabled="true" runInBatchMode="false"/>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <factorypathentry kind="PLUGIN" id="org.eclipse.jst.ws.annotations.core" enabled="true" runInBatchMode="false"/>
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 </factorypath>
