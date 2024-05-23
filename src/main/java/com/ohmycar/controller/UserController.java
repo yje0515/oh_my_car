@@ -67,7 +67,11 @@ public class UserController {
 
 	// 비밀번호 확인 페이지로 이동
 	@GetMapping("/passwordCheck")
-	public void passwordCheckGet() {
+	public void passwordCheckGet(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute("userVO", userVO);
 		log.info("passwordCheckGet");
 	}
 

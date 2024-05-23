@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +10,9 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <title>OhMyCar!앗!차차로 간편한 자동차관리!</title>
 <style>
-* {
+body {
 	margin: 0 auto;
+	padding: 0 auto;
 }
 
 a {
@@ -26,24 +28,26 @@ a {
 
 #headerWrap  ul {
 	list-style-type: none;
-	margin: 0;
+	margin: 15px 15px 0 0px;
 	padding: 0;
 	float: right;
 }
 
 #headerWrap  li {
 	float: left;
+	margin: 0px 10px 0px 10px;
 }
 
-#headerWrap>#logoImg {
+#headerWrap #logoImg {
 	float: left;
+	margin:-12px  0 0 20px;
 }
 </style>
 </head>
 <body>
 	<div id="headerWrap">
 		<a id="logoImg" href="/"><img
-			src="../resources/img/ohmycar_logo.png" style="width: 200px;"></a>
+			src="../resources/img/ohmycar_logo.png" style="width: 250px;"></a>
 		<ul>
 			<sec:authorize access="isAuthenticated()">
 				<li>${userVO.userName }님,안녕하세요!</li>
