@@ -6,7 +6,7 @@
 <title>Board</title>
 </head>
 <body>
-	<h1>Board</h1>
+	<h1>게시글작성</h1>
 	<form action="/board/write" method="post">
 		<label for="title">Title:</label> <input type="text" id="title"
 			name="title"><br> <label for="content">Content:</label>
