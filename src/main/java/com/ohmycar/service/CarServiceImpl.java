@@ -1,5 +1,7 @@
 package com.ohmycar.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import com.ohmycar.domain.CarVO;
 import com.ohmycar.mapper.CarMapper;
@@ -14,6 +16,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarVO getCarByCarId(String carId) {
         return carMapper.getCarByCarId(carId);
+    }
+
+    @Override
+    public List<CarVO> getCarsByUserId(String userId) {
+        return carMapper.getCarsByUserId(userId);
     }
 
     @Override
