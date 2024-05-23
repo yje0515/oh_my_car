@@ -35,15 +35,53 @@ public class BoardController {
 		this.userService = userService;
 	}
 
-	@GetMapping("/board")
-	public String showBoardPage(Model model) {
-		return "/board/board";
+	@GetMapping("/write")
+	public String writeBoardPage(Model model) {
+		log.info("Writing");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication.getPrincipal() instanceof UserDetails) {
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+			model.addAttribute("userVO", userVO);
+			return "/board/write";
+		} else {
+			return REDIRECT_BEFORE_PAGE;
+		}
 	}
 
 	@PostMapping("/write")
 	public String writePost(BoardVO boardVO) {
 		boardService.write(boardVO);
-		return "redirect:/board/list";
+		return REDIRECT_BEFORE_PAGE;
+	}
+
+	@GetMapping("/list")
+	public void getList(Criteria cri, Model model) {
+		List<BoardVO> list = boardService.getList(cri);
+		model.addAttribute("list", list);
+	}
+
+	@GetMapping("/read")
+	public void read(@RequestParam("bno") int bno) {
+		boardService.read(bno);
+	}
+
+	@GetMapping("/modify")
+	public void modify(@RequestParam("board") BoardVO board, Model model) {
+		model.addAttribute("board", board);
+		log.info("move to modify.jsp");
+	}
+
+	@PostMapping("/modify")
+	public String postModify(@RequestParam("board") BoardVO board, Model model) {
+		boardService.modify(board);
+		model.addAttribute("bno", board.getBno());
+		return "/board/read";
+	}
+
+	@GetMapping("/delete")
+	public String getDelete(@RequestParam("bno") int bno) {
+		return REDIRECT_BEFORE_PAGE;
 	}
 
 }
