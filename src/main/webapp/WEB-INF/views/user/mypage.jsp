@@ -11,92 +11,99 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <style>
 #mypageWrap {
+	position: relative;
 	width: 1000px;
 	height: 800px;
 	background-color: lightgray;
 	margin: 0 auto;
 }
 
-#mypageWrap #mypageList {
-	background-color: lightyellow;
+/* 마이페이지 메뉴 */
+#mypageMenuBox {
+	height: 800px;
 	float: left;
+	position: absolute;
+	margin: 0px 0 0 0px;
+	text-align: left;
+	background-color: lightyellow;
+	border-right: 1px solid #1A87C6;
 }
 
+#mypageMenuBox ul {
+	margin: 150px 40px 0 0px;
+}
+
+#mypageMenuBox ul li {
+	margin: 20px 0 20px 0px;
+	font-size: 18px;
+}
+
+/* 마이페이지 간단 회원차량정보 */
 #userCarINfoBox {
-	width: 400px;
-	height: 100px;
+	position: absolute;
+	border: 1px solid #1A87C6;
+	border-radius: 5px;
+	width: 700px;
 	background-color: white;
+	text-align: left;
+	margin: 300px 0px 0 250px;
 }
 
-#mypageIcon img {
-	width: 100px;
+#userCarINfoBox table {
+	border-collapse: separate;
+	border-spacing: 100px 10px;
+}
+
+/* 마이페이지 아이콘으로 바로가기 */
+#mypageIconBox {
+	position: absolute;
+	width: 800px;
+	margin: 50px 0 0 200px;
+}
+
+#mypageIconBox img {
+	width: 150px;
 }
 </style>
 </head>
 <body>
 	<jsp:include page="../includes/header.jsp"></jsp:include>
 	<div id="mypageWrap">
-		<h1>MYPAGE</h1>
-		<p>${userVO.userName }님</p>
-		<table>
-			<tr>
-				<td><a href="/user/passwordCheck?action=edit">회원 정보 수정</a></td>
-			</tr>
-			<tr>
-				<td><a href="/carInfo/register">차량 등록</a></td>
-			</tr>
-			<tr>
-				<td><a href="/carInfo/carUpdate">차량 정보 수정</a></td>
-			</tr>
-			<tr>
-				<td><a href="/user/passwordCheck?action=delete">회원 탈퇴</a></td>
-			</tr>
 
+		<div id="mypageMenuBox">
+			<ul>
+				<li>
 
-		</table>
-		<h1>마이페이지</h1>
+					<h3>마이페이지</h3>
 
-		<div id="mypageList">
-			<table>
-				<tr>
-					<td>
-						<h2>마이페이지</h2>
-					</td>
-				</tr>
-				<tr>
-					<td><a href="/user/passwordCheck?action=edit">회원 정보 수정</a></td>
-				</tr>
-				<tr>
-					<td><a href="/carInfo/register">차량 등록</a></td>
-				</tr>
-				<tr>
-					<td><a href="/carInfo/carUpdate">차량 정보 수정</a></td>
-				</tr>
-				<tr>
-					<td><a href="/carInfo/carUpdate">차량 관리</a></td>
-				</tr>
-				<tr>
-					<td><a href="/user/passwordCheck?action=delete">회원 탈퇴</a></td>
-				</tr>
-			</table>
+				</li>
+				<li><a href="/user/passwordCheck?action=edit">회원 정보 수정</a></li>
+				<li><a href="/carInfo/register">차량 등록</a></li>
+				<li><a href="/carInfo/carUpdate">차량 정보 수정</a></li>
+				<li><a href="/carInfo/carUpdate">차량 관리</a></li>
+				<li><a href="/user/passwordCheck?action=delete">회원 탈퇴</a></li>
+			</ul>
 		</div>
 		<div id="userCarINfoBox">
 			<table>
 				<tr>
-					<th>${userVO.userName }님의차량</th>
+					<th colspan="3" style=" font-size:25px;">${userVO.userName }님의차량</th>
 				</tr>
 				<tr>
-					<th>차종</th>
-					<th>연료</th>
+					<th>carId</th>
+					<th>carSellName,carName</th>
+					<th>carType</th>
 				</tr>
-				<tr>
-
-					<td>ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ${carVO.carSellName }</td>
-					<td>ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ${carVO.carType }</td>
-				</tr>
+				<c:forEach var="car" items="${carList }">
+					<tr>
+						<td>${car.carId }</td>
+						<td>${car.carSellName }${car.carName }</td>
+						<td>${car.carType }</td>
+					</tr>
+				</c:forEach>
 			</table>
 		</div>
-		<div id="mypageIcon">
+		<div id="mypageIconBox">
 			<table>
 				<tr>
 					<td><a href="/user/passwordCheck?action=edit"><img

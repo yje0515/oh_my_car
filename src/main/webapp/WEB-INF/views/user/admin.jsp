@@ -12,6 +12,8 @@
 <div id="adminWrap">
 <h1>ADMIN</h1>
 <p>${userVO.userName }님</p>
+
+자동차간단상식 CRUD
 </div>
 
 <jsp:include page="../includes/footer.jsp"></jsp:include>

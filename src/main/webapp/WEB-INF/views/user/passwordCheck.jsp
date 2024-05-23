@@ -48,10 +48,11 @@
 	background-color: #1A87C6;
 	border-radius: 5px;
 	border: 1px #1A87C6 solid;
+	font-size:14px;
 }
 
 #passwordCheckBox .submitBtn {
-	margin:0px 30px 16px 0px;
+	margin:0px 30px 19px 0px;
 }
 </style>
 </head>
@@ -61,12 +62,12 @@
 		<form action="/user/passwordCheck" method="post">
 			<table id="passwordCheckBox">
 				<tr>
-					<td>비밀번호 확인</td>
+					<th colspan="2">비밀번호 확인</th>
 				</tr>
 				<tr>
 					<td><input type="password" placeholder="비밀번호" id="password"
 						name="password" autofocus></td>
-						<td><button type="submit">확인</button></td>
+						<td><button class="submitBtn" type="submit">확인</button></td>
 				</tr>
 				<tr>
 					<td id="wrongPassword"

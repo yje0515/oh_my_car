@@ -11,51 +11,46 @@
 #mainWrap {
 	width: 1000px;
 	height: 1000px;
-	background-color:lightgray;
+	background-color: lightgray;
 	margin: 0 auto;
+}
+#mainWrap ul{
+float:left;
+}
+#mainWrap ul li{
+float:left;
+}
+.someContents {
+	text-align: center;
+	width: 100%;
+	height: 200px;
+	background-color: lightyellow;
+	margin: 0px 0 10px 0px;
+}
+
+#mainBoard {
+	float: left;
 }
 </style>
 </head>
 <body>
-<jsp:include page="includes/header.jsp"></jsp:include>
-	<h1>홈페이지</h1>
-	
-	<!-- 로그인된 상태->마이페이지 로그인되지않은 상태->로그인페이지 -->
-	<a href="/user/mypage">마이페이지</a>
-	
-	<!-- 관리자(ROLE_ADMIN) 권한이 있는 경우에만 -->
-	<sec:authorize access="hasRole('ROLE_ADMIN')">
-	<a href="/user/admin">관리자페이지</a>  
-	</sec:authorize>
+	<jsp:include page="includes/header.jsp"></jsp:include>
 
-	<!-- 인증된사용자(로그인 한 상태에서만) -->
-	<sec:authorize access="isAuthenticated()">
-	<p>${userVO.userName }님, 안녕하세요!</p>
-	<!-- Post형식으로 처리되는 로그아웃 Spring Security내부에서 동작 -->
-	<form action="/logout" method='post'>
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
-		<button>로그아웃</button>
-	</form>
-	</sec:authorize>
 	<div id="mainWrap">
-		<h1>메인페이지</h1>
-		<sec:authorize access="isAuthenticated()">
-			<p>${userVO.userName}님의차량정보</p>
-			<a href="/carInfo/read">보러가기</a>
-		</sec:authorize>
+		<div class="someContents">(사이트소개 이미지 or 글)</div>
+		<div id="mainIcons" class="someContents">
+			<ul>
+			<!-- 경로 확인해야함 -->
+				<li><a href="/carInfo/register"><img src="" alt="차량 등록 아이콘"></a></li>
+				<li><a href="#"><img src="" alt="차량 관리 아이콘"></a></li>
+				<li><a href="/board/list"><img src="" alt="게시판 아이콘"></a></li>
+			</ul>
+		</div>
+		<div class="someContents">자동차간단상식 리스트 랜덤으로 보이게</div>
+		<div class="someContents">사이트 주요 서비스 소개</div>
+
 	</div>
 
-	<!-- 로그인되지 않은 상태에서만 (익명의 사용자의 경우) -->
-	<sec:authorize access="isAnonymous()"> 
-	<a href="/user/login">로그인</a>
-	</sec:authorize>
-
-	<!-- 로그인되지 않은 상태에서만 (익명의 사용자의 경우) -->
-	<sec:authorize access="isAnonymous()"> 
-	<a href="/user/join">회원가입</a>
-	</sec:authorize>
-	
 	<jsp:include page="includes/footer.jsp"></jsp:include>
 	<script>
 		$(document).ready(function(){
