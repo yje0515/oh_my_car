@@ -92,12 +92,12 @@ button[type="submit"]:hover {
 </style>
 </head>
 <body>
-	<h1 style="color: #333;">보유차량 등록</h1>
 	<form id="carForm"
 		action="${pageContext.request.contextPath}/user/register"
 		method="post">
+		<h1 style="color: #333;">보유차량 등록</h1>
 		<div>
-			<label for="carId">유저 ID:</label> <input type="text" id="userId"
+			<label for="userId">유저 ID:</label> <input type="text" id="userId"
 				name="userId" value="${userVO.userId}" readonly>
 		</div>
 		<div>
@@ -124,7 +124,6 @@ button[type="submit"]:hover {
 				<option value="스포츠카">스포츠카</option>
 			</select>
 		</div>
-
 		<div>
 			<button type="submit">등록</button>
 		</div>
@@ -132,3 +131,4 @@ button[type="submit"]:hover {
 	<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>
 </html>
+

@@ -8,59 +8,65 @@
 <title>차량 정보 수정</title>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            color: #555;
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
-        table {
-            width: 100%;
-        }
-        table td {
-            padding: 10px;
-        }
-        input[type="text"],
-        select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-            color: #555;
-        }
-        button[type="button"] {
-            background-color: #555;
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease;
-        }
-        button[type="button"]:hover {
-            background-color: #333;
-        }
-    </style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f9f9f9;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	color: #555;
+	text-align: center;
+	font-size: 36px;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+
+form {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f9f9f9;
+	border-radius: 8px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+table {
+	width: 100%;
+}
+
+table td {
+	padding: 10px;
+}
+
+input[type="text"], select {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	color: #555;
+}
+
+button[type="button"] {
+	background-color: #555;
+	color: #fff;
+	border: none;
+	padding: 12px 24px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: background-color 0.3s ease;
+}
+
+button[type="button"]:hover {
+	background-color: #333;
+}
+</style>
 </head>
 <body>
 	<h1>보유차량 정보 수정</h1>
@@ -132,6 +138,6 @@
             }
         });
     </script>
-
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>
 </html>
