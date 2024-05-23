@@ -98,6 +98,7 @@
 				name="emailRuleChecked" value="notYet">
 		</div>
 	</div>
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
 	<script>
 		$(document)
 				.ready(

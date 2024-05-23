@@ -8,6 +8,7 @@
 <title>앗!차차로 간편한 자동차관리!</title>
 </head>
 <body>
+<jsp:include page="includes/header.jsp"></jsp:include>
 	<h1>홈페이지</h1>
 	
 	<!-- 로그인된 상태->마이페이지 로그인되지않은 상태->로그인페이지 -->
@@ -38,6 +39,8 @@
 	<sec:authorize access="isAnonymous()"> 
 	<a href="/user/join">회원가입</a>
 	</sec:authorize>
+	
+	<jsp:include page="includes/footer.jsp"></jsp:include>
 	<script>
 		$(document).ready(function(){
 			if(${result eq 'deleteSuccess'}){

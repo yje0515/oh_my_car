@@ -8,10 +8,9 @@
 <title>로그인</title>
 </head>
 <body>
-
-
 	<jsp:include page="../includes/header.jsp"></jsp:include>
-	<div class="login">
+
+	<div class="loginWrap">
 		<h1>로그인</h1>
 		<form role="form" method='post' action="/login" id="loginForm"
 			name="loginForm">
