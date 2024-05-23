@@ -8,6 +8,10 @@
 		SELECT * FROM car_tbl WHERE carId = #{carId}
 	</select>
 
+	<select id="getCarsByUserId">
+		SELECT * FROM car_tbl WHERE userId = #{userId}
+	</select>
+
 	<insert id="registerCar" parameterType="com.ohmycar.domain.CarVO">
 		INSERT INTO car_tbl (userId, carId, carSellName, carName, carType)
 		VALUES (#{userId}, #{carId}, #{carSellName}, #{carName}, #{carType})

@@ -1,5 +1,7 @@
 package com.ohmycar.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.core.Authentication;
@@ -88,6 +90,12 @@ public class CarController {
 	public void getRead(@RequestParam("carId") String carId, Model model) {
 		CarVO carVO = carService.getCarByCarId(carId);
 		model.addAttribute("car", carVO);
+	}
+
+	@GetMapping("/cars")
+	public void getCarsByUserId(String userId, Model model) {
+		List<CarVO> cars = carService.getCarsByUserId(userId);
+		model.addAttribute("cars", cars);
 	}
 
 	@GetMapping("/delete")
