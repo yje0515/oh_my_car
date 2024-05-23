@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,12 +34,20 @@ a {
 }
 
 #footerWrap>#logoImg {
-	float: left;
+	float: right;
 }
 </style>
 </head>
 <body>
-<div id="footerWrap"><p>footer</p></div>
+	<div id="footerWrap">
+		<ul>
+			<li>회사정보 사업자정보등</li>
+			<li>회사정보 사업자정보등</li>
+			<li>회사정보 사업자정보등</li>
+		</ul>
+		<a id="logoImg" href="/"><img
+			src="../resources/img/ohmycar_logo.png" style="width: 200px;"></a>
+	</div>
 
 </body>
 </html>
