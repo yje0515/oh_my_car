@@ -10,26 +10,36 @@
 <style>
 #mainWrap {
 	width: 1000px;
-	height: 1000px;
-	background-color: lightgray;
+	height: 1200px;
 	margin: 0 auto;
 }
-#mainWrap ul{
-float:left;
-}
-#mainWrap ul li{
-float:left;
-}
+
+/* 임시 */
 .someContents {
 	text-align: center;
 	width: 100%;
-	height: 200px;
+	height: 300px;
 	background-color: lightyellow;
-	margin: 0px 0 10px 0px;
 }
 
-#mainBoard {
+/* 아이콘 */
+#mainIconBox {
+	width: 100%;
+	height: 300px;
+}
+
+#mainIconBox ul {
 	float: left;
+	margin:47px 0 0 0px;
+}
+
+#mainIconBox ul li {
+	float: left;
+	margin: 0 0 0 27px;
+}
+
+#mainIconBox img {
+	width: 150px;
 }
 </style>
 </head>
@@ -37,17 +47,30 @@ float:left;
 	<jsp:include page="includes/header.jsp"></jsp:include>
 
 	<div id="mainWrap">
-		<div class="someContents">(사이트소개 이미지 or 글)</div>
-		<div id="mainIcons" class="someContents">
+		<div class="someContents">
+			<a href="#"><img src="../../resources/img/mainSlide1.png"
+				alt="슬라이드 이미지"></a>
+		</div>
+		<div id="mainIconBox">
 			<ul>
-			<!-- 경로 확인해야함 -->
-				<li><a href="/carInfo/register"><img src="" alt="차량 등록 아이콘"></a></li>
-				<li><a href="#"><img src="" alt="차량 관리 아이콘"></a></li>
-				<li><a href="/board/list"><img src="" alt="게시판 아이콘"></a></li>
+				<!-- 경로 확인해야함 -->
+				<li><a href="#"><img
+						src="../../resources/img/userCarListIcon.png" alt="차량 목록 아이콘"></a></li>
+				<li><a href="#"><img
+						src="../../resources/img/carManagementIcon.png" alt="차량 관리 아이콘"></a></li>
+				<li><a href="#"><img
+						src="../../resources/img/boardIcon.png" alt="게시판 아이콘"></a></li>
+				<li><a href="#"><img
+						src="../../resources/img/nearGasStationIcon.png" alt="가까운 주유소 아이콘"></a></li>
+				<li><a href="#"><img
+						src="../../resources/img/nearRepairShopIcon.png" alt="가까운 정비소 아이콘"></a></li>
 			</ul>
 		</div>
 		<div class="someContents">자동차간단상식 리스트 랜덤으로 보이게</div>
-		<div class="someContents">사이트 주요 서비스 소개</div>
+		<div class="someContents">
+			<a href="#"><img src="../../resources/img/mainSlide2.png"
+				alt="슬라이드 이미지"></a>
+		</div>
 
 	</div>
 

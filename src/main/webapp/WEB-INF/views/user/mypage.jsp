@@ -14,27 +14,26 @@
 	position: relative;
 	width: 1000px;
 	height: 800px;
-	background-color: lightgray;
 	margin: 0 auto;
 }
 
 /* 마이페이지 메뉴 */
 #mypageMenuBox {
+	position: fixed;
 	height: 800px;
 	float: left;
 	position: absolute;
 	margin: 0px 0 0 0px;
 	text-align: left;
-	background-color: lightyellow;
 	border-right: 1px solid #1A87C6;
 }
 
 #mypageMenuBox ul {
-	margin: 150px 40px 0 0px;
+	margin: 120px 40px 0px -255px;
 }
 
 #mypageMenuBox ul li {
-	margin: 20px 0 20px 0px;
+	margin: 20px 0 50px 0px;
 	font-size: 18px;
 }
 
@@ -47,11 +46,18 @@
 	background-color: white;
 	text-align: left;
 	margin: 300px 0px 0 250px;
+	max-height: 400px;
+	overflow: auto;
+	min-height: 200px;
 }
 
 #userCarINfoBox table {
 	border-collapse: separate;
-	border-spacing: 100px 10px;
+	border-spacing: 90px 20px;
+}
+
+#userCarINfoBox table th td {
+	border: 1px solid gray;
 }
 
 /* 마이페이지 아이콘으로 바로가기 */
@@ -87,7 +93,8 @@
 		<div id="userCarINfoBox">
 			<table>
 				<tr>
-					<th colspan="3" style=" font-size:25px;">${userVO.userName }님의차량</th>
+					<th colspan="3" style="font-size: 25px;">[ ${userVO.userName }
+						] 님의 차량</th>
 				</tr>
 				<tr>
 					<th>carId</th>

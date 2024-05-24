@@ -16,39 +16,63 @@ a {
 
 #footerWrap {
 	margin: 0 auto;
-	width: 1000px;
+	width: 100%;
 	height: 300px;
 	background-color: #1A87C6;
-	column-count: 3;
 }
 
-#footerWrap  ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	float: left;
-}
-
-#footerWrap  li {
-	float: left;
-	margin: 10px 10px 0 5px;
-	color: white;
-}
-
-#footerWrap>#logoImg {
-	float: right;
+#footerInfoBox {
+	background-color: white;
+	width: 800px;
+	height: 200px;
 	position: absolute;
-	margin:180px 0 0 410px;
+	margin: 50px auto;
+	left:0;
+	right:0;
+}
+
+#footerInfoBox table {
+	border-collapse: separate;
+	border-spacing:136px 14px;
+}
+
+#footerWrap #logoImg {
+	margin: 170px 0 0 750px;
+	float:right;
 }
 </style>
 </head>
 <body>
+<!-- #underHeader sticky설정을 위한 div-->
+</div>
+<!-- 실수 아님 -->
+
 	<div id="footerWrap">
-		<ul>
-			<li>회사정보 사업자정보등</li>
-			<li>회사정보 사업자정보등</li>
-			<li>회사정보 사업자정보등</li>
-		</ul>
+		<div id="footerInfoBox">
+			<table>
+				<tr>
+					<th>ㅇㅇㅇ</th>
+					<th>ㅁㅁㅁ</th>
+					<th>ㅎㅎㅎ</th>
+				</tr>
+				<tr>
+					<td>회사정보</td>
+					<td>회사정보</td>
+					<td>회사정보</td>
+				</tr>
+				<tr>
+					<td>사업자정보</td>
+					<td>사업자정보</td>
+					<td>사업자정보</td>
+				</tr>
+				<tr>
+					<td>사이트소개</td>
+					<td>사이트소개</td>
+					<td>사이트소개</td>
+				</tr>
+			</table>
+		</div>
+
 		<a id="logoImg" href="/"><img
 			src="../resources/img/ohmycar_logo.png" style="width: 250px;"></a>
 	</div>
