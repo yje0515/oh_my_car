@@ -2,7 +2,9 @@ package com.ohmycar.controller;
 
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,7 +45,10 @@ public class UserController {
 
 	// 회원가입
 	@PostMapping("/join")
-	public String joinPost(UserVO userVO, AuthVO authVO) {
+	public String joinPost(AuthVO authVO) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		userService.joinUser(userVO, authVO);
 		log.info("success join.....");
 		return "redirect:/user/login";
@@ -51,7 +56,10 @@ public class UserController {
 
 	// 관리자권한 가진 사용자만 접근 가능
 	@GetMapping("/admin")
-	public void adminGet(UserVO userVO, Model model) {
+	public void adminGet(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		log.info("admin.....");
 		model.addAttribute(USER_VO_STRING, userVO);
 	}
@@ -63,7 +71,11 @@ public class UserController {
 	 * @return carList 에는 자동차 정보들이 나간다.
 	 */
 	@GetMapping("/mypage")
-	public void mypageGet(UserVO userVO, Model model) {
+	public void mypageGet(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		log.info(userVO);
 		model.addAttribute(USER_VO_STRING, userVO);
 		List<CarVO> carList = carService.getCarsByUserId(userVO.getUserId());
 		model.addAttribute("carList", carList);
@@ -73,13 +85,19 @@ public class UserController {
 
 	// 비밀번호 확인 페이지로 이동
 	@GetMapping("/passwordCheck")
-	public void passwordCheckGet(UserVO userVO, Model model) {
+	public void passwordCheckGet(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		model.addAttribute(USER_VO_STRING, userVO);
 	}
 
 	// 비밀번호 확인 후 각각 페이지로 Redirect
 	@PostMapping("/passwordCheck")
-	public String passwordCheckPost(UserVO userVO, String password, String action, RedirectAttributes rttr) {
+	public String passwordCheckPost(String password, String action, RedirectAttributes rttr) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		// 비밀번호 확인
 		String realPwd = userService.userPasswordCheckByUserId(userVO.getUserId());
 		boolean pwdChecked = passwordEncoder.matches(password, realPwd);
@@ -114,7 +132,10 @@ public class UserController {
 
 	// 회원정보수정페이지로 이동
 	@GetMapping("/userUpdate")
-	public void userUpdateGet(UserVO userVO, Model model) {
+	public void userUpdateGet(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		model.addAttribute(USER_VO_STRING, userVO);
 
 		log.info("update...");
@@ -122,7 +143,10 @@ public class UserController {
 
 	// 회원정보 수정
 	@PostMapping("/userUpdate")
-	public String userUpdatePost(UserVO userVO, RedirectAttributes rttr) {
+	public String userUpdatePost(RedirectAttributes rttr) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		userService.updateUser(userVO);
 
 		// 회원정보 수정시 alert
@@ -139,7 +163,10 @@ public class UserController {
 
 	// 회원탈퇴
 	@PostMapping("/userDelete")
-	public String userDeleteGet(UserVO userVO, RedirectAttributes rttr) {
+	public String userDeleteGet(RedirectAttributes rttr) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		userService.deleteUser(userVO.getUserId());
 
 		// 로그아웃처리
