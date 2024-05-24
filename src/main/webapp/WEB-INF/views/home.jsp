@@ -9,6 +9,7 @@
 </head>
 <body>
 <jsp:include page="includes/header.jsp"></jsp:include>
+<jsp:include page="includes/header.jsp"></jsp:include>
 	<h1>홈페이지</h1>
 	
 	<!-- 로그인된 상태->마이페이지 로그인되지않은 상태->로그인페이지 -->

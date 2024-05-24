@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/css/consumable.css" type="text/css">
+    <title>차 부품 정보</title>
+</head>
+
+<body>
+    <h1>차 부품 정보</h1>
+    <table class="tg" style="table-layout: fixed; width: 536px;">
+        <colgroup>
+            <col style="width: 165px">
+            <col style="width: 183px">
+            <col style="width: 188px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="tg-0pky">부품 명</th>
+                <th class="tg-baqh">교체한 날짜/주행거리</th>
+                <th class="tg-baqh">교체할 날짜/주행거리</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="tg-0lax">엔진 오일</td>
+                <td class="tg-baqh"><span th:text="${consumable.engineOil}">km</span></td>
+                <td class="tg-baqh"><span th:text="${changed.engineOil}">km</span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">브레이크 오일</td>
+                <td class="tg-baqh"><span th:text="${consumable.breakOil}">km</span></td>
+                <td class="tg-baqh"><span th:text="${changed.breakOil}">km</span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">브레이크 패드</td>
+                <td class="tg-baqh"><span th:text="${consumable.breakPad}">km</span></td>
+                <td class="tg-baqh"><span th:text="${changed.breakPad}">km</span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">와이퍼</td>
+                <td class="tg-baqh"><span th:text="${consumable.wiper}"></span></td>
+                <td class="tg-baqh"><span th:text="${changed.wiper}"></span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">타이어</td>
+                <td class="tg-baqh"><span th:text="${consumable.tire}">km</span></td>
+                <td class="tg-baqh"><span th:text="${changed.tire}">km</span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">에어컨 필터</td>
+                <td class="tg-baqh"><span th:text="${consumable.airConFilter}">km</span></td>
+                <td class="tg-baqh"><span th:text="${changed.airConFilter}">km</span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">스파크 플러그</td>
+                <td class="tg-baqh"><span th:text="${consumable.sparkPlug}">km</span></td>
+                <td class="tg-baqh"><span th:text="${changed.sparkPlug}">km</span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">배터리</td>
+                <td class="tg-baqh"><span th:text="${consumable.battery}"></span></td>
+                <td class="tg-baqh"><span th:text="${changed.battery}"></span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">냉각수</td>
+                <td class="tg-baqh"><span th:text="${consumable.coolingWater}">km</span></td>
+                <td class="tg-baqh"><span th:text="${changed.coolingWater}">km</span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">트랜스미션 오일</td>
+                <td class="tg-baqh"><span th:text="${consumable.transmissionOil}">km</span></td>
+                <td class="tg-baqh"><span th:text="${changed.transmissionOil}">km</span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">파워 스티어링 오일</td>
+                <td class="tg-baqh"><span th:text="${consumable.powerSteeringOil}"></span></td>
+                <td class="tg-baqh"><span th:text="${changed.powerSteeringOil}"></span></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax">유체 클러치</td>
+                <td class="tg-baqh"><span th:text="${consumable.fluidClutch}"></span></td>
+                <td class="tg-baqh"><span th:text="${changed.fluidClutch}"></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <button><a th:href="@{/consumable/modify?carId=} + ${carId}">수정</a></button>
+    <button><a th:href="@{/consumable/remove?carId=} + ${carId}">삭제</a></button>
+    <button><a th:href="@{/consumable/main}">돌아가기</a></button><!-- TODO 돌아가기 주소 마이페이지로 바꿀것 -->
+    <button><a th:href="@{/consumable/map?carId=} + ${carId} + '&keyWord=카센터'">가까운 정비소 찾기</a></button>
+    <button><a th:href="@{/consumable/map?carId=} + ${carId} + '&keyWord=주유소'">가까운 주유소 찾기</a></button>
+
+
+    <!-- Script -->
+
+</body>
+
+</html>

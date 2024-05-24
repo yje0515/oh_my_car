@@ -19,19 +19,28 @@ public class CustomUser extends User {
 	 */
 	private static final long serialVersionUID = 1L;
 
-
-	private UserVO userVO;
+	private transient UserVO userVO;
 
 	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
 	}
 
-	public CustomUser(UserVO VO) {
+	public CustomUser(UserVO vo) {
 
-		super(VO.getUserId(), VO.getPassword(), VO.getAuthList().stream()
+		super(vo.getUserId(), vo.getPassword(), vo.getAuthList().stream()
 				.map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
 
-		this.userVO = VO;
+		this.userVO = vo;
+	}
+
+	@Override
+	public boolean equals(Object rhs) {
+		return super.equals(rhs);
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
 
 }

@@ -8,8 +8,6 @@ import javax.sql.DataSource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -27,11 +25,11 @@ public class MemberTest {
 
 	@Autowired
 	private DataSource dataSource;
-	
-	
+
 	@Test
 	public void testInsertMember() {
 		String sql = "INSERT INTO user_tbl(userid,username,password,email,nickname)VALUES(?,?,?,?,?)";
+		log.info("Insert testing");
 		for (int i = 0; i < 100; i++) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
@@ -77,6 +75,7 @@ public class MemberTest {
 	@Test
 	public void testInsertAuth() {
 		String sql = "INSERT INTO user_auth_tbl (userid,auth) VALUES(?,?)";
+		log.info("Inserting");
 		for (int i = 0; i < 100; i++) {
 			Connection con = null;
 			PreparedStatement pstmt = null;

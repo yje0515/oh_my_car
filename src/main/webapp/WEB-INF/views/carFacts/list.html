@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../resources/css/carFacts.css" type="text/css">
+    <title>자동차 토막 상식 관리자 페이지</title>
+</head>
+
+<body>
+    <h1>자동차 토막 상식 관리자 페이지</h1>
+    <button class="create-btn" onclick="create()" type="button">토막 상식 추가 하기</button>
+    <table class="tg" style="table-layout: fixed; width: 1112px">
+        <colgroup>
+            <col style="width: 53px">
+            <col style="width: 899px">
+            <col style="width: 80px">
+            <col style="width: 80px">
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="tg-c3ow">번호</th>
+                <th class="tg-0pky">토막 상식 내용</th>
+                <th class="tg-baqh">수정하기</th>
+                <th class="tg-c3ow">삭제하기</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="fact : ${list}">
+                <form action="/carFacts/delete" method="get">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    <input type="hidden" name="factId" th:value="${fact.factId}">
+                    <td class="tg-c3ow" th:text="${fact.factId}"></td>
+                    <td class="tg-0pky" th:text="${fact.factText}"></td>
+                    <td class="tg-baqh"><input class="modify-btn" th:factId="${fact.factId}"
+                            th:factText="${fact.factText}"
+                            th:onclick="modify(this.getAttribute('factId'), this.getAttribute('factText'))"
+                            type="button" value="수정하기"></input></td>
+                    <td class="tg-c3ow"><input type="submit" value="삭제하기"></input></td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- modify popup -->
+    <div id="modify-popup" class="pop_wrap" style="display:none;">
+        <div class="pop_inner">
+            <form action="/carFacts/modify" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <table class="tg" style="table-layout: fixed; width: 952px">
+                    <colgroup>
+                        <col style="width: 53px">
+                        <col style="width: 899px">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="tg-c3ow">번호</th>
+                            <th class="tg-0pky">토막 상식 내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <input type="hidden" name="factId" class="modify-factId">
+                            <td class="tg-c3ow modify-factId-td"></td>
+                            <td class="tg-0pky">
+                                <input type="text" name="factText" class="modify-factText">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <input type="submit" onclick="closeModifyPopup()" class="modify-btn-close" value="수정하기">
+                <button type="button" onclick="closeModifyPopup()" class="modify-btn-close">닫기</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- create popup -->
+    <div id="create-popup" class="pop_wrap" style="display:none;">
+        <div class="pop_inner">
+            <h3>토막 상식 입력</h3>
+            <form action="/carFacts/create" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <input type="text" name="factText" class="create-factText"><br>
+                <input type="submit" onclick="closeCreatePopup()" class="create-btn-close" value="생성하기">
+                <button type="button" onclick="closeCreatePopup()" class="create-btn-close">닫기</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script type="text/javascript">
+        function modify(factId, factText) {
+            let modifyPopup = document.querySelector("#modify-popup");
+            modifyPopup.style.display = 'block';
+            console.log(factId, factText);
+            document.querySelector(".modify-factId").value = factId;
+            document.querySelector(".modify-factId-td").innerHTML = factId;
+            document.querySelector(".modify-factText").value = factText;
+        }
+        function closeModifyPopup() {
+            let modifyPopup = document.querySelector("#modify-popup");
+            modifyPopup.style.display = 'none';
+        }
+        function create() {
+            let createPopup = document.querySelector("#create-popup");
+            createPopup.style.display = 'block';
+        }
+        function closeCreatePopup() {
+            let createPopup = document.querySelector("#create-popup");
+            createPopup.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

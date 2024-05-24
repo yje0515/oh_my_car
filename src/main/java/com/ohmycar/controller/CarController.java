@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ohmycar.domain.CarVO;
-import com.ohmycar.domain.UserDAO;
 import com.ohmycar.service.CarService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CarController {
 
 	private final CarService carService;
-	private final UserDAO userDAO;
 
 	private static final String REDIRECT_MYPAGE = "redirect:/user/mypage";
 
@@ -48,10 +46,7 @@ public class CarController {
 	}
 
 	@GetMapping("/carUpdate") // 자동차 차종 변경기능
-	public String carUpdateGet(Model model) {
-		String userId = userDAO.getUser().getUserId();
-
-		CarVO carVO = carService.getCarByCarId(userId);
+	public String carUpdateGet(CarVO carVO, Model model) {
 		model.addAttribute("carVO", carVO);
 		return "/user/carUpdate"; // 차량 정보 업데이트 페이지로 이동
 	}
