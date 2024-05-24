@@ -12,6 +12,7 @@
     <H1>수정하기</H1>
     <form action="/consumable/modify" method="post">
         <input type="hidden" name="carId" th:value="${carId}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <table class="tg" style="table-layout: fixed;">
             <colgroup>
                 <col style="width: 165px">

@@ -12,6 +12,7 @@
     <H1>생성하기</H1>
     <form action="/consumable/create" method="post">
         <input type="hidden" name="carId" th:value="${carId}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <table class="tg" style="table-layout: fixed; width: 536px;">
             <div th:if="${#strings.isEmpty(token)}">
                 <span>현재 누적 주행 거리</span>

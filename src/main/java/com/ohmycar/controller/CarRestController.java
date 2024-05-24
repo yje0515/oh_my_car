@@ -2,7 +2,6 @@ package com.ohmycar.controller;
 
 import java.util.List;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.ohmycar.domain.CarVO;
@@ -21,13 +20,13 @@ public class CarRestController {
 	private final CarService carService;
 
 	@GetMapping("/read")
-	public CarVO getRead(@RequestParam("carId") String carId, Model model) {
+	public CarVO getReadAPI(@RequestParam("carId") String carId) {
 		log.info("getRead");
 		return carService.getCarByCarId(carId);
 	}
 
 	@GetMapping("/cars")
-	public List<CarVO> getCarsByUserId(String userId, Model model) {
+	public List<CarVO> getCarsByUserIdAPI(@RequestParam("userId") String userId) {
 		log.info("get car list");
 		return carService.getCarsByUserId(userId);
 	}
