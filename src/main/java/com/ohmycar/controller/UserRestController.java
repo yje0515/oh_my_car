@@ -21,15 +21,16 @@ public class UserRestController {
 
 	private final PasswordEncoder passwordEncoder;
 
-	private static String successString = "success";
+	private static final String SUCCESS_STRING = "success";
+	private static final String FAIL_STRING = "fail";
 
 	// 회원가입시 아이디 중복확인
 	@PostMapping("/idDupCheck")
 	public String idCheckPost(@RequestParam("userId") String userId) {
 		if (userService.joinIdCheck(userId) != null) {
-			return "fail";
+			return FAIL_STRING;
 		} else {
-			return successString;
+			return SUCCESS_STRING;
 		}
 	}
 
@@ -38,9 +39,9 @@ public class UserRestController {
 	public String emailCheckPost(@RequestParam("email") String email) {
 		String result = "";
 		if (userService.joinEmailCheck(email) != null) {
-			result = "fail";
+			result = FAIL_STRING;
 		} else {
-			result = successString;
+			result = SUCCESS_STRING;
 		}
 		return result;
 	}
@@ -53,15 +54,15 @@ public class UserRestController {
 		UserVO userVO = userService.getUserByUserId(userId);
 		if (userVO == null) {
 			log.info("User not found");
-			return "fail";
+			return FAIL_STRING;
 		}
 
 		// userVO가 null이 아닌 경우(id가 존재하는 경우)
 		boolean pwdCheck = passwordEncoder.matches(password, userVO.getPassword());
 		if (pwdCheck) {
-			result = successString;
+			result = SUCCESS_STRING;
 		} else {
-			result = "fail";
+			result = FAIL_STRING;
 		}
 		log.info("Login " + result + ".....");
 

@@ -13,7 +13,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ohmycar.domain.AuthVO;
 import com.ohmycar.domain.CarVO;
-import com.ohmycar.domain.UserDAO;
 import com.ohmycar.domain.UserVO;
 import com.ohmycar.service.CarService;
 import com.ohmycar.service.UserService;
@@ -29,10 +28,10 @@ public class UserController {
 
 	private final UserService userService;
 	private final CarService carService;
-	private final UserDAO userDAO;
 	private final PasswordEncoder passwordEncoder;
 
 	private static final String RESULT_STRING = "result";
+	private static final String USER_VO_STRING = "userVO";
 
 	// 회원가입페이지로 이동
 
@@ -64,9 +63,8 @@ public class UserController {
 	 * @return carList 에는 자동차 정보들이 나간다.
 	 */
 	@GetMapping("/mypage")
-	public void mypageGet(Model model) {
-		UserVO userVO = userDAO.getUser();
-		model.addAttribute("userVO", userVO);
+	public void mypageGet(UserVO userVO, Model model) {
+		model.addAttribute(USER_VO_STRING, userVO);
 		List<CarVO> carList = carService.getCarsByUserId(userVO.getUserId());
 		model.addAttribute("carList", carList);
 
@@ -75,14 +73,13 @@ public class UserController {
 
 	// 비밀번호 확인 페이지로 이동
 	@GetMapping("/passwordCheck")
-	public void passwordCheckGet() {
-		log.info("passwordCheckGet");
+	public void passwordCheckGet(UserVO userVO, Model model) {
+		model.addAttribute(USER_VO_STRING, userVO);
 	}
 
 	// 비밀번호 확인 후 각각 페이지로 Redirect
 	@PostMapping("/passwordCheck")
-	public String passwordCheckPost(String password, String action, RedirectAttributes rttr) {
-		UserVO userVO = userDAO.getUser();
+	public String passwordCheckPost(UserVO userVO, String password, String action, RedirectAttributes rttr) {
 		// 비밀번호 확인
 		String realPwd = userService.userPasswordCheckByUserId(userVO.getUserId());
 		boolean pwdChecked = passwordEncoder.matches(password, realPwd);
@@ -117,9 +114,8 @@ public class UserController {
 
 	// 회원정보수정페이지로 이동
 	@GetMapping("/userUpdate")
-	public void userUpdateGet(Model model) {
-		UserVO userVO = userDAO.getUser();
-		model.addAttribute("userVO", userVO);
+	public void userUpdateGet(UserVO userVO, Model model) {
+		model.addAttribute(USER_VO_STRING, userVO);
 
 		log.info("update...");
 	}
@@ -143,8 +139,7 @@ public class UserController {
 
 	// 회원탈퇴
 	@PostMapping("/userDelete")
-	public String userDeleteGet(RedirectAttributes rttr) {
-		UserVO userVO = userDAO.getUser();
+	public String userDeleteGet(UserVO userVO, RedirectAttributes rttr) {
 		userService.deleteUser(userVO.getUserId());
 
 		// 로그아웃처리

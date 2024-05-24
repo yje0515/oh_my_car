@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ohmycar.domain.BoardVO;
 import com.ohmycar.domain.Criteria;
-import com.ohmycar.domain.UserDAO;
 import com.ohmycar.domain.UserVO;
 import com.ohmycar.service.BoardService;
 
@@ -23,19 +22,16 @@ import lombok.extern.log4j.Log4j;
 public class BoardController {
 
 	private final BoardService boardService;
-	private final UserDAO userDAO;
 
 	private static final String REDIRECT_BEFORE_PAGE = "redirect:/user/mypage";// TODO 게시판 버튼 있는 곳으로 바꾸기
 
-	public BoardController(BoardService boardService, UserDAO userDAO) {
+	public BoardController(BoardService boardService) {
 		this.boardService = boardService;
-		this.userDAO = userDAO;
 	}
 
 	@GetMapping("/write")
-	public String writeBoardPage(Model model) {
+	public String writeBoardPage(UserVO userVO, Model model) {
 		log.info("Writing");
-		UserVO userVO = userDAO.getUser();
 		if (userVO != null) {
 			model.addAttribute("userVO", userVO);
 			return "/board/write";
