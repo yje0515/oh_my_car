@@ -48,7 +48,7 @@ public class CarController {
 	@GetMapping("/carUpdate") // 자동차 차종 변경기능
 	public String carUpdateGet(CarVO carVO, Model model) {
 		model.addAttribute("carVO", carVO);
-		return "/user/carUpdate"; // 차량 정보 업데이트 페이지로 이동
+		return "/carInfo/update"; // 차량 정보 업데이트 페이지로 이동
 	}
 
 	@PostMapping("/carUpdate")
