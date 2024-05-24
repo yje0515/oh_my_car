@@ -7,13 +7,14 @@
 <meta charset="UTF-8">
 <title>게시판 목록</title>
 <link rel="stylesheet" type="text/css" href="css/list.css">
+
 </head>
 <body>
 	<h1>게시판 목록</h1>
 	<table border="1">
 		<tr>
 			<th>게시물 번호</th>
-			<th>제목</th>a
+			<th>제목</th>
 			<th>내용</th>
 			<th>작성자</th>
 			<th>작성일</th>
