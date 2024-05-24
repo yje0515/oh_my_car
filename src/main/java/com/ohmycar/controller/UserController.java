@@ -51,13 +51,9 @@ public class UserController {
 
 	// 관리자권한 가진 사용자만 접근 가능
 	@GetMapping("/admin")
-	public void adminGet(Model model) {
+	public void adminGet(UserVO userVO, Model model) {
 		log.info("admin.....");
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
-		model.addAttribute("userVO", userVO);
-
+		model.addAttribute(USER_VO_STRING, userVO);
 	}
 
 	/**
