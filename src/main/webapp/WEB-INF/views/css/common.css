@@ -1,0 +1,130 @@
+@charset "UTF-8";
+/* 공통 스타일 */
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #f9f9f9;
+	margin: 0;
+	padding: 0;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.margin-top-30 {
+	margin-top: 30px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.padding-30 {
+	padding: 30px;
+}
+
+.padding-20 {
+	padding: 20px;
+}
+
+.padding-12 {
+	padding: 12px;
+}
+
+.border-radius-8 {
+	border-radius: 8px;
+}
+
+.border-radius-6 {
+	border-radius: 6px;
+}
+
+.box-shadow {
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.color-primary {
+	color: #1A87C6;
+}
+
+.bg-white {
+	background-color: #fff;
+}
+
+.bg-primary {
+	background-color: #1A87C6;
+}
+
+.color-white {
+	color: white;
+}
+
+.font-size-14 {
+	font-size: 14px;
+}
+
+.font-size-16 {
+	font-size: 16px;
+}
+
+.font-size-28 {
+	font-size: 28px;
+}
+
+.font-size-36 {
+	font-size: 36px;
+}
+
+.letter-spacing-1 {
+	letter-spacing: 1px;
+}
+
+.letter-spacing-1-5 {
+	letter-spacing: 1.5px;
+}
+
+.width-full {
+	width: 100%;
+}
+
+.box-sizing-border-box {
+	box-sizing: border-box;
+}
+
+.resize-none {
+	resize: none;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.transition {
+	transition: border-color 0.3s ease, background-color 0.3s ease,
+		transform 0.2s ease;
+}
+
+.bg-hover-primary:hover {
+	background-color: #0056b3;
+}
+
+.border-focus-primary:focus {
+	border-color: #007bff;
+	outline: none;
+}
+
+.bg-hover-dark:hover {
+	background-color: #333;
+}
+
+.bg-hover-blue:hover {
+	background-color: #e1f5fe;
+}
+
+.bg-hover-light:hover {
+	background-color: #f2f2f2;
+}
