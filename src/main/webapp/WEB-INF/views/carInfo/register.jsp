@@ -10,92 +10,16 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
 	rel="stylesheet">
+<!-- CSS 파일 추가 -->
+<link rel="stylesheet" type="text/css" href="/css/register.css">
 <style>
-body {
-	font-family: 'Roboto', sans-serif;
-	background-color: #f4f4f4;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
-h1 {
-	color: #333;
-	text-align: center;
-	font-size: 36px;
-	margin-bottom: 20px;
-	font-weight: 700;
-	letter-spacing: 1px;
-}
-
-form {
-	background-color: #fff;
-	padding: 30px 40px;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	width: 100%;
-	max-width: 500px;
-}
-
-form div {
-	margin-bottom: 20px;
-}
-
-label {
-	display: block;
-	font-weight: 500;
-	margin-bottom: 8px;
-	color: #555;
-}
-
-input[type="text"], select {
-	width: 100%;
-	padding: 12px;
-	border: 1px solid #ccc;
-	border-radius: 6px;
-	font-size: 16px;
-	box-sizing: border-box;
-	transition: border-color 0.3s;
-}
-
-input[type="text"]:focus, select:focus {
-	border-color: #1A87C6;
-}
-
-input[type="text"]:read-only {
-	background-color: #e9ecef;
-}
-
-button[type="submit"] {
-	background-color: #333; /* 버튼 색상 변경 */
-	color: white;
-	border: none;
-	padding: 14px 20px;
-	border-radius: 20px; /* 둥근 모서리 적용 */
-	cursor: pointer;
-	font-size: 16px;
-	width: 100%;
-	font-weight: 700;
-	text-transform: uppercase;
-	transition: background-color 0.3s ease, transform 0.2s ease;
-	/* 애니메이션 효과 추가 */
-	outline: none; /* 포커스시 파란 테두리 제거 */
-}
-
-button[type="submit"]:hover {
-	background-color: #0056b3; /* 호버 시 색상 변경 */
-	transform: scale(1.02); /* 호버 시 약간 확대되는 효과 */
-}
-</style>
+<h1 style="color: #333;">보유차량 등록</h1></style>
 </head>
 <body>
 	<form id="carForm"
 		action="${pageContext.request.contextPath}/user/register"
 		method="post">
-		<h1 style="color: #333;">보유차량 등록</h1>
+		<h1>보유차량 등록</h1>
 		<div>
 			<label for="userId">유저 ID:</label> <input type="text" id="userId"
 				name="userId" value="${userVO.userId}" readonly>
