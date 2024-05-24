@@ -3,17 +3,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xmlns:security="http://www.springframework.org/schema/security" xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.2.xsd
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.2.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- 다른 웹 컴포넌트에서 사용가능한 공유 리소스 정의 -->
 	<!-- HikariCp 구성 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<!-- 데이터베이스 드라이버 클래스와 접속 URL 설정 -->
-		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE" />
+		<property name="driverClassName"
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<property name="jdbcUrl"
+			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE" />
 
 		<!-- 데이터베이스 접속계정 정보 설정 -->
 		<property name="username" value="oh_my_car" />
@@ -21,17 +25,25 @@
 	</bean>
 
 	<!-- HikariCP를 사용한 데이터베이스 커넥션 풀을 생성하는 빈 -->
-	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+		destroy-method="close">
 		<constructor-arg ref="hikariConfig" />
 	</bean>
 
 	<!-- Mybatis SqlSesseionFactoryBean 설정 -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
 	<!-- com.ohmycar.mapper 패키지 내의 MyBatis Mapper 인터페이스를 자동으로 스캔하는 설정 -->
-	<mybatis-spring:scan base-package="com.ohmycar.mapper" />
+	<mybatis-spring:scan
+		base-package="com.ohmycar.mapper" />
 
 	<context:component-scan base-package="com.ohmycar.service" />
+
+	<context:component-scan base-package="com.ohmycar.aop" />
+
+	<aop:aspectj-autoproxy />
+
 </beans>

@@ -9,6 +9,7 @@
 </head>
 <body>
 <jsp:include page="includes/header.jsp"></jsp:include>
+<jsp:include page="includes/header.jsp"></jsp:include>
 	<h1>홈페이지</h1>
 	
 	<!-- 로그인된 상태->마이페이지 로그인되지않은 상태->로그인페이지 -->
@@ -19,6 +20,12 @@
 	<a href="/user/admin">관리자페이지</a>  
 	</sec:authorize>
 
+<<<<<<< Updated upstream
+	<div id="mainWrap">
+		<h1>메인페이지</h1>
+		<p>${userVO.userName}님의차량정보</p>
+	</div>
+=======
 	<!-- 인증된사용자(로그인 한 상태에서만) -->
 	<sec:authorize access="isAuthenticated()">
 	<p>${userVO.userName }님, 안녕하세요!</p>
@@ -29,6 +36,7 @@
 		<button>로그아웃</button>
 	</form>
 	</sec:authorize>
+>>>>>>> Stashed changes
 
 	<!-- 로그인되지 않은 상태에서만 (익명의 사용자의 경우) -->
 	<sec:authorize access="isAnonymous()"> 
@@ -41,13 +49,5 @@
 	</sec:authorize>
 	
 	<jsp:include page="includes/footer.jsp"></jsp:include>
-	<script>
-		$(document).ready(function(){
-			if(${result eq 'deleteSuccess'}){
-				alert("회원탈퇴가 성공적으로 처리되었습니다. 감사합니다.");
-			
-			}
-		});
-	</script>
 </body>
 </html>

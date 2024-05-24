@@ -7,9 +7,12 @@
 <meta charset="UTF-8">
 <title>차량 정보 수정</title>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/update.css">
+<style>
+</style>
 </head>
 <body>
-	<h1>차량 정보 수정</h1>
+	<h1>보유차량 정보 수정</h1>
 	<form role="form" id="updateForm" name="frm">
 		<table>
 			<tr>
@@ -78,6 +81,6 @@
             }
         });
     </script>
-
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>
 </html>
