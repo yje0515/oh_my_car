@@ -25,7 +25,7 @@
 	position: absolute;
 	margin: 0px 0 0 0px;
 	text-align: left;
-	border-right: 1px solid #1A87C6;
+	border-right: 1px solid #002F65;
 }
 
 #mypageMenuBox ul {
@@ -40,7 +40,7 @@
 /* 마이페이지 간단 회원차량정보 */
 #userCarINfoBox {
 	position: absolute;
-	border: 1px solid #1A87C6;
+	border: 1px solid #002F65;
 	border-radius: 5px;
 	width: 700px;
 	background-color: white;

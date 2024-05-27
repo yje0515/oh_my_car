@@ -17,7 +17,7 @@
 #passwordCheckBox {
 	width: 400px;
 	height: 180px;
-	border: 1px solid #1A87C6;
+	border: 1px solid #002F65;
 	border-radius: 5px;
 	margin: 200px 0 0 0px;
 }
@@ -29,7 +29,7 @@
 #passwordCheckBox tr th {
 	font-size: 20px;
 	padding: 20px 0 0px 0px;
-	color: #1A87C6;
+	color: #002F65;
 }
 
 #passwordCheckBox tr td input {
@@ -38,16 +38,16 @@
 	font-size: 12px;
 	margin: 0 0 20px 30px;
 	padding:0 0 0 5px;
-	border: 1px solid #1A87C6;
+	border: 1px solid #002F65;
 }
 
 .submitBtn {
 	width: 70px;
 	height: 30px;
 	color: white;
-	background-color: #1A87C6;
+	background-color: #002F65;
 	border-radius: 5px;
-	border: 1px #1A87C6 solid;
+	border: 1px #002F65 solid;
 	font-size:14px;
 }
 
