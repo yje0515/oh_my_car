@@ -6,11 +6,18 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <meta charset="UTF-8">
 <title>로그인</title>
+<style>
+#loginWrap {
+	width: 400px;
+	height: 700px;
+	background-color: gray;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="../includes/header.jsp"></jsp:include>
 
-	<div class="loginWrap">
+	<div id="loginWrap">
 		<h1>로그인</h1>
 		<form role="form" method='post' action="/login" id="loginForm"
 			name="loginForm">

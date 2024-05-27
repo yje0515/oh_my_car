@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +19,7 @@ import com.ohmycar.domain.BoardVO;
 import com.ohmycar.domain.Criteria;
 import com.ohmycar.domain.UserVO;
 import com.ohmycar.service.BoardService;
+import com.ohmycar.service.UserService;
 import com.ohmycar.service.UserService;
 
 import lombok.extern.log4j.Log4j;
@@ -32,7 +36,10 @@ public class BoardController {
 	private static final String REDIRECT_BEFORE_PAGE = "redirect:/user/mypage";// TODO 게시판 버튼 있는 곳으로 바꾸기
 
 	public BoardController(BoardService boardService, UserService userService) {
+
+	public BoardController(BoardService boardService, UserService userService) {
 		this.boardService = boardService;
+		this.userService = userService;
 		this.userService = userService;
 	}
 

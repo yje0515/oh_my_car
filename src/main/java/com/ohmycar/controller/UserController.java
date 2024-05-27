@@ -3,7 +3,9 @@ package com.ohmycar.controller;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,7 @@ import lombok.extern.log4j.Log4j;
 public class UserController {
 
 	private final UserService userService;
+
 	private final CarService carService;
 	private final PasswordEncoder passwordEncoder;
 
@@ -64,12 +67,7 @@ public class UserController {
 		model.addAttribute(USER_VO_STRING, userVO);
 	}
 
-	/**
-	 * 마이페이지로 이동하는 함수
-	 * 
-	 * @return userVO 에는 유저 정보가 나가고
-	 * @return carList 에는 자동차 정보들이 나간다.
-	 */
+	// 마이페이지로 이동
 	@GetMapping("/mypage")
 	public void mypageGet(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -79,7 +77,6 @@ public class UserController {
 		model.addAttribute(USER_VO_STRING, userVO);
 		List<CarVO> carList = carService.getCarsByUserId(userVO.getUserId());
 		model.addAttribute("carList", carList);
-
 		log.info("mypage....");
 	}
 
@@ -95,6 +92,9 @@ public class UserController {
 	// 비밀번호 확인 후 각각 페이지로 Redirect
 	@PostMapping("/passwordCheck")
 	public String passwordCheckPost(String password, String action, RedirectAttributes rttr) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
@@ -120,7 +120,7 @@ public class UserController {
 		// 비밀번호 확인 후 접근 가능
 		rttr.addFlashAttribute("passwordChecked", "notYet");
 		log.info("wrongPassword.....");
-		rttr.addFlashAttribute(RESULT_STRING, "wrongPassword");
+		rttr.addFlashAttribute(resultString, "wrongPassword");
 		if ("edit".equals(action)) {
 			// action값 가지고 비밀번호 재확인
 			return "redirect:/user/passwordCheck?action=edit";
@@ -138,7 +138,8 @@ public class UserController {
 		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		model.addAttribute(USER_VO_STRING, userVO);
 
-		log.info("update...");
+	}log.info("update...");
+
 	}
 
 	// 회원정보 수정
@@ -150,7 +151,7 @@ public class UserController {
 		userService.updateUser(userVO);
 
 		// 회원정보 수정시 alert
-		rttr.addFlashAttribute(RESULT_STRING, "success");
+		rttr.addFlashAttribute(resultString, "success");
 
 		return "redirect:/";
 	}
@@ -172,7 +173,7 @@ public class UserController {
 		// 로그아웃처리
 		SecurityContextHolder.clearContext();
 
-		rttr.addFlashAttribute(RESULT_STRING, "deleteSuccess");
+		rttr.addFlashAttribute(resultString, "deleteSuccess");
 
 		return "redirect:/";
 	}

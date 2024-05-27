@@ -8,16 +8,52 @@
 <title>비밀번호 확인</title>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <style>
-	#passwordCheckWrap{
-		width:300px;
-		height:400px;
-		background-color:skyblue;
-		padding:200px 0 0 0px;
-	}
-	
-	#passwordCheckBox{
-	
-	}
+#passwordCheckWrap {
+	text-aligh: center;
+	width: 400px;
+	height: 450px;
+}
+
+#passwordCheckBox {
+	width: 400px;
+	height: 180px;
+	border: 1px solid #002F65;
+	border-radius: 5px;
+	margin: 200px 0 0 0px;
+}
+
+#passwordCheckBox tr {
+	text-align: center;
+}
+
+#passwordCheckBox tr th {
+	font-size: 20px;
+	padding: 20px 0 0px 0px;
+	color: #002F65;
+}
+
+#passwordCheckBox tr td input {
+	width: 200px;
+	height: 25px;
+	font-size: 12px;
+	margin: 0 0 20px 30px;
+	padding:0 0 0 5px;
+	border: 1px solid #002F65;
+}
+
+.submitBtn {
+	width: 70px;
+	height: 30px;
+	color: white;
+	background-color: #002F65;
+	border-radius: 5px;
+	border: 1px #002F65 solid;
+	font-size:14px;
+}
+
+#passwordCheckBox .submitBtn {
+	margin:0px 30px 19px 0px;
+}
 </style>
 </head>
 <body>
@@ -26,12 +62,12 @@
 		<form action="/user/passwordCheck" method="post">
 			<table id="passwordCheckBox">
 				<tr>
-					<td>비밀번호 확인</td>
+					<th colspan="2">비밀번호 확인</th>
 				</tr>
 				<tr>
 					<td><input type="password" placeholder="비밀번호" id="password"
 						name="password" autofocus></td>
-						<td><button type="submit">확인</button></td>
+						<td><button class="submitBtn" type="submit">확인</button></td>
 				</tr>
 				<tr>
 					<td id="wrongPassword"

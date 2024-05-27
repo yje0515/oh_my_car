@@ -14,4 +14,6 @@ public interface CarFactsService {
     public void delete(int factId);
 
     public List<CarFactsVO> getAll();
+    
+    public List<CarFactsVO> getRandom();
 }

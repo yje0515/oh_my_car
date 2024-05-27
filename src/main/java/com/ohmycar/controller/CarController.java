@@ -2,6 +2,11 @@ package com.ohmycar.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,7 +74,7 @@ public class CarController {
 		List<CarVO> cars = carService.getCarsByUserId(userId);
 		model.addAttribute("cars", cars);
 	}
-
+	
 	@GetMapping("/delete")
 	public String getDelete(@RequestParam("carId") String carId) {
 		carService.deleteCar(carId);

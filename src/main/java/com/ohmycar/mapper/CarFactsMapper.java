@@ -16,4 +16,5 @@ public interface CarFactsMapper {
     public List<CarFactsVO> selectAll();
 
     public int getCount();
+
 }

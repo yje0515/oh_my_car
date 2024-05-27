@@ -1,7 +1,9 @@
 package com.ohmycar.service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -44,5 +46,13 @@ public class CarFactsServiceImpl implements CarFactsService {
     public List<CarFactsVO> getAll() {
         return mapper.selectAll();
     }
+
+    //간단상식리스트 중 랜덤 10개를 반환
+	@Override
+	public List<CarFactsVO> getRandom(){
+		List<CarFactsVO> allCarFacts = mapper.selectAll();
+		Collections.shuffle(allCarFacts);
+		return allCarFacts.stream().limit(5).collect(Collectors.toList());
+	}
 
 }

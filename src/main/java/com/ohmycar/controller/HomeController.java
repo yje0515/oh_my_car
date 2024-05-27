@@ -2,6 +2,7 @@ package com.ohmycar.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -13,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.ohmycar.domain.CarFactsVO;
 import com.ohmycar.domain.UserVO;
+import com.ohmycar.service.CarFactsService;
 import com.ohmycar.service.UserService;
 
 /**
@@ -26,8 +29,11 @@ public class HomeController {
 
 	private final UserService userService;
 
-	public HomeController(UserService userService) {
+	private final CarFactsService carFactsService;
+
+	public HomeController(UserService userService, CarFactsService carFactsService) {
 		this.userService = userService;
+		this.carFactsService = carFactsService;
 	}
 
 	/**
@@ -35,13 +41,15 @@ public class HomeController {
 	 */
 	@GetMapping(value = "/")
 	public String home(Locale locale, Model model) {
+
+		// 인증된 사용자 정보 불러와서 userVO객체에 담아준다.
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Object o = authentication.getPrincipal();
-		UserDetails userDetails = o.getClass() == UserDetails.class ? (UserDetails) o : null;
-		UserVO userVO = userDetails != null ? userService.getUserByUserId(userDetails.getUsername()) : new UserVO();
-		if (userVO != null) {
+		if (authentication.getPrincipal() instanceof UserDetails) {
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+			UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 			model.addAttribute("userVO", userVO);
 		}
+
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
@@ -49,6 +57,9 @@ public class HomeController {
 
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate);
+
+		List<CarFactsVO> randomCarFacts = carFactsService.getRandom();
+		model.addAttribute("randomCarFacts", randomCarFacts);
 		return "home";
 	}
 
