@@ -15,8 +15,14 @@
 /* 회원가입 페이지 */
 #joinWrap {
 	width: 500px;
-	height: 700px;
-	background-color: gray;
+	height: 680px;
+	padding: 70px 0 0 0;
+}
+
+#joinWrap table {
+	margin: 50px 0 0 30px;
+	border-collapse: separate;
+	border-spacing: 9px 8px;
 }
 
 #joinWrap h1, p {
@@ -26,16 +32,35 @@
 .joinInput {
 	width: 250px;
 	height: 35px;
+	padding: 0 0 0 10px;
 }
+
 
 .joinDupBtn {
 	width: 70px;
 	height: 35px;
+	color: #002F65;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid #002F65;
+	font-size: 15px;
 }
 
 #joinBtn {
 	width: 250px;
-	height: 35px;
+	height: 50px;
+	background-color: #002F65;
+	color: white;
+	border-radius: 5px;
+	font-size: 18px;
+	margin: 20px 0 0 0px;
+}
+
+#joinBtn:hover{
+	background-color: white;
+	color: #002F65;
+	border: 1px solid #002F65;
+	cursor:pointer;
 }
 </style>
 </head>
@@ -102,9 +127,9 @@
 				</tr>
 				<tr>
 					<td>회원등급*</td>
-					<td><input type="radio" name="auth" value="ROLE_MEMBER"
-						checked="checked">일반회원 <input type="radio" name="auth"
-						value="ROLE_ADMIN">관리자</td>
+					<td style="text-align: center;"><input type="radio"
+						name="auth" value="ROLE_MEMBER" checked="checked">일반회원 <input
+						type="radio" name="auth" value="ROLE_ADMIN">관리자</td>
 				</tr>
 				<tr>
 					<td></td>

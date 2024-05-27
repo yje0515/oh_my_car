@@ -70,7 +70,7 @@ ul, li {
 	border: 1px solid #002F65;
 	color: white;
 	border-radius: 5px;
-	font-size: 18px;
+	font-size: 15px;
 }
 
 .headerBtn:hover {
@@ -85,7 +85,7 @@ ul, li {
 	border: 1px solid #002F65;
 	color: #002F65;
 	border-radius: 5px;
-	font-size: 18px;
+	font-size: 15px;
 }
 
 #headerBtn_logout:hover {

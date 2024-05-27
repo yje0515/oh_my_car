@@ -9,8 +9,40 @@
 <style>
 #loginWrap {
 	width: 400px;
-	height: 700px;
-	background-color: gray;
+	height: 680px;
+	text-align: center;
+}
+
+#loginWrap h1 {
+	text-align: center;
+	padding: 150px 0 30px 0;
+}
+
+#loginBtn {
+	width: 250px;
+	height: 50px;
+	background-color: #002F65;
+	color: white;
+	border-radius: 5px;
+	font-size: 18px;
+	margin:5px auto;
+}
+
+.loginInput {
+	width: 250px;
+	height: 35px;
+	padding: 0 0 0 5px;
+}
+
+#loginJoinBtn {
+	width: 250px;
+	height: 50px;
+	color: #002F65;
+	background-color: white;
+	border: 1px solid #002F65; border-radius : 5px;
+	font-size: 18px;
+	border-radius: 5px;
+	margin:5px auto;
 }
 </style>
 </head>
@@ -23,15 +55,16 @@
 			name="loginForm">
 			<table>
 				<tr>
-					<td><input type="text" id="userId" placeholder="아이디"
-						name="username" autofocus></td>
+					<td><input class="loginInput" type="text" id="userId"
+						placeholder="아이디" name="username" autofocus></td>
 				</tr>
 				<tr>
 					<td><input type="password" id="password" class="loginInput"
 						placeholder="비밀번호" name="password"></td>
 				</tr>
 				<tr>
-					<td><input name="remember-me" type="checkbox">로그인 유지하기</td>
+					<td style="text-align: left;"><input name="remember-me"
+						type="checkbox">로그인 유지하기</td>
 				</tr>
 				<tr>
 					<td><input type="submit" id="loginBtn" value="로그인"></td>
@@ -48,7 +81,7 @@
 		<p id="wrongAccess" style="color: red; font-size: 12px">
 			아이디 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.
 		</p>
-		<a href="/user/join">회원가입</a>
+		<a href="/user/join"><button id="loginJoinBtn">회원가입</button></a>
 
 
 	</div>
