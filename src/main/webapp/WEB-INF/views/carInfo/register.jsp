@@ -20,31 +20,31 @@ body {
 	padding: 0;
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	
+	/* align-items: center; 이 줄을 제거하여 수직 정렬을 없앰 */
+	min-height: 100vh;
 }
 
 h1 {
 	color: #333;
 	text-align: center;
 	font-size: 36px;
-	margin-bottom: 20px;
+	margin-bottom: 10px; /* 아래쪽 여백을 줄임 */
 	font-weight: 700;
 	letter-spacing: 1px;
 }
 
 form {
 	background-color: #fff;
-	padding: 30px 40px;
+	padding: 20px 30px; /* 패딩을 줄임 */
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	width: 100%;
 	max-width: 500px;
+	margin-top: 30px; /* 위쪽 여백을 조정 */
 }
 
 form div {
-	margin-bottom: 20px;
+	margin-bottom: 15px; /* 아래쪽 여백을 줄임 */
 }
 
 label {
@@ -56,7 +56,7 @@ label {
 
 input[type="text"], select {
 	width: 100%;
-	padding: 12px;
+	padding: 10px; /* 패딩을 줄임 */
 	border: 1px solid #ccc;
 	border-radius: 6px;
 	font-size: 16px;
@@ -73,24 +73,23 @@ input[type="text"]:read-only {
 }
 
 button[type="submit"] {
-	background-color: #333; /* 버튼 색상 변경 */
+	background-color: #333;
 	color: white;
 	border: none;
-	padding: 14px 20px;
-	border-radius: 20px; /* 둥근 모서리 적용 */
+	padding: 12px 20px; /* 패딩을 줄임 */
+	border-radius: 20px;
 	cursor: pointer;
 	font-size: 16px;
 	width: 100%;
 	font-weight: 700;
 	text-transform: uppercase;
 	transition: background-color 0.3s ease, transform 0.2s ease;
-	/* 애니메이션 효과 추가 */
 	outline: none; /* 포커스시 파란 테두리 제거 */
 }
 
 button[type="submit"]:hover {
-	background-color: #0056b3; /* 호버 시 색상 변경 */
-	transform: scale(1.02); /* 호버 시 약간 확대되는 효과 */
+	background-color: #0056b3;
+	transform: scale(1.02);
 }
 </style>
 </head>
