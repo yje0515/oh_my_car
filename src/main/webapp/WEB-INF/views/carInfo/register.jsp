@@ -20,8 +20,6 @@ body {
 	padding: 0;
 	display: flex;
 	justify-content: center;
-	/* align-items: center; 이 줄을 제거하여 수직 정렬을 없앰 */
-	min-height: 100vh;
 }
 
 h1 {

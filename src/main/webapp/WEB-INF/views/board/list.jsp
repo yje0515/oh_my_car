@@ -10,7 +10,58 @@
 <meta charset="UTF-8">
 <title>게시판 목록</title>
 <link rel="stylesheet" type="text/css" href="css/list.css">
+<style>
+/* Define basic styling */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+	margin: 0;
+	padding: 0;
+}
 
+.container {
+	width: 80%;
+	margin: auto;
+}
+
+h1 {
+	color: #002F65;
+	text-align: center;
+}
+
+/* Style for board container */
+.board {
+	margin-top: 20px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 10px;
+	border: 1px solid #002F65;
+	text-align: left;
+}
+
+th {
+	background-color: #002F65;
+	color: #ffffff;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+/* Include footer styling if needed */
+.footer {
+	background-color: #002F65;
+	color: #ffffff;
+	text-align: center;
+	padding: 10px 0;
+}
+</style>
 </head>
 <body>
 	<h1>게시판 목록</h1>
