@@ -3,9 +3,7 @@ package com.ohmycar.controller;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -95,9 +93,6 @@ public class UserController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		// 비밀번호 확인
 		String realPwd = userService.userPasswordCheckByUserId(userVO.getUserId());
 		boolean pwdChecked = passwordEncoder.matches(password, realPwd);
@@ -120,7 +115,7 @@ public class UserController {
 		// 비밀번호 확인 후 접근 가능
 		rttr.addFlashAttribute("passwordChecked", "notYet");
 		log.info("wrongPassword.....");
-		rttr.addFlashAttribute(resultString, "wrongPassword");
+		rttr.addFlashAttribute(RESULT_STRING, "wrongPassword");
 		if ("edit".equals(action)) {
 			// action값 가지고 비밀번호 재확인
 			return "redirect:/user/passwordCheck?action=edit";
@@ -138,7 +133,7 @@ public class UserController {
 		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
 		model.addAttribute(USER_VO_STRING, userVO);
 
-	}log.info("update...");
+		log.info("update...");
 
 	}
 
@@ -151,7 +146,7 @@ public class UserController {
 		userService.updateUser(userVO);
 
 		// 회원정보 수정시 alert
-		rttr.addFlashAttribute(resultString, "success");
+		rttr.addFlashAttribute(RESULT_STRING, "success");
 
 		return "redirect:/";
 	}
@@ -173,7 +168,7 @@ public class UserController {
 		// 로그아웃처리
 		SecurityContextHolder.clearContext();
 
-		rttr.addFlashAttribute(resultString, "deleteSuccess");
+		rttr.addFlashAttribute(RESULT_STRING, "deleteSuccess");
 
 		return "redirect:/";
 	}
