@@ -35,13 +35,13 @@ ul, li {
 }
 
 .sticky + #underHeader {
-	padding-top: 150px;
+	padding-top: 140px;
 }
 
 #headerWrap {
 	margin: 0 auto;
 	width: 100%;
-	height: 150px;
+	height: 140px;
 	border-bottom: 1px solid #1A87C6;
 	background-color: white;
 	z-index: 1000;
@@ -119,6 +119,7 @@ ul, li {
 			</sec:authorize>
 		</ul>
 	</div>
+	
 	<!--footer랑 연결되어있음 sticky설정  -->
 	<div id="underHeader">
 		<script>

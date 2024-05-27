@@ -10,10 +10,38 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <!-- <script src="/resources/js/user/userCheck.js" type="text/javascript"></script> -->
 <title>회원가입</title>
+<style>
+
+/* 회원가입 페이지 */
+#joinWrap {
+	width: 500px;
+	height: 700px;
+	background-color: gray;
+}
+
+#joinWrap h1, p {
+	text-align: center;
+}
+
+.joinInput {
+	width: 250px;
+	height: 35px;
+}
+
+.joinDupBtn {
+	width: 70px;
+	height: 35px;
+}
+
+#joinBtn {
+	width: 250px;
+	height: 35px;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="../includes/header.jsp"></jsp:include>
-	<div class="join">
+	<div id="joinWrap">
 		<h1>회원가입</h1>
 		<p>*표시된 항목은 필수입력항목입니다.</p>
 		<form role="form" method="post" action="/user/join" id="joinForm"
@@ -22,9 +50,10 @@
 			<table>
 				<tr>
 					<td>아이디*</td>
-					<td><input type="text" id="userId" name="userId"
-						placeholder="아이디" maxlength="20" autofocus></td>
-					<td><input type="button" id="idDupBtn" value="중복확인"></td>
+					<td><input class="joinInput" type="text" id="userId"
+						name="userId" placeholder="아이디" maxlength="20" autofocus></td>
+					<td><input class="joinDupBtn" type="button" id="idDupBtn"
+						value="중복확인"></td>
 				</tr>
 				<tr>
 					<td colspan="3" class="joinRules" id="userIdRule">5~20자의 영문
@@ -32,8 +61,8 @@
 				</tr>
 				<tr>
 					<td>이름*</td>
-					<td><input type="text" id="userName" name="userName"
-						placeholder="이름"></td>
+					<td><input class="joinInput" type="text" id="userName"
+						name="userName" placeholder="이름"></td>
 				</tr>
 				<tr>
 					<td colspan="3" class="joinRules" id="userNameRule">한글만 입력
@@ -41,8 +70,8 @@
 				</tr>
 				<tr>
 					<td>비밀번호*</td>
-					<td><input type="password" id="password" name="password"
-						maxlength="20" placeholder="비밀번호"></td>
+					<td><input class="joinInput" type="password" id="password"
+						name="password" maxlength="20" placeholder="비밀번호"></td>
 				</tr>
 				<tr>
 					<td colspan="3" class="joinRules" id="passwordRule">8~20자의 영문
@@ -50,15 +79,17 @@
 				</tr>
 				<tr>
 					<td>비밀번호확인*</td>
-					<td><input type="password" id="passwordCheck" maxlength="20"
-						name="passwordCheck" placeholder="비밀번호확인"></td>
+					<td><input class="joinInput" type="password"
+						id="passwordCheck" maxlength="20" name="passwordCheck"
+						placeholder="비밀번호확인"></td>
 
 				</tr>
 				<tr>
 					<td>이메일*</td>
-					<td><input type="text" id="email" name="email"
-						placeholder="이메일"></td>
-					<td><input type="button" id="emailDupBtn" value="중복확인"></td>
+					<td><input class="joinInput" type="text" id="email"
+						name="email" placeholder="이메일"></td>
+					<td><input class="joinDupBtn" type="button" id="emailDupBtn"
+						value="중복확인"></td>
 				</tr>
 				<tr>
 					<td colspan="3" class="joinRules" id="emailRule">이메일 주소가 정확한지
@@ -66,8 +97,8 @@
 				</tr>
 				<tr>
 					<td>닉네임</td>
-					<td><input type="text" id="nickName" name="nickName"
-						placeholder="[선택]닉네임"></td>
+					<td><input class="joinInput" type="text" id="nickName"
+						name="nickName" placeholder="[선택]닉네임"></td>
 				</tr>
 				<tr>
 					<td>회원등급*</td>
@@ -76,6 +107,7 @@
 						value="ROLE_ADMIN">관리자</td>
 				</tr>
 				<tr>
+					<td></td>
 					<td><input type="submit" id="joinBtn" value="회원가입"></td>
 				</tr>
 
