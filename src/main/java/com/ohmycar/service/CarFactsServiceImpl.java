@@ -53,7 +53,6 @@ public class CarFactsServiceImpl implements CarFactsService {
 		List<CarFactsVO> allCarFacts = mapper.selectAll();
 		Collections.shuffle(allCarFacts);
 		return allCarFacts.stream().limit(5).collect(Collectors.toList());
-		
 	}
 
 }
