@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <meta charset="UTF-8">
 <title>게시판 목록</title>
 <link rel="stylesheet" type="text/css" href="css/list.css">
@@ -28,7 +31,7 @@
 				<td>${board.content}</td>
 				<td>${board.writer}</td>
 				<td>${board.regdate}</td>
-				<td>${board.updatedate}</td>
+				<td>${board.updateDate}</td>
 			</tr>
 		</c:forEach>
 	</table>

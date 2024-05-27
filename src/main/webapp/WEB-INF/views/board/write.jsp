@@ -3,19 +3,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Board</title>
+<meta charset="UTF-8">
+<title>게시글 작성</title>
 </head>
 <body>
-	<h1>Board</h1>
+	<h1>게시글 작성</h1>
 	<form action="/board/write" method="post">
-		<label for="title">Title:</label> <input type="text" id="title"
-			name="title"><br> <label for="content">Content:</label>
+		<label for="title">제목:</label> <input type="text" id="title"
+			name="title"><br> <label for="content">게시글 내용:</label>
 		<textarea id="content" name="content"></textarea>
-		<br> <label for="writer">Writer:</label> <input type="text"
-			id="writer" name="writer"><br>
-		<button type="submit">Submit</button>
+		<br> <label for="writer">작성자:</label> <input type="text"
+			id="writer" name="writer" value="${username}" readonly><br>
+		<button type="submit">제출</button>
 	</form>
-
-
 </body>
 </html>
