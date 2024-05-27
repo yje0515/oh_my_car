@@ -99,7 +99,7 @@ ul, li {
 <body>
 	<div id="headerWrap">
 		<a id="logoImg" href="/"><img
-			src="../resources/img/ohmycar_logo.png" style="height: 160px;"></a>
+			src="../resources/img/logo.png" style="height: 160px"></a>
 		<ul>
 			<sec:authorize access="isAuthenticated()">
 				<li>[ ${userVO.userName } ] 님, 안녕하세요!</li>
