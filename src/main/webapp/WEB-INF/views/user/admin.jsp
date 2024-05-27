@@ -84,6 +84,9 @@
 	<script>
 	/* ajax로 crud */
 		$(document).ready(function() {
+			
+			/* 선택된게 없으면 alert("선택된 항목이 없습니다.") */
+			
 			$("#registerBtn").on('click', function() {
 				/* input 생기게, 저장버튼 보이게*/
 			})
@@ -101,11 +104,14 @@
 				var deleteConfirm = confirm("정말 삭제하시겠습니까?");
 				if(deleteConfirm){
 					
-					/* ajax 해당(checked) 항목 List로 보내서 userController에서 삭제 */
+					/* ajax 해당(checked) 항목 List로 보내서 userController에서 삭제*/
 					
 					return true;
+				}else{
+					alert("취소되었습니다.");
+					return false;
 				}
-				return false;
+				
 			})
 		});
 	</script>
