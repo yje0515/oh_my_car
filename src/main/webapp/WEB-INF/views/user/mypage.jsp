@@ -48,6 +48,7 @@
 	margin: 300px 0px 0 250px;
 	max-height: 400px;
 	overflow: auto;
+	overflow-x:hidden;
 	min-height: 200px;
 }
 

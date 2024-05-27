@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ohmycar.domain.AuthVO;
+import com.ohmycar.domain.CarFactsVO;
 import com.ohmycar.domain.CarVO;
 import com.ohmycar.domain.UserVO;
+import com.ohmycar.service.CarFactsService;
 import com.ohmycar.service.CarService;
 import com.ohmycar.service.UserService;
 
@@ -29,8 +31,10 @@ import lombok.extern.log4j.Log4j;
 public class UserController {
 
 	private final UserService userService;
-	
+
 	private final CarService carService;
+
+	private final CarFactsService carFactsService;
 
 	private final PasswordEncoder passwordEncoder;
 
@@ -55,7 +59,13 @@ public class UserController {
 	// 관리자권한 가진 사용자만 접근 가능
 	@GetMapping("/admin")
 	public void adminGet(Model model) {
-		log.info("admin.....");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute("userVO", userVO);
+
+		List<CarFactsVO> AllCarFacts = carFactsService.getAll();
+		model.addAttribute("AllCarFacts", AllCarFacts);
 
 	}
 
