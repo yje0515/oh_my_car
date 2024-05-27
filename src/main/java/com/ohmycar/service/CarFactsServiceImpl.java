@@ -52,7 +52,7 @@ public class CarFactsServiceImpl implements CarFactsService {
 	public List<CarFactsVO> getRandom(){
 		List<CarFactsVO> allCarFacts = mapper.selectAll();
 		Collections.shuffle(allCarFacts);
-		return allCarFacts.stream().limit(10).collect(Collectors.toList());
+		return allCarFacts.stream().limit(5).collect(Collectors.toList());
 		
 	}
 

@@ -42,7 +42,7 @@ ul, li {
 	margin: 0 auto;
 	width: 100%;
 	height: 140px;
-	border-bottom: 1px solid #1A87C6;
+	border-bottom: 1px solid #002F65;
 	background-color: white;
 	z-index: 1000;
 }
@@ -66,31 +66,31 @@ ul, li {
 }
 
 .headerBtn {
-	background-color: #1A87C6;
-	border: 1px solid #1A87C6;
+	background-color: #002F65;
+	border: 1px solid #002F65;
 	color: white;
 	border-radius: 5px;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 .headerBtn:hover {
 	background-color: white;
-	border: 1px solid #1A87C6;
-	color: #1A87C6;
+	border: 1px solid #002F65;
+	color:#002F65;
 	cursor: pointer;
 }
 
 #headerBtn_logout {
 	background-color: white;
-	border: 1px solid #1A87C6;
-	color: #1A87C6;
+	border: 1px solid #002F65;
+	color: #002F65;
 	border-radius: 5px;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 #headerBtn_logout:hover {
-	background-color: #1A87C6;
-	border: 1px solid #1A87C6;
+	background-color: #002F65;
+	border: 1px solid #002F65;
 	color: white;
 	cursor: pointer;
 }
@@ -99,10 +99,10 @@ ul, li {
 <body>
 	<div id="headerWrap">
 		<a id="logoImg" href="/"><img
-			src="../resources/img/logo.png" style="height: 160px"></a>
+			src="../resources/img/logo.png" style="height: 175px"></a>
 		<ul>
 			<sec:authorize access="isAuthenticated()">
-				<li>[ ${userVO.userName } ] 님, 안녕하세요!</li>
+				<li style="font-size:18px;">[ ${userVO.userName } ] 님, 안녕하세요!</li>
 				<li><form action="/logout" method='post'>
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />

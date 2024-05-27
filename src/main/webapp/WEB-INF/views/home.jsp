@@ -12,7 +12,7 @@
 #mainWrap {
 	width: 1000px;
 	height: 1400px;
-	margin: 0 auto;
+	margin: 50px auto;
 }
 
 /* 임시 */
@@ -22,17 +22,42 @@
 	height: 300px;
 	background-color: lightyellow;
 }
+#mainLowerImg {
+	text-align: center;
+	width: 100%;
+	height: 300px;
+	background-color: lightyellow;
+}
 
 #ramdomCarFactsBox {
 	width: 100%;
-	height: 500px;
-	background-color: lightyellow;
+	height: 444px;
+	margin:55px auto;
+	border:1px solid lightgray;
+}
+
+#ramdomCarFactsBox h2 {
+	margin: 20px auto;
+	font-size:28px;
+}
+
+#ramdomCarFactsBox  table {
+	margin: 40px 55px 0 55px;
+	border-collapse: collapse;
+}
+
+#ramdomCarFactsBox td {
+	width:885px;
+	border: 1px solid lightgray;
+	height:50px;
+	padding:0 0 0 20px;
 }
 
 /* 아이콘 */
 #mainIconBox {
 	width: 100%;
 	height: 300px;
+	margin:0px 0 -53px 0px;
 }
 
 #mainIconBox ul {
@@ -74,16 +99,26 @@
 			</ul>
 		</div>
 		<div id="ramdomCarFactsBox">
-			<h2>자동차 랜덤 간단상식</h2>
-			<ul>
+
+			<table>
+				<tr>
+					<th><h2>자동차 랜덤 간단상식</h2></th>
+				</tr>
+				<c:forEach var="carFact" items="${randomCarFacts}">
+					<tr>
+						<td>${carFact.factText }</td>
+					</tr>
+				</c:forEach>
+			</table>
+			<%-- <ul>
 				<c:forEach var="carFact" items="${randomCarFacts}">
 					<li>${carFact.factText }</li>
 				</c:forEach>
-			</ul>
+			</ul> --%>
 		</div>
-		<div class="someContents">
-			<a href="#"><img src="../../resources/img/mainSlide2.png"
-				alt="슬라이드 이미지"></a>
+		<div id="mainLowerImg">
+			<a href="#"><img src="../../resources/img/mainLowerImg.png"
+				alt="하단 이미지"></a>
 		</div>
 
 	</div>

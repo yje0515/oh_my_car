@@ -18,7 +18,7 @@ a {
 	margin: 0 auto;
 	width: 100%;
 	height: 300px;
-	background-color: #1A87C6;
+	background-color:#002F65;
 }
 
 #footerInfoBox {
