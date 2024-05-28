@@ -66,10 +66,10 @@ public class UserController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
-		model.addAttribute("userVO", userVO);
+		model.addAttribute(USER_VO_STRING, userVO);
 
-		List<CarFactsVO> AllCarFacts = carFactsService.getAll();
-		model.addAttribute("AllCarFacts", AllCarFacts);
+		List<CarFactsVO> allCarFacts = carFactsService.getAll();
+		model.addAttribute("AllCarFacts", allCarFacts);
 
 	}
 

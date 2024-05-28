@@ -1,10 +1,146 @@
 @charset "UTF-8";
+
 * {
 	margin: 0 auto;
 	padding: 0 auto;
-	list-style:none;
+	list-style: none;
+	font-family: "Noto Sans KR", sans-serif;
 }
 
 a {
 	text-decoration: none;
+	color: black;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+.sticky {
+	position: fixed;
+}
+
+.sticky+#underHeader {
+	padding-top: 140px;
+}
+
+#headerWrap {
+	position: sticky;
+	padding-top: 32px;
+	top: -32px;
+	margin: 0 auto;
+	width: 100%;
+	height: 140px;
+	border-bottom: 1px solid #002F65;
+	background-color: white;
+	z-index: 1000;
+}
+
+#headerWrap ul {
+	list-style-type: none;
+	margin: 15px 15px 0 0px;
+	float: right;
+}
+
+#headerWrap li {
+	float: left;
+	margin: 0px 10px 0px 10px;
+}
+
+#headerWrap #logoImg {
+	position: absolute;
+	float: left;
+	margin: -12px 0 0 20px;
+}
+
+.headerBtn {
+	background-color: #002F65;
+	border: 1px solid #002F65;
+	color: white;
+	border-radius: 5px;
+	font-size: 15px;
+}
+
+.headerBtn:hover {
+	background-color: white;
+	border: 1px solid #002F65;
+	color: #002F65;
+	cursor: pointer;
+}
+
+#headerBtn_logout {
+	background-color: white;
+	border: 1px solid #002F65;
+	color: #002F65;
+	border-radius: 5px;
+	font-size: 15px;
+}
+
+#headerBtn_logout:hover {
+	background-color: #002F65;
+	border: 1px solid #002F65;
+	color: white;
+	cursor: pointer;
+}
+
+.footer {
+	background-color: #1A87C6;
+	color: #EFEFEF;
+	padding: 20px;
+	font-size: 14px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.footer .top-links {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.footer .top-links a {
+	color: #ddd;
+	text-decoration: none;
+}
+
+#footerWrap {
+	margin: 0 auto;
+	width: 100%;
+	height: 300px;
+	background-color: #002F65;
+}
+
+#footerInfoBox {
+	width: 1000px;
+	height: 300px;
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+}
+
+#footerInfoBox table {
+	margin: 70px 0 0 65px;
+	float: left;
+	text-align: left;
+}
+
+#footerInfoBox th {
+	color: white;
+}
+
+#footerInfoBox td {
+	color: lightgray;
+}
+
+#footerWrap #logoImg {
+	margin: 170px 0 0 750px;
+	float: right;
+}
+
+.footerSmallText {
+	font-size: 13px;
 }

@@ -28,6 +28,7 @@
 		<security:intercept-url pattern="/user/userUpdate" access="isAuthenticated()" />
 		<security:intercept-url pattern="/user/userDelete" access="isAuthenticated()" />
 		<security:intercept-url pattern="/user/passwordCheck" access="isAuthenticated()" />
+		<security:intercept-url pattern="/consumable/*" access="isAuthenticated()" />
 
 		<!-- 관리자권한을 사진 사용자만 접근 가능한 URL -->
 		<security:intercept-url pattern="/user/admin" access="hasRole('ROLE_ADMIN')" />
@@ -36,7 +37,7 @@
 		<security:access-denied-handler ref="customAccessDenied" />
 
 
-		<!-- 로그인 페이지에서 인증에 성공하면 Spring Security는 customLoginSuccess 빈에 정의된 커스텀 
+		<!-- 로그인 페이지에서 인증에 성공하면 Spring Security는 customLoginSuccess 빈에 정의된 커스텀
 			로그인 성공 핸들러를 사용하여 처리한다 -->
 		<security:form-login login-page="/user/login" authentication-success-handler-ref="customLoginSuccess" />
 

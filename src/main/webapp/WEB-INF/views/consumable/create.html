@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="kor">
+<html xmlns:th="http://www.thymeleaf.org" lang="kor" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout/default">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<th:block layout:fragment="head">
     <link rel="stylesheet" href="../../../resources/css/consumable.css" type="text/css">
-    <title>차 부붐 정보 생성하기</title>
-</head>
+</th:block>
 
-<body>
+<div layout:fragment="content">
     <H1>생성하기</H1>
     <form action="/consumable/create" method="post">
         <input type="hidden" name="carId" th:value="${carId}">
@@ -94,8 +92,8 @@
             </tbody>
         </table>
         <input type="submit" value="생성하기">
-        <input type="button" value="돌아가기" onclick="location.href='/consumable/main'" /><!-- TODO 돌아가기 주소 마이페이지로 바꿀 것 -->
+        <input type="button" value="돌아가기" onclick="location.href='/user/mypage'" />
     </form>
-</body>
+</div>
 
 </html>

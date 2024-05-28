@@ -3,7 +3,9 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+
+<!DOCTYPE html>
+<html lang="kor">
 <head>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <title>앗!차차로 간편한 자동차관리!</title>

@@ -2,10 +2,15 @@ package com.ohmycar.controller;
 
 import com.ohmycar.domain.ConsumableCalc;
 import com.ohmycar.domain.ConsumableVO;
+import com.ohmycar.domain.UserVO;
 import com.ohmycar.service.ConsumableService;
+import com.ohmycar.service.UserService;
 
 import lombok.extern.log4j.Log4j;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +24,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ConsumableController {
     private final ConsumableService consumableService;
     private final ConsumableCalc calc;
+    private final UserService userService;
+
     private static final String CAR_ID = "carId";
     private static final String REDIRECT_MYPAGE = "redirect:/user/mypage";
+    private static final String USER_VO_STRING = "userVO";
 
-    public ConsumableController(ConsumableService consumableService) {
+    public ConsumableController(ConsumableService consumableService, UserService userService) {
         this.consumableService = consumableService;
+        this.userService = userService;
         this.calc = new ConsumableCalc();
     }
 
@@ -36,6 +45,10 @@ public class ConsumableController {
      */
     @GetMapping("/read")
     public void read(@RequestParam("carId") String carId, Model model) throws Exception {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+        model.addAttribute(USER_VO_STRING, userVO);
         log.info("reading..............................................................");
         ConsumableVO vo = consumableService.read(carId);
         log.info(vo);
@@ -55,6 +68,10 @@ public class ConsumableController {
      */
     @GetMapping("/modify")
     public void modify(@RequestParam("carId") String carId, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+        model.addAttribute(USER_VO_STRING, userVO);
         log.info("Modifying......................................................");
         ConsumableVO vo = consumableService.read(carId);
         log.info(vo);
@@ -95,6 +112,10 @@ public class ConsumableController {
      */
     @GetMapping("/create")
     public void getCreate(@RequestParam("carId") String carId, Model model, String token) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+        model.addAttribute(USER_VO_STRING, userVO);
         log.info(carId);
         model.addAttribute(CAR_ID, carId);
         model.addAttribute("token", token);
@@ -109,10 +130,13 @@ public class ConsumableController {
      * @return 마이페이지로 돌아간다.
      */
     @PostMapping("/create")
-    public String create(@RequestParam("carId") String carId, ConsumableVO vo, String token, String accDist) {
-        String tokenTemp = "Bearer "
-                + "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1aWQiOiI2NjRkYWZjZC05NmVhLTRhZjctOGI0MC1iYTYyNzgwNzI4ODciLCJpc3MiOiJibHVlbGluayIsInBpZCI6IjYyYTk3NmZhYmI4YjVkZTg5YzYzYjhmYiIsImV4cCI6NDEwMjMyNjAwMCwibGF0IjoxNzE1MTI4NDkzLCJzaWQiOiI0MDBiMzIzMS0zMGRiLTQyZjUtYWI1Mi05ZDY5YjM1YTE4NGQifQ.pZuBsie3in_l-TqVBtFPlXWgvQHbbF62yVPRfZvaJ0CCthBAlgp0Au4yxIt9ETE1S5O86EVi2y7VnkWstig-zo3pNW4BT22snQ-GshmSJ_NfOf_s5ollcqjNdqKNVmF588xP9pdWKnBB3hb_YLZLFGhUDjGaOI684mq4CCZ7V_vggTlaaXZZ6ycNvk58WhT5cpKccfHa6KkTFJhFwOJiKaG-z6snhPO33RIuNxwtrC7AikVu4B71guIJmBHcZ31HPjqVcAZwU2AR3eLNCk7XHdFFZR2gQUpGvaw81ECd1F48LSnvAY60MrsyH-nnO_sxNI8sakqGuMoSv8_Le_J5Qw";
-        String accDistTemp = token != null ? calc.getAccDist(tokenTemp, carId) : accDist;
+    public String create(@RequestParam("carId") String carId, ConsumableVO vo, String token, String accDist,
+            Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+        model.addAttribute(USER_VO_STRING, userVO);
+        String accDistTemp = token != null ? calc.getAccDist(token, carId) : accDist;
         vo.setCarId(carId);
         consumableService.create(vo, accDistTemp);
         return REDIRECT_MYPAGE;
@@ -127,6 +151,10 @@ public class ConsumableController {
      */
     @GetMapping("/map")
     public void showMap(String carId, @RequestParam("keyWord") String keyWord, Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+        model.addAttribute(USER_VO_STRING, userVO);
         log.info("showMap");
         model.addAttribute(CAR_ID, carId);
         model.addAttribute("keyWord", keyWord);

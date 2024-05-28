@@ -28,7 +28,7 @@ public class BoardController {
 
 	private final UserService userService;
 
-	private static final String REDIRECT_BEFORE_PAGE = "redirect:/user/mypage";// TODO 게시판 버튼 있는 곳으로 바꾸기
+	private static final String REDIRECT_BEFORE_PAGE = "redirect:/user/mypage";
 
 	public BoardController(BoardService boardService, UserService userService) {
 		this.boardService = boardService;

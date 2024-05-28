@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="kor">
+<html xmlns:th="http://www.thymeleaf.org" lang="kor" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout/default">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<th:block layout:fragment="head">
     <link rel="stylesheet" href="../../../resources/css/consumable.css" type="text/css">
-    <title>차 부붐 정보 수정하기</title>
-</head>
+</th:block>
 
-<body>
+<div layout:fragment="content">
     <H1>수정하기</H1>
     <form action="/consumable/modify" method="post">
         <input type="hidden" name="carId" th:value="${carId}">
@@ -87,6 +85,6 @@
             location.href = "/consumable/read?carId=" + carId;
         }
     </script>
-</body>
+</div>
 
 </html>

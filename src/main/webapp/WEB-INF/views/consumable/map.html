@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="kor" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout/default">
 
-<head>
-    <meta charset="utf-8" />
-    <title>키워드로 장소검색하고 목록으로 표출하기</title>
+<th:block layout:fragment="head">
     <style>
         .map_wrap,
         .map_wrap * {
@@ -191,9 +190,9 @@
             color: #777;
         }
     </style>
-</head>
+</th:block>
 
-<body>
+<div layout:fragment="content">
     <div class="map_wrap">
         <div id="map" style="
                     width: 100%;
@@ -489,6 +488,6 @@
             }
         }
     </script>
-</body>
+</div>
 
 </html>
