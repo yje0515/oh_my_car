@@ -121,7 +121,7 @@ a {
 		</div>
 
 		<a id="logoImg" href="/"><img
-			src="../resources/img/logo_white.png" style="width: 250px;"></a>
+			src="../resources/img/logo_white.png" alt="로고 이미지" style="width: 250px;"></a>
 	</div>
 
 </body>
