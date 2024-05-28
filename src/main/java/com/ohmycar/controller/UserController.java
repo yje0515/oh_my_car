@@ -158,6 +158,10 @@ public class UserController {
 	@GetMapping("/userDelete")
 	public void userDeleteGet(Model model) {
 		log.info("delete.....");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute("userVO", userVO);
 	}
 
 	// 회원탈퇴

@@ -9,69 +9,8 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
-<style>
-#mypageWrap {
-	position: relative;
-	width: 1000px;
-	height: 800px;
-	margin: 0 auto;
-}
-
-/* 마이페이지 메뉴 */
-#mypageMenuBox {
-	position: fixed;
-	height: 800px;
-	float: left;
-	position: absolute;
-	margin: 0px 0 0 0px;
-	text-align: left;
-	border-right: 1px solid #002F65;
-}
-
-#mypageMenuBox ul {
-	margin: 120px 40px 0px -255px;
-}
-
-#mypageMenuBox ul li {
-	margin: 20px 0 50px 0px;
-	font-size: 18px;
-}
-
-/* 마이페이지 간단 회원차량정보 */
-#userCarINfoBox {
-	position: absolute;
-	border: 1px solid #002F65;
-	border-radius: 5px;
-	width: 700px;
-	background-color: white;
-	text-align: left;
-	margin: 300px 0px 0 250px;
-	max-height: 400px;
-	overflow: auto;
-	overflow-x:hidden;
-	min-height: 200px;
-}
-
-#userCarINfoBox table {
-	border-collapse: separate;
-	border-spacing: 90px 20px;
-}
-
-#userCarINfoBox table th td {
-	border: 1px solid gray;
-}
-
-/* 마이페이지 아이콘으로 바로가기 */
-#mypageIconBox {
-	position: absolute;
-	width: 800px;
-	margin: 50px 0 0 200px;
-}
-
-#mypageIconBox img {
-	width: 150px;
-}
-</style>
+<link rel="stylesheet" type="text/css"
+	href="../../resources/css/user.css">
 </head>
 <body>
 	<jsp:include page="../includes/header.jsp"></jsp:include>

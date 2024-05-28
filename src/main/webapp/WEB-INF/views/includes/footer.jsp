@@ -4,61 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-* {
-	margin: 0 auto;
-}
-
-a {
-	text-decoration: none;
-}
-
-#footerWrap {
-	margin: 0 auto;
-	width: 100%;
-	height: 300px;
-	background-color: #002F65;
-}
-
-#footerInfoBox {
-	width: 1000px;
-	height: 300px;
-	position: absolute;
-	margin: 0 auto;
-	left: 0;
-	right: 0;
-	width: 1000px;
-}
-
-#footerInfoBox table {
-	margin: 70px 0 0 65px;
-	float: left;
-	text-align: left;
-}
-
-#footerInfoBox th {
-	color: white;
-}
-
-#footerInfoBox td {
-	color: lightgray;
-}
-
-#footerWrap #logoImg {
-	margin: 170px 0 0 750px;
-	float: right;
-}
-
-.footerSmallText{
-	font-size:13px;
-}
-</style>
+<title>footer</title>
 </head>
 <body>
-	<!-- #underHeader sticky설정을 위한 div-->
+	<!-- start #underHeader sticky설정을 위한 div-->
 	</div>
-	<!-- 실수 아님 -->
+	<!-- end #underHeader sticky설정을 위한 div -->
 
 	<div id="footerWrap">
 		<div id="footerInfoBox">
@@ -121,7 +72,7 @@ a {
 		</div>
 
 		<a id="logoImg" href="/"><img
-			src="../resources/img/logo_white.png" alt="로고 이미지" style="width: 250px;"></a>
+			src="../resources/img/logo_white.png" alt="로고 이미지"></a>
 	</div>
 
 </body>
