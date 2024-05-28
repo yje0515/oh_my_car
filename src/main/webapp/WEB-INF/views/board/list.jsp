@@ -30,7 +30,8 @@
 			<c:forEach var="board" items="${boardList}">
 				<tr>
 					<td>${board.bno}</td>
-					<td>${board.title}</td>
+					<td><a
+						href="${pageContext.request.contextPath}/board/read?bno=${board.bno}">${board.title}</a></td>
 					<td>${board.content}</td>
 					<td>${board.writer}</td>
 					<td>${board.regdate}</td>
