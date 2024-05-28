@@ -11,84 +11,8 @@
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
 	rel="stylesheet">
 <!-- CSS 파일 추가 -->
-<!-- <link rel="stylesheet" type="style/css" href="/css/register.css"> -->
+<link rel="stylesheet" type="text/css" href="/resources/css/register.css">
 <style>
-body {
-	font-family: 'Segoe UI', sans-serif;
-	background-color: #f4f4f4;
-	margin: 0 auto;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-}
-
-h1 {
-	color:  #002F65;
-	text-align: center;
-	font-size: 36px;
-	margin-bottom: 10px; /* 아래쪽 여백을 줄임 */
-	font-weight: 700;
-	letter-spacing: 1px;
-}
-
-form {
-	background-color: #fff;
-	padding: 20px 30px; /* 패딩을 줄임 */
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	width: 100%;
-	max-width: 500px;
-	margin-top: 30px; /* 위쪽 여백을 조정 */
-}
-
-form div {
-	margin-bottom: 15px; /* 아래쪽 여백을 줄임 */
-}
-
-label {
-	display: block;
-	font-weight: 500;
-	margin-bottom: 8px;
-	color: #555;
-}
-
-input[type="text"], select {
-	width: 100%;
-	padding: 10px; /* 패딩을 줄임 */
-	border: 1px solid #ccc;
-	border-radius: 6px;
-	font-size: 16px;
-	box-sizing: border-box;
-	transition: border-color 0.3s;
-}
-
-input[type="text"]:focus, select:focus {
-	border-color: #1A87C6;
-}
-
-input[type="text"]:read-only {
-	background-color: #e9ecef;
-}
-
-button[type="submit"] {
-	background-color: #333;
-	color: white;
-	border: none;
-	padding: 12px 20px; /* 패딩을 줄임 */
-	border-radius: 20px;
-	cursor: pointer;
-	font-size: 16px;
-	width: 100%;
-	font-weight: 700;
-	text-transform: uppercase;
-	transition: background-color 0.3s ease, transform 0.2s ease;
-	outline: none; /* 포커스시 파란 테두리 제거 */
-}
-
-button[type="submit"]:hover {
-	background-color: #0056b3;
-	transform: scale(1.02);
-}
 </style>
 </head>
 <body>
