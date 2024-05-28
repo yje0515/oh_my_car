@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 <!DOCTYPE html>
-<html>
+<html lang="kor">
 <head>
 <meta charset="UTF-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,94 +14,13 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
 	rel="stylesheet">
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
-<!-- <link rel="stylesheet" type="text/css"
-	href="../../resource/css/includes.css"> -->
 <title>OH MY CAR 앗!차차로 간편한 자동차관리!</title>
-<style>
-* {
-	margin: 0 auto;
-	font-family: "Noto Sans KR", sans-serif;
-}
-
-a {
-	text-decoration: none;
-	color: black;
-}
-
-ul, li {
-	list-style: none;
-}
-
-.sticky {
-	position: fixed;
-}
-
-.sticky + #underHeader {
-	padding-top: 140px;
-}
-
-#headerWrap {
-	margin: 0 auto;
-	width: 100%;
-	height: 140px;
-	border-bottom: 1px solid #002F65;
-	background-color: white;
-	z-index: 1000;
-}
-
-#headerWrap  ul {
-	list-style-type: none;
-	margin: 15px 15px 0 0px;
-	float: right;
-}
-
-#headerWrap  li {
-	float: left;
-	margin: 0px 10px 0px 10px;
-}
-
-#headerWrap #logoImg {
-	position: absolute;
-	float: left;
-	margin: -12px 0 0 20px;
-	float: left;
-}
-
-.headerBtn {
-	background-color: #002F65;
-	border: 1px solid #002F65;
-	color: white;
-	border-radius: 5px;
-	font-size: 15px;
-}
-
-.headerBtn:hover {
-	background-color: white;
-	border: 1px solid #002F65;
-	color:#002F65;
-	cursor: pointer;
-}
-
-#headerBtn_logout {
-	background-color: white;
-	border: 1px solid #002F65;
-	color: #002F65;
-	border-radius: 5px;
-	font-size: 15px;
-}
-
-#headerBtn_logout:hover {
-	background-color: #002F65;
-	border: 1px solid #002F65;
-	color: white;
-	cursor: pointer;
-}
-</style>
+<link rel="stylesheet" href="../../../resources/css/includes.css">
 </head>
 <body>
 	<div id="headerWrap">
 		<a id="logoImg" href="/"><img
-			src="../resources/img/logo_dark.png" style="height: 175px"></a>
+			src="../resources/img/logo_dark.png" style="height: 175px" alt="앗차차 로고"></a>
 		<ul>
 			<sec:authorize access="isAuthenticated()">
 				<li style="font-size:18px;">[ ${userVO.userName } ] 님, 안녕하세요!</li>
@@ -121,24 +40,5 @@ ul, li {
 			</sec:authorize>
 		</ul>
 	</div>
-	
-	<!--footer랑 연결되어있음 sticky설정  -->
-	<div id="underHeader">
-		<script>
-			window.onscroll = function() {
-				myFunction()
-			};
-
-			var header = document.getElementById("headerWrap");
-			var sticky = header.offsetTop;
-
-			function myFunction() {
-				if (window.pageYOffset > sticky) {
-					header.classList.add("sticky");
-				} else {
-					header.classList.remove("sticky");
-				}
-			}
-		</script>
 </body>
 </html>

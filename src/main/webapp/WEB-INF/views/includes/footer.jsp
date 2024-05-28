@@ -1,76 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="kor">
 <head>
-<style>
-.footer {
-	background-color: #1A87C6;
-	color: #EFEFEF;
-	padding: 20px;
-	font-size: 14px;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.footer .top-links {
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-.footer .top-links a {
-	color: #ddd;
-	text-decoration: none;
-}
-
-#footerWrap {
-	margin: 0 auto;
-	width: 100%;
-	height: 300px;
-	background-color: #002F65;
-}
-
-#footerInfoBox {
-	width: 1000px;
-	height: 300px;
-	position: absolute;
-	margin: 0 auto;
-	left: 0;
-	right: 0;
-	width: 1000px;
-}
-
-#footerInfoBox table {
-	margin: 70px 0 0 65px;
-	float: left;
-	text-align: left;
-}
-
-#footerInfoBox th {
-	color: white;
-}
-
-#footerInfoBox td {
-	color: lightgray;
-}
-
-#footerWrap #logoImg {
-	margin: 170px 0 0 750px;
-	float: right;
-}
-
-.footerSmallText{
-	font-size:13px;
-}
-</style>
+<link rel="stylesheet" href="../../../resources/css/includes.css">
 </head>
 <body>
-	<!-- #underHeader sticky설정을 위한 div-->
-	</div>
-	<!-- 실수 아님 -->
 
 	<div id="footerWrap">
 		<div id="footerInfoBox">
