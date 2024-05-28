@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+body {
+	font-family: 'Segoe UI', sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+h1 {
+	color: #002F65;
+	text-align: left;
+	font-size: 24px;
+	margin: 20px 0;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.table-container {
+	width: 80%;
+	max-width: 900px;
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 12px 15px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	background-color: #f8f8f8;
+	color: #333;
+	font-weight: bold;
+}
+
+tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+tr:hover {
+	background-color: #f1f1f1;
+}
+
+td {
+	color: #333;
+}
+
+button {
+	background-color: #0056b3;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: 700;
+	text-transform: uppercase;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+	outline: none;
+	margin-top: 20px;
+	display: block;
+	width: 150px;
+	text-align: center;
+	margin-left: auto;
+}
+
+button:hover {
+	background-color: #004494;
+	transform: scale(1.02);
+}
+
+.action-buttons a {
+	text-decoration: none;
+	color: white;
+	margin: 0 5px;
+	padding: 5px 10px;
+	background-color: #0056b3;
+	border-radius: 3px;
+}
+
+.action-buttons a:hover {
+	background-color: #004494;
+}

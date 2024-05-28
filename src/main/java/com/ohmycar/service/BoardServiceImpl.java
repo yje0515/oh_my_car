@@ -42,7 +42,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO getBoard(int bno) {
-		return mapper.getBoard(bno);
+		return mapper.read(bno);
 	}
 
 	@Override

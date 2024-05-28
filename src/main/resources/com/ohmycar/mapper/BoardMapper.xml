@@ -24,14 +24,13 @@
 	</insert>
 
 	<select id="read">
-		SELETE * FROM tbl_board WHERE bno = #{bno}
+		SELECT * FROM tbl_board WHERE bno = #{bno}
 	</select>
 
-	<update id="update">
-		UPDATE tbl_board SET title = #{title},
-		content =
-		#{content}, writer = #{writer},
-		updateDate = sysDate
+	<!-- 게시물 수정 -->
+	<update id="update" parameterType="com.ohmycar.domain.BoardVO">
+		UPDATE tbl_board
+		SET title = #{title}, content = #{content}, updatedate = now()
 		WHERE bno = #{bno}
 	</update>
 

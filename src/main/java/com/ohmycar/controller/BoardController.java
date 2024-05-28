@@ -45,14 +45,14 @@ public class BoardController {
 			model.addAttribute("userVO", userVO);
 			return "/board/write";
 		} else {
-			return REDIRECT_BEFORE_PAGE;
+			return "/board/list";
 		}
 	}
 
 	@PostMapping("/write")
 	public String writePost(BoardVO boardVO) {
 		boardService.write(boardVO);
-		return REDIRECT_BEFORE_PAGE;
+		return "redirect:/board/list";
 	}
 
 	@GetMapping("/list")
@@ -75,23 +75,23 @@ public class BoardController {
 
 	@GetMapping("/modify")
 	public String modify(@RequestParam("bno") int bno, Model model) {
-		BoardVO board = boardService.getBoard(bno);
+		BoardVO board = boardService.read(bno);
 		model.addAttribute("board", board);
 		log.info("move to modify.jsp");
-		return "/board/modify";
+		return "board/modify";
 	}
 
 	@PostMapping("/modify")
 	public String postModify(BoardVO boardVO, Model model) {
 		boardService.modify(boardVO);
 		model.addAttribute("bno", boardVO.getBno());
-		return "redirect:/board/read"; // 수정된 게시글 읽기 페이지로 리다이렉트
+		return "redirect:/board/read?bno=" + boardVO.getBno(); // 수정된 게시글 읽기 페이지로 리다이렉트
 	}
 
 	@GetMapping("/delete")
 	public String getDelete(@RequestParam("bno") int bno) {
 		boardService.delete(bno);
-		return REDIRECT_BEFORE_PAGE;
+		return "redirect:/board/list";
 	}
 
 }
