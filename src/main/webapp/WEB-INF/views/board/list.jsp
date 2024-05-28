@@ -11,55 +11,84 @@
 <title>게시판 목록</title>
 <link rel="stylesheet" type="text/css" href="css/list.css">
 <style>
-/* Define basic styling */
+/* 기본 스타일 정의 */
 body {
-	font-family: Arial, sans-serif;
-	background-color: #f2f2f2;
-	margin: 0;
-	padding: 0;
-}
-
-.container {
-	width: 80%;
-	margin: auto;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
-	color: #002F65;
-	text-align: center;
+    color: #002F65;
+    text-align: center;
+    font-size: 36px;
+    margin: 20px 0;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-/* Style for board container */
-.board {
-	margin-top: 20px;
+.table-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 table {
-	width: 100%;
-	border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 th, td {
-	padding: 10px;
-	border: 1px solid #002F65;
-	text-align: left;
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
-	background-color: #002F65;
-	color: #ffffff;
+    background-color: #002F65;
+    color: #fff;
 }
 
 tr:nth-child(even) {
-	background-color: #f2f2f2;
+    background-color: #f9f9f9;
 }
 
-/* Include footer styling if needed */
-.footer {
-	background-color: #002F65;
-	color: #ffffff;
-	text-align: center;
-	padding: 10px 0;
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+td {
+    color: #333;
+}
+
+button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    outline: none;
+    margin-top: 20px;
+    display: block;
+    width: 150px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #004494;
+    transform: scale(1.02);
 }
 </style>
 </head>
