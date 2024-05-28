@@ -34,23 +34,36 @@
 }
 
 #footerInfoBox {
-	background-color: white;
-	width: 800px;
-	height: 200px;
+	width: 1000px;
+	height: 300px;
 	position: absolute;
-	margin: 50px auto;
+	margin: 0 auto;
 	left: 0;
 	right: 0;
+	width: 1000px;
 }
 
 #footerInfoBox table {
-	border-collapse: separate;
-	border-spacing: 136px 14px;
+	margin: 70px 0 0 65px;
+	float: left;
+	text-align: left;
+}
+
+#footerInfoBox th {
+	color: white;
+}
+
+#footerInfoBox td {
+	color: lightgray;
 }
 
 #footerWrap #logoImg {
 	margin: 170px 0 0 750px;
 	float: right;
+}
+
+.footerSmallText{
+	font-size:13px;
 }
 </style>
 </head>
@@ -63,30 +76,64 @@
 		<div id="footerInfoBox">
 			<table>
 				<tr>
-					<th>ㅇㅇㅇ</th>
-					<th>ㅁㅁㅁ</th>
-					<th>ㅎㅎㅎ</th>
+					<th>ⓒOhmycar Factory</th>
 				</tr>
 				<tr>
-					<td>회사정보</td>
-					<td>회사정보</td>
-					<td>회사정보</td>
+					<td>(주)오마이카팩토리 | 대표 앗차차팀</td>
 				</tr>
 				<tr>
-					<td>사업자정보</td>
-					<td>사업자정보</td>
-					<td>사업자정보</td>
+					<td>00도 00시 00구 00로 0가 000-00 0층</td>
 				</tr>
 				<tr>
-					<td>사이트소개</td>
-					<td>사이트소개</td>
-					<td>사이트소개</td>
+					<td class="footerSmallText">사업자등록번호 : 000 00 00000</td>
+				</tr>
+				<tr>
+					<td class="footerSmallText">통신판매업 : 2024 0000 0000</td>
+				</tr>
+				<tr>
+					<td class="footerSmallText">전화번호 : 000 0000 0000</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<th>약관</th>
+				</tr>
+				<tr>
+					<td>서비스 이용약관</td>
+				</tr>
+				<tr>
+					<td>개인정보 처리 방침</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<th>문의</th>
+				</tr>
+				<tr>
+					<td>서비스 문의(e-mail)</td>
+				</tr>
+				<tr>
+					<td>사업 제휴 문의</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<th>SNS</th>
+				</tr>
+				<tr>
+					<td>네이버 블로그</td>
+				</tr>
+				<tr>
+					<td>인스타그램</td>
+				</tr>
+				<tr>
+					<td>페이스북</td>
 				</tr>
 			</table>
 		</div>
 
 		<a id="logoImg" href="/"><img
-			src="../resources/img/logo_white.png" style="width: 250px;"></a>
+			src="../resources/img/logo_white.png" alt="로고 이미지" style="width: 250px;"></a>
 	</div>
 
 </body>

@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ohmycar.domain.AuthVO;
+import com.ohmycar.domain.CarFactsVO;
 import com.ohmycar.domain.CarVO;
 import com.ohmycar.domain.UserVO;
+import com.ohmycar.service.CarFactsService;
 import com.ohmycar.service.CarService;
 import com.ohmycar.service.UserService;
 
@@ -31,6 +33,9 @@ public class UserController {
 	private final UserService userService;
 
 	private final CarService carService;
+
+	private final CarFactsService carFactsService;
+
 	private final PasswordEncoder passwordEncoder;
 
 	private static final String RESULT_STRING = "result";
@@ -61,8 +66,11 @@ public class UserController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
-		log.info("admin.....");
-		model.addAttribute(USER_VO_STRING, userVO);
+		model.addAttribute("userVO", userVO);
+
+		List<CarFactsVO> AllCarFacts = carFactsService.getAll();
+		model.addAttribute("AllCarFacts", AllCarFacts);
+
 	}
 
 	// 마이페이지로 이동
