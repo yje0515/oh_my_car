@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="kor">
-<head>
-<link rel="stylesheet" href="../../../resources/css/includes.css">
-</head>
 <body>
 
 	<div id="footerWrap">

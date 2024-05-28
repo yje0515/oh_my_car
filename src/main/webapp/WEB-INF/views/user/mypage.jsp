@@ -33,8 +33,8 @@
 		<div id="userCarINfoBox">
 			<table>
 				<tr>
-					<th colspan="3" style="font-size: 25px;">[ ${userVO.userName }
-						] 님의 차량</th>
+					<th colspan="3" style="font-size: 25px;"> ${userVO.userName }
+						님의 차량</th>
 				</tr>
 				<tr>
 					<th>carId</th>
