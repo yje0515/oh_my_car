@@ -1,22 +1,4 @@
-@charset "UTF-8";
-
-* {
-	margin: 0 auto;
-	padding: 0 auto;
-	list-style: none;
-	font-family: "Noto Sans KR", sans-serif;
-}
-
-a {
-	text-decoration: none;
-	color: black;
-}
-
-ul,
-li {
-	list-style: none;
-}
-
+/* header */
 .sticky {
 	position: fixed;
 }
@@ -51,6 +33,7 @@ li {
 	position: absolute;
 	float: left;
 	margin: -12px 0 0 20px;
+	float: left;
 }
 
 .headerBtn {
@@ -83,28 +66,8 @@ li {
 	cursor: pointer;
 }
 
-.footer {
-	background-color: #1A87C6;
-	color: #EFEFEF;
-	padding: 20px;
-	font-size: 14px;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	box-sizing: border-box;
-}
 
-.footer .top-links {
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-.footer .top-links a {
-	color: #ddd;
-	text-decoration: none;
-}
-
+/* footer */
 #footerWrap {
 	margin: 0 auto;
 	width: 100%;
@@ -119,6 +82,7 @@ li {
 	margin: 0 auto;
 	left: 0;
 	right: 0;
+	width: 1000px;
 }
 
 #footerInfoBox table {
@@ -138,6 +102,10 @@ li {
 #footerWrap #logoImg {
 	margin: 170px 0 0 750px;
 	float: right;
+}
+
+#footerWrap #logoImg img {
+	width: 250px;
 }
 
 .footerSmallText {

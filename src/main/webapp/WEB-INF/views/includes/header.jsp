@@ -8,11 +8,12 @@
 <html lang="kor">
 <head>
 <meta charset="UTF-8">
+<!-- 폰트 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css"href="../../resources/css/common.css">
+<link rel="stylesheet" type="text/css"href="../../resources/css/includes.css">
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <title>OH MY CAR 앗!차차로 간편한 자동차관리!</title>
 <link rel="stylesheet" href="../../../resources/css/includes.css">
@@ -23,7 +24,7 @@
 			src="../resources/img/logo_dark.png" style="height: 175px" alt="앗차차 로고"></a>
 		<ul>
 			<sec:authorize access="isAuthenticated()">
-				<li style="font-size:18px;">[ ${userVO.userName } ] 님, 안녕하세요!</li>
+				<li style="font-size: 18px;">[ ${userVO.userName } ] 님, 안녕하세요!</li>
 				<li><form action="/logout" method='post'>
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />

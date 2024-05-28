@@ -6,9 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>간단 차량 상식 편집페이지 -관리자</title>
-
 <style>
-
 /* 관리자페이지 */
 #adminWrap {
 	width: 1000px;
@@ -42,12 +40,13 @@
 	border: 1px solid lightgray;
 }
 </style>
+
 </head>
 <body>
 	<jsp:include page="../includes/header.jsp"></jsp:include>
 
 	<div id="adminWrap">
-		<h1>간단 차량 상식 편집 -관리자 [ ${userVO.userName }님 ]</h1>
+		<h1>간단 차량 상식 편집 -관리자 [ ${userVO.userName } ] 님</h1>
 		<form>
 			<div id="carFactsBox">
 

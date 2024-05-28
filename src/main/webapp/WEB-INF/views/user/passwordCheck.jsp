@@ -7,54 +7,7 @@
 <meta charset="UTF-8">
 <title>비밀번호 확인</title>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
-<style>
-#passwordCheckWrap {
-	text-aligh: center;
-	width: 400px;
-	height: 450px;
-}
-
-#passwordCheckBox {
-	width: 400px;
-	height: 180px;
-	border: 1px solid #002F65;
-	border-radius: 5px;
-	margin: 200px 0 0 0px;
-}
-
-#passwordCheckBox tr {
-	text-align: center;
-}
-
-#passwordCheckBox tr th {
-	font-size: 20px;
-	padding: 20px 0 0px 0px;
-	color: #002F65;
-}
-
-#passwordCheckBox tr td input {
-	width: 200px;
-	height: 25px;
-	font-size: 12px;
-	margin: 0 0 20px 30px;
-	padding:0 0 0 5px;
-	border: 1px solid #002F65;
-}
-
-.submitBtn {
-	width: 70px;
-	height: 30px;
-	color: white;
-	background-color: #002F65;
-	border-radius: 5px;
-	border: 1px #002F65 solid;
-	font-size:14px;
-}
-
-#passwordCheckBox .submitBtn {
-	margin:0px 30px 19px 0px;
-}
-</style>
+<link rel="stylesheet" type="text/css"href="../../resources/css/user.css">
 </head>
 <body>
 	<jsp:include page="../includes/header.jsp"></jsp:include>
@@ -67,12 +20,10 @@
 				<tr>
 					<td><input type="password" placeholder="비밀번호" id="password"
 						name="password" autofocus></td>
-						<td><button class="submitBtn" type="submit">확인</button></td>
+					<td><button class="submitBtn" type="submit">확인</button></td>
 				</tr>
 				<tr>
-					<td id="wrongPassword"
-						style="font-size: 12px; color: red; display: none;">회원정보와
-						일치하지 않습니다.</td>
+					<td id="wrongPassword">회원정보와 일치하지 않습니다.</td>
 				</tr>
 			</table>
 
@@ -80,7 +31,7 @@
 				value="${_csrf.token}" /> <input type="hidden" name="action"
 				value="${param.action }">
 			<!-- <input type="hidden" name="passwordChecked" > -->
-			
+
 		</form>
 	</div>
 	<jsp:include page="../includes/footer.jsp"></jsp:include>

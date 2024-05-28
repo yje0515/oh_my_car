@@ -51,12 +51,10 @@ public class UserController {
 
 	// 회원가입
 	@PostMapping("/join")
-	public String joinPost(AuthVO authVO) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+	public String joinPost(UserVO userVO, AuthVO authVO,RedirectAttributes rttr) {
 		userService.joinUser(userVO, authVO);
 		log.info("success join.....");
+		rttr.addFlashAttribute(RESULT_STRING,"joinSuccess");
 		return "redirect:/user/login";
 	}
 
@@ -163,6 +161,10 @@ public class UserController {
 	@GetMapping("/userDelete")
 	public void userDeleteGet(Model model) {
 		log.info("delete.....");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute(USER_VO_STRING, userVO);
 	}
 
 	// 회원탈퇴
