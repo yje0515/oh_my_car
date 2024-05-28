@@ -8,6 +8,8 @@
 <title>비밀번호 확인</title>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <style>
+
+/* 비밀번호 확인 페이지 */
 #passwordCheckWrap {
 	text-aligh: center;
 	width: 400px;
@@ -37,7 +39,7 @@
 	height: 25px;
 	font-size: 12px;
 	margin: 0 0 20px 30px;
-	padding:0 0 0 5px;
+	padding: 0 0 0 5px;
 	border: 1px solid #002F65;
 }
 
@@ -48,11 +50,19 @@
 	background-color: #002F65;
 	border-radius: 5px;
 	border: 1px #002F65 solid;
-	font-size:14px;
+	font-size: 14px;
 }
 
 #passwordCheckBox .submitBtn {
-	margin:0px 30px 19px 0px;
+	margin: 0px 30px 19px 0px;
+}
+
+#wrongPassword {
+position:absolute;
+	margin: -40px 0 0 50px;
+	font-size: 12px;
+	color: red;
+	display: none;
 }
 </style>
 </head>
@@ -67,12 +77,10 @@
 				<tr>
 					<td><input type="password" placeholder="비밀번호" id="password"
 						name="password" autofocus></td>
-						<td><button class="submitBtn" type="submit">확인</button></td>
+					<td><button class="submitBtn" type="submit">확인</button></td>
 				</tr>
 				<tr>
-					<td id="wrongPassword"
-						style="font-size: 12px; color: red; display: none;">회원정보와
-						일치하지 않습니다.</td>
+					<td id="wrongPassword">회원정보와 일치하지 않습니다.</td>
 				</tr>
 			</table>
 
@@ -80,7 +88,7 @@
 				value="${_csrf.token}" /> <input type="hidden" name="action"
 				value="${param.action }">
 			<!-- <input type="hidden" name="passwordChecked" > -->
-			
+
 		</form>
 	</div>
 	<jsp:include page="../includes/footer.jsp"></jsp:include>

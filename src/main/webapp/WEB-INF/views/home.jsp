@@ -9,19 +9,14 @@
 <title>앗!차차로 간편한 자동차관리!</title>
 
 <style>
+
+/* 메인페이지 */
 #mainWrap {
 	width: 1000px;
 	height: 1400px;
 	margin: 50px auto;
 }
 
-/* 임시 */
-.someContents {
-	text-align: center;
-	width: 100%;
-	height: 300px;
-	background-color: lightyellow;
-}
 #mainLowerImg {
 	text-align: center;
 	width: 100%;
@@ -32,13 +27,13 @@
 #ramdomCarFactsBox {
 	width: 100%;
 	height: 444px;
-	margin:55px auto;
-	border:1px solid lightgray;
+	margin: 55px auto;
+	border: 1px solid lightgray;
 }
 
 #ramdomCarFactsBox h2 {
 	margin: 20px auto;
-	font-size:28px;
+	font-size: 28px;
 }
 
 #ramdomCarFactsBox  table {
@@ -47,17 +42,17 @@
 }
 
 #ramdomCarFactsBox td {
-	width:885px;
+	width: 885px;
 	border: 1px solid lightgray;
-	height:50px;
-	padding:0 0 0 20px;
+	height: 50px;
+	padding: 0 0 0 20px;
 }
 
 /* 아이콘 */
 #mainIconBox {
 	width: 100%;
 	height: 300px;
-	margin:0px 0 -53px 0px;
+	margin: 0px 0 -53px 0px;
 }
 
 #mainIconBox ul {
@@ -73,15 +68,41 @@
 #mainIconBox img {
 	width: 150px;
 }
+
+/* 메인페이지 슬라이드 */
+#mainSlideBox {
+	width: 100%;
+	height: 300px;
+	background-color: lightyellow;
+	position: relative;
+}
+
+#mainSlideBox img {
+	width: 1000px;
+	height: 300px;
+	position: absolute;
+	margin: 0 0 0 -40px;
+	position: absolute;
+}
+
+#mainSlideBox li:not(:first-child) {
+	display: none;
+}
 </style>
 </head>
 <body>
 	<jsp:include page="includes/header.jsp"></jsp:include>
 
 	<div id="mainWrap">
-		<div class="someContents">
-			<a href="#"><img src="../../resources/img/mainSlide1.png"
-				alt="슬라이드 이미지"></a>
+		<div id="mainSlideBox">
+			<ul>
+				<li><img src="../../resources/img/mainSlide1.png"
+					alt="슬라이드 이미지1"></li>
+				<li><img src="../../resources/img/mainSlide2.png"
+					alt="슬라이드 이미지2"></li>
+				<li><img src="../../resources/img/mainSlide3.png"
+					alt="슬라이드 이미지3"></li>
+			</ul>
 		</div>
 		<div id="mainIconBox">
 			<ul>
@@ -126,9 +147,24 @@
 	<jsp:include page="includes/footer.jsp"></jsp:include>
 	<script>
 		$(document).ready(function(){
+			/* 슬라이드 */
+			var i = 0;
+			function slideShow(){
+				i++;
+				if(i>$("#mainSlideBox li:last").index()){
+					i=0;
+				}
+				$("#mainSlideBox li").eq(i).stop().fadeIn("slow");
+				$("#mainSlideBox li").eq(i-1).stop().fadeOut("slow");
+			}
+			setInterval(slideShow,4000);//4초마다
+			
+			
 			if(${result eq 'deleteSuccess'}){
 				alert("회원탈퇴가 성공적으로 처리되었습니다. 감사합니다.");
-			
+			}
+			if(${result eq 'updateSuccess'}){
+				alert("회원정보 수정이 성공적으로 처리되었습니다.");
 			}
 		});
 	</script>

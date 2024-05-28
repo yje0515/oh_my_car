@@ -25,24 +25,35 @@
 	color: white;
 	border-radius: 5px;
 	font-size: 18px;
-	margin:5px auto;
+	margin: 5px auto;
 }
 
 .loginInput {
 	width: 250px;
 	height: 35px;
 	padding: 0 0 0 5px;
+	font-size: 15px;
 }
 
-#loginJoinBtn {
+#loginJoinBtn, #hyndaiLoginBtn {
 	width: 250px;
 	height: 50px;
 	color: #002F65;
 	background-color: white;
-	border: 1px solid #002F65; border-radius : 5px;
+	border: 1px solid #002F65;
+	border-radius: 5px;
 	font-size: 18px;
 	border-radius: 5px;
-	margin:5px auto;
+	margin: 5px auto;
+}
+
+#loginJoinBtn:hover {
+	cursor: pointer;
+}
+
+#hyndaiLoginBtn img {
+	width: 180px;
+	margin: 5px auto;
 }
 </style>
 </head>
@@ -63,8 +74,9 @@
 						placeholder="비밀번호" name="password"></td>
 				</tr>
 				<tr>
-					<td style="text-align: left;"><input name="remember-me"
-						type="checkbox">로그인 유지하기</td>
+					<td style="text-align: left;"><input id="remember-me"
+						name="remember-me" type="checkbox"><label
+						for="remember-me">로그인 유지하기</label></td>
 				</tr>
 				<tr>
 					<td><input type="submit" id="loginBtn" value="로그인"></td>
@@ -78,13 +90,18 @@
 				value="${_csrf.token}" />
 		</form>
 
-		<p id="wrongAccess" style="color: red; font-size: 12px">
+		<p id="wrongAccess" style="display:none;color: red; font-size: 12px">
 			아이디 또는 비밀번호를 잘못 입력했습니다.<br>입력하신 내용을 다시 확인해주세요.
 		</p>
 		<a href="/user/join"><button id="loginJoinBtn">회원가입</button></a>
-		<a href="#"><button id="hyndaiLoginBtn"><img src="../../resources/img/hyndai_logo.png" alt="현대자동차 로그인">현대로그인</button></a>
 
-
+		<h3>현대자동차 로그인</h3>
+		<a
+			href="https://prd.kr-ccapi.hyundai.com/api/v1/user/oauth2/authorize?client_id=400b3231-30db-42f5-ab52-9d69b35a184d&redirect_uri=http://localhost:8282&response_type=code&state=test"><button
+				id="hyndaiLoginBtn">
+				<img src="../../resources/img/hyndai_logo_original.png"
+					alt="현대자동차 로그인">
+			</button></a>
 	</div>
 
 
@@ -143,7 +160,9 @@
 				});
 			}
 			
-
+			if(${result eq 'joinSuccess'}){
+				alert("회원가입이 성공적으로 처리되었습니다.");
+			}
 		});
 
 		

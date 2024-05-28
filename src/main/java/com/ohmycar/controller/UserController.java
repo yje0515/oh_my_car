@@ -50,9 +50,10 @@ public class UserController {
 
 	// 회원가입
 	@PostMapping("/join")
-	public String joinPost(UserVO userVO, AuthVO authVO) {
+	public String joinPost(UserVO userVO, AuthVO authVO,RedirectAttributes rttr) {
 		userService.joinUser(userVO, authVO);
 		log.info("success join.....");
+		rttr.addFlashAttribute(resultString,"joinSuccess");
 		return "redirect:/user/login";
 	}
 
@@ -148,7 +149,7 @@ public class UserController {
 		userService.updateUser(userVO);
 
 		// 회원정보 수정시 alert
-		rttr.addFlashAttribute(resultString, "success");
+		rttr.addFlashAttribute(resultString, "updateSuccess");
 
 		return "redirect:/";
 	}
