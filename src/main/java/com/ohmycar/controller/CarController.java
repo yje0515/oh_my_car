@@ -1,5 +1,6 @@
 package com.ohmycar.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -74,6 +75,15 @@ public class CarController {
 	public String getDelete(@RequestParam("carId") String carId) {
 		carService.deleteCar(carId);
 		return REDIRECT_MYPAGE; // 삭제 후 마이페이지로 이동
+	}
+
+	// carlist 페이지로 이동하는 메서드 추가
+	@GetMapping("/carlist")
+	public String showCarList(Model model, Principal principal) {
+		String userId = principal.getName(); // 로그인한 사용자의 ID를 가져옴
+		List<CarVO> cars = carService.getCarsByUserId(userId);
+		model.addAttribute("carList", cars);
+		return "/carInfo/carlist"; // carlist.jsp 페이지로 이동
 	}
 
 }
