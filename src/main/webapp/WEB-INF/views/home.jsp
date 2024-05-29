@@ -49,17 +49,10 @@
 				<tr>
 					<th><h2>자동차 랜덤 간단상식</h2></th>
 				</tr>
-				<c:forEach var="carFact" items="${randomCarFacts}">
-					<tr>
-						<td>${carFact.factText }</td>
-					</tr>
-				</c:forEach>
+				<tr>
+					<td><span class="carFactText" value=""></span></td>
+				</tr>
 			</table>
-			<%-- <ul>
-				<c:forEach var="carFact" items="${randomCarFacts}">
-					<li>${carFact.factText }</li>
-				</c:forEach>
-			</ul> --%>
 		</div>
 		<div id="mainLowerImg">
 			<a href="#"><img src="../../resources/img/mainLowerImg.png"
@@ -70,13 +63,30 @@
 
 	<jsp:include page="includes/footer.jsp"></jsp:include>
 	<script>
-		
 		if(${result eq 'deleteSuccess'}){
 			alert("회원탈퇴가 성공적으로 처리되었습니다. 감사합니다.");
 		}
 		if(${result eq 'updateSuccess'}){
 			alert("회원정보 수정이 성공적으로 처리되었습니다.");
 		}
+	</script>
+	<script type="text/javascript">
+		function getCarFacts() {
+			$.ajax({
+				type: "GET",
+				url: "/carFacts/read",
+				data: {},
+				success: function (factText) { // 서버에서 받은 결과
+					console.log(factText);
+					$(".carFactText").text(factText);
+				}
+			})
+		}
+
+		$(document).ready(function () {
+			getCarFacts();
+			setInterval(() => getCarFacts(), 60000);
+		});
 	</script>
 </body>
 </html>

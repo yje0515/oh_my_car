@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 import com.ohmycar.domain.CarFactsVO;
 import com.ohmycar.mapper.CarFactsMapper;
 
+import lombok.extern.log4j.Log4j;
+
 @Service
+@Log4j
 public class CarFactsServiceImpl implements CarFactsService {
 
     private final CarFactsMapper mapper;
@@ -39,7 +42,9 @@ public class CarFactsServiceImpl implements CarFactsService {
     public String read() {
         int max = mapper.getCount();
         int rn = random.nextInt(max) + 1;
-        return mapper.selectOne(rn);
+        String text = mapper.selectOne(rn);
+        log.info(text);
+        return text;
     }
 
     @Override
@@ -47,12 +52,12 @@ public class CarFactsServiceImpl implements CarFactsService {
         return mapper.selectAll();
     }
 
-    //간단상식리스트 중 랜덤 10개를 반환
-	@Override
-	public List<CarFactsVO> getRandom(){
-		List<CarFactsVO> allCarFacts = mapper.selectAll();
-		Collections.shuffle(allCarFacts);
-		return allCarFacts.stream().limit(5).collect(Collectors.toList());
-	}
+    // 간단상식리스트 중 랜덤 10개를 반환
+    @Override
+    public List<CarFactsVO> getRandom() {
+        List<CarFactsVO> allCarFacts = mapper.selectAll();
+        Collections.shuffle(allCarFacts);
+        return allCarFacts.stream().limit(5).collect(Collectors.toList());
+    }
 
 }
