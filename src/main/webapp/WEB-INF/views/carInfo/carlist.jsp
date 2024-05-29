@@ -23,14 +23,20 @@
 		<tbody>
 			<c:forEach var="car" items="${carList}">
 				<tr>
-					<td>${car.userId}</td>
-					<td>${car.carId}</td>
-					<td>${car.carSellName}</td>
-					<td>${car.carName}</td>
-					<td>${car.carType}</td>
+					<td><a
+						href="/carDetails?userId=${car.userId}&carId=${car.carId}">${car.userId}</a></td>
+					<td><a
+						href="/carDetails?userId=${car.userId}&carId=${car.carId}">${car.carId}</a></td>
+					<td><a
+						href="/carDetails?userId=${car.userId}&carId=${car.carId}">${car.carSellName}</a></td>
+					<td><a
+						href="/carDetails?userId=${car.userId}&carId=${car.carId}">${car.carName}</a></td>
+					<td><a
+						href="/carDetails?userId=${car.userId}&carId=${car.carId}">${car.carType}</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
+
 	</table>
 </body>
 </html>

@@ -34,3 +34,9 @@ body {
         tr:hover {
             background-color: #ddd;
         }
+        a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: inherit; /* 링크 색상을 부모 요소의 색상으로 상속 */
+}
+        
+        
