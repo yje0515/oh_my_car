@@ -29,7 +29,7 @@
         <tbody>
             <tr th:each="fact : ${list}">
                 <form action="/carFacts/delete" method="get">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <input type="hidden" name="factId" th:value="${fact.factId}">
                     <td class="tg-c3ow" th:text="${fact.factId}"></td>
                     <td class="tg-0pky" th:text="${fact.factText}"></td>
@@ -47,7 +47,7 @@
     <div id="modify-popup" class="pop_wrap" style="display:none;">
         <div class="pop_inner">
             <form action="/carFacts/modify" method="post">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <table class="tg" style="table-layout: fixed; width: 952px">
                     <colgroup>
                         <col style="width: 53px">
@@ -81,7 +81,7 @@
         <div class="pop_inner">
             <h3>토막 상식 입력</h3>
             <form action="/carFacts/create" method="post">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                 <input type="text" name="factText" class="create-factText"><br>
                 <input type="submit" onclick="closeCreatePopup()" class="create-btn-close" value="생성하기">
                 <button type="button" onclick="closeCreatePopup()" class="create-btn-close">닫기</button>

@@ -1,5 +1,6 @@
 package com.ohmycar.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -12,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
-    
+
     private final CommentMapper commentMapper;
 
     @Override
@@ -40,13 +41,13 @@ public class CommentServiceImpl implements CommentService {
         return commentMapper.selectList(boardId);
     }
 
-	@Override
-	public List<CommentVO> getCommentsByBoard(int bno) {
-		return null;
-	}
+    @Override
+    public List<CommentVO> getCommentsByBoard(int bno) {
+        return new ArrayList<>();
+    }
 
-	@Override
-	public void writeComment(CommentVO comment) {
-		
-	}
+    @Override
+    public void writeComment(CommentVO comment) {
+        lombok.extern.log4j.Log4j.class.getName();
+    }
 }

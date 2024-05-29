@@ -12,8 +12,10 @@
 </style>
 </head>
 <body>
+<jsp:include page="../includes/header.jsp"></jsp:include>
 	<h1>보유차량 정보 수정</h1>
 	<form role="form" id="updateForm" name="frm">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<table>
 			<tr>
 				<td>사용자 ID</td>
@@ -58,32 +60,27 @@
 			</tr>
 		</table>
 	</form>
-	<script>
-		$(document)
-				.ready(
-						function() {
-							$('#updateBtn').on('click', function() {
-								updateCar();
-							});
-
-							function updateCar() {
-								$
-										.ajax({
-											type : "POST",
-											url : "${pageContext.request.contextPath}/user/carUpdate",
-											data : $("#updateForm").serialize(),
-											success : function(response) {
-												alert("차량 정보가 업데이트되었습니다.");
-												location.href = "${pageContext.request.contextPath}/user/mypage";
-											},
-											error : function(xhr, status, error) {
-												alert("차량 정보 업데이트 중 오류가 발생했습니다.");
-												console.error(error);
-											}
-										});
-							}
-						});
-	</script>
 	<jsp:include page="../includes/footer.jsp"></jsp:include>
+	<script>
+		$(document).ready(function() {
+				$('#updateBtn').on('click', updateCar);
+				function updateCar() {
+					$.ajax({
+						type: "POST",
+						url: "/carInfo/update",
+						data: $("#updateForm").serialize(),
+							success: function(response) {
+								alert("차량 정보가 업데이트되었습니다.");
+								location.href = "/carInfo/carlist";
+							},
+							error: function(xhr, status, error) {
+								alert("차량 정보 업데이트 중 오류가 발생했습니다.");
+								console.error(error);
+							}
+					});
+				}
+			}
+		);
+	</script>
 </body>
 </html>

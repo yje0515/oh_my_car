@@ -1,42 +1,43 @@
 @charset "UTF-8";
 
-body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-            color: #002F65;
-        }
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #002F65;
-            color: #fff;
-            font-weight: bold;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        tr:hover {
-            background-color: #ddd;
-        }
-        a {
-    text-decoration: none; /* 밑줄 제거 */
-    color: inherit; /* 링크 색상을 부모 요소의 색상으로 상속 */
+.carTitle {
+    text-align: center;
+    color: #002F65;
 }
-        
-        
+
+.carTable {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: #333;
+}
+
+.carTable table,
+.carTable th,
+.carTable td {
+    border: 1px solid #ddd;
+}
+
+.carTable th,
+.carTable td {
+    padding: 12px;
+    text-align: left;
+}
+
+.carTable th {
+    background-color: #002F65;
+    color: #fff;
+    font-weight: bold;
+}
+
+.carTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.carTable tr:hover {
+    background-color: #ddd;
+}

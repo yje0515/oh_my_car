@@ -7,10 +7,15 @@ import org.apache.ibatis.annotations.Param;
 import com.ohmycar.domain.CommentVO;
 
 public interface CommentMapper {
-    void insert(CommentVO comment);
-    CommentVO select(Long id);
-    int update(CommentVO comment);
-    int delete(Long id);
-    List<CommentVO> selectList(@Param("boardId") Long boardId);
-    void setBno(int bno);
+    public void insert(CommentVO comment);
+
+    public CommentVO select(Long id);
+
+    public int update(CommentVO comment);
+
+    public int delete(Long id);
+
+    public List<CommentVO> selectList(@Param("boardId") Long boardId);
+
+    public void setBno(int bno);
 }

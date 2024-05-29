@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ohmycar.domain.BoardVO;
 import com.ohmycar.domain.CommentVO;
-import com.ohmycar.domain.Criteria;
 import com.ohmycar.domain.UserVO;
 import com.ohmycar.service.BoardService;
 import com.ohmycar.service.CommentService;
@@ -30,7 +29,7 @@ public class BoardController {
 	private final UserService userService;
 	private final CommentService commentService;
 
-	private static final String REDIRECT_BEFORE_PAGE = "redirect:/user/mypage";
+	private static final String REDIRECT_BEFORE_PAGE = "redirect:/board/read";
 
 	public BoardController(BoardService boardService, UserService userService, CommentService commentService) {
 		this.boardService = boardService;
@@ -73,56 +72,58 @@ public class BoardController {
 
 	@GetMapping("/read")
 	public String read(@RequestParam("bno") int bno, Model model) {
-	    BoardVO board = boardService.read(bno);
-	    model.addAttribute("board", board);
-	    
-	    // 게시글에 해당하는 댓글 목록을 가져옵니다.
-	    List<CommentVO> commentList = commentService.getCommentsByBoard(bno);
-	    model.addAttribute("commentList", commentList);
-	    
-	    return "board/read";
+		BoardVO board = boardService.read(bno);
+		model.addAttribute("board", board);
+
+		// 게시글에 해당하는 댓글 목록을 가져옵니다.
+		List<CommentVO> commentList = commentService.getCommentsByBoard(bno);
+		model.addAttribute("commentList", commentList);
+
+		return "board/read";
 	}
 
 	@PostMapping("/comment")
 	public String writeComment(@RequestParam("bno") Long bno, @RequestParam("content") String content, Model model) {
-	    // 현재 사용자 정보 가져오기 (사용자 인증 및 사용자 정보 관리 로직에 따라 달라질 수 있음)
-	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	    String writer = authentication.getName(); // 현재 사용자의 이름 또는 아이디
+		// 현재 사용자 정보 가져오기 (사용자 인증 및 사용자 정보 관리 로직에 따라 달라질 수 있음)
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String writer = authentication.getName(); // 현재 사용자의 이름 또는 아이디
 
-	    // 댓글 객체 생성
-	    CommentVO comment = new CommentVO();
-	    comment.setBno(bno);
-	    comment.setContent(content);
-	    comment.setWriter(writer); // 작성자 설정
+		// 댓글 객체 생성
+		CommentVO comment = new CommentVO();
+		comment.setBno(bno);
+		comment.setContent(content);
+		comment.setWriter(writer); // 작성자 설정
 
-	    // 댓글 서비스를 통해 댓글 작성
-	    commentService.writeComment(comment);
+		// 댓글 서비스를 통해 댓글 작성
+		commentService.writeComment(comment);
 
-	    // 게시글 읽기 페이지로 리다이렉트
-	    return "redirect:/board/read?bno=" + bno;
+		// 게시글 읽기 페이지로 리다이렉트
+		model.addAttribute("bno", bno);
+		return REDIRECT_BEFORE_PAGE;
 	}
 
-	
 	// BoardController.java
 
 	@PostMapping("/comment/register")
-	public String registerComment(CommentVO comment) {
-	    commentService.register(comment);
-	    return "redirect:/board/read?bno=" + comment.getBoardId();
+	public String registerComment(CommentVO comment, Model model) {
+		commentService.register(comment);
+		model.addAttribute("bno", comment.getBoardId());
+		return REDIRECT_BEFORE_PAGE;
 	}
 
 	@PostMapping("/comment/modify")
-	public String modifyComment(CommentVO comment) {
-	    commentService.modify(comment);
-	    return "redirect:/board/read?bno=" + comment.getBoardId();
+	public String modifyComment(CommentVO comment, Model model) {
+		commentService.modify(comment);
+		model.addAttribute("bno", comment.getBoardId());
+		return REDIRECT_BEFORE_PAGE;
 	}
 
 	@PostMapping("/comment/remove")
-	public String removeComment(@RequestParam("id") Long id, @RequestParam("boardId") Long boardId) {
-	    commentService.remove(id);
-	    return "redirect:/board/read?bno=" + boardId;
+	public String removeComment(@RequestParam("id") Long id, @RequestParam("bno") Long bno, Model model) {
+		commentService.remove(id);
+		model.addAttribute("bno", bno);
+		return REDIRECT_BEFORE_PAGE;
 	}
-
 
 	@GetMapping("/modify")
 	public String modify(@RequestParam("bno") int bno, Model model) {
@@ -136,7 +137,7 @@ public class BoardController {
 	public String postModify(BoardVO boardVO, Model model) {
 		boardService.modify(boardVO);
 		model.addAttribute("bno", boardVO.getBno());
-		return "redirect:/board/read?bno=" + boardVO.getBno(); // 수정된 게시글 읽기 페이지로 리다이렉트
+		return REDIRECT_BEFORE_PAGE + "?bno=" + boardVO.getBno(); // 수정된 게시글 읽기 페이지로 리다이렉트
 	}
 
 	@GetMapping("/delete")

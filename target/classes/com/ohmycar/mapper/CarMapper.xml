@@ -20,13 +20,11 @@
 	<update id="updateCar" parameterType="com.ohmycar.domain.CarVO">
 		UPDATE car_tbl
 		SET
-		carid =
-		#{carId},
+		carid =	#{carId},
 		carsellname = #{carSellName},
 		carname = #{carName},
-		cartype =
-		#{carType}
-		WHERE userid= #{userId}
+		cartype = #{carType}
+		WHERE carid = #{carId}
 	</update>
 
 	<delete id="deleteCar">

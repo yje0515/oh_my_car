@@ -16,6 +16,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="../includes/header.jsp"></jsp:include>
 	<form id="carForm"
 		action="${pageContext.request.contextPath}/user/register"
 		method="post">

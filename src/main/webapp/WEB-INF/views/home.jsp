@@ -31,7 +31,7 @@
 		<div id="mainIconBox">
 			<ul>
 				<!-- 경로 확인해야함 -->
-				<li><a href="#"><img
+				<li><a href="/carInfo/carlist"><img
 						src="../../resources/img/userCarListIcon.png" alt="차량 목록 아이콘"></a></li>
 				<li><a href="#"><img
 						src="../../resources/img/carManagementIcon.png" alt="차량 관리 아이콘"></a></li>
