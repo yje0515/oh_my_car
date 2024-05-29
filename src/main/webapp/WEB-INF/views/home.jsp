@@ -37,9 +37,9 @@
 						src="../../resources/img/carManagementIcon.png" alt="차량 관리 아이콘"></a></li>
 				<li><a href="#"><img
 						src="../../resources/img/boardIcon.png" alt="게시판 아이콘"></a></li>
-				<li><a href="#"><img
+				<li><a href="/consumable/map?keyWord=주유소"><img
 						src="../../resources/img/nearGasStationIcon.png" alt="가까운 주유소 아이콘"></a></li>
-				<li><a href="#"><img
+				<li><a href="/consumable/map?keyWord=카센터"><img
 						src="../../resources/img/nearRepairShopIcon.png" alt="가까운 정비소 아이콘"></a></li>
 			</ul>
 		</div>

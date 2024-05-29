@@ -8,6 +8,11 @@ import com.ohmycar.service.UserService;
 
 import lombok.extern.log4j.Log4j;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,7 +60,7 @@ public class ConsumableController {
         model.addAttribute("consumable", vo);
         model.addAttribute(CAR_ID, carId);
 
-        ConsumableVO next = calc.getNextConsumableVO(consumableService.read(carId));
+        ConsumableVO next = calc.getNextConsumableVO(vo);
 
         model.addAttribute("changed", next);
     }
@@ -111,14 +116,13 @@ public class ConsumableController {
      * @param token 현대차 api 에서 가져온 token
      */
     @GetMapping("/create")
-    public void getCreate(@RequestParam("carId") String carId, Model model, String token) {
+    public void getCreate(@RequestParam("carId") String carId, Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
         model.addAttribute(USER_VO_STRING, userVO);
         log.info(carId);
         model.addAttribute(CAR_ID, carId);
-        model.addAttribute("token", token);
     }
 
     /**
@@ -126,16 +130,19 @@ public class ConsumableController {
      * 
      * @param carId 차 고유 번호
      * @param vo    consumableVO 부품 교체시기를 담았다
-     * @param token 현대차 api 에서 가져온 token
      * @return 마이페이지로 돌아간다.
+     * @throws IOException
      */
     @PostMapping("/create")
-    public String create(@RequestParam("carId") String carId, ConsumableVO vo, String token, String accDist,
-            Model model) {
+    public String create(@RequestParam("carId") String carId, ConsumableVO vo, String accDist,
+            Model model, HttpServletRequest request) throws IOException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
         model.addAttribute(USER_VO_STRING, userVO);
+        HttpSession session = request.getSession();
+        String code = (String) session.getAttribute("hyundaiCode");
+        String token = code.isEmpty() ? null : calc.getAccessToken(code);
         String accDistTemp = token != null ? calc.getAccDist(token, carId) : accDist;
         vo.setCarId(carId);
         consumableService.create(vo, accDistTemp);

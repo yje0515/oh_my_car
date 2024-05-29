@@ -1,6 +1,7 @@
 package com.ohmycar.domain;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,8 +10,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -149,5 +152,62 @@ public class ConsumableCalc {
         double accDist = conOdo.getOdometers().get(0).getValue();
 
         return Double.toString(accDist);
+    }
+
+    public String getAccessToken(String code) throws IOException {
+
+        String requestBody = "grant_type=authorization_code&code=" + code + "&redirect_uri=" + "http://localhost:8282";
+        String tokenResponse = tokenAPICall(requestBody);
+
+        ObjectMapper accessTokenObjectMapper = new ObjectMapper();
+        JsonNode tokenRoot = accessTokenObjectMapper.readTree(tokenResponse);
+        return tokenRoot.path("access_token").asText();
+    }
+
+    public String tokenAPICall(String requestBody) {
+
+        StringBuilder sb = new StringBuilder();
+        String responseData = "";
+
+        String apiURL = "https://prd.kr-ccapi.hyundai.com/api/v1/user/oauth2/token";
+
+        String token = "Basic "
+                + Base64.getEncoder().encodeToString(("t400b3231-30db-42f5-ab52-9d69b35a184d" + ":"
+                        + "NeeIVzC6EIl8m8p3Kh65CWP4C8cZYQhvW9zlBrZZzfolh2Ox").getBytes());
+        String contentType = "application/x-www-form-urlencoded";
+
+        try {
+            URL url = new URL(apiURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+
+            // Set Header Info
+            con.setRequestProperty("Authorization", token);
+            con.setRequestProperty("Content-Type", contentType);
+
+            // Body data 전송
+            con.setDoOutput(true);
+            DataOutputStream output = new DataOutputStream(con.getOutputStream());
+            output.writeBytes(requestBody);
+            output.flush();
+            int responseCode = con.getResponseCode();
+            BufferedReader br;
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                br = new BufferedReader(new InputStreamReader(con.getInputStream())); // 정상호출
+            } else {
+                br = new BufferedReader(new InputStreamReader(con.getErrorStream())); // 에러발생
+            }
+
+            sb = new StringBuilder();
+            while ((responseData = br.readLine()) != null) {
+                sb.append(responseData);
+            }
+            br.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return sb.toString();
     }
 }

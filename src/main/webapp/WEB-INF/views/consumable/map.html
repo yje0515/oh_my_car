@@ -193,12 +193,14 @@
 </th:block>
 
 <div layout:fragment="content">
-    <div class="map_wrap">
+    <h1>가까운 [[${keyWord}]]찾기</h1>
+    <div class="map_wrap" style="width: 75%; margin: 0 auto;">
         <div id="map" style="
                     width: 100%;
                     height: 100%;
                     position: relative;
                     overflow: hidden;
+                    float: center;
                 "></div>
 
         <div id="menu_wrap" class="bg_white">
