@@ -13,20 +13,25 @@
 <div th:fragment="header" id="headerWrap">
 	<a id="logoImg" href="/"><img src="../../../resources/img/logo_dark.png" style="height: 175px" alt="앗차차 로고"></a>
 	<ul>
-		<li sec:authorize="isAuthenticated()" style="font-size:18px;">[[${userVO.userName}]]님, 안녕하세요!</li>
-		<li sec:authorize="isAuthenticated()">
-			<form action="/logout" method='post'>
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<button id="headerBtn_logout">로그아웃</button>
-			</form>
-		</li>
-		<li sec:authorize="isAuthenticated()"><a href="/user/mypage"><button class="headerBtn">마이페이지</button></a></li>
-		<li sec:authorize="isAnonymous()"><a href="/user/login"><button class="headerBtn">로그인</button></a></li>
-		<li sec:authorize="isAnonymous()"><a href="/user/join"><button class="headerBtn">회원가입</button></a></li>
-		<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/user/admin"><button class="headerBtn">관리자페이지</button></a>
-		</li>
+		<th:block th:if="${not #strings.isEmpty(userVO.userName)}">
+			<li style="font-size:18px;">[[${userVO.userName}]]님, 안녕하세요!</li>
+			<li>
+				<form action="/logout" method='post'>
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+					<button id="headerBtn_logout">로그아웃</button>
+				</form>
+			</li>
+			<li><a href="/user/mypage"><button class="headerBtn">마이페이지</button></a></li>
+		</th:block>
+		<th:block th:if="${#strings.isEmpty(userVO.userName)}">
+			<li><a href="/user/login"><button class="headerBtn">로그인</button></a></li>
+			<li><a href="/user/join"><button class="headerBtn">회원가입</button></a></li>
+		</th:block>
+		<th:block th:if="${#lists.size(userVO.authList) > 1}">
+			<li><a href="/user/admin"><button class="headerBtn">관리자페이지</button></a></li>
+		</th:block>
 	</ul>
 </div>
-<!-- TODO security 안되는거 해결해라 -->
+
 
 </html>

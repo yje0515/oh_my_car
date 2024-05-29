@@ -16,7 +16,6 @@
 	<!-- CustomUserDetailsService 클래스를 사용하여 사용자 정의 사용자 세부 정보 서비스를 설정 -->
 	<bean id="customUserDetailsService" class="com.ohmycar.security.CustomUserDetailsService"></bean>
 
-
 	<!-- Spring Security HTTP 요청 설정 -->
 	<security:http>
 
