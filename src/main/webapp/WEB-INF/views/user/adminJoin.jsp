@@ -11,12 +11,12 @@
 <link rel="stylesheet" type="text/css"
 	href="../../resources/css/user.css">
 <script src="../../resources/js/user/join.js" type="text/javascript"></script>
-<title>회원가입</title>
+<title>관리자 회원가입</title>
 </head>
 <body>
 	<jsp:include page="../includes/header.jsp"></jsp:include>
 	<div id="joinWrap">
-		<h1>회원가입</h1>
+		<h1>관리자 회원가입</h1>
 		<p>*표시된 항목은 필수입력항목입니다.</p>
 		<form role="form" method="post" action="/user/join" id="joinForm"
 			name="frm">
@@ -76,8 +76,8 @@
 				</tr>
 				<tr>
 					<td>회원등급*</td>
-					<td style="text-align: center;"><input type="radio"
-						name="auth" value="ROLE_MEMBER" checked="checked">일반회원</td>
+					<td style="text-align: center;"><input
+						type="radio" name="auth" value="ROLE_ADMIN" checked="checked">관리자</td>
 				</tr>
 				<tr>
 					<td></td>

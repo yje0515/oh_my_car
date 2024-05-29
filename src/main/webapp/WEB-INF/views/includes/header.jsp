@@ -37,6 +37,7 @@
 			</sec:authorize>
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<li><a href="/user/admin"><button class="headerBtn">관리자페이지</button></a></li>
+				<li><a href="/user/adminJoin"><button class="headerBtn">관리자회원가입</button></a></li>
 			</sec:authorize>
 		</ul>
 	</div>

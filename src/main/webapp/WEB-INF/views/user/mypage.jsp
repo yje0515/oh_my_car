@@ -25,8 +25,7 @@
 				</li>
 				<li><a href="/user/passwordCheck?action=edit">회원 정보 수정</a></li>
 				<li><a href="/carInfo/register">차량 등록</a></li>
-				<li><a href="/carInfo/carUpdate">차량 정보 수정</a></li>
-				<li><a href="/carInfo/carUpdate">차량 관리</a></li>
+				<li><a href="/carInfo/carlist">차량 목록</a></li>
 				<li><a href="/user/passwordCheck?action=delete">회원 탈퇴</a></li>
 			</ul>
 		</div>
@@ -57,8 +56,8 @@
 							src="../resources/img/userUpdateIcon.png" alt="회원 정보 수정 아이콘"></a></td>
 					<td><a href="/carInfo/register"><img
 							src="../resources/img/carRegisterIcon.png" alt="차량 등록 아이콘"></a></td>
-					<td><a href="/carInfo/carUpdate"><img
-							src="../resources/img/carUpdateIcon.png" alt="차량 정보 수정 아이콘"></a></td>
+					<td><a href="/carInfo/carlist"><img
+							src="../resources/img/userCarListIcon.png" alt="차량 목록 아이콘"></a></td>
 					<!-- <td><a href="/carInfo/carUpdate"><img src="../resources/img/userUpdateIcon.png"
 							alt="차량 관리 아이콘"></a></td> -->
 					<td><a href="/user/passwordCheck?action=delete"><img
