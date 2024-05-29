@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.zerock</groupId>
 	<artifactId>controller</artifactId>
@@ -50,7 +51,7 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>2.3.0</version>
 		</dependency>
-		<!-- Spring Web MVC 의존성 / 이코드를 복사해서 아래 2단의 코드를 수정, 30라인-->
+		<!-- Spring Web MVC 의존성 / 이코드를 복사해서 아래 2단의 코드를 수정, 30라인 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -129,51 +130,58 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 oracle 연결을 위한 JDBC 드라이버를 제공-->
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 
+			oracle 연결을 위한 JDBC 드라이버를 제공 -->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>21.9.0.0</version>
 			<!-- 현재 최신 버전 -->
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok getter, setter, 생성자 등의 코드를 간소화-->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok getter, 
+			setter, 생성자 등의 코드를 간소화 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.30</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP JDBC 커넥션 풀-->
+		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP JDBC 커넥션 풀 -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 			<version>5.1.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis , MyBatis는 데이터베이스와 자바 객체 간의 매핑을 처리하는 SQL 매퍼 프레임워크-->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis , MyBatis는 
+			데이터베이스와 자바 객체 간의 매핑을 처리하는 SQL 매퍼 프레임워크 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.5.14</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring , MyBatis와 스프링 프레임워크를 통합-->
+		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring , MyBatis와 
+			스프링 프레임워크를 통합 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1, 애플리케이션이 실행하는 SQL 쿼리를 실제로 확인 -->
+		<!-- https://mvnrepository.com/artifact/org.bgee.log4jdbc-log4j2/log4jdbc-log4j2-jdbc4.1, 
+			애플리케이션이 실행하는 SQL 쿼리를 실제로 확인 -->
 		<dependency>
 			<groupId>org.bgee.log4jdbc-log4j2</groupId>
 			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
 			<version>1.16</version>
 		</dependency>
-		<!-- JSON 데이터를 Java 객체로 변환하고, Java 객체를 JSON으로 변환하는 기능을 제공하는 Jackson Databind 라이브러리 -->
+		<!-- JSON 데이터를 Java 객체로 변환하고, Java 객체를 JSON으로 변환하는 기능을 제공하는 Jackson Databind 
+			라이브러리 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.16.1</version>
 		</dependency>
-		<!-- XML 데이터를 Java 객체로 변환하고, Java 객체를 XML로 변환하는 기능을 제공하는 Jackson Dataformat XML 라이브러리 -->
+		<!-- XML 데이터를 Java 객체로 변환하고, Java 객체를 XML로 변환하는 기능을 제공하는 Jackson Dataformat 
+			XML 라이브러리 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
@@ -265,5 +273,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+
 	</build>
 </project>

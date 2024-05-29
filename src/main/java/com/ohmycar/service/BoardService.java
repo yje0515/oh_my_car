@@ -7,13 +7,17 @@ import java.util.List;
 
 public interface BoardService {
 
-	public void write(BoardVO boardVO);
+	void write(BoardVO boardVO);
 
-	public List<BoardVO> getList(Criteria cri);
+	List<BoardVO> getList(Criteria cri);
 
-	public BoardVO read(int bno);
+	BoardVO read(int bno);
 
-	public void modify(BoardVO boardVO);
+	void modify(BoardVO boardVO);
 
-	public void delete(int bno);
+	void delete(int bno);
+
+	BoardVO getBoard(int bno);
+	
+	List<BoardVO> getAllPosts();
 }

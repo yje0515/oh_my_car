@@ -11,9 +11,9 @@
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
 	rel="stylesheet">
 <!-- CSS 파일 추가 -->
-<link rel="stylesheet" type="text/css" href="/css/register.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/register.css">
 <style>
-<h1 style="color: #333;">보유차량 등록</h1></style>
+</style>
 </head>
 <body>
 	<form id="carForm"

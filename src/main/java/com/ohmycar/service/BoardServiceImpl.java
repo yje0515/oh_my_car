@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
 	private final BoardMapper mapper;
-
+	
 	@Override
 	public void write(BoardVO board) {
 		mapper.write(board);
@@ -38,5 +38,15 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVO read(int bno) {
 		return mapper.read(bno);
+	}
+
+	@Override
+	public BoardVO getBoard(int bno) {
+		return mapper.read(bno);
+	}
+
+	@Override
+	public List<BoardVO> getAllPosts() {
+		return mapper.getAllPosts();
 	}
 }
