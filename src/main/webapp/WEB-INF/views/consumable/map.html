@@ -189,6 +189,9 @@
             cursor: default;
             color: #777;
         }
+        #homeBtn{
+        
+        }
     </style>
 </th:block>
 
@@ -217,7 +220,7 @@
             <ul id="placesList"></ul>
             <div id="pagination"></div>
         </div>
-        <button><a th:href="@{/consumable/read?carId=} + ${carId}">돌아가기</a></button>
+        <button id="homeBtn"><a th:href="@{/}">돌아가기</a></button>
     </div>
 
     <script type="text/javascript"
