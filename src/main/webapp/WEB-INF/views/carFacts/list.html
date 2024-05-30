@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="kor" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout/default">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../resources/css/carFacts.css" type="text/css">
     <title>자동차 토막 상식 관리자 페이지</title>
 </head>
+<th:block layout:fragment="head">
+    <link rel="stylesheet" href="../../../resources/css/carFacts.css" type="text/css">
+</th:block>
 
-<body>
+<div layout:fragment="content">
     <h1>자동차 토막 상식 관리자 페이지</h1>
     <button class="create-btn" onclick="create()" type="button">토막 상식 추가 하기</button>
     <table class="tg" style="table-layout: fixed; width: 1112px">
@@ -112,6 +113,6 @@
             createPopup.style.display = 'none';
         }
     </script>
-</body>
+</div>
 
 </html>
