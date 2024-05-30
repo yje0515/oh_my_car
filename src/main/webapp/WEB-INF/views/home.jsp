@@ -49,9 +49,11 @@
 				<tr>
 					<th><h2>자동차 랜덤 간단상식</h2></th>
 				</tr>
-				<tr>
-					<td><span class="carFactText" value=""></span></td>
-				</tr>
+				<tr><td><span class="carFactText1"></span></td></tr>
+				<tr><td><span class="carFactText2"></span></td></tr>
+				<tr><td><span class="carFactText3"></span></td></tr>
+				<tr><td><span class="carFactText4"></span></td></tr>
+				<tr><td><span class="carFactText5"></span></td></tr>
 			</table>
 		</div>
 		<div id="mainLowerImg">
@@ -74,13 +76,16 @@
 		function getCarFacts() {
 			$.ajax({
 				type: "GET",
-				url: "/carFacts/read",
-				data: {},
-				success: function (factText) { // 서버에서 받은 결과
-					console.log(factText);
-					$(".carFactText").text(factText);
+				url: "/carFacts/read5",
+				dataType: 'json',
+				success: function (factText) {
+					$(".carFactText1").text(factText[0]["factText"]);
+					$(".carFactText2").text(factText[1]["factText"]);
+					$(".carFactText3").text(factText[2]["factText"]);
+					$(".carFactText4").text(factText[3]["factText"]);
+					$(".carFactText5").text(factText[4]["factText"]);
 				}
-			})
+			});
 		}
 
 		$(document).ready(function () {

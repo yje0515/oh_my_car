@@ -1,14 +1,13 @@
 package com.ohmycar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ohmycar.domain.CarFactsVO;
 import com.ohmycar.service.CarFactsService;
 
 @RequestMapping("/carFacts")
@@ -25,11 +24,17 @@ public class CarFactsRestController {
 		return service.read();
 	}
 
-	@PostMapping("/delete")
-	public ResponseEntity<String> deleteCarFacts(@RequestBody List<Integer> carFactIds) {
-		for (Integer carFactId : carFactIds) {
-			service.delete(carFactId);
+	@GetMapping("/read5")
+	public List<CarFactsVO> read5() {
+		List<CarFactsVO> list = new ArrayList<>();
+		while (list.size() < 5) {
+			String text = service.read();
+			CarFactsVO vo = new CarFactsVO();
+			vo.setFactText(text);
+			if (!list.contains(vo)) {
+				list.add(vo);
+			}
 		}
-		return ResponseEntity.ok("delete success");
+		return list;
 	}
 }
