@@ -3,8 +3,7 @@
   ![ppt_PS_01](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/9b4563af-8066-4cab-a848-c7879b27d9c7)
 
   </h1>
-  <h1 align="center">스프링부트 + 리액트 온라인 설문조사 프로젝트</h1>
-  <h3 align="center"><a href="https://github.com/JongHoonKim1004/ProjectReact">리액트 페이지</a> 는 이쪽으로</h3>
+  <h1 align="center">앗!차차 프로젝트</h1>
   <br /><br />
   
   ## 목차
@@ -21,22 +20,24 @@
     
   - [개선사항](https://github.com/JongHoonKim1004/Project_Survey#-개선사항)
 
+## 🚩 개요
 
-  ## 🚩 개요
-  - 프로젝트 목표 : 다양한 API 이용과 분리된 서버와 클라이언트 이용을 위한 `스프링부트`, `리액트` 온라인 설문조사 프로젝트
-  - 개발 기간 : 24/04/24 ~ 24/05/22
+-   프로젝트 목표 : 다양한 API 이용과 분리된 서버와 클라이언트 이용을 위한 `spring`, `jsp` `thymeLeaf` 자동차 관리 사이트
+-   개발 기간 : 24/04/23 ~ 24/05/30
 
-  ## 🔧 기술 스택
-  - API : `다음 주소 API`, `PORTONE API`, `네이버 API`, `Google API`, `CKEditor`
-  - Language : `Java(17)`, `JavaScript(ES6)`
-  - Library & Framework : `Spring Boot(3.1.11)`, `React(18.3.0)`, `Redux(9.1.2)`, `Spring Data JPA(3.1.11)`, `Spring Security(6.1.9)`, `JJWT(0.12.5)`
-  - Database : `MySQL(8.0)`
-  - Target : `Web Browser`
+## 🔧 기술 스택
 
-  - Tool : `IntelliJ IDEA 2024.1`
-  - ETC : `Git`
+-   API : `다음 지도 API`, `현대자동차 API`, `Google API`
+-   Language : `Java(11)`, `JavaScript(ES6)`
+-   Library & Framework : `Spring(5.2.7.RELEASE)`, `thymeLeaf(3.0.11.RELEASE)`, `mybatis(3.5.14)`, `jackson(2.16.1)`, `Spring Security(5.2.7.RELEASE)`
+-   Database : `Oracle(11.2.0.2.0)`
+-   Target : `Web Browser`
 
-  ## 👾 프로젝트 설계, 구현 📂 PPT 📂 (ERD, USECASE)
+-   Tool : `STS`, `VSCode`
+-   ETC : `Git`
+
+## 👾 프로젝트 설계, 구현 📂 PPT 📂 (ERD, USECASE)
+
 <details><summary>프로젝트 설계, 구현, PPT</summary>
   
 <div align="center">
@@ -83,144 +84,142 @@
 
 ## 💻 핵심 기능
 
-#### 설문조사
-- 설문조사의 시작일과 종료일 사이에 있는 (이용 가능한) 설문조사 목록을 출력
-- 설문조사의 각 질문에 응답할 때마다 서버에 응답을 전송, 서버에서는 DB에 저장과 동시에 조기종료 여부 확인
-- 설문조사가 조기종료 혹은 정상종료 될 경우, 회원에서 포인트 지급
+#### 차량 부품 교체 주기 확인
+
+-   현대 자동차 API 를 통해 로그인 한 사람의 경우 API 를 통해 현재 누적 주행 거리를 구해와 정확하게 교체 주기를 확인 가능하다.
+-   API를 통해 로그인 하지 않은 사람이라 하더라도 이전에 저장해뒀던 부품 교체 정보를 통해 교체 주기를 확인 가능하다.
 
 #### 일반회원
-- 소셜 로그인(네이버, 구글)
-- 이메일 중복확인
-- 비밀번호 암호화 처리
-- DAUM 주소 검색 API
-- 마이페이지(내 정보 관리, 내 포인트 관리, 포인트 변경 이력, 내 조사 관리, 내 1:1 문의 관리)
-- 아이디, 비밀번호 찾기
+
+-   로그인
+-   아이디 중복확인
+-   비밀번호 암호화 처리
+-   카카오 지도 검색
+-   마이페이지(내 정보 관리, 내 포인트 관리, 포인트 변경 이력, 내 조사 관리, 내 1:1 문의 관리, 차량 등록 및 변경 )
+-   아이디, 비밀번호 찾기
 
 #### 사업자
-- 회원정보 변경
-- 사업자 포인트 조회
-- PORTONE API 를 이용한 포인트 충전
-- 설문조사 목록 확인
-- 새로운 설문조사 생성
+
+-   회원정보 변경
+-   사업자 포인트 조회
+-   PORTONE API 를 이용한 포인트 충전
+-   설문조사 목록 확인
+-   새로운 설문조사 생성
 
 #### 관리자
-- 설문조사 목록 확인
-- 공지사항 작성 및 수정
-- 자주묻는 답변 작성
-- 일반회원, 사업자 관리
 
-## 🎇 주요기능 실행화면
+-   관리자 회원가입을 통해 신규 관리자가 회원가입을 할 수 있게 만든다.
+-   자동차 토막상식 관리 페이지를 통해 토막상식의 전반적인 처리가 가능하다.
+
+🎇 주요기능 실행화면
+
 <details>
   <summary>주요기능 실행화면</summary>
 
-  * **메인 페이지**
+-   **메인 페이지**
 
-    * **로그인**
-      * 메인 페이지의 로그인 화면을 통해 일반 로그인, 우측 상단의 `로그인`을 통해 일반 로그인, 소셜 로그인이 가능합니다.
-      
-     ![PS_01_login socialLogin](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/d15792bb-ce78-461f-9bac-44ba31d9dc95)
+    -   **로그인**
+        -   메인 페이지의 로그인 화면을 통해 일반 로그인, 우측 상단의 `로그인`을 통해 일반 로그인, 소셜 로그인이 가능합니다.
 
-    * **회원가입**
-      * 회원가입 페이지에서 '우편번호 찾기' 를 통해 DAUM 주소 검색 API를 호출할 수 있습니다.
-   
-      ![PS_02_UsersRegister](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/03e68b7a-42bc-4e80-9d5b-93cff3a07311)
+    ![PS_01_login socialLogin](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/d15792bb-ce78-461f-9bac-44ba31d9dc95)
 
-    * **아이디, 비밀번호 찾기**
-      * 이름과 연락처를 입력하여 아이디를 찾을 수 있습니다.
-      * 비밀번호 찾기 페이지에서 이메일 입력 후 '인증번호 전송' 버튼을 클릭하면 인증번호가 포함된 메일이 전송되며 인증번호를 올바르게 입력하면 비밀번호를 다시 설정하는 페이지로 이동할 수 있습니다.
-   
-      ![PS_03_idFind pwFind](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/7feec2d9-ed4d-4a5a-b95d-616d1c6f3340)
+    -   **회원가입**
 
-    * **고객센터**
-      * 공지사항, 자주묻는 질문은 메인 페이지 내에서는 목록과 상세보기만 가능합니다.
-      * 1:1 문의는 일반회원만 접근 가능하며 1:1 문의 작성 후에는 `마이페이지` -> `내 1:1 문의` 로 이동합니다.
-      
-       ![PS_04_board](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/49264601-d238-40ed-827c-1b91672eba2d)
+        -   회원가입 페이지에서 '우편번호 찾기' 를 통해 DAUM 주소 검색 API를 호출할 수 있습니다.
 
-    * **마이페이지**
-      * `내 정보 관리` 에서는 회원정보를 변경할 수 있습니다.
-      * `내 포인트 관리` 에서는 현재까지 적립한 포인트, 사용한 포인트, 포인트 잔액을 확인할 수 있습니다.
-      * `내 포인트 관리` 페이지 내 `적립금 상세내역 보기` 를 클릭하면 포인트 적립 이력을 확인할 수 있습니다.
-      * `조사 관리` 에서는 내가 참여한 설문조사를 확인할 수 있습니다.
-      * `내 1:1 문의` 에서는 본인이 `1:1 문의` 로 작성한 문의를 확인할 수 있습니다. 또한 관리자의 답글 작성 여부도 확인할 수 있습니다
-      
-       ![PS_05_mypage](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/e324a9d7-8d42-44d7-a4f5-989dc3a4c22f)
-    
-    * **설문조사**
-      * 일반회원으로 로그인 한 회원은 메인 페이지에서 참여 가능한 설문조사를 확인할 수 있습니다.
-      * 설문조사 이름을 클릭하면 새로운 팝업창에서 설문조사에 참여할 수 있습니다.
-      * 설문조사가 조기종료 혹은 정상종료 될 경우, 포인트가 지급됩니다.
+        ![PS_02_UsersRegister](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/03e68b7a-42bc-4e80-9d5b-93cff3a07311)
 
-      ![PS_06_survey](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/d645c45b-ae05-441e-9914-27a38a156560)
+    -   **아이디, 비밀번호 찾기**
 
-  * **사업자**
-    
-    * **회원정보 변경**
-      * 메인 페이지에서 우측 상단의 `사업자 로그인`을 통해 사업자 로그인 페이지에서 로그인이 가능합니다.
-      * 로그인 후, 좌측 사이드바의 `회원정보 변경` 을 통해 사업자 정보를 변경할 수 있습니다
-     
-      ![PS_07_MemberPage infoModify](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/faf7d702-24a9-4f93-88a0-424dfdd9fd40)
+        -   이름과 연락처를 입력하여 아이디를 찾을 수 있습니다.
+        -   비밀번호 찾기 페이지에서 이메일 입력 후 '인증번호 전송' 버튼을 클릭하면 인증번호가 포함된 메일이 전송되며 인증번호를 올바르게 입력하면 비밀번호를 다시 설정하는 페이지로 이동할 수 있습니다.
 
-    * **포인트 관리**
-      * 좌측 사이드바의 `포인트 관리` -> `포인트 변경 이력` 을 통해 포인트가 사용되고 충전한 이력을 확인할 수 있습니다
-      * `포인트 충전` 에서는 포인트 충전을 할 수 있고, `충전하기` 을 클릭하면 PORTONE API를 이용한 결제 모듈이 호출되며 결제가 정상적으로 완료되면 포인트가 충전됩니다.
-   
-      ![PS_08_MemberPoint](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/bf24f2c7-ce26-4a61-a02b-838682b0e2fb)
+        ![PS_03_idFind pwFind](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/7feec2d9-ed4d-4a5a-b95d-616d1c6f3340)
 
-    * **설문조사 관리**
-      * 좌측 사이드바의 `설문조사 관리` -> `설문조사 목록` 에서는 사업자가 생성한 모든 설문조사가 호출됩니다.
-      * `설문조사 참여인원 목록` 에서는 사업자의 설문조사에 참여한 인원을 확인할 수 있습니다.
+    -   **자유 게시판**
 
-      ![PS_09_MemberSurveyList](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/70e3df11-7d39-4508-8bbe-4135695236b6)
+        -   자유 게시판에서는 차주들이 서로 소통이 가능하며, 댓글기능으로 그에 대한 답을 해줄 수 있는곳 입니다.
+        
 
-    * **설문조사 생성**
-      * 설문조사의 기본 정보를 입력하고 `등록하기`를 클릭하면 질문을 등록하는 페이지로 이동합니다.
-      * 질문은 새로 추가하고 삭제할 수 있으면 각 질문 유형에 따른 입력 창을 제공합니다
-      * 모든 질문을 저장하고 `설문조사 저장하기`를 클릭하면 설문조사 생성이 완료됩니다
-   
-      ![PS_10_MemberSurveyCreate](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/4f50b495-55d8-4119-88c4-d4a1df4ef200)
+        ![PS_04_board](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/49264601-d238-40ed-827c-1b91672eba2d)
 
-  * **관리자**
+    -   **마이페이지**
 
-    *  **관리자 로그인**
-      * 메인 페이지에서 우측 상단의 `관리자 로그인`을 통해 관리자 로그인 페이지에 들어갈 수 있습니다.
-      * 관리자 페이지 우측 상단의 `로그아웃`을 통해 로그아웃 할 수 있습니다.
-   
+        -   `회원 정보 수정` 에서는 회원정보를 변경할 수 있습니다.
+        -   `차량 등록` 에서는 현재 자신이 소유하고 있는 차량을 등록 할수 있습니다.
+        -   `차량 목록` 페이지 내 `차량 목록` 을 클릭하면 현재 내가 소유하고 있는 차량 목록을 확인 할수 있습니다.
+        -   `회원 탈퇴` 는 이제 더 이상 사이트를 이용하고 싶지않을때 회원 탈퇴로 사이트 이용을 하지 않을 수 있습니다.
+
+
+        ![PS_05_mypage](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/e324a9d7-8d42-44d7-a4f5-989dc3a4c22f)
+
+    -   **자동차 토막 상식**
+
+        -   메인 화면에 ajax 를 통해 1분 간격으로 토막 상식 5개를 보여줍니다.
+
+        ![PS_06_survey](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/d645c45b-ae05-441e-9914-27a38a156560)
+
+    -   **가까운 ???**
+
+        -   카카오 지도 API 와 구글 geoLocation API 를 이용하여 현재 위치에 ??? 키워드 를 검색 하여 띄워준다.
+
+        ![PS_06_survey](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/d645c45b-ae05-441e-9914-27a38a156560)
+
+-   **차량목록**
+
+    -   **차량 부품 교체 정보**
+
+        -   차량 목록에 선택된 차량의 부품 교체 정보를 보거나 교체한 시기를 수정 및 등록, 삭제 할 수 있다.
+
+        ![PS_07_MemberPage infoModify](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/faf7d702-24a9-4f93-88a0-424dfdd9fd40)
+
+-   **관리자**
+
+    -   **관리자 로그인**
+    -   메인 페이지에서 우측 상단의 `관리자 로그인`을 통해 관리자 로그인 페이지에 들어갈 수 있습니다.
+    -   관리자 페이지 우측 상단의 `로그아웃`을 통해 로그아웃 할 수 있습니다.
+
     ![PS_11_AdminDashboard](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/696f4580-2dfe-4131-94bb-ae5fd7d0de5d)
 
-    * **설문조사 관리**
-      * 모든 사업자의 모든 설문조사가 호출되며, 설문조사의 확인 삭제가 가능합니다.
+    -   **관리자 회원가입**
 
-      ![PS_12_AdminSurveyList](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/cdb608f4-7472-4ddf-ab90-5c80cb2d1af7)
+        -   신규 관리자 의 아이디 생성을 하기 위해 있는 버튼 이미 관리자 권한이 있는 유저가 만들어야한다.
 
-    * **1:1 문의 관리**
-      * 좌측 사이드바의 `1:1 문의 관리`를 클릭하면 1:1 문의 목록 페이지로 이동합니다.
-      * 제목을 클릭하면 해당 문의를 상세히 볼 수 있으며 답글이 작성되어있다면 답글도 확인할 수 있습니다.
-      * `답글 작성하기` 버튼을 통해 답글을 작성하는 공간을 호출하여 답글을 작성할 수 있습니다.
-     
-      ![PS_13_VOC Reply](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/f9c1f147-bcaf-41bc-a66b-0f301efd7e25)
+        ![PS_12_AdminSurveyList](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/cdb608f4-7472-4ddf-ab90-5c80cb2d1af7)
 
-    * **사업자 관리**
-      * 좌측 사이드바의 `사업자 관리` -> `사업자 목록`을 통해 사업자 목록을 호출하고, 정보를 확인할 수 있는 페이지로 이동할 수 있습니다.
-      * `새 사업자 등록`을 통해 새로운 사업자를 등록할 수 있으며, `중복 확인` 을 통해 이메일 중복 여부 확인, `우편번호 찾기`를 통해 DAUM 주소 찾기 API를 호출하여 주소를 등록할 수 있습니다.
-     
-      ![PS_14_AdminMemberCreate](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/3c82bb8a-d592-4215-83f2-7adfd30d8b10)
+    -   **자동차 토막 상식 관리 페이지**
 
-    * **공지사항 관리**
-      * 좌측 사이드바의 `공지사항 관리` -> `공지사항 목록`을 통해 공지사항 목록을 호출하고, 공지사항 내용을 확인할 수 있는 페이지로 이동할 수 있습니다.
-      * `새 공지사항 작성`을 통해 공지사항 작성 페이지로 이동할 수 있고 여기서 내용을 입력하는 도구로 CKEditor 를 호출합니다.
-     
-       ![PS_15_AdminNotice](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/a361d5bf-d4b6-4286-9c31-c36111a10185)
+        -   자동차 토막 상식들의 리스트가 있는 페이지 입니다.
+        -   여기서 관리자는 토막 상식을 추가 삭제 수정 할 수 있습니다.
+        -   새로운 페이지로 넘어가지는 않고 모달창을 띄워 좀더 수월하게 작업 가능합니다.
 
-    * **자주묻는 질문 관리**
-      * 좌측 사이드바의 `자주묻는 질문 관리` -> `자주묻는 질문 목록`을 통해 자주묻는 질문 목록을 호출하고, 질문의 내용을 확인하는 페이지로 이동할 수 있습니다.
-      * `새로운 질문 작성`을 통해 자주묻는 질문 작성 페이지로 이동할 수 있습니다.
-     
-      ![PS_16_AdminFAQ](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/3936fb19-c42b-4948-bd6b-17c2985b67a8)
+        ![PS_13_VOC Reply](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/f9c1f147-bcaf-41bc-a66b-0f301efd7e25)
 
-</details> 
+    -   **사업자 관리**
+
+        -   좌측 사이드바의 `사업자 관리` -> `사업자 목록`을 통해 사업자 목록을 호출하고, 정보를 확인할 수 있는 페이지로 이동할 수 있습니다.
+        -   `새 사업자 등록`을 통해 새로운 사업자를 등록할 수 있으며, `중복 확인` 을 통해 이메일 중복 여부 확인, `우편번호 찾기`를 통해 DAUM 주소 찾기 API를 호출하여 주소를 등록할 수 있습니다.
+
+        ![PS_14_AdminMemberCreate](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/3c82bb8a-d592-4215-83f2-7adfd30d8b10)
+
+    -   **공지사항 관리**
+
+        -   좌측 사이드바의 `공지사항 관리` -> `공지사항 목록`을 통해 공지사항 목록을 호출하고, 공지사항 내용을 확인할 수 있는 페이지로 이동할 수 있습니다.
+        -   `새 공지사항 작성`을 통해 공지사항 작성 페이지로 이동할 수 있고 여기서 내용을 입력하는 도구로 CKEditor 를 호출합니다.
+
+        ![PS_15_AdminNotice](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/a361d5bf-d4b6-4286-9c31-c36111a10185)
+
+    -   **자주묻는 질문 관리**
+
+        -   좌측 사이드바의 `자주묻는 질문 관리` -> `자주묻는 질문 목록`을 통해 자주묻는 질문 목록을 호출하고, 질문의 내용을 확인하는 페이지로 이동할 수 있습니다.
+        -   `새로운 질문 작성`을 통해 자주묻는 질문 작성 페이지로 이동할 수 있습니다.
+
+        ![PS_16_AdminFAQ](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/3936fb19-c42b-4948-bd6b-17c2985b67a8)
+
+</details>
 
 ## 🌄 개선사항
-- 일반회원의 설문조사 참여에 관한 알고리즘 구성
-- 일반회원의 적립된 포인트 사용처 확보
-- 설문조사 생성 시 조기종료 조건의 구체화
+
+-   일반회원의 설문조사 참여에 관한 알고리즘 구성
+-   일반회원의 적립된 포인트 사용처 확보
+-   설문조사 생성 시 조기종료 조건의 구체화
