@@ -4,7 +4,7 @@ import java.util.List;
 import com.ohmycar.domain.CommentVO;
 
 public interface CommentService {
-	List<CommentVO> getCommentsByBoardId(Long bno);
+	List<CommentVO> getCommentsByBoardId(int bno);
 
 	void writeComment(CommentVO comment);
 

@@ -11,13 +11,13 @@ public interface BoardService {
 
 	List<BoardVO> getList(Criteria cri);
 
-	BoardVO read(Long bno);
+	BoardVO read(int bno);
 
 	void modify(BoardVO boardVO);
 
 	void delete(int bno);
 
 	BoardVO getBoard(int bno);
-	
+
 	List<BoardVO> getAllPosts();
 }

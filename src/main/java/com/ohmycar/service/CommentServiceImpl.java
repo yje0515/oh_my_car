@@ -1,6 +1,5 @@
 package com.ohmycar.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.ohmycar.domain.CommentVO;
@@ -12,10 +11,9 @@ import lombok.RequiredArgsConstructor;
 public class CommentServiceImpl implements CommentService {
 
     private final CommentMapper commentMapper;
-    private final CommentMapper commentMapper;
 
     @Override
-    public List<CommentVO> getCommentsByBoardId(Long bno) {
+    public List<CommentVO> getCommentsByBoardId(int bno) {
         return commentMapper.getCommentsByBoardId(bno);
     }
 

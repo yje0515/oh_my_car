@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohmycar.mapper.CommentMapper">
+	<select id="getCommentsByBoardId" parameterType="java.lang.Long"
+		resultType="com.ohmycar.domain.CommentVO">
+		SELECT * FROM comments WHERE bno = #{bno}
+	</select>
+
+	<insert id="insert" parameterType="com.ohmycar.domain.CommentVO">
+		INSERT INTO comments (bno, content, writer, regdate)
+		VALUES (#{bno}, #{content}, #{writer}, SYSDATE)
+	</insert>
+
+	<update id="update" parameterType="com.ohmycar.domain.CommentVO">
+		UPDATE comments
+		SET content = #{content}
+		WHERE id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Long">
+		DELETE FROM comments WHERE id = #{id}
+	</delete>
+</mapper>
+
+

@@ -77,7 +77,7 @@ public class BoardController {
 		model.addAttribute("board", board);
 
 		// 게시글에 해당하는 댓글 목록을 가져옵니다.
-		List<CommentVO> commentList = commentService.getCommentsByBoard(bno);
+		List<CommentVO> commentList = commentService.getCommentsByBoardId(bno);
 		model.addAttribute("commentList", commentList);
 
 		return "board/read";
@@ -108,14 +108,14 @@ public class BoardController {
 	@PostMapping("/comment/register")
 	public String registerComment(CommentVO comment, Model model) {
 		commentService.register(comment);
-		model.addAttribute("bno", comment.getBoardId());
+		model.addAttribute("bno", comment.getId());
 		return REDIRECT_BEFORE_PAGE;
 	}
 
 	@PostMapping("/comment/modify")
 	public String modifyComment(CommentVO comment, Model model) {
 		commentService.modify(comment);
-		model.addAttribute("bno", comment.getBoardId());
+		model.addAttribute("bno", comment.getId());
 		return REDIRECT_BEFORE_PAGE;
 	}
 
@@ -127,7 +127,7 @@ public class BoardController {
 	}
 
 	@GetMapping("/modify")
-	public String modify(@RequestParam("bno") Long bno, Model model) {
+	public String modify(@RequestParam("bno") int bno, Model model) {
 		BoardVO board = boardService.read(bno);
 		model.addAttribute("board", board);
 		log.info("move to modify.jsp");
