@@ -3,14 +3,13 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ohmycar.mapper.CommentMapper">
-	<select id="getCommentsByBoardId" parameterType="java.lang.Long"
-		resultType="com.ohmycar.domain.CommentVO">
+	<select id="getCommentsByBoardId" resultType="com.ohmycar.domain.CommentVO">
 		SELECT * FROM comments WHERE bno = #{bno}
 	</select>
 
 	<insert id="insert" parameterType="com.ohmycar.domain.CommentVO">
-		INSERT INTO comments (bno, content, writer, regdate)
-		VALUES (#{bno}, #{content}, #{writer}, SYSDATE)
+		INSERT INTO comments (id, bno, content, writer, regdate)
+		VALUES (comment_seq.nextval, #{bno}, #{content}, #{writer}, SYSDATE)
 	</insert>
 
 	<update id="update" parameterType="com.ohmycar.domain.CommentVO">
@@ -19,7 +18,7 @@
 		WHERE id = #{id}
 	</update>
 
-	<delete id="delete" parameterType="java.lang.Long">
+	<delete id="delete">
 		DELETE FROM comments WHERE id = #{id}
 	</delete>
 </mapper>

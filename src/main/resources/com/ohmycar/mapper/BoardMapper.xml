@@ -48,9 +48,9 @@
 	]]>
 	</select>
 
-	<select id="getBoard" parameterType="long"
-		resultType="com.ohmycar.domain.BoardVO">
-		SELECT bno, title, content, writer, regdate, updatedate
+	<select id="getBoard" resultType="com.ohmycar.domain.BoardVO">
+		SELECT bno, title, content,
+		writer, regdate, updatedate
 		FROM tbl_board
 		WHERE bno = #{bno}
 	</select>

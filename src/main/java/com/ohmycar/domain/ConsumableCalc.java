@@ -57,49 +57,50 @@ public class ConsumableCalc {
      * @return 교체 시기가 담긴 consumableVO
      * @throws IOException json 데이터를 읽어올 때 발생하는 예외 json 데이터의 형식이 다르면 뜬다.
      */
-    public ConsumableVO getNextConsumableVO(ConsumableVO next) throws IOException {
+    public ConsumableVO getNextConsumableVO(ConsumableVO prev) throws IOException {
         InputStream input = new FileInputStream(
                 "c:/SpringWorkSpace/oh_my_car/src/main/webapp/resources/json/consumableCycle.json");
         ObjectMapper objectMapper = new ObjectMapper();
         ConsumableCycle consumableCycle = objectMapper.readValue(input, ConsumableCycle.class);
+        ConsumableVO next = new ConsumableVO();
 
         String st = consumableCycle.getAirConFilter();
         next.setAirConFilter(
-                calcChangeDay(next.getAirConFilter(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getAirConFilter(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         st = consumableCycle.getBattery();
         next.setBattery(
-                calcChangeDay(next.getBattery(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getBattery(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         st = consumableCycle.getBreakOil();
         next.setBreakOil(
-                calcChangeDay(next.getBreakOil(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getBreakOil(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         st = consumableCycle.getBreakPad();
         next.setBreakPad(
-                calcChangeDay(next.getBreakPad(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getBreakPad(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         st = consumableCycle.getCoolingWater();
         next.setCoolingWater(
-                calcChangeDay(next.getCoolingWater(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getCoolingWater(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         st = consumableCycle.getEngineOil();
         next.setEngineOil(
-                calcChangeDay(next.getEngineOil(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getEngineOil(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         st = consumableCycle.getFluidClutch();
         next.setFluidClutch(
-                calcChangeDay(next.getFluidClutch(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getFluidClutch(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         st = consumableCycle.getPowerSteeringOil();
         next.setPowerSteeringOil(
-                calcChangeDay(next.getPowerSteeringOil(), st.substring(0, st.length() - 1),
+                calcChangeDay(prev.getPowerSteeringOil(), st.substring(0, st.length() - 1),
                         st.charAt(st.length() - 1)));
         st = consumableCycle.getSparkPlug();
         next.setSparkPlug(
-                calcChangeDay(next.getSparkPlug(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getSparkPlug(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         st = consumableCycle.getTire();
         next.setTire(
-                calcChangeDay(next.getTire(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getTire(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         st = consumableCycle.getTransmissionOil();
         next.setTransmissionOil(
-                calcChangeDay(next.getTransmissionOil(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getTransmissionOil(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         st = consumableCycle.getWiper();
         next.setWiper(
-                calcChangeDay(next.getWiper(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
+                calcChangeDay(prev.getWiper(), st.substring(0, st.length() - 1), st.charAt(st.length() - 1)));
         return next;
 
     }
