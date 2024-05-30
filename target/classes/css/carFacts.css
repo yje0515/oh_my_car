@@ -1,0 +1,85 @@
+.tg {
+    border-collapse: collapse;
+    border-color: #9abad9;
+    border-spacing: 0;
+}
+
+.tg td {
+    background-color: #ebf5ff;
+    border-color: #9abad9;
+    border-style: solid;
+    border-width: 0px;
+    color: #444;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg th {
+    background-color: #409cff;
+    border-color: #9abad9;
+    border-style: solid;
+    border-width: 0px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg .tg-baqh {
+    text-align: center;
+    vertical-align: top;
+}
+
+.tg .tg-c3ow {
+    border-color: inherit;
+    text-align: center;
+    vertical-align: top;
+}
+
+.tg .tg-0pky {
+    border-color: inherit;
+    text-align: left;
+    vertical-align: top;
+}
+
+.pop_wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 0;
+    text-align: center;
+}
+
+.pop_wrap:after {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+}
+
+.pop_wrap .pop_inner {
+    display: inline-block;
+    padding: 20px 30px;
+    background: #fff;
+    vertical-align: middle;
+    font-size: 15px;
+}
+
+.modify-factText {
+    width: 900px;
+    height: 300px;
+}
+
+.create-factText {
+    width: 900px;
+    height: 300px;
+}

@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+/* 기본 스타일 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex; /* 컨테이너 안의 내용을 가운데 정렬하기 위해 */
+    justify-content: center; /* 가로 방향 가운데 정렬 */
+}
+
+h1, h2 {
+    color: #002F65;
+    font-weight: bold;
+}
+
+/* 글 목록 스타일 */
+.post-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.post-table th, .post-table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+.post-table th {
+    background: #f9f9f9;
+    font-weight: bold;
+}
+
+/* 댓글 섹션 스타일 */
+.comments {
+    margin-top: 40px;
+}
+
+.comments h2 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #002F65;
+}
+
+.comments form {
+    margin-bottom: 20px;
+}
+
+.comments textarea,
+.comments input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    resize: vertical;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.comments input[type="text"] {
+    width: calc(100% - 120px);
+}
+
+.comments button {
+    padding: 12px 24px;
+    background: #002F65;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.comments button:hover {
+    background: #005aa7;
+}
+
+.comment-list {
+    margin-top: 20px;
+}
+
+.comment {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.comment-writer {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-date {
+    color: #777;
+}

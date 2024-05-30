@@ -19,4 +19,6 @@ public interface BoardMapper {
 	public List<BoardVO> getListWithPaging(Criteria cri);
 	
 	BoardVO getBoard(int bno);
+
+	public BoardVO read(Long bno);
 }

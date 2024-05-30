@@ -72,61 +72,54 @@ public class BoardController {
 		model.addAttribute("boardList", boardList); // 모델에 추가
 	}
 
+	// 게시글 읽기
 	@GetMapping("/read")
-	public String read(@RequestParam("bno") int bno, Model model) {
-	    BoardVO board = boardService.read(bno);
-	    model.addAttribute("board", board);
-	    
-	    // 게시글에 해당하는 댓글 목록을 가져옵니다.
-	    List<CommentVO> commentList = commentService.getCommentsByBoard(bno);
-	    model.addAttribute("commentList", commentList);
-	    
-	    return "board/read";
+	public String read(@RequestParam("bno") Long bno, Model model) {
+		BoardVO board = boardService.read(bno);
+		model.addAttribute("board", board);
+
+		// 게시글에 해당하는 댓글 목록을 가져옵니다.
+		List<CommentVO> commentList = commentService.getCommentsByBoardId(bno);
+		model.addAttribute("commentList", commentList);
+
+		return "board/read";
 	}
 
 	@PostMapping("/comment")
-	public String writeComment(@RequestParam("bno") Long bno, @RequestParam("content") String content, Model model) {
-	    // 현재 사용자 정보 가져오기 (사용자 인증 및 사용자 정보 관리 로직에 따라 달라질 수 있음)
-	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	    String writer = authentication.getName(); // 현재 사용자의 이름 또는 아이디
+	public String writeComment(@RequestParam("bno") Long bno, @RequestParam("content") String content) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String writer = authentication.getName();
 
-	    // 댓글 객체 생성
-	    CommentVO comment = new CommentVO();
-	    comment.setBno(bno);
-	    comment.setContent(content);
-	    comment.setWriter(writer); // 작성자 설정
+		CommentVO comment = new CommentVO();
+		comment.setBno(bno);
+		comment.setContent(content);
+		comment.setWriter(writer);
 
-	    // 댓글 서비스를 통해 댓글 작성
-	    commentService.writeComment(comment);
+		commentService.writeComment(comment);
 
-	    // 게시글 읽기 페이지로 리다이렉트
-	    return "redirect:/board/read?bno=" + bno;
+		return "redirect:/board/read?bno=" + bno;
 	}
-
-	
-	// BoardController.java
 
 	@PostMapping("/comment/register")
 	public String registerComment(CommentVO comment) {
-	    commentService.register(comment);
-	    return "redirect:/board/read?bno=" + comment.getBoardId();
+		commentService.register(comment);
+		return "redirect:/board/read?bno=" + comment.getBno();
 	}
 
 	@PostMapping("/comment/modify")
 	public String modifyComment(CommentVO comment) {
-	    commentService.modify(comment);
-	    return "redirect:/board/read?bno=" + comment.getBoardId();
+		commentService.modify(comment);
+		return "redirect:/board/read?bno=" + comment.getBno();
 	}
 
 	@PostMapping("/comment/remove")
-	public String removeComment(@RequestParam("id") Long id, @RequestParam("boardId") Long boardId) {
-	    commentService.remove(id);
-	    return "redirect:/board/read?bno=" + boardId;
+	public String removeComment(@RequestParam("id") Long id, @RequestParam("bno") Long bno) {
+		commentService.remove(id);
+		return "redirect:/board/read?bno=" + bno;
 	}
 
-
 	@GetMapping("/modify")
-	public String modify(@RequestParam("bno") int bno, Model model) {
+	public String modify(@RequestParam("bno") Long bno, Model model) {
 		BoardVO board = boardService.read(bno);
 		model.addAttribute("board", board);
 		log.info("move to modify.jsp");
