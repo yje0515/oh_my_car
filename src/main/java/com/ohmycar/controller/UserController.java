@@ -42,7 +42,6 @@ public class UserController {
 	private static final String USER_VO_STRING = "userVO";
 
 	// 회원가입페이지로 이동
-
 	@GetMapping("/join")
 	public void joinGet() {
 		log.info("join.....");
@@ -56,6 +55,13 @@ public class UserController {
 		log.info("success join.....");
 		rttr.addFlashAttribute(RESULT_STRING,"joinSuccess");
 		return "redirect:/user/login";
+	}
+	
+	// 관리자용 회원가입페이지로 이동
+	@GetMapping("/adminJoin")
+	public void adminJoinGet() {
+		log.info("join.....");
+		
 	}
 
 	// 관리자권한 가진 사용자만 접근 가능
