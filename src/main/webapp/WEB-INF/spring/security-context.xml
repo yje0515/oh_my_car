@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:security="http://www.springframework.org/schema/security" xsi:schemaLocation="http://www.springframework.org/schema/security 
+	xmlns:security="http://www.springframework.org/schema/security" xsi:schemaLocation="http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-5.2.xsd
-		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- CustomAccessDeniedHandler 빈 설정 -->
@@ -32,8 +32,15 @@
 		<security:intercept-url pattern="/consumable/*" access="isAuthenticated()" />
 		<security:intercept-url pattern="/carInfo/*" access="isAuthenticated()" />
 
+
 		<!-- 관리자권한을 사진 사용자만 접근 가능한 URL -->
 		<security:intercept-url pattern="/user/admin" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/user/adminJoin" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/carFacts/list" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/carFacts/create" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/carFacts/delete" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/carFacts/modify" access="hasRole('ROLE_ADMIN')" />
+
 
 		<!-- 직접 구현한 접근제한인터페이스 설정 response.sendRedirect("/accessError") 하는 클래스 -->
 		<security:access-denied-handler ref="customAccessDenied" />

@@ -48,7 +48,6 @@
 			<sec:csrfInput/>
 			<input type="hidden" name="bno" value="${board.bno}">
 			<textarea name="content" placeholder="댓글을 입력하세요" required></textarea>
-			<!-- <input type="text" name="writer" placeholder="작성자" required> -->
 			<button type="submit">댓글 작성</button>
 		</form>
 
