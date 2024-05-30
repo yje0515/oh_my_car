@@ -7,13 +7,12 @@ body {
 	padding: 0;
 }
 
-.container {
-	max-width: 900px;
+#boardList { .container { max-width:900px;
 	margin: 20px auto;
 	padding: 20px;
 	background-color: #fff;
 	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	f box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -87,4 +86,5 @@ button {
 button:hover {
 	background-color: #004494;
 	transform: scale(1.02);
+}
 }

@@ -84,7 +84,7 @@ public class BoardController {
 	}
 
 	@PostMapping("/comment")
-	public String writeComment(@RequestParam("bno") Long bno, @RequestParam("content") String content, Model model) {
+	public String writeComment(@RequestParam("bno") int bno, @RequestParam("content") String content, Model model) {
 		// 현재 사용자 정보 가져오기 (사용자 인증 및 사용자 정보 관리 로직에 따라 달라질 수 있음)
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String writer = authentication.getName(); // 현재 사용자의 이름 또는 아이디
@@ -120,7 +120,7 @@ public class BoardController {
 	}
 
 	@PostMapping("/comment/remove")
-	public String removeComment(@RequestParam("id") Long id, @RequestParam("bno") Long bno, Model model) {
+	public String removeComment(@RequestParam("id") int id, @RequestParam("bno") int bno, Model model) {
 		commentService.remove(id);
 		model.addAttribute("bno", bno);
 		return REDIRECT_BEFORE_PAGE;

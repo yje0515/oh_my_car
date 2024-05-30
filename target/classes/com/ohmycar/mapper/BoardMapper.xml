@@ -30,7 +30,7 @@
 	<!-- 게시물 수정 -->
 	<update id="update" parameterType="com.ohmycar.domain.BoardVO">
 		UPDATE tbl_board
-		SET title = #{title}, content = #{content}, updatedate = now()
+		SET title = #{title}, content = #{content}, updatedate = sysdate
 		WHERE bno = #{bno}
 	</update>
 

@@ -16,8 +16,10 @@
 			name="title"><br> <label for="content">게시글 내용:</label>
 		<textarea id="content" name="content"></textarea>
 		<br> <label for="writer">작성자:</label> <input type="text"
-			id="writer" name="writer" value="${username}" readonly><br>
+			id="writer" name="writer" value="${userVO.userId}" readonly><br>
 		<button type="submit">제출</button>
+		<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
 	</form>
 </body>
 </html>
