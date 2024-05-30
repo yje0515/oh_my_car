@@ -12,7 +12,7 @@ public interface CommentMapper {
 
     public int update(CommentVO comment);
 
-    public int delete(Long id);
+    public int delete(int id);
 
     public List<CommentVO> getCommentsByBoardId(int bno);
 }

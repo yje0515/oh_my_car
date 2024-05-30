@@ -12,5 +12,5 @@ public interface CommentService {
 
 	void modify(CommentVO comment);
 
-	void remove(Long id);
+	void remove(int id);
 }

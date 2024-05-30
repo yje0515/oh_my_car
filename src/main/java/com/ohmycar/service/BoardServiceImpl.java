@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
 	private final BoardMapper mapper;
-	
+
 	@Override
 	public void write(BoardVO board) {
 		mapper.write(board);

@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 public class CommentVO {
-	private Long id;
-	private Long bno; // 게시글 ID
+	private int id;
+	private int bno; // 게시글 ID
 	private String content;
 	private String writer;
 	private Date regdate;

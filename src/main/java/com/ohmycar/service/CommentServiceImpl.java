@@ -33,7 +33,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void remove(Long id) {
+    public void remove(int id) {
         commentMapper.delete(id);
     }
 }
