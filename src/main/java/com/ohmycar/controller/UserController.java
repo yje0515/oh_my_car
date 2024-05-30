@@ -59,7 +59,12 @@ public class UserController {
 	
 	// 관리자용 회원가입페이지로 이동
 	@GetMapping("/adminJoin")
-	public void adminJoinGet() {
+	public void adminJoinGet(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute(USER_VO_STRING, userVO);
+
 		log.info("join.....");
 		
 	}
