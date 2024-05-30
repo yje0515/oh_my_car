@@ -30,7 +30,8 @@
 	<!-- 게시물 수정 -->
 	<update id="update" parameterType="com.ohmycar.domain.BoardVO">
 		UPDATE tbl_board
-		SET title = #{title}, content = #{content}, updatedate = sysdate
+		SET title =
+		#{title}, content = #{content}, updatedate = sysdate
 		WHERE bno = #{bno}
 	</update>
 
@@ -48,9 +49,9 @@
 	]]>
 	</select>
 
-	<select id="getBoard" parameterType="long"
-		resultType="com.ohmycar.domain.BoardVO">
-		SELECT bno, title, content, writer, regdate, updatedate
+	<select id="getBoard" resultType="com.ohmycar.domain.BoardVO">
+		SELECT bno, title, content,
+		writer, regdate, updatedate
 		FROM tbl_board
 		WHERE bno = #{bno}
 	</select>
