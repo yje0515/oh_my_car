@@ -35,9 +35,9 @@
 					<td>
 						<form action="/consumable/read" method="get">
 							<input type="hidden" name="carId" value="${car.carId}"/>
-							<input type="submit" value="부품정보" onclick="javascript: form.action='/consumable/read';"/>
-							<input type="submit" value="수정" onclick="javascript: form.action='/carInfo/update';"/>
-							<input type="submit" value="삭제" onclick="javascript: form.action='/carInfo/delete';"/>
+							<input type="submit" value="부품정보보기" onclick="javascript: form.action='/consumable/read';"/>
+							<input type="submit" value="차량정보수정" onclick="javascript: form.action='/carInfo/update';"/>
+							<input type="submit" value="차량삭제" onclick="javascript: form.action='/carInfo/delete';"/>
 						</form>
 					</td>
 				</tr>

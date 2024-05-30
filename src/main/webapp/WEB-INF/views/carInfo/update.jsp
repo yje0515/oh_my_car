@@ -7,12 +7,13 @@
 <meta charset="UTF-8">
 <title>차량 정보 수정</title>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/resources/css/carupdate.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/carUpdate.css">
 <style>
 </style>
 </head>
 <body>
 <jsp:include page="../includes/header.jsp"></jsp:include>
+<div id="carUpdate">
 	<h1>보유차량 정보 수정</h1>
 	<form role="form" id="updateForm" name="frm">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -60,6 +61,7 @@
 			</tr>
 		</table>
 	</form>
+	</div>
 	<jsp:include page="../includes/footer.jsp"></jsp:include>
 	<script>
 		$(document).ready(function() {
