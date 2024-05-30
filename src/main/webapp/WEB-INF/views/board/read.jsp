@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,27 +42,27 @@
 			onclick="location.href='${pageContext.request.contextPath}/board/list'">목록으로</button>
 	</div>
 	<div class="comments">
-            <h2>댓글</h2>
-            <form action="${pageContext.request.contextPath}/board/comment" method="post">
-                <input type="hidden" name="bno" value="${board.bno}">
-                <textarea name="content" placeholder="댓글을 입력하세요"></textarea>
-                <input type="text" name="writer" placeholder="작성자">
-                <button type="submit">댓글 작성</button>
-            </form>
+		<h2>댓글</h2>
+		<form action="${pageContext.request.contextPath}/board/comment"
+			method="post">
+			<sec:csrfInput/>
+			<input type="hidden" name="bno" value="${board.bno}">
+			<textarea name="content" placeholder="댓글을 입력하세요" required></textarea>
+			<!-- <input type="text" name="writer" placeholder="작성자" required> -->
+			<button type="submit">댓글 작성</button>
+		</form>
 
-            <div class="comment-list">
-                <c:forEach var="comment" items="${comments}">
-                    <div class="comment">
-                        <div class="comment-header">
-                            <span class="comment-writer">${comment.writer}</span>
-                            <span class="comment-date">${comment.regdate}</span>
-                        </div>
-                        <div class="comment-content">
-                            ${comment.content}
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-        </div>
+		<div class="comment-list">
+			<c:forEach var="comment" items="${commentList}">
+				<div class="comment">
+					<div class="comment-header">
+						<span class="comment-writer">${comment.writer}</span> <span
+							class="comment-date">${comment.regdate}</span>
+					</div>
+					<div class="comment-content">${comment.content}</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
 </body>
 </html>

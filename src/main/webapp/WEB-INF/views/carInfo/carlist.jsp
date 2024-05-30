@@ -5,8 +5,7 @@
 <!DOCTYPE html>
 <html lang="kor">
 <head>
-<title>차량 목록</title>
-<!-- CSS 파일 추가 -->
+<title>Car List</title>
 <link rel="stylesheet" type="text/css" href="/resources/css/carlist.css">
 <style>
 </style>
@@ -44,7 +43,6 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-
 	</table>
 	<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>

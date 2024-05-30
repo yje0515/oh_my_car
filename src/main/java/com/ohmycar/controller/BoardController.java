@@ -70,6 +70,7 @@ public class BoardController {
 		model.addAttribute("boardList", boardList); // 모델에 추가
 	}
 
+	// 게시글 읽기
 	@GetMapping("/read")
 	public String read(@RequestParam("bno") int bno, Model model) {
 		BoardVO board = boardService.read(bno);
@@ -126,7 +127,7 @@ public class BoardController {
 	}
 
 	@GetMapping("/modify")
-	public String modify(@RequestParam("bno") int bno, Model model) {
+	public String modify(@RequestParam("bno") Long bno, Model model) {
 		BoardVO board = boardService.read(bno);
 		model.addAttribute("board", board);
 		log.info("move to modify.jsp");

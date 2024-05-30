@@ -34,7 +34,7 @@
 				<li><a href="/carInfo/carlist"><img
 						src="../../resources/img/userCarListIcon.png" alt="차량 목록 아이콘"></a></li>
 	
-				<li><a href="#"><img
+				<li><a href="/board/list"><img
 						src="../../resources/img/boardIcon.png" alt="게시판 아이콘"></a></li>
 				<li><a href="/consumable/map?keyWord=주유소"><img
 						src="../../resources/img/nearGasStationIcon.png" alt="가까운 주유소 아이콘"></a></li>

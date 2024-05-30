@@ -9,7 +9,7 @@ import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
-public class CommonController {
+public class CommentController {
 	// 접근 거부 페이지 핸들러
 	@GetMapping("/accessError")
 	public void accessDenied(Authentication auth, Model model) {

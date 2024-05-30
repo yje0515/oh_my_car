@@ -11,7 +11,7 @@ public interface BoardService {
 
 	List<BoardVO> getList(Criteria cri);
 
-	BoardVO read(int bno);
+	BoardVO read(Long bno);
 
 	void modify(BoardVO boardVO);
 

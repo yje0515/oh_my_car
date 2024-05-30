@@ -2,10 +2,11 @@ package com.ohmycar.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.ohmycar.domain.CommentVO;
 
+@Mapper
 public interface CommentMapper {
     public void insert(CommentVO comment);
 

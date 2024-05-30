@@ -17,6 +17,6 @@ public interface BoardMapper {
 	public void delete(int bno);
 
 	public List<BoardVO> getListWithPaging(Criteria cri);
-	
+
 	public BoardVO getBoard(int bno);
 }

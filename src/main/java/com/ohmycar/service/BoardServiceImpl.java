@@ -36,7 +36,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardVO read(int bno) {
+	public BoardVO read(Long bno) {
 		return mapper.read(bno);
 	}
 
