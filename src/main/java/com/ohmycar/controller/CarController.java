@@ -36,7 +36,11 @@ public class CarController {
 
 	// Register 페이지에 대한 GET 요청을 처리하는 메서드 추가 차량추가 기능
 	@GetMapping("/register")
-	public void showRegisterPage() {
+	public void showRegisterPage(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute(USER_VO_STRING, userVO);
 		log.info("Register");
 	}
 
