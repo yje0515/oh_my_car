@@ -9,7 +9,8 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
 <meta charset="UTF-8">
 <title>게시판 목록</title>
-<link rel="stylesheet" type="text/css" href="/resources/css/boardList.css">
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/boardList.css">
 <style>
 </style>
 </head>
@@ -31,13 +32,18 @@
 				<!-- 게시물 목록을 반복하며 테이블에 표시 -->
 				<c:forEach var="board" items="${boardList}">
 					<tr>
-						<td>${board.bno}</td>
+						<td><a
+							href="${pageContext.request.contextPath}/board/read?bno=${board.bno}">${board.bno}</a></td>
 						<td><a
 							href="${pageContext.request.contextPath}/board/read?bno=${board.bno}">${board.title}</a></td>
-						<td>${board.content}</td>
-						<td>${board.writer}</td>
-						<td>${board.regdate}</td>
-						<td>${board.updateDate}</td>
+						<td><a
+							href="${pageContext.request.contextPath}/board/read?bno=${board.bno}">${board.content}</a></td>
+						<td><a
+							href="${pageContext.request.contextPath}/board/read?bno=${board.bno}">${board.writer}</a></td>
+						<td><a
+							href="${pageContext.request.contextPath}/board/read?bno=${board.bno}">${board.regdate}</a></td>
+						<td><a
+							href="${pageContext.request.contextPath}/board/read?bno=${board.bno}">${board.updateDate}</a></td>
 						<td class="action-buttons"><a
 							href="${pageContext.request.contextPath}/board/modify?bno=${board.bno}">수정</a>
 							<a
