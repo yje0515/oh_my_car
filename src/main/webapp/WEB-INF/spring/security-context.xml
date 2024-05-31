@@ -31,6 +31,7 @@
 		<security:intercept-url pattern="/user/passwordCheck" access="isAuthenticated()" />
 		<security:intercept-url pattern="/consumable/*" access="isAuthenticated()" />
 		<security:intercept-url pattern="/carInfo/*" access="isAuthenticated()" />
+		<security:intercept-url pattern="/board/*" access="isAuthenticated()" />
 
 
 		<!-- 관리자권한을 사진 사용자만 접근 가능한 URL -->
