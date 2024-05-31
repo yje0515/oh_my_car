@@ -11,6 +11,8 @@
 </style>
 </head>
 <body>
+<jsp:include page="../includes/header.jsp"></jsp:include>
+<div id="modifyWrap">
 	<form action="/board/write" method="post">
 		<label for="title">제목:</label> <input type="text" id="title"
 			name="title"><br> <label for="content">게시글 내용:</label>
@@ -21,5 +23,8 @@
 		<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
 	</form>
+</div>
+
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>
 </html>

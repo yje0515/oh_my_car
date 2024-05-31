@@ -1,66 +1,69 @@
 @charset "UTF-8";
 
-body {
-	font-family: 'Segoe UI', sans-serif;
-	background-color: #f4f4f4;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
+#modifyWrap {
+	body {
+		font-family: 'Segoe UI', sans-serif;
+		background-color: #f4f4f4;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
 
-form {
-	width: 80%;
-	max-width: 600px;
-	background-color: #fff;
-	padding: 30px;
-	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+	form {
+		width: 80%;
+		max-width: 600px;
+		background-color: #fff;
+		padding: 30px;
+		border-radius: 10px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	}
 
-h2 {
-	color: #002F65;
-	text-align: center;
-	font-size: 24px;
-	margin-bottom: 20px;
-}
+	h2 {
+		color: #002F65;
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
 
-label {
-	color: #333;
-	font-weight: bold;
-	margin-bottom: 5px;
-}
+	label {
+		color: #333;
+		font-weight: bold;
+		margin-bottom: 5px;
+	}
 
-input[type="text"], textarea {
-	width: 100%;
-	padding: 10px;
-	margin-bottom: 20px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	box-sizing: border-box;
-}
+	input[type="text"],
+	textarea {
+		width: 100%;
+		padding: 10px;
+		margin-bottom: 20px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		box-sizing: border-box;
+	}
 
-textarea {
-	resize: vertical;
-	min-height: 150px;
-}
+	textarea {
+		resize: vertical;
+		min-height: 150px;
+	}
 
-input[type="submit"] {
-	background-color: #0056b3;
-	color: white;
-	border: none;
-	padding: 12px 20px;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
-	font-weight: bold;
-	text-transform: uppercase;
-	transition: background-color 0.3s ease, transform 0.2s ease;
-}
+	input[type="submit"] {
+		background-color: #0056b3;
+		color: white;
+		border: none;
+		padding: 12px 20px;
+		border-radius: 5px;
+		cursor: pointer;
+		font-size: 16px;
+		font-weight: bold;
+		text-transform: uppercase;
+		transition: background-color 0.3s ease, transform 0.2s ease;
+	}
 
-input[type="submit"]:hover {
-	background-color: #004494;
-	transform: scale(1.02);
+	input[type="submit"]:hover {
+		background-color: #004494;
+		transform: scale(1.02);
+	}
 }

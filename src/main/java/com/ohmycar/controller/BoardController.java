@@ -29,6 +29,7 @@ public class BoardController {
 	private final UserService userService;
 	private final CommentService commentService;
 
+	private static final String USER_VO_STRING = "userVO";
 	private static final String REDIRECT_BEFORE_PAGE = "redirect:/board/read";
 
 	public BoardController(BoardService boardService, UserService userService, CommentService commentService) {
@@ -44,7 +45,7 @@ public class BoardController {
 		if (authentication.getPrincipal() instanceof UserDetails) {
 			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 			UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
-			model.addAttribute("userVO", userVO);
+			model.addAttribute(USER_VO_STRING, userVO);
 			return "/board/write";
 		} else {
 			return "/board/list";
@@ -59,6 +60,10 @@ public class BoardController {
 
 	@GetMapping("/list")
 	public void getList(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute(USER_VO_STRING, userVO);
 		List<BoardVO> boardList = boardService.getAllPosts();
 		model.addAttribute("boardList", boardList);
 	}
@@ -73,6 +78,10 @@ public class BoardController {
 	// 게시글 읽기
 	@GetMapping("/read")
 	public String read(@RequestParam("bno") int bno, Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute(USER_VO_STRING, userVO);
 		BoardVO board = boardService.read(bno);
 		model.addAttribute("board", board);
 
@@ -128,6 +137,10 @@ public class BoardController {
 
 	@GetMapping("/modify")
 	public String modify(@RequestParam("bno") int bno, Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+		model.addAttribute(USER_VO_STRING, userVO);
 		BoardVO board = boardService.read(bno);
 		model.addAttribute("board", board);
 		log.info("move to modify.jsp");

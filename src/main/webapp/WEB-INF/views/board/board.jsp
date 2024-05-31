@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="css/board.css">
 </head>
 <body>
+<jsp:include page="../includes/header.jsp"></jsp:include>
     <h2>1:1 문의하기</h2>
     <form action="/board/write" method="post">
         <label for="title">제목:</label> <input type="text" id="title"
