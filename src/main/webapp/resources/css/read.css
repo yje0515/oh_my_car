@@ -1,119 +1,126 @@
 @charset "UTF-8";
 
+/* 지은 수정 */
 #modifyWrap {
+	width: 760px;
+}
 
-    /* 기본 스타일 */
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-        color: #333;
-    }
+#modifyWrap table {
+	float: left;
+	width: 700px;
+	height: 225px;
+	text-align: left;
+}
 
-    .container {
-        width: 80%;
-        margin: 20px auto;
-        background: #fff;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        display: flex;
-        /* 컨테이너 안의 내용을 가운데 정렬하기 위해 */
-        justify-content: center;
-        /* 가로 방향 가운데 정렬 */
-    }
+/* 기본 스타일 */
+body {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f4;
+	color: #333;
+}
 
-    h1,
-    h2 {
-        color: #002F65;
-        font-weight: bold;
-    }
+.container {
+	width: 80%;
+	margin: 20px auto;
+	background: #fff;
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	display: flex;
+	/* 컨테이너 안의 내용을 가운데 정렬하기 위해 */
+	justify-content: center;
+	/* 가로 방향 가운데 정렬 */
+}
 
-    /* 글 목록 스타일 */
-    .post-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
+h1, h2 {
+	color: #002F65;
+	font-weight: bold;
+}
 
-    .post-table th,
-    .post-table td {
-        padding: 15px;
-        border: 1px solid #ddd;
-    }
+/* 글 목록 스타일 */
+.post-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+}
 
-    .post-table th {
-        background: #f9f9f9;
-        font-weight: bold;
-    }
+.post-table th, .post-table td {
+	padding: 15px;
+	border: 1px solid #ddd;
+}
 
-    /* 댓글 섹션 스타일 */
-    .comments {
-        margin: 40px 0 0 0;
-    }
+.post-table th {
+	background: #f9f9f9;
+	font-weight: bold;
+}
 
-    .comments h2 {
-        border-bottom: 2px solid #ddd;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-        color: #002F65;
-    }
+/* 댓글 섹션 스타일 */
+.comments {
+	margin: 40px 0 0 0;
+}
 
-    .comments form {
-        margin-bottom: 20px;
-    }
+.comments h2 {
+	border-bottom: 2px solid #ddd;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	color: #002F65;
+}
 
-    .comments textarea,
-    .comments input[type="text"] {
-        width: calc(100% - 20px);
-        padding: 10px;
-        border: 1px solid #ddd;
-        margin-bottom: 10px;
-        resize: vertical;
-        border-radius: 6px;
-        font-size: 16px;
-    }
+.comments form {
+	margin-bottom: 20px;
+}
 
-    .comments input[type="text"] {
-        width: calc(100% - 120px);
-    }
+.comments textarea, .comments input[type="text"] {
+	width: calc(100% - 20px);
+	padding: 10px;
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
+	resize: vertical;
+	border-radius: 6px;
+	font-size: 16px;
+}
 
-    .comments button {
-        padding: 12px 24px;
-        background: #002F65;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        border-radius: 6px;
-        transition: background 0.3s ease;
-    }
+.comments input[type="text"] {
+	width: calc(100% - 120px);
+}
 
-    .comments button:hover {
-        background: #005aa7;
-    }
+.comments button {
+	padding: 12px 24px;
+	background: #002F65;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	border-radius: 6px;
+	transition: background 0.3s ease;
+}
 
-    .comment-list {
-        margin-top: 20px;
-    }
+.comments button:hover {
+	background: #005aa7;
+}
 
-    .comment {
-        border-bottom: 1px solid #ddd;
-        padding: 20px 0;
-    }
+.comment-list {
+	margin-top: 20px;
+}
 
-    .comment-header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-    }
+.comment {
+	border-bottom: 1px solid #ddd;
+	padding: 20px 0;
+}
 
-    .comment-writer {
-        font-weight: bold;
-        color: #333;
-    }
+.comment-header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
 
-    .comment-date {
-        color: #777;
-    }
+.comment-writer {
+	font-weight: bold;
+	color: #333;
+}
+
+.comment-date {
+	color: #777;
+}
 }
