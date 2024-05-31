@@ -18,8 +18,9 @@
 <body>
 <jsp:include page="../includes/header.jsp"></jsp:include>
 	<form id="carForm"
-		action="${pageContext.request.contextPath}/user/register"
-		method="post">
+		action="${pageContext.request.contextPath}/carInfo/register"
+		method="post">			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
 		<h1>보유차량 등록</h1>
 		<div>
 			<label for="userId">유저 ID:</label> <input type="text" id="userId"

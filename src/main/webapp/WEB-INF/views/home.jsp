@@ -88,7 +88,7 @@
 
 		$(document).ready(function () {
 			getCarFacts();
-			setInterval(() => getCarFacts(), 60000);
+			setInterval(() => getCarFacts(), 5000);
 		});
 	</script>
 </body>

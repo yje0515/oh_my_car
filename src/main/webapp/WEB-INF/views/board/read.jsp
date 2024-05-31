@@ -57,7 +57,8 @@
 		<div class="comments">
 			<h2>댓글</h2>
 			<form action="${pageContext.request.contextPath}/board/comment"
-				method="post">
+				method="post">			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
 				<sec:csrfInput />
 				<input type="hidden" name="bno" value="${board.bno}">
 				<textarea name="content" placeholder="댓글을 입력하세요" required></textarea>

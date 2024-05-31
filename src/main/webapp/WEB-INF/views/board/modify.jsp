@@ -12,7 +12,8 @@
 <body>
 <jsp:include page="../includes/header.jsp"></jsp:include>
 	<div id="modifyWrap">
-		<form action="/board/modify" method="post">
+		<form action="/board/modify" method="post">			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
 			<label for="title">제목:</label><br> <input type="text" id="title"
 				name="title" value="${board.title}"><br> <label
 				for="content">내용:</label><br>

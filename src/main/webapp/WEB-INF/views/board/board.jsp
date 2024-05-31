@@ -9,7 +9,8 @@
 <body>
 <jsp:include page="../includes/header.jsp"></jsp:include>
     <h2>1:1 문의하기</h2>
-    <form action="/board/write" method="post">
+    <form action="/board/write" method="post">			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
         <label for="title">제목:</label> <input type="text" id="title"
             name="title"> <br> <label for="content">문의 내용:</label>
         <textarea id="content" name="content"></textarea>
