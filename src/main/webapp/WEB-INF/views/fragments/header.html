@@ -11,7 +11,7 @@
 </div>
 
 <div th:fragment="header" id="headerWrap">
-	<a id="logoImg" href="/"><img src="../../../resources/img/logo_dark.png" style="height: 175px" alt="앗차차 로고"></a>
+	<a id="logoImg" href="/"><img src="../../../resources/img/logo_dark.png" alt="앗차차 로고"></a>
 	<ul>
 		<th:block th:if="${not #strings.isEmpty(userVO.userName)}">
 			<li style="font-size:18px;">[[${userVO.userName}]]님, 안녕하세요!</li>

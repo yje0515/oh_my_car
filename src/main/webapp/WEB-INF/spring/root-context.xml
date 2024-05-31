@@ -42,8 +42,6 @@
 
 	<context:component-scan base-package="com.ohmycar.service" />
 
-	<context:component-scan base-package="com.ohmycar.aop" />
-
 	<aop:aspectj-autoproxy />
 
 </beans>
