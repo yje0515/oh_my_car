@@ -35,6 +35,11 @@
 	margin: -12px 0 0 20px;
 }
 
+#logoImg img{
+	height:70px;
+	margin:45px 0 0 0;
+}
+
 .headerBtn {
 	background-color: #002F65;
 	border: 1px solid #002F65;

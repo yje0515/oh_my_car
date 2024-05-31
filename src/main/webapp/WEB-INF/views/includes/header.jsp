@@ -20,7 +20,7 @@
 <body>
 	<div id="headerWrap">
 		<a id="logoImg" href="/"><img
-			src="../resources/img/logo_dark.png" style="height: 175px" alt="앗차차 로고"></a>
+			src="../resources/img/logo_dark.png" alt="앗차차 로고"></a>
 		<ul>
 			<sec:authorize access="isAuthenticated()">
 				<li style="font-size: 18px;">${userVO.userName } 님, 안녕하세요!</li>
