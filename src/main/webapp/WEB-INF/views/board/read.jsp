@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/read.css">
 </head>
 <body>
-<jsp:include page="../includes/header.jsp"></jsp:include>
+	<jsp:include page="../includes/header.jsp"></jsp:include>
 	<div id="modifyWrap">
 		<div class="table-container">
 			<h1>게시글 보기</h1>
@@ -36,16 +36,23 @@
 				<tr>
 					<th>작성일</th>
 					<td><fmt:formatDate pattern="yyyy-MM-dd  kk:mm:ss"
-						value="${board.regdate}" /></td>
+							value="${board.regdate}" /></td>
 				</tr>
 				<tr>
 					<th>업데이트일</th>
 					<td><fmt:formatDate pattern="yyyy-MM-dd  kk:mm:ss"
-						value="${board.updateDate}" /></td>
+							value="${board.updateDate}" /></td>
 				</tr>
 			</table>
 			<button type="button"
 				onclick="location.href='${pageContext.request.contextPath}/board/list'">목록으로</button>
+			<sec:authorize
+				access="isAuthenticated() and principal.username == #board.writer">
+				<button type="button"
+					onclick="location.href='${pageContext.request.contextPath}/board/modify?bno=${board.bno}'">수정</button>
+				<button type="button"
+					onclick="if(confirm('정말 삭제하시겠습니까?')) location.href='${pageContext.request.contextPath}/board/delete?bno=${board.bno}'">삭제</button>
+			</sec:authorize>
 		</div>
 		<div class="comments">
 			<h2>댓글</h2>
@@ -62,8 +69,8 @@
 					<div class="comment">
 						<div class="comment-header">
 							<span class="comment-writer">${comment.writer}</span> <span
-								class="comment-date"><fmt:formatDate pattern="yyyy-MM-dd  kk:mm:ss"
-						value="${comment.regdate}" /></span>
+								class="comment-date"><fmt:formatDate
+									pattern="yyyy-MM-dd  kk:mm:ss" value="${comment.regdate}" /></span>
 						</div>
 						<div class="comment-content">${comment.content}</div>
 					</div>
@@ -71,6 +78,6 @@
 			</div>
 		</div>
 	</div>
-<jsp:include page="../includes/footer.jsp"></jsp:include>
+	<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>
 </html>

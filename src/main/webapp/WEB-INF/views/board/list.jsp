@@ -30,7 +30,6 @@
 					<th>작성자</th>
 					<th>작성일</th>
 					<th>업데이트일</th>
-					<th>액션</th>
 				</tr>
 				<!-- 게시물 목록을 반복하며 테이블에 표시 -->
 				<c:forEach var="board" items="${boardList}">
@@ -45,10 +44,6 @@
 								value="${board.regdate}" /></td>
 						<td><fmt:formatDate pattern="yyyy-MM-dd"
 								value="${board.updateDate}" /></td>
-						<td class="action-buttons"><a
-							href="${pageContext.request.contextPath}/board/modify?bno=${board.bno}">수정</a>
-							<a
-							href="${pageContext.request.contextPath}/board/delete?bno=${board.bno}">삭제</a>
 						</td>
 					</tr>
 				</c:forEach>
