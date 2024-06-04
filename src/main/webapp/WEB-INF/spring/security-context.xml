@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:security="http://www.springframework.org/schema/security" xsi:schemaLocation="http://www.springframework.org/schema/security
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:security="http://www.springframework.org/schema/security" xsi:schemaLocation="http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-5.2.xsd
 		http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- CustomAccessDeniedHandler 빈 설정 -->
-	<bean id="customAccessDenied" class="com.ohmycar.security.CustomAccessDeniedHandler"></bean>
-	<!--커스텀 로그인 성공 핸들러 빈 설정 -->
-	<bean id="customLoginSuccess" class="com.ohmycar.security.CustomLoginSuccessHandler"></bean>
+    <!-- CustomAccessDeniedHandler 빈 설정 -->
+    <bean id="customAccessDenied" class="com.ohmycar.security.CustomAccessDeniedHandler"></bean>
+    <!--커스텀 로그인 성공 핸들러 빈 설정 -->
+    <bean id="customLoginSuccess" class="com.ohmycar.security.CustomLoginSuccessHandler"></bean>
 
 
-	<!-- BCruptPasswordEncoder를 사용하여 비밀번호를 안전하게 해싱하는데 사용 -->
-	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+    <!-- BCruptPasswordEncoder를 사용하여 비밀번호를 안전하게 해싱하는데 사용 -->
+    <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 
-	<!-- CustomUserDetailsService 클래스를 사용하여 사용자 정의 사용자 세부 정보 서비스를 설정 -->
-	<bean id="customUserDetailsService" class="com.ohmycar.security.CustomUserDetailsService"></bean>
+    <!-- CustomUserDetailsService 클래스를 사용하여 사용자 정의 사용자 세부 정보 서비스를 설정 -->
+    <bean id="customUserDetailsService" class="com.ohmycar.security.CustomUserDetailsService"></bean>
 
-	<!-- Spring Security HTTP 요청 설정 -->
-	<security:http>
+    <!-- Spring Security HTTP 요청 설정 -->
+    <security:http>
 
-		<!-- 모든 사용자가 접근 가능한 URL -->
-		<security:intercept-url pattern="/" access="permitAll()" />
+        <!-- 모든 사용자가 접근 가능한 URL -->
+        <security:intercept-url pattern="/" access="permitAll()" />
 
-		<!-- 인증된 사용자 모두 접근 가능한 URL -->
-		<security:intercept-url pattern="/user/mypage" access="isAuthenticated()" />
-		<security:intercept-url pattern="/user/userUpdate" access="isAuthenticated()" />
-		<security:intercept-url pattern="/user/userDelete" access="isAuthenticated()" />
-		<security:intercept-url pattern="/user/passwordCheck" access="isAuthenticated()" />
-		<security:intercept-url pattern="/consumable/*" access="isAuthenticated()" />
-		<security:intercept-url pattern="/carInfo/*" access="isAuthenticated()" />
-		<security:intercept-url pattern="/board/*" access="isAuthenticated()" />
-
-
-		<!-- 관리자권한을 사진 사용자만 접근 가능한 URL -->
-		<security:intercept-url pattern="/user/admin" access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/user/adminJoin" access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/carFacts/list" access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/carFacts/create" access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/carFacts/delete" access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/carFacts/modify" access="hasRole('ROLE_ADMIN')" />
+        <!-- 인증된 사용자 모두 접근 가능한 URL -->
+        <security:intercept-url pattern="/user/mypage" access="isAuthenticated()" />
+        <security:intercept-url pattern="/user/userUpdate" access="isAuthenticated()" />
+        <security:intercept-url pattern="/user/userDelete" access="isAuthenticated()" />
+        <security:intercept-url pattern="/user/passwordCheck" access="isAuthenticated()" />
+        <security:intercept-url pattern="/consumable/*" access="isAuthenticated()" />
+        <security:intercept-url pattern="/carInfo/*" access="isAuthenticated()" />
+        <security:intercept-url pattern="/board/*" access="isAuthenticated()" />
 
 
-		<!-- 직접 구현한 접근제한인터페이스 설정 response.sendRedirect("/accessError") 하는 클래스 -->
-		<security:access-denied-handler ref="customAccessDenied" />
+        <!-- 관리자권한을 사진 사용자만 접근 가능한 URL -->
+        <security:intercept-url pattern="/user/admin" access="hasRole('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/user/adminJoin" access="hasRole('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/carFacts/list" access="hasRole('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/carFacts/create" access="hasRole('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/carFacts/delete" access="hasRole('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/carFacts/modify" access="hasRole('ROLE_ADMIN')" />
 
 
-		<!-- 로그인 페이지에서 인증에 성공하면 Spring Security는 customLoginSuccess 빈에 정의된 커스텀
+        <!-- 직접 구현한 접근제한인터페이스 설정 response.sendRedirect("/accessError") 하는 클래스 -->
+        <security:access-denied-handler ref="customAccessDenied" />
+
+
+        <!-- 로그인 페이지에서 인증에 성공하면 Spring Security는 customLoginSuccess 빈에 정의된 커스텀
 			로그인 성공 핸들러를 사용하여 처리한다 -->
-		<security:form-login login-page="/user/login" authentication-success-handler-ref="customLoginSuccess" />
+        <security:form-login login-page="/user/login" authentication-success-handler-ref="customLoginSuccess" />
 
-		<!-- 로그아웃 관련 설정 사용자가 로그아웃을 요청할 때 호출되는 URL을 지정 세션의 무효화 -->
-		<!-- 로그아웃시 자동로그인 체크하고 저장되는 쿠키 삭제 -->
-		<security:logout logout-url="/logout" invalidate-session="true" delete-cookies="remember-me,JSESSION_ID" />
+        <!-- 로그아웃 관련 설정 사용자가 로그아웃을 요청할 때 호출되는 URL을 지정 세션의 무효화 -->
+        <!-- 로그아웃시 자동로그인 체크하고 저장되는 쿠키 삭제 -->
+        <security:logout logout-url="/logout" invalidate-session="true" delete-cookies="remember-me,JSESSION_ID" />
 
-		<!-- Csrf 토큰 비활성화 true -->
-		<security:csrf disabled="false" />
+        <!-- Csrf 토큰 비활성화 true -->
+        <security:csrf disabled="false" />
 
-		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
+        <security:remember-me data-source-ref="dataSource" token-validity-seconds="604800" />
 
-	</security:http>
+    </security:http>
 
-	<!-- Spring Security 인증 관리자 설정 -->
-	<security:authentication-manager>
+    <!-- Spring Security 인증 관리자 설정 -->
+    <security:authentication-manager>
 
-		<!-- Spring Security 인증 제공자 설정 = -->
-		<security:authentication-provider user-service-ref="customUserDetailsService">
-
-
-			<!-- BCryptPasswordEncoder를 참조하여 비밀번호를 안전하게 인코딩 하는데 사용한다 -->
-			<security:password-encoder ref="bcryptPasswordEncoder" />
+        <!-- Spring Security 인증 제공자 설정 = -->
+        <security:authentication-provider user-service-ref="customUserDetailsService">
 
 
-		</security:authentication-provider>
+            <!-- BCryptPasswordEncoder를 참조하여 비밀번호를 안전하게 인코딩 하는데 사용한다 -->
+            <security:password-encoder ref="bcryptPasswordEncoder" />
 
 
-	</security:authentication-manager>
+        </security:authentication-provider>
+
+
+    </security:authentication-manager>
 
 
 </beans>

@@ -53,10 +53,10 @@ public class UserController {
     public String joinPost(UserVO userVO, AuthVO authVO, RedirectAttributes rttr) {
         userService.joinUser(userVO, authVO);
         log.info("success join.....");
-        rttr.addFlashAttribute(RESULT_STRING,"joinSuccess");
+        rttr.addFlashAttribute(RESULT_STRING, "joinSuccess");
         return "redirect:/user/login";
     }
-    
+
     // 관리자용 회원가입페이지로 이동
     @GetMapping("/adminJoin")
     public void adminJoinGet(Model model) {
@@ -66,7 +66,7 @@ public class UserController {
         model.addAttribute(USER_VO_STRING, userVO);
 
         log.info("join.....");
-        
+
     }
 
     // 관리자권한 가진 사용자만 접근 가능
@@ -156,10 +156,7 @@ public class UserController {
 
     // 회원정보 수정
     @PostMapping("/userUpdate")
-    public String userUpdatePost(RedirectAttributes rttr) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+    public String userUpdatePost(RedirectAttributes rttr, UserVO userVO) {
         userService.updateUser(userVO);
 
         // 회원정보 수정시 alert
