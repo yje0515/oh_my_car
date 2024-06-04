@@ -1,10 +1,11 @@
-<h1 align="center">
-  
-  ![ppt_PS_01](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/9b4563af-8066-4cab-a848-c7879b27d9c7)
 
-  </h1>
-  <h1 align="center">앗!차차 프로젝트</h1>
+  
   <br /><br />
+    ![main](https://github.com/misosiruda/oh_my_car/assets/155126222/c2b057bf-568c-4aa1-a449-74f161dd20cf)
+
+  <hr/>
+
+  <h1 align="center">앗!차차 프로젝트</h1>
   
 ## 목차
   
@@ -18,7 +19,7 @@
 
 - [주요기능 실행화면](https://github.com/JongHoonKim1004/Project_Survey#-주요기능-실행화면)
 
-- [개선사항](https://github.com/JongHoonKim1004/Project_Survey#-개선사항)
+- [개선사항](https://github.com/oh_my_car/Project_Survey#-개선사항)
 
 ## 🚩 개요
 
@@ -36,149 +37,182 @@
 - Tool : `STS`, `VSCode`
 - ETC : `Git`
 
-## 👾 프로젝트 설계, 구현 📂 PPT 📂 (ERD, USECASE)<summary>프로젝트 설계, 구현, PPT</summary>
+# 👾 프로젝트 설계, 구현 📂 PPT 📂 (ERD, USECASE)
+<hr/>
   
 <div align="center">
 
-| ![Project_Survey_PPT_01](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/838140ae-147c-4163-bce5-f07a2294ad39) | ![Project_Survey_PPT_02](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/7532b9e5-45d4-4969-b22f-3671e3dfea8a) |
+|![1](https://github.com/misosiruda/oh_my_car/assets/155126222/f1896d85-9d59-4716-a6e2-67ed5f9096a3) | ![2](https://github.com/misosiruda/oh_my_car/assets/155126222/342f7634-8743-41c3-a5bb-631adceb9edc) |
 | :-------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------: |
-| ![Project_Survey_PPT_03](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/f6d30ab9-d47f-4bd8-be48-21cf31f12ed1) | ![Project_Survey_PPT_04](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/3a7670c9-190c-4628-be40-96399b56281f) |
-| ![Project_Survey_PPT_05](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/aa378177-25af-4227-9f83-de2126de7aec) | ![Project_Survey_PPT_06](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/7df1920c-6827-4c40-9333-79d273e1ff22) |
-| ![Project_Survey_PPT_07](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/68353781-90af-41d1-9945-7d0ec522bcaa) | ![Project_Survey_PPT_08](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/2e6b96e3-6dd2-4f8f-9838-9ac641e78a0d) |
-| ![Project_Survey_PPT_09](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/15c541eb-9312-4cbc-abcd-0b5f4b8617ba) | ![Project_Survey_PPT_10](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/7743ce23-6ab5-4fc6-aaf7-eaa38572ee1a) |
-| ![Project_Survey_PPT_11](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/da566a0c-f0b1-4eb1-b937-3429518a5733) | ![Project_Survey_PPT_12](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/24935b3f-5f40-434d-a057-902283e4118c) |
-| ![Project_Survey_PPT_13](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/76319dca-b83d-4e26-a39b-53c1819961b6) | ![Project_Survey_PPT_14](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/b6598c6e-bad1-4c32-8f5c-0569c6cc33da) |
-| ![Project_Survey_PPT_15](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/51c4a819-3ff9-4857-9093-9febbdd03e50) | ![Project_Survey_PPT_16](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/0e6fc233-41c7-4bdb-8af4-814c2facefb5) |
-| ![Project_Survey_PPT_17](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/5cdd3b93-ecbf-4792-b198-fec4209e7e4f) | ![Project_Survey_PPT_18](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/ab24ed8b-1296-48b4-87be-aaf448d260af) |
-| ![Project_Survey_PPT_19](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/62531872-64c3-4808-881f-9e467084cf43) | ![Project_Survey_PPT_20](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/d40905a2-47e8-4f43-9121-4094b3e15374) |
-| ![Project_Survey_PPT_21](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/6f31c449-6604-47bf-9c0b-5663dda4e089) | ![Project_Survey_PPT_22](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/e1bcd109-e479-4670-824d-6767bd4fb6cd) |
-| ![Project_Survey_PPT_23](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/2a2f9b04-27aa-4d48-bde1-53158d9a3e10) | ![Project_Survey_PPT_24](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/44cb60ca-04cb-4cf2-b0ff-6aa0bb7d3636) |
-| ![Project_Survey_PPT_25](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/9f7c320e-99e6-429e-8b85-d0828f01b9a8) | ![Project_Survey_PPT_26](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/c523ba59-33ef-4bbc-86b7-7490513648cf) |
-| ![Project_Survey_PPT_27](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/6e002aac-b3a9-4dca-9a17-0b11bb58a60b) | ![Project_Survey_PPT_28](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/43102938-f3fa-4e48-b21f-1e4751b09815) |
-| ![Project_Survey_PPT_29](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/2626bcb0-97f4-4019-8858-21c91e889806) | ![Project_Survey_PPT_30](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/1ddb0fd5-f209-4f09-94ab-07c65afa7536) |
-| ![Project_Survey_PPT_31](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/e36fc0d9-e8ef-45ba-8455-0e05b33826bd) | ![Project_Survey_PPT_32](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/4675efbc-9c41-4634-9c01-149192ee9552) |
-| ![Project_Survey_PPT_33](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/9aef1bd4-c29b-4a72-ab29-63ff61433d96) | ![Project_Survey_PPT_34](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/fba167e2-6229-45c3-af56-2a8747ed187a) |
-| ![Project_Survey_PPT_35](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/ad75cd4e-8d70-4f11-96d2-6937e9ad044e) | ![Project_Survey_PPT_36](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/a42b7e52-01e0-47c9-aae8-f2b5d2169189) |
-| ![Project_Survey_PPT_37](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/0deaa77c-5dbf-4544-b871-3b2b9a87d53b) | ![Project_Survey_PPT_38](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/00ddbf5d-88ec-40f7-a8e4-9420d0d6500f) |
-| ![Project_Survey_PPT_39](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/63a3aa47-8325-4011-9056-a1f9b141732c) | ![Project_Survey_PPT_40](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/217f41f0-5c8c-41d3-9798-66bc506964d9) |
-| ![Project_Survey_PPT_41](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/2be3c487-b13a-4ba8-a9ad-44269c3ead1a) | ![Project_Survey_PPT_42](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/395ecace-969d-4210-90ca-b062845d2561) |
-| ![Project_Survey_PPT_43](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/26079f94-b761-48e0-84a4-4bed09128ff0) | ![Project_Survey_PPT_44](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/afdeb0ef-b370-46be-b90f-dc52a83f1ba7) |
-| ![Project_Survey_PPT_45](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/816176b7-5f01-494a-89e7-d9c5d2d925bd) | ![Project_Survey_PPT_46](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/0445fada-dfb2-443a-b022-23afd11f97ee) |
-| ![Project_Survey_PPT_47](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/e776c9bb-e4d8-4e0a-843d-26db0200e85d) | ![Project_Survey_PPT_48](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/8525ac51-5831-4fff-bc39-572ae7fa3699) |
-| ![Project_Survey_PPT_49](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/5ff69ab1-4caa-40c4-956a-9c881445fab5) | ![Project_Survey_PPT_50](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/fa626dd1-6397-440d-86f0-4a2c7b51d489) |
-| ![Project_Survey_PPT_51](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/b834c9b6-227e-406e-8605-96bf730e9af7) | ![Project_Survey_PPT_52](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/424969fc-4494-4acc-be4b-80e1f0d8bf80) |
-| ![Project_Survey_PPT_53](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/d499ec40-ea1e-4d6e-8900-8c8e38d0e67c) | ![Project_Survey_PPT_54](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/f0197c46-d01c-4258-9569-4df51fdaa15f) |
-| ![Project_Survey_PPT_55](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/4e2fb0b7-3d2e-4378-8359-addbeff79c1c) | ![Project_Survey_PPT_56](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/ddc5b313-31c8-43f2-b55f-f13d0e9f62ba) |
-| ![Project_Survey_PPT_57](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/a05ae7e2-fdaf-4bb9-b841-ae370c85f57a) | ![Project_Survey_PPT_58](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/5cf2be92-b5f2-4c7f-a825-aca66bb7fe4d) |
-| ![Project_Survey_PPT_59](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/325a09f8-1e64-4069-bc71-ebb1b11507fe) | ![Project_Survey_PPT_60](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/486250fc-645b-4722-9190-f4bedb2834aa) |
-| ![Project_Survey_PPT_61](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/e95842ff-2f1b-4794-b97d-cd1cf799cc5e) | ![Project_Survey_PPT_62](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/4d2fb1e7-484c-42de-8acc-f3b9b676bb15) |
-| ![Project_Survey_PPT_63](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/bb34881b-ced2-4501-9c6a-aa7ce5fc92b9) | ![Project_Survey_PPT_64](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/3887b9be-2a61-45fa-841b-4f6e2f2e78c4) |
-| ![Project_Survey_PPT_65](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/4945a736-32a6-411b-b7a2-3c955b08755f) | ![Project_Survey_PPT_66](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/29d35705-df2c-4601-aa23-39e48c1fc6ef) |
-| ![Project_Survey_PPT_67](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/427e8dd3-f8ff-4fa8-aa38-6eba1363dbaf) | ![Project_Survey_PPT_68](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/18fdd796-1e01-4281-8e7d-0d51f650cc7f) |
-| ![Project_Survey_PPT_69](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/2f3c0f96-90f8-4553-b3e5-8c2a9ad2fbff) |                                                                                                                                   |
+| ![3](https://github.com/misosiruda/oh_my_car/assets/155126222/438c0f52-8836-49be-bb59-fc3c97e29241) | ![4](https://github.com/misosiruda/oh_my_car/assets/155126222/cd4c71d1-5b50-4e22-94ca-39ffdf830e8b) |
+| ![5](https://github.com/misosiruda/oh_my_car/assets/155126222/97beab33-3ff5-4b38-b5ab-290ab701d16e) | ![6](https://github.com/misosiruda/oh_my_car/assets/155126222/140bcea4-48d3-4dcb-8716-2210413a2ce1) |
+| ![7](https://github.com/misosiruda/oh_my_car/assets/155126222/c8afd94d-64c7-4a47-a631-153718375bd2) | ![8](https://github.com/misosiruda/oh_my_car/assets/155126222/c5e2a829-97c9-4bbe-af12-89867f56a83c) |
+| ![9](https://github.com/misosiruda/oh_my_car/assets/155126222/e1d46de6-a797-49d1-9bc7-073457d77c3e) | ![10](https://github.com/misosiruda/oh_my_car/assets/155126222/9942c4d3-e017-4c65-b2ec-3ceb19b36d83) |
+| ![11](https://github.com/misosiruda/oh_my_car/assets/155126222/ffe87105-67fa-405d-9b53-2e15554e8a51) | ![12](https://github.com/misosiruda/oh_my_car/assets/155126222/ec9284e2-af95-4b04-ae54-618ede342893) |
+| ![13](https://github.com/misosiruda/oh_my_car/assets/155126222/064e944f-7539-40fd-a3fe-cef51eef019b) | ![14](https://github.com/misosiruda/oh_my_car/assets/155126222/4984a346-fb9e-4d25-b05d-24f8d98aa09e) | 
+|![15](https://github.com/misosiruda/oh_my_car/assets/155126222/4c3ffb39-320b-4661-823a-c943dbf2b00e) | ![16](https://github.com/misosiruda/oh_my_car/assets/155126222/49b649db-0323-45bc-887d-b1448c5ca985) | 
+| ![17](https://github.com/misosiruda/oh_my_car/assets/155126222/6b613af4-65b8-45f5-98f5-d6db3e5834dd) | ![18](https://github.com/misosiruda/oh_my_car/assets/155126222/a893250e-fec7-4957-83d7-b6b550e7a6ef) | 
+| ![19](https://github.com/misosiruda/oh_my_car/assets/155126222/e785abb7-4df1-4251-a117-28120aea0610) | ![20](https://github.com/misosiruda/oh_my_car/assets/155126222/62dfe134-f1aa-4975-916f-0b04cae47ebe) | 
+| ![21](https://github.com/misosiruda/oh_my_car/assets/155126222/109e1e1f-5362-4a6a-9a65-d68a1dd6fdc1) | ![22](https://github.com/misosiruda/oh_my_car/assets/155126222/ed6ff825-b0a4-4d53-b6e4-581d313474af) | 
+| ![23](https://github.com/misosiruda/oh_my_car/assets/155126222/4e6bcd19-13d7-40f6-a0d7-b84112dfb52f) | ![24](https://github.com/misosiruda/oh_my_car/assets/155126222/76c97c50-192c-44d1-b99a-2cd4debb5c90) | 
+| ![25](https://github.com/misosiruda/oh_my_car/assets/155126222/3f5c0f55-8f10-4ecb-a1d4-1961e7de411b) | ![26](https://github.com/misosiruda/oh_my_car/assets/155126222/4bfcb894-c811-4e6c-a75e-6a407df6288b) | 
+| ![27](https://github.com/misosiruda/oh_my_car/assets/155126222/ea010533-e060-4d6d-8c83-54388aea7480) | ![28](https://github.com/misosiruda/oh_my_car/assets/155126222/0a38aba2-000f-490b-9744-7273c139ad8a) | 
+| ![29](https://github.com/misosiruda/oh_my_car/assets/155126222/90702303-a65a-4936-b22b-d19631d56d46) | ![30](https://github.com/misosiruda/oh_my_car/assets/155126222/18a3465e-8495-49b7-8bf6-f4cb76de95e9) | 
+| ![31](https://github.com/misosiruda/oh_my_car/assets/155126222/69ea566d-7d62-4ac5-bac0-d6d1c498b960) | ![32](https://github.com/misosiruda/oh_my_car/assets/155126222/d0f66872-2d64-4a8f-8235-dce08c210ec0) | 
+| ![33](https://github.com/misosiruda/oh_my_car/assets/155126222/e8e65106-293d-4f64-846d-13ad3f86c3f8) | ![34](https://github.com/misosiruda/oh_my_car/assets/155126222/63a201de-e66b-4c19-9728-e85f95933cfd) | 
+| ![35](https://github.com/misosiruda/oh_my_car/assets/155126222/867a81ab-b690-44e3-ba31-d67db0448f0d) | ![36](https://github.com/misosiruda/oh_my_car/assets/155126222/991f9c3f-c603-473d-832f-abdcf38ebd9b) | 
+| ![37](https://github.com/misosiruda/oh_my_car/assets/155126222/3b9e79cd-27b2-4379-8d2a-921695c57a57) | ![38](https://github.com/misosiruda/oh_my_car/assets/155126222/9fbac855-d352-4b99-8b52-5ce3b4f296c5) | 
+| ![39](https://github.com/misosiruda/oh_my_car/assets/155126222/e3122a45-9f06-4e3b-8409-c4982efe448c) |
+
 
 </div>
 
-## 💻 핵심 기능
 
-#### 차량 부품 교체 주기 확인
 
-- 현대 자동차 API 를 통해 로그인 한 사람의 경우 API 를 통해 현재 누적 주행 거리를 구해와 정확하게 교체 주기를 확인 가능하다.
-- API를 통해 로그인 하지 않은 사람이라 하더라도 이전에 저장해뒀던 부품 교체 정보를 통해 교체 주기를 확인 가능하다.
 
-#### 일반회원
+# 💻 핵심 기능
 
-- 로그인
-- 아이디 중복확인
-- 비밀번호 암호화 처리
-- 카카오 지도 검색
-- 마이페이지(내 정보 관리, 내 포인트 관리, 포인트 변경 이력, 내 조사 관리, 내 1:1 문의 관리, 차량 등록 및 변경 )
-- 아이디, 비밀번호 찾기
+<hr/>
 
-#### 관리자
+#### 🛠️ 차량 부품 교체 주기 확인
 
-- 관리자 회원가입을 통해 신규 관리자가 회원가입을 할 수 있게 만든다.
-- 자동차 토막상식 관리 페이지를 통해 토막상식의 전반적인 처리가 가능하다.
+- ##### 현대 자동차 API 
+  - `현대자동차 API`를 통해 로그인 한 사람의 경우 해당 회원의 차량의 현재 `누적 주행 거리`를 구해올 수 있습니다.
+    구해온 누적 주행 거리를 토대로 각 `부품의 교체주기`를 확인할 수 있습니다.
+  - API를 통해 로그인 하지 않은 사람이더라도 직접 누적 주행거리를 입력하거나,
+    부품 교체시기를 입력해 간편하게 부품 교체 주기를 확인할 수 있습니다.
 
-🎇 주요기능 실행화면
+#### 🙍 일반회원
 
-  <summary>주요기능 실행화면</summary>
+- ##### 로그인
+  - 비밀번호 암호화
 
-- **메인 페이지**
+- ##### 회원가입
+  - 아이디, 이메일 중복확인
+  - 입력 양식 정규식처리
+  - 유효성검사
+
+- ##### 마이페이지
+  - 회원 정보 수정
+  - 차량 신규 등록
+  - 차량 목록
+  - 회원탈퇴
+
+- ##### 자유게시판
+  - 게시글 작성,수정,삭제
+  - 게시글에 댓글 작성
+
+#### 👷‍♂️ 관리자
+  - ##### 회원가입
+    - 아이디, 이메일 중복확인
+    - 입력 양식 정규식처리
+    - 유효성검사
+
+  - ##### 자동차 토막상식 관리
+    - 자동차 토막상식 작성,수정,삭제
+
+
+
+
+
+# <summary> 🎇 주요기능 실행화면</summary>
+
+### **🏠 메인 페이지**
 
   - **로그인**
-    - 메인 페이지의 로그인 화면을 통해 일반 로그인, 우측 상단의 `로그인`을 통해 일반 로그인, 현대 자동차 로그인이 가능합니다.
 
-        ![로그인](https://github.com/misosiruda/oh_my_car/assets/81164760/b928a475-ab88-4776-97ec-172bc18f5012)
+    - 모든 페이지에서 우측 상단의 `로그인`을 통해 로그인 할 수 있습니다.
+      로그인 권한이 필요한 페이지에 접근시에도 로그인페이지로 이동됩니다.
+    - 모든 페이지 우측 상단의 `로그아웃`을 통해 로그아웃 할 수 있습니다.
+    - 로그인한 회원의 권한 정보에 따라 접근할 수 있는 페이지가 결정됩니다.
 
-  - **회원가입**
 
-    - 회원가입 페이지에서 회원과 관리자 승인아래 관리자로 가입할 수 있습니다.
+      ![로그인](https://github.com/misosiruda/oh_my_car/assets/81164760/b928a475-ab88-4776-97ec-172bc18f5012)
 
-        ![회원가입](https://github.com/misosiruda/oh_my_car/assets/81164760/cedc0930-0981-471d-8567-bb9c1082daae)
-  - **자유 게시판**
 
-    - 자유 게시판에서는 차주들이 서로 소통이 가능하며, 댓글기능으로 그에 대한 답을 해줄 수 있는곳 입니다.
-    - 자유 게시판에서 게시판에 질문과 알고있는 팁 같은것을 적어서 공유할 수 있다.
-    - 자기가 작성한 게시글만 수정 및 삭제 가능하다.
+  - **🙍 일반회원 회원가입**
 
-        ![게시판 전반](https://github.com/misosiruda/oh_my_car/assets/81164760/fb107c16-6f1f-4b7d-b99f-a8a87b6bb7f2)
+    - 우측 상단 `회원가입`이나, 로그인화면에서 회원가입버튼을 통해 회원가입을 할 수 있습니다.
+      이 페이지에서 회원가입한 사용자는 일반회원(ROLE_MEMBER)의 권한만을 갖습니다.
+      페이지 접근에 제한이 있습니다.(관리자전용 페이지 등)
 
-  - **마이페이지**
+      ![회원가입](https://github.com/misosiruda/oh_my_car/assets/81164760/cedc0930-0981-471d-8567-bb9c1082daae)
+
+
+
+  - **📄 마이페이지**
 
     - `회원 정보 수정` 에서는 회원정보를 변경할 수 있습니다.
     - `차량 등록` 에서는 현재 자신이 소유하고 있는 차량을 등록 할수 있습니다.
     - `차량 목록` 페이지 내 `차량 목록` 을 클릭하면 현재 내가 소유하고 있는 차량 목록을 확인 할수 있습니다.
-    - `회원 탈퇴` 는 이제 더 이상 사이트를 이용하고 싶지않을때 회원 탈퇴로 사이트 이용을 하지 않을 수 있습니다.
+    - `회원 탈퇴` 로 사이트에서 탈퇴할 수 있습니다.
 
-        ![마이페이지](https://github.com/misosiruda/oh_my_car/assets/81164760/d387579e-8f4d-4aae-95ce-ea9acb87e5e3)
+      ![마이페이지](https://github.com/misosiruda/oh_my_car/assets/81164760/d387579e-8f4d-4aae-95ce-ea9acb87e5e3)
 
-  - **자동차 토막 상식**
+  - **🗣️ 자유 게시판**
+
+    - `자유 게시판`은 사용자들이 게시물을 올리고, 댓글기능으로 서로 소통이 가능한 곳 입니다.
+      자동차 관련 질문과 답변을 하거나, 자유롭게 정보를 공유할 수 있습니다.
+
+      ![게시판 전반](https://github.com/misosiruda/oh_my_car/assets/81164760/fb107c16-6f1f-4b7d-b99f-a8a87b6bb7f2)
+
+
+
+  - **📓자동차 토막 상식**
 
     - 메인 화면에 `ajax` 를 통해 1분 간격으로 토막 상식 5개를 보여줍니다.
 
-        ![토막 상식 홈페이지](https://github.com/misosiruda/oh_my_car/assets/81164760/cf230aaa-c63d-443f-a244-ccdb7452b653)
+      ![토막 상식 홈페이지](https://github.com/misosiruda/oh_my_car/assets/81164760/cf230aaa-c63d-443f-a244-ccdb7452b653)
 
-  - **가까운 ???**
 
-    - `카카오 지도 API` 와 `구글 geoLocation API` 를 이용하여 현재 위치에 ??? 키워드 를 검색 하여 띄워준다.
+  - **🗺️ 가까운 OOO**
 
-        ![가까운 땡땡땡](https://github.com/misosiruda/oh_my_car/assets/81164760/c58d2fc0-062e-4116-9550-d394e8f0a062)
+    - `카카오 지도 API` 와 `구글 geoLocation API` 를 이용하여 현재 위치에 OOO(키워드)를 검색 하여     보여줍니다.
+    - 가까운 주유소, 정비소 페이지가 있으며, 이 기능을 활용하여 추가로 다른 페이지를 제작할 수도 있습니다.
 
-- **차량목록**
+      ![가까운 땡땡땡](https://github.com/misosiruda/oh_my_car/assets/81164760/c58d2fc0-062e-4116-9550-d394e8f0a062)
+
+
+### **🚐 차량목록**
 
   - **차량 부품 교체 정보**
 
-    - 차량 목록에 선택된 차량의 부품 교체 정보를 보거나 교체한 시기를 수정 및 등록, 삭제 할 수 있다.
+    - 차량 목록에서 선택한 차량의 부품 교체 정보를 볼 수 있습니다. 각 부품의 교체시기를 계산해 보여줍니다. 그리고 해당 부품의 교체 시기를 수정 및 등록, 삭제 할 수 있습니다.
 
-        ![부품 정보](https://github.com/misosiruda/oh_my_car/assets/81164760/e300db1e-1a47-4ab8-ac67-3c79f13b574d)
+      ![부품 정보](https://github.com/misosiruda/oh_my_car/assets/81164760/e300db1e-1a47-4ab8-ac67-3c79f13b574d)
 
-- **관리자**
 
-  - **관리자 로그인**
-  - 메인 페이지에서 우측 상단의 `관리자 로그인`을 통해 관리자 로그인 페이지에 들어갈 수 있습니다.
-  - 관리자 페이지 우측 상단의 `로그아웃`을 통해 로그아웃 할 수 있습니다.
 
-        ![관리자 로그인](https://github.com/misosiruda/oh_my_car/assets/81164760/8ea02c9a-5ab4-4f9b-87fc-59e1a369c48f)
+###  **👷‍♂️ 관리자**
 
   - **관리자 회원가입**
 
-    - 신규 관리자 의 아이디 생성을 하기 위해 있는 버튼 이미 관리자 권한이 있는 유저가 만들어야한다.
+    - 관리자 아이디로 로그인시 보이는 `관리자 회원가입` 버튼을 통해 관리자를 추가할 수 있습니다.
+      이 페이지에서 회원가입하는 사용자는 관리자(ROLE_ADMIN),일반회원(ROLE_MEMBER)의 권한을 모두 갖고,모든 페이지에 접근할 수 있습니다.
 
-        ![관리자 회원가입](https://github.com/misosiruda/oh_my_car/assets/81164760/501b0500-d1be-4537-91a8-58c1694f5bf5)
+      ![관리자 회원가입](https://github.com/misosiruda/oh_my_car/assets/81164760/501b0500-d1be-4537-91a8-58c1694f5bf5)
+
 
   - **자동차 토막 상식 관리 페이지**
+    - 관리자 권한을 가진 회원만 접근할 수 있는 자동차 토막 상식 목록 페이지입니다.관리자는 자동차 토막 상식을 추가, 수정, 삭제 할 수 있습니다.수정시 수정페이지 모달창이 나타나 좀 더 수월하게 작업이 가능합니다.
 
-    - 자동차 토막 상식들의 리스트가 있는 페이지 입니다.
-    - 여기서 관리자는 토막 상식을 추가 삭제 수정 할 수 있습니다.
-    - 새로운 페이지로 넘어가지는 않고 모달창을 띄워 좀더 수월하게 작업 가능합니다.
-
-        ![관리자 토막상식 관리 페이지](https://github.com/misosiruda/oh_my_car/assets/81164760/f3b27b31-a319-4971-ac2e-e4dbae98e6ae)
+      ![관리자 토막상식 관리 페이지](https://github.com/misosiruda/oh_my_car/assets/81164760/f3b27b31-a319-4971-ac2e-e4dbae98e6ae)
 
 
+</details>
 
 ## 🌄 개선사항
+- **😃 회원**
+  - 현대자동차 로그인 Api로 사이트 회원가입, 기능 연동
+  - 가입시 이메일 인증번호 Api 적용, 이를 이용한 아이디/비밀번호찾기 기능 추가
+  - 내 정보 수정시 기존 비밀번호와 일치하면 경고창이 뜨게 수정
 
-- 회원가입을 했을때 할수 있는 기능을 확보
-- 삭제버튼을 누를때 confirm으로 예/아니오 처리 가능하게 수정
-- 현대차 로그인만 하면 일반 회원 로그인 한 것처럼 연동 하는 것이 없다는 점
+
+- **🎸기타**
+  - 삭제버튼을 누를때 confirm으로 예/아니오 처리 가능하게 수정
+  - 
+  -
+  -
+  -
+  -
+
