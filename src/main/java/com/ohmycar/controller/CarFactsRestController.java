@@ -13,28 +13,28 @@ import com.ohmycar.service.CarFactsService;
 @RequestMapping("/carFacts")
 @RestController
 public class CarFactsRestController {
-	private final CarFactsService service;
+    private final CarFactsService service;
 
-	public CarFactsRestController(CarFactsService service) {
-		this.service = service;
-	}
+    public CarFactsRestController(CarFactsService service) {
+        this.service = service;
+    }
 
-	@GetMapping("/read")
-	public String read() {
-		return service.read();
-	}
+    @GetMapping("/read")
+    public String read() {
+        return service.read();
+    }
 
-	@GetMapping("/read5")
-	public List<CarFactsVO> read5() {
-		List<CarFactsVO> list = new ArrayList<>();
-		while (list.size() < 5) {
-			String text = service.read();
-			CarFactsVO vo = new CarFactsVO();
-			vo.setFactText(text);
-			if (!list.contains(vo)) {
-				list.add(vo);
-			}
-		}
-		return list;
-	}
+    @GetMapping("/read5")
+    public List<CarFactsVO> read5() {
+        List<CarFactsVO> list = new ArrayList<>();
+        while (list.size() < 5) {
+            String text = service.read();
+            CarFactsVO vo = new CarFactsVO();
+            vo.setFactText(text);
+            if (!list.contains(vo)) {
+                list.add(vo);
+            }
+        }
+        return list;
+    }
 }

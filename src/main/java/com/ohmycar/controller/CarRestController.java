@@ -17,17 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j
 public class CarRestController {
 
-	private final CarService carService;
+    private final CarService carService;
 
-	@GetMapping("/read")
-	public CarVO getReadAPI(@RequestParam("carId") String carId) {
-		log.info("getRead");
-		return carService.getCarByCarId(carId);
-	}
+    @GetMapping("/read")
+    public CarVO getReadAPI(@RequestParam("carId") String carId) {
+        log.info("getRead");
+        return carService.getCarByCarId(carId);
+    }
 
-	@GetMapping("/cars")
-	public List<CarVO> getCarsByUserIdAPI(@RequestParam("userId") String userId) {
-		log.info("get car list");
-		return carService.getCarsByUserId(userId);
-	}
+    @GetMapping("/cars")
+    public List<CarVO> getCarsByUserIdAPI(@RequestParam("userId") String userId) {
+        log.info("get car list");
+        return carService.getCarsByUserId(userId);
+    }
 }

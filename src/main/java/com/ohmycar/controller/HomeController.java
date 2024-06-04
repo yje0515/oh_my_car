@@ -25,40 +25,40 @@ import com.ohmycar.service.UserService;
 @Controller
 public class HomeController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	private final UserService userService;
+    private final UserService userService;
 
-	public HomeController(UserService userService) {
-		this.userService = userService;
-	}
+    public HomeController(UserService userService) {
+        this.userService = userService;
+    }
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@GetMapping(value = "/")
-	public String home(String code, Locale locale, Model model, HttpServletRequest request) {
+    /**
+     * Simply selects the home view to render by returning its name.
+     */
+    @GetMapping(value = "/")
+    public String home(String code, Locale locale, Model model, HttpServletRequest request) {
 
-		// 인증된 사용자 정보 불러와서 userVO객체에 담아준다.
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication.getPrincipal() instanceof UserDetails) {
-			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-			UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
-			model.addAttribute("userVO", userVO);
-		}
+        // 인증된 사용자 정보 불러와서 userVO객체에 담아준다.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            UserVO userVO = userService.getUserByUserId(userDetails.getUsername());
+            model.addAttribute("userVO", userVO);
+        }
 
-		// 세션에 현대 API 에서 받아온 code 저장
-		HttpSession session = request.getSession();
-		session.setAttribute("hyundaiCode", code);
+        // 세션에 현대 API 에서 받아온 code 저장
+        HttpSession session = request.getSession();
+        session.setAttribute("hyundaiCode", code);
 
-		logger.info("Welcome home! The client locale is {}.", locale);
+        logger.info("Welcome home! The client locale is {}.", locale);
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+        Date date = new Date();
+        DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
-		String formattedDate = dateFormat.format(date);
-		model.addAttribute("serverTime", formattedDate);
-		return "home";
-	}
+        String formattedDate = dateFormat.format(date);
+        model.addAttribute("serverTime", formattedDate);
+        return "home";
+    }
 
 }

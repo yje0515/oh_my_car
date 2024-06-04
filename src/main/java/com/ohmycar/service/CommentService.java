@@ -4,13 +4,13 @@ import java.util.List;
 import com.ohmycar.domain.CommentVO;
 
 public interface CommentService {
-	List<CommentVO> getCommentsByBoardId(int bno);
+    List<CommentVO> getCommentsByBoardId(int bno);
 
-	void writeComment(CommentVO comment);
+    void writeComment(CommentVO comment);
 
-	void register(CommentVO comment);
+    void register(CommentVO comment);
 
-	void modify(CommentVO comment);
+    void modify(CommentVO comment);
 
-	void remove(int id);
+    void remove(int id);
 }

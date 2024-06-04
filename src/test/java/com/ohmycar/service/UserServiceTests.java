@@ -12,15 +12,15 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/security-context.xml","file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @Log4j
 public class UserServiceTests {
-	
-	@Autowired
-	private UserService userService;
-	
-	@Test
-	public void testDelete() {
-		String userId = "admin88";
-		userService.deleteUser(userId);
-		log.info("삭제된 회원 : "+userId);
-	}
+    
+    @Autowired
+    private UserService userService;
+    
+    @Test
+    public void testDelete() {
+        String userId = "admin88";
+        userService.deleteUser(userId);
+        log.info("삭제된 회원 : "+userId);
+    }
 
 }

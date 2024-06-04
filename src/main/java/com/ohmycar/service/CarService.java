@@ -6,13 +6,13 @@ import com.ohmycar.domain.CarVO;
 
 public interface CarService {
 
-	void updateCar(CarVO carVO);
+    void updateCar(CarVO carVO);
 
-	CarVO getCarByCarId(String carId);
+    CarVO getCarByCarId(String carId);
 
-	List<CarVO> getCarsByUserId(String userId);
+    List<CarVO> getCarsByUserId(String userId);
 
-	boolean registerCar(CarVO carVO);
+    boolean registerCar(CarVO carVO);
 
-	void deleteCar(String carId);
+    void deleteCar(String carId);
 }
