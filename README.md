@@ -107,29 +107,22 @@
 - **메인 페이지**
 
   - **로그인**
-    - 메인 페이지의 로그인 화면을 통해 일반 로그인, 우측 상단의 `로그인`을 통해 일반 로그인, 소셜 로그인이 가능합니다.
+    - 메인 페이지의 로그인 화면을 통해 일반 로그인, 우측 상단의 `로그인`을 통해 일반 로그인, 현대 자동차 로그인이 가능합니다.
 
-    ![PS_01_login socialLogin](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/d15792bb-ce78-461f-9bac-44ba31d9dc95)
+        ![로그인](https://github.com/misosiruda/oh_my_car/assets/81164760/b928a475-ab88-4776-97ec-172bc18f5012)
 
   - **회원가입**
 
     - 회원가입 페이지에서 회원과 관리자 승인아래 관리자로 가입할 수 있습니다.
 
-        ![PS_02_UsersRegister](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/03e68b7a-42bc-4e80-9d5b-93cff3a07311)
-
-  - **아이디, 비밀번호 찾기**
-
-    - 이름과 연락처를 입력하여 아이디를 찾을 수 있습니다.
-    - 비밀번호 찾기 페이지에서 이메일 입력 후 '인증번호 전송' 버튼을 클릭하면 인증번호가 포함된 메일이 전송되며 인증번호를 올바르게 입력하면 비밀번호를 다시 설정하는 페이지로 이동할 수 있습니다.
-
-        ![PS_03_idFind pwFind](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/7feec2d9-ed4d-4a5a-b95d-616d1c6f3340)
-
+        ![회원가입](https://github.com/misosiruda/oh_my_car/assets/81164760/cedc0930-0981-471d-8567-bb9c1082daae)
   - **자유 게시판**
 
     - 자유 게시판에서는 차주들이 서로 소통이 가능하며, 댓글기능으로 그에 대한 답을 해줄 수 있는곳 입니다.
     - 자유 게시판에서 게시판에 질문과 알고있는 팁 같은것을 적어서 공유할 수 있다.
+    - 자기가 작성한 게시글만 수정 및 삭제 가능하다.
 
-        ![PS_04_board](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/49264601-d238-40ed-827c-1b91672eba2d)
+        ![게시판 전반](https://github.com/misosiruda/oh_my_car/assets/81164760/fb107c16-6f1f-4b7d-b99f-a8a87b6bb7f2)
 
   - **마이페이지**
 
@@ -138,19 +131,19 @@
     - `차량 목록` 페이지 내 `차량 목록` 을 클릭하면 현재 내가 소유하고 있는 차량 목록을 확인 할수 있습니다.
     - `회원 탈퇴` 는 이제 더 이상 사이트를 이용하고 싶지않을때 회원 탈퇴로 사이트 이용을 하지 않을 수 있습니다.
 
-        ![PS_05_mypage](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/e324a9d7-8d42-44d7-a4f5-989dc3a4c22f)
+        ![마이페이지](https://github.com/misosiruda/oh_my_car/assets/81164760/d387579e-8f4d-4aae-95ce-ea9acb87e5e3)
 
   - **자동차 토막 상식**
 
     - 메인 화면에 `ajax` 를 통해 1분 간격으로 토막 상식 5개를 보여줍니다.
 
-        ![PS_06_survey](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/d645c45b-ae05-441e-9914-27a38a156560)
+        ![토막 상식 홈페이지](https://github.com/misosiruda/oh_my_car/assets/81164760/cf230aaa-c63d-443f-a244-ccdb7452b653)
 
   - **가까운 ???**
 
     - `카카오 지도 API` 와 `구글 geoLocation API` 를 이용하여 현재 위치에 ??? 키워드 를 검색 하여 띄워준다.
 
-        ![PS_06_survey](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/d645c45b-ae05-441e-9914-27a38a156560)
+        ![가까운 땡땡땡](https://github.com/misosiruda/oh_my_car/assets/81164760/c58d2fc0-062e-4116-9550-d394e8f0a062)
 
 - **차량목록**
 
@@ -158,7 +151,7 @@
 
     - 차량 목록에 선택된 차량의 부품 교체 정보를 보거나 교체한 시기를 수정 및 등록, 삭제 할 수 있다.
 
-        ![PS_07_MemberPage infoModify](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/faf7d702-24a9-4f93-88a0-424dfdd9fd40)
+        ![부품 정보](https://github.com/misosiruda/oh_my_car/assets/81164760/e300db1e-1a47-4ab8-ac67-3c79f13b574d)
 
 - **관리자**
 
@@ -166,13 +159,13 @@
   - 메인 페이지에서 우측 상단의 `관리자 로그인`을 통해 관리자 로그인 페이지에 들어갈 수 있습니다.
   - 관리자 페이지 우측 상단의 `로그아웃`을 통해 로그아웃 할 수 있습니다.
 
-    ![PS_11_AdminDashboard](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/696f4580-2dfe-4131-94bb-ae5fd7d0de5d)
+        ![관리자 로그인](https://github.com/misosiruda/oh_my_car/assets/81164760/8ea02c9a-5ab4-4f9b-87fc-59e1a369c48f)
 
   - **관리자 회원가입**
 
     - 신규 관리자 의 아이디 생성을 하기 위해 있는 버튼 이미 관리자 권한이 있는 유저가 만들어야한다.
 
-        ![PS_12_AdminSurveyList](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/cdb608f4-7472-4ddf-ab90-5c80cb2d1af7)
+        ![관리자 회원가입](https://github.com/misosiruda/oh_my_car/assets/81164760/501b0500-d1be-4537-91a8-58c1694f5bf5)
 
   - **자동차 토막 상식 관리 페이지**
 
@@ -180,14 +173,7 @@
     - 여기서 관리자는 토막 상식을 추가 삭제 수정 할 수 있습니다.
     - 새로운 페이지로 넘어가지는 않고 모달창을 띄워 좀더 수월하게 작업 가능합니다.
 
-        ![PS_13_VOC Reply](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/f9c1f147-bcaf-41bc-a66b-0f301efd7e25)
-
-  - **게시물 관리**
-
-    - 메인 화면의 `자유 게시판` -> `게시판 목록`을 통해 회원들의 게시판 목록을 호출하고, 게시판의 상세 내용과 댓글을 확인하고 관리할 수 있다.
-    - `게시물 관리`를 통해 자유 게시판에 부적합한 내용이나 댓글이 있으면, 이를 삭제 할 수 있다.
-
-        ![PS_14_AdminMemberCreate](https://github.com/JongHoonKim1004/Project_Survey/assets/155927559/3c82bb8a-d592-4215-83f2-7adfd30d8b10)
+        ![관리자 토막상식 관리 페이지](https://github.com/misosiruda/oh_my_car/assets/81164760/f3b27b31-a319-4971-ac2e-e4dbae98e6ae)
 
 
 
